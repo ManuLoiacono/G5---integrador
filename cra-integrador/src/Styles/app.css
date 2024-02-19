@@ -8,6 +8,7 @@ body{
     margin: 0px;
     padding: 0px;
 }
+/*HEADER*/
 .logo{
     height: 70%;
     margin-left: 1rem;
@@ -35,6 +36,7 @@ header div button{
     border-radius: 44px;
     font-size: 1.2em;
 }
+/*HEADER*/
 .home{
     background-color: var(--color-gris2);
     height: calc(100vh - 95px);
@@ -94,12 +96,29 @@ header div button{
     height: 1.5rem;
     margin:0;        
 }
-
+/*GALERIA DE CATEGORIAS*/
 .categorias{
-    background-color: var(--color-gris3);
+    background-color: var(--color-gris2);
     height: 45%;
     width: 100%;
 }
+
+#galeria-cat{
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+
+}
+.categoria-card{
+    border:1px solid black;
+    border-radius: 5px;
+    flex:1;
+    padding: 10px;
+    background-color: var(--color-gris1);
+    box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.4);
+
+}
+/*GALERIA DE CATEGORIAS*/
 .recomendaciones{
     background-color: var(--color-gris1);
     height:40%;
