@@ -1,0 +1,62 @@
+*{
+    font-family: "Afacad", sans-serif;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.logo{
+    height: 85px;
+    width: 350px;
+    margin: 10px 0px
+}
+header{
+    background-color: #1E392A;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100vw;
+    height: 95px;
+    top: 0;
+    left:0;
+    z-index: 1000;
+}
+header div button{
+    margin: 25px 10px;
+    width: 145px;
+    height: 48px;
+    border-radius: 44px;
+    font-size: 1.2em;
+}
+
+
+@media(max-width: 700px){
+.logo{
+    width: 210px;
+    height: 51px;
+    margin: 10%;
+}
+header div button{
+    width: 87px;
+    height: 29px;
+    font-size: 0.8em;
+    margin: 30px 10px;
+
+}
+}
+
+@media(max-width:425px){
+    .logo{
+        width: 189px;
+        height: 46px;
+        margin: 10%;
+    }
+    header div button{
+        margin: 3px 0px;
+    }
+#button-container{
+    padding: 15px 0px 5px 40px;
+}
+
+}
