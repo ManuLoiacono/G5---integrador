@@ -1,5 +1,6 @@
 
-import image from "../img/TERRA RENT3.png"
+import React from "react"
+import image from "../img/TERRA_RENT4.png"
 import { Link } from "react-router-dom"
 function Header(){
     return(

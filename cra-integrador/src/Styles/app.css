@@ -1,0 +1,138 @@
+@import './variables.css';
+*{
+    font-family: "Afacad", sans-serif;
+    box-sizing: border-box;
+}    
+
+body{
+    margin: 0px;
+    padding: 0px;
+}
+.logo{
+    height: 70%;
+    margin-left: 1rem;
+}
+
+a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header{
+    background-color:var(--color-verde2);
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    height: 95px;
+    top: 0;
+    left:0;
+    z-index: 1000;
+}
+header div button{
+    margin: 25px 10px;
+    width: 145px;
+    height: 48px;
+    border-radius: 44px;
+    font-size: 1.2em;
+}
+.home{
+    background-color: var(--color-gris2);
+    height: calc(100vh - 95px);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.buscador{
+    height: 15%;
+    width: 100%;
+    background-image: url(../img/fondo_buscador.png);
+    background-size:cover;
+    
+    color: var(--color-blanco);
+    
+}
+.buscador form{
+    /*background-color: var(--color-blanco);*/
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+
+}
+.buscador h2{
+    margin:auto;
+    text-align: center;
+}
+.buscador button{
+    margin-left: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-verde2);
+    color: var(--color-blanco);
+    height: 1.5rem;
+}
+.buscador input{
+    margin-left: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-gris2);
+    color: var(--color-blanco);
+    border:none;
+    height: 1.5rem;
+}
+.buscador input::placeholder{
+    padding-left: 0.5rem;
+    
+}
+
+.buscador label {
+    margin-left: 1rem;
+    justify-content: center;
+    align-items: center;
+    height: 1.5rem;     
+    
+}
+.buscador label img{
+    align-items: center;
+    height: 1.5rem;
+    margin:0;        
+}
+
+.categorias{
+    background-color: var(--color-gris3);
+    height: 45%;
+    width: 100%;
+}
+.recomendaciones{
+    background-color: var(--color-gris1);
+    height:40%;
+    width: 100%;
+}
+
+
+@media(max-width: 700px){
+.logo{
+    height: 50%;
+    margin: 10%;
+    margin-left: 20%;
+}
+header div button{
+    width: 87px;
+    height: 29px;
+    font-size: 0.8em;
+    margin: 30px 10px;
+
+}
+}
+
+@media(max-width:425px){
+    .logo{
+        height: 50%;
+        margin: 10%;
+        margin-left: 20%;
+    }
+    header div button{
+        margin: 3px 0px;
+    }
+#button-container{
+    padding: 15px 0px 5px 40px;
+}
+
+}
