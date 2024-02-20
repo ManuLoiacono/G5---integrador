@@ -2,7 +2,7 @@ import React from "react";
 import Buscador from "../components/Buscador";
 import Categorias from "../components/Categorias";
 import Header from "../components/Header";
-import Recomendaciones from "../components/Recomendaciones";
+import Recomendados from "../components/Recomendados";
 import style from "../Styles/app.css";
 
 function Home() {
@@ -13,7 +13,7 @@ function Home() {
             <div className="home">
                 <Buscador/>
                 <Categorias/>
-                <Recomendaciones/>
+                <Recomendados/>
             </div>
         </>
     )

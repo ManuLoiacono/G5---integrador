@@ -60,6 +60,7 @@ header div button{
     justify-content: center;
 
 }
+
 .buscador h2{
     margin:auto;
     text-align: center;
@@ -119,12 +120,29 @@ header div button{
 
 }
 /*GALERIA DE CATEGORIAS*/
-.recomendaciones{
-    background-color: var(--color-gris1);
-    height:40%;
-    width: 100%;
+/*RECOMENDADOS*/
+#section-recomendados{
+    width: 85vw;
 }
-
+.recomendados{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px 20px;
+}
+.card{
+border: 1px black solid;
+border-radius: 5px;
+box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.4);
+background-color: var(--color-gris1);
+padding: 8px;
+}
+.card img{
+    width: 100%;
+    height: 60%;
+    border-radius: 4px;
+    border: 1px black solid;
+}
+/*RECOMENDADOS*/
 
 @media(max-width: 700px){
 .logo{
