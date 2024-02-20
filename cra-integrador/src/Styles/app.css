@@ -33,15 +33,28 @@ header{
 header div {
     display: flex;
     justify-content: space-between;
-    
-    }
-header div button{
+}
+/*header div button{
     margin: auto;
     margin-right:1rem ;
     width: 7rem;
     border-radius: 44px;
+}*/
+header div button{
     
+    width: 7rem;
+    background-color:transparent;
+    border: none;
+    color: var(--color-blanco);
+    font-size: large;
 }
+header div span{
+    border: none;
+    color: var(--color-blanco);
+    font-size: large;
+    align-self: center;
+}
+
 /*HEADER*/
 .home{
     background-color: var(--color-gris2);

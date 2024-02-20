@@ -3,6 +3,7 @@ import style from "./Styles/app.css";
 import { BrowserRouter, Route , Routes } from "react-router-dom";
 import Home from './Routes/Home';
 import React from "react";
+import Admin from "./components/Admin.jsx";
 
 function App() {
   return ( 
@@ -11,6 +12,7 @@ function App() {
   <Header/>
   <Routes>
     <Route path='/' element={<Home/>}/>
+    <Route path='/admin' element={<Admin/>}/>
   </Routes>
   </BrowserRouter>
   </>
