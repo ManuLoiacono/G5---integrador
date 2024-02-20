@@ -24,37 +24,46 @@ header{
     display: flex;
     justify-content: space-between;
     position: sticky;
-    height: 95px;
+    height: 8vh;
     top: 0;
     left:0;
     z-index: 1000;
 }
+
+header div {
+    display: flex;
+    justify-content: space-between;
+    
+    }
 header div button{
-    margin: 25px 10px;
-    width: 145px;
-    height: 48px;
+    margin: auto;
+    margin-right:1rem ;
+    width: 7rem;
     border-radius: 44px;
-    font-size: 1.2em;
+    
 }
 /*HEADER*/
 .home{
     background-color: var(--color-gris2);
-    height: calc(100vh - 95px);
+    
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
+/*BUSCADOR*/
 .buscador{
-    height: 15%;
     width: 100%;
     background-image: url(../img/fondo_buscador.png);
     background-size:cover;
-    
     color: var(--color-blanco);
-    
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction:column ;
+    height: 7rem;
 }
+
 .buscador form{
-    /*background-color: var(--color-blanco);*/
     width: 100%;
     display: inline-flex;
     justify-content: center;
@@ -62,8 +71,9 @@ header div button{
 }
 
 .buscador h2{
-    margin:auto;
+    margin: 0;
     text-align: center;
+    font-size: xx-large;
 }
 .buscador button{
     margin-left: 1rem;
@@ -95,19 +105,23 @@ header div button{
 .buscador label img{
     align-items: center;
     height: 1.5rem;
-    margin:0;        
+    margin:0;  
+    filter: drop-shadow(1px 1px 1px rgba(255, 255, 255));
+
 }
 /*GALERIA DE CATEGORIAS*/
 .categorias{
     background-color: var(--color-gris2);
-    height: 45%;
     width: 100%;
 }
-
+.categorias h3{
+    margin-bottom: 0;
+    margin-top: 0.5em;
+}
 #galeria-cat{
     display: flex;
     gap: 20px;
-    padding: 30px;
+    padding: 20px;
 
 }
 .categoria-card{
