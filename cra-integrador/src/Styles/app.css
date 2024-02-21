@@ -24,7 +24,7 @@ header{
     display: flex;
     justify-content: space-between;
     position: sticky;
-    height: 8vh;
+    height: 10vh;
     top: 0;
     left:0;
     z-index: 1000;
@@ -48,6 +48,9 @@ header div button{
     color: var(--color-blanco);
     font-size: large;
 }
+header div button:hover{
+    color: var(--color-gris2);
+}
 header div span{
     border: none;
     color: var(--color-blanco);
@@ -66,14 +69,14 @@ header div span{
 /*BUSCADOR*/
 .buscador{
     width: 100%;
-    background-image: url(../img/fondo_buscador.png);
-    background-size:cover;
+    background-image: url(../img/2022_Camping_Banner2.png);
+    background-size:100vw 14rem;
     color: var(--color-blanco);
     align-items: center;
     display: flex;
     justify-content: center;
     flex-direction:column ;
-    height: 7rem;
+    height: 14rem;
 }
 
 .buscador form{
@@ -122,19 +125,31 @@ header div span{
     filter: drop-shadow(1px 1px 1px rgba(255, 255, 255));
 
 }
+/*BUSCADOR*/
 /*GALERIA DE CATEGORIAS*/
-.categorias{
-    background-color: var(--color-gris2);
-    width: 100%;
+.galeria{
+    width: 95vw;
+    margin:10px;
+    background-color: var(--color-gris1);
+    border: 1px black solid;
+    border-radius: 5px;
+    padding: 10px 80px;
+    box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.4);
+}
+.galeria h2{
+    font-size: 2rem;
+}
+#h2-cat{
+    margin: 0px 10px;
 }
 .categorias h3{
     margin-bottom: 0;
-    margin-top: 0.5em;
+    margin-top: 0.5rem;
 }
 #galeria-cat{
     display: flex;
-    gap: 20px;
-    padding: 20px;
+    gap: 1vw;
+    padding: 15px;
 
 }
 .categoria-card{
@@ -142,49 +157,55 @@ header div span{
     border-radius: 5px;
     flex:1;
     padding: 10px;
-    background-color: var(--color-gris1);
+    background-color: var(--color-blanco);
     box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.4);
 
 }
+.categoria-text{
+    margin: 2px;
+    font-size: 1.5rem;
+}
+.categoria-card img {
+    width: 100%;
+    height: 60%;
+}
 /*GALERIA DE CATEGORIAS*/
 /*RECOMENDADOS*/
-#section-recomendados{
-    width: 85vw;
-}
+
 .recomendados{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px 20vw;
 }
 .card{
+    height: 175px;
+    width: 400px;
 border: 1px black solid;
 border-radius: 5px;
 box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.4);
-background-color: var(--color-gris1);
-padding: 8px;
+background-color: var(--color-blanco);
+padding: 5px;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
 }
 .card img{
-    width: 100%;
-    height: 60%;
+    width: 80%;
+    height: 100%;
     border-radius: 4px;
     border: 1px black solid;
+    grid-row:1/3;
+}
+.card h3{
+font-size: 1.5rem;
+}
+.card p{
+    font-size: 1.3rem;
+}
+#recomendados{
+    padding: 1vw 10vw;
 }
 /*RECOMENDADOS*/
 
-@media(max-width: 700px){
-.logo{
-    height: 50%;
-    margin: 10%;
-    margin-left: 20%;
-}
-header div button{
-    width: 87px;
-    height: 29px;
-    font-size: 0.8em;
-    margin: 30px 10px;
-
-}
-}
 
 @media(max-width:425px){
     .logo{

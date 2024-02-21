@@ -31,14 +31,12 @@ function Galeria() {
           {id:5, img:imgCarpa, nombre:"carpa hogareña", precio:"1110"},
           {id:6, img:imgCarpa, nombre:"carpa AX8000", precio:"2000"},
           {id:7, img:imgCarpa, nombre:"carpa 66", precio:"3500"},
-          {id:8, img:imgCarpa, nombre:"carpa pegajosa", precio:"6000"},
-          {id:9, img:imgCarpa, nombre:"carpa coso", precio:"12000"},
-          {id:10, img:imgCarpa, nombre:"carpa 61564", precio:"8"}
+          {id:8, img:imgCarpa, nombre:"carpa pegajosa", precio:"6000"}
           ]
            
 
     return(
-        <section id="section-recomendados">
+        <section className="galeria" id="recomendados">
       <h2>Productos recomendados:</h2>
       <div className="recomendados">
         {/* CAMBIAR ARRAY CUANDO YA ESTÉ LA API*/}
