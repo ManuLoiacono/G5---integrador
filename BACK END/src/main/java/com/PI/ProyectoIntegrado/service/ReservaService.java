@@ -1,15 +1,12 @@
-package service;
+package com.PI.ProyectoIntegrado.service;
 
 
+import com.PI.ProyectoIntegrado.model.Reserva;
+import com.PI.ProyectoIntegrado.repository.IReservaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dto.ProductoDTO;
-import dto.ReservaDTO;
-import model.Producto;
-import model.Reserva;
+import com.PI.ProyectoIntegrado.dto.ReservaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.IProductoRepository;
-import repository.IReservaRepository;
 
 import java.util.HashSet;
 import java.util.List;

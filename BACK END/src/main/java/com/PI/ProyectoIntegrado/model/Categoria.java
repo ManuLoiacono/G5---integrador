@@ -1,4 +1,4 @@
-package model;
+package com.PI.ProyectoIntegrado.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -14,7 +14,7 @@ public class Categoria {
     private Integer idCategoria;
     private String nombreCategoria;
 
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "categoria")
     @JsonIgnore
     private Set<Producto> productos;
 

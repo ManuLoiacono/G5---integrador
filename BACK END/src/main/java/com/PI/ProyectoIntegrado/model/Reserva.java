@@ -1,4 +1,4 @@
-package model;
+package com.PI.ProyectoIntegrado.model;
 
 import jakarta.persistence.*;
 

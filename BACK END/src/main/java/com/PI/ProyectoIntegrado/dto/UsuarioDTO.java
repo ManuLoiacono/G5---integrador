@@ -1,10 +1,13 @@
-package dto;
+package com.PI.ProyectoIntegrado.dto;
 
 public class UsuarioDTO {
 
     private Integer idUsuario;
     private String nombreUsuario;
     private String apellidoUsuario;
+
+    public UsuarioDTO() {
+    }
 
     public UsuarioDTO(Integer idUsuario, String nombreUsuario, String apellidoUsuario) {
         this.idUsuario = idUsuario;

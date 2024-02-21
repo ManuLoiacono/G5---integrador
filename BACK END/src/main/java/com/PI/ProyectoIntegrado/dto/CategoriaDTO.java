@@ -1,12 +1,12 @@
-package dto;
-
-import model.Categoria;
+package com.PI.ProyectoIntegrado.dto;
 
 public class CategoriaDTO {
 
     private Integer idCategoria;
     private String nombreCategoria;
 
+    public CategoriaDTO() {
+    }
 
     public CategoriaDTO(Integer idCategoria, String nombreCategoria) {
         this.idCategoria = idCategoria;

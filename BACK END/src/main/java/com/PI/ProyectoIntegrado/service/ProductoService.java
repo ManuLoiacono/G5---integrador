@@ -1,10 +1,10 @@
-package service;
+package com.PI.ProyectoIntegrado.service;
 
+import com.PI.ProyectoIntegrado.repository.IProductoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import dto.ProductoDTO;
-import model.Producto;
-import repository.IProductoRepository;
+import com.PI.ProyectoIntegrado.dto.ProductoDTO;
+import com.PI.ProyectoIntegrado.model.Producto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

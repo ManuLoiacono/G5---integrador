@@ -1,6 +1,6 @@
-package repository;
+package com.PI.ProyectoIntegrado.repository;
 
-import model.Producto;
+import com.PI.ProyectoIntegrado.model.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

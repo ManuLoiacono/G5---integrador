@@ -1,14 +1,12 @@
-package service;
+package com.PI.ProyectoIntegrado.service;
 
 
+import com.PI.ProyectoIntegrado.repository.ICategoriaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dto.CategoriaDTO;
-import dto.ProductoDTO;
-import model.Categoria;
-import model.Producto;
+import com.PI.ProyectoIntegrado.dto.CategoriaDTO;
+import com.PI.ProyectoIntegrado.model.Categoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.ICategoriaRepository;
 
 import java.util.HashSet;
 import java.util.List;
@@ -26,7 +24,7 @@ public class CategoriaService implements ICategoriaService{
 
 
     @Override
-    public void agregarCategoria(Categoria categoriaDTO) {
+    public void agregarCategoria(CategoriaDTO categoriaDTO) {
         Categoria categoria = mapper.convertValue(categoriaDTO, Categoria.class);
         categoriaRepository.save(categoria);
     }

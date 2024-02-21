@@ -1,14 +1,16 @@
-package dto;
+package com.PI.ProyectoIntegrado.dto;
 
-import model.Producto;
-import model.Usuario;
-import org.springframework.data.relational.core.sql.In;
+import com.PI.ProyectoIntegrado.model.Producto;
+import com.PI.ProyectoIntegrado.model.Usuario;
 
 public class ReservaDTO {
 
     private Integer idReserva;
     private Producto producto;
     private Usuario usuario;
+
+    public ReservaDTO() {
+    }
 
     public ReservaDTO(Integer idReserva, Producto producto, Usuario usuario) {
         this.idReserva = idReserva;

@@ -1,6 +1,6 @@
-package service;
+package com.PI.ProyectoIntegrado.service;
 
-import dto.ProductoDTO;
+import com.PI.ProyectoIntegrado.dto.ProductoDTO;
 
 import java.util.Set;
 

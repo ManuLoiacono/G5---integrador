@@ -1,4 +1,4 @@
-package dto;
+package com.PI.ProyectoIntegrado.dto;
 
 public class ProductoDTO {
 
@@ -6,7 +6,8 @@ public class ProductoDTO {
     private String nombreProd;
     private Float precioProd;
 
-
+    public ProductoDTO() {
+    }
 
     public ProductoDTO(Integer idProducto, String nombreProd, Float precioProd) {
         this.idProducto = idProducto;

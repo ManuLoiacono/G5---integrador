@@ -1,13 +1,12 @@
-package service;
+package com.PI.ProyectoIntegrado.service;
 
-import dto.CategoriaDTO;
-import model.Categoria;
+import com.PI.ProyectoIntegrado.dto.CategoriaDTO;
 
 import java.util.Set;
 
 public interface ICategoriaService {
 
-    void agregarCategoria(Categoria categoriaDTO);
+    void agregarCategoria(CategoriaDTO categoriaDTO);
     void eliminarCategoria(Integer idCategoria);
     CategoriaDTO listarUnaCategoria(Integer idCategoria);
 

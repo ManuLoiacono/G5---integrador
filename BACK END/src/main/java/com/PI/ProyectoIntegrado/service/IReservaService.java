@@ -1,6 +1,6 @@
-package service;
+package com.PI.ProyectoIntegrado.service;
 
-import dto.ReservaDTO;
+import com.PI.ProyectoIntegrado.dto.ReservaDTO;
 
 import java.util.Set;
 
