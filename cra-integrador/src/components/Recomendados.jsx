@@ -5,22 +5,20 @@ import imgCarpa from '../img/carpa-playera.jpg'
 function Galeria() {
    const [productos,setProductos]=useState([])
    useEffect(() => {
-    const obtenerProductos = async () => {
-        try {
-          const response = await fetch(/*ACA VA LA LLAMADA A LA API */);
-          
-          if (!response.ok) {
-            throw new Error('Error al obtener datos de la API');
-          }
-  
-          const data = await response.json();
-          setProductos(data);
-        } catch (error) {
-          console.error('Error:', error);
-        }
-      };
-
-    obtenerProductos();
+    const url = `http://localhost:3001/Productos`
+    const settings = {
+        method:'GET'
+    }
+    fetch(url,settings)
+    .then((response) => response.json())
+    .then((data) => {
+      setProductos(data);
+      console.log(productos.nombreProd);
+      console.log(productos.idProducto);
+    })
+    .catch((error) => {
+      console.error('Error al obtener detalles del producto:', error);
+    });
     }, [])
           /*ARRAY DE PRODUCTOS DE EJEMPLO: */
           const productosEjemplo= 
@@ -33,8 +31,9 @@ function Galeria() {
           {id:7, img:imgCarpa, nombre:"carpa 66", precio:"3500"},
           {id:8, img:imgCarpa, nombre:"carpa pegajosa", precio:"6000"}
           ]
-           
+          const longProductos = productosEjemplo.length
 
+          
     return(
         <section className="galeria" id="recomendados">
       <h2>Productos recomendados:</h2>

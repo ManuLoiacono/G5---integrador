@@ -12,6 +12,7 @@ function Detail(props){
 */
  const params = useParams()
   useEffect(() => {
+      window.scrollTo(0, 0);
       const url = `http://localhost:3001/Producto/${params}`
       const settings = {
           method:'GET'
@@ -33,7 +34,7 @@ function Detail(props){
 
     return(
         <section className="detail">
-            <header><h2>{product.nombreProd}</h2>   <button onClick={useNavigate(-1)}>{"<--"}</button> </header>
+            <div  id="detail-header"><h2 className="detail-header-item">{product.nombreProd}</h2>   <button className="detail-header-item" onClick={useNavigate(-1)}>{"<--"}</button> </div>
             <main>
                 {/*<img src={product.img[0]} alt="Imagen de producto" />*/}
                 {/*<p>{product.descripcion}</p>*/}

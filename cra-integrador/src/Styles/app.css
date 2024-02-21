@@ -242,7 +242,7 @@ figure{
 
 .detail main{
     width: 90vw;
-    height: 100vw;
+    height: 100vh;
 }
 .detail main img{
     margin: 50px;
