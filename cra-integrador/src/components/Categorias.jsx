@@ -27,7 +27,7 @@ cantProductos:0}
         <h2 id='h2-cat'>Categorías</h2>
         <section id="galeria-cat">
           {categorias.map((categoria) => (
-            <article className='categoria-card' key={categoria.isd}>
+            <article className='categoria-card' key={categoria.id}>
               <figure>
                 <img src={categoria.img} alt="imagen de categoría" />
               </figure>
