@@ -28,7 +28,9 @@ cantProductos:0}
         <section id="galeria-cat">
           {categorias.map((categoria) => (
             <article className='categoria-card' key={categoria.isd}>
-              <figure><img src={categoria.img} alt="imagen de categoría" /></figure>
+              <figure>
+                <img src={categoria.img} alt="imagen de categoría" />
+              </figure>
               <figcaption>
               <h4 className='categoria-text'>{categoria.nombre}</h4>
               <p className='categoria-text'>{categoria.cantProductos } productos</p>
