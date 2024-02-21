@@ -226,12 +226,28 @@ figure{
 }
 /*RECOMENDADOS*/
 /*DETAIL*/
-.detail header{
-    width: 100vw;
-    background-color: var(---color-verde1);
-    height: 30px;
+#detail-header{
+    width: 100%;
+    background-color: var(--color-verde1);
+    height: 55px;
     display: flex;
     justify-content: space-between;
+    padding: 5px;
+    color: white;
+    align-items: center;
+}
+.detail-header-item{
+    margin: 0px 20px
+}
+
+.detail main{
+    width: 90vw;
+    height: 100vw;
+}
+.detail main img{
+    margin: 50px;
+    width: 40%;
+    height: 40%;
 }
 
 /*DETAIL*/
