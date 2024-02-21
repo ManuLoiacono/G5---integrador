@@ -12,6 +12,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping("/Producto")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ProductoController {
 
     @Autowired
