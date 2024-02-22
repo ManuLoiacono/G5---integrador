@@ -11,11 +11,7 @@ const RegistrarProd = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [precio, setPrecio] = useState('');
     const [categoria, setCategoria] = useState([]);
-    const [product,setProduct] = useState([])
-    
-
-
-
+        
     let categorias=[
       { id : 1,
      nombre:"Carpas"

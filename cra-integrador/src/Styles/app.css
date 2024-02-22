@@ -282,7 +282,9 @@ font-size: 1.9rem;
 
 }
 #under-img{
-    position: relative;
+    display:flex;
+    flex-direction:column ;
+
 }
 #galery-link{
     position: absolute;
@@ -297,7 +299,6 @@ font-size: 1.9rem;
     border: 2px dashed var(--color-gris2);
     padding: 10px;
     cursor: pointer;
-    font-size: larger;
 }
 .label-drop{
     font-size: larger;
@@ -319,6 +320,10 @@ font-size: 1.9rem;
 .registrar .input-descripcion, .registrar .input-info{
     height:4rem;
 }
+.input-cat{
+    color:rgba(0, 0, 0, 0.56);
+    padding-left: 0.3rem;
+}
 
 .registrar{
     height: 87vh;
@@ -338,7 +343,6 @@ font-size: 1.9rem;
 }   
 .registrar img{
     height: 100%;
-
 }
 
 .registrar input, select{
@@ -350,8 +354,6 @@ font-size: 1.9rem;
     height: 1.5rem;
     color: var(--color-verde2);
     padding-left: 0.5rem;
-
-
 }
 
 .registrar label {
