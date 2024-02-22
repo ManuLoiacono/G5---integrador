@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import imgCarpa from '../img/carpa-playera.jpg'
 
+
+
 function Detail(props){
     const [product,setProduct] = useState({})
     const [id,setId] = useState()
@@ -33,6 +35,7 @@ function Detail(props){
         img: imgCarpa});
    },[])*/
   
+   
 
     return(
         <section className="detail">
