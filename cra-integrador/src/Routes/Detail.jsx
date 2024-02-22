@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
+
 function Detail(props){
     const [product,setProduct] = useState([])
 
@@ -21,6 +23,7 @@ function Detail(props){
         nombre : "carpa 1",})
    },[]) */
   
+   
 
     return(
         <section className="detail">

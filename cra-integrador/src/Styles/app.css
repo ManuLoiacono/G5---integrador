@@ -2,6 +2,7 @@
 *{
     font-family: "Afacad", sans-serif;
     box-sizing: border-box;
+    text-decoration: none;
 }    
 
 body{
@@ -70,8 +71,8 @@ header div span{
 .buscador{
     width: 100%;
     background-image: url(../img/2022_Camping_Banner2.png);
-    background-size:cover;
-    background-position-x:-200px;
+    background-size:auto;
+    background-position-x:-100px;
     background-position-y:240px;
     color: var(--color-blanco);
     align-items: center;
@@ -129,7 +130,7 @@ header div span{
 }
 /*BUSCADOR*/
 /*GALERIA DE CATEGORIAS*/
-.galeria{
+.galeria, .registrar{
     width: 95%;
     margin:10px;
     background-color: var(--color-gris1);
@@ -139,13 +140,16 @@ header div span{
 }
 .galeria h2{
     font-size: 1.5rem;
+    color: var(--color-verde2);
 }
 #h2-cat{
     margin: 0px 10px;
+    color: var(--color-verde2);
 }
 .categorias h3{
     margin-bottom: 0;
     margin-top: 0.5rem;
+    color: var(--color-verde2);
 }
 #galeria-cat{
     display: flex;
@@ -184,6 +188,7 @@ figure{
 }
 #recomendados h2{
     margin: 0px 10px;
+    color: var(--color-verde2);
 }
 
 .card{
@@ -211,6 +216,7 @@ figure{
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    color: var(--color-verde2);
 }
 .card p{
     padding: 1rem;
@@ -220,6 +226,7 @@ figure{
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--color-verde2);
 }
 #recomendados{
     font-size: 1rem;
@@ -235,19 +242,130 @@ figure{
 }
 
 /*DETAIL*/
-
-
-@media(max-width:425px){
-    .logo{
-        height: 50%;
-        margin: 10%;
-        margin-left: 20%;
-    }
-    header div button{
-        margin: 3px 0px;
-    }
-#button-container{
-    padding: 15px 0px 5px 40px;
+/*REGISTRAR*/
+.drop{
+    border: 2px dashed var(--color-gris2);
+    padding: 10px;
+    cursor: pointer;
+    font-size: larger;
 }
+.label-drop{
+    font-size: larger;
+}
+.inputs{
+    width: 100%;
+    display: inline-flex;
+    margin-bottom: 1rem;
+}
+.inputs label{
+    width: 20%;
+    font-size: larger;
+}
+
+.inputs input{
+    width: 80%;
+    font-size: 1rem;
+}
+.registrar .input-descripcion, .registrar .input-info{
+    height:4rem;
+}
+
+.registrar{
+    height: 87vh;
+    width: 98%;
+    display: flex;
+    flex-direction:column ;
+}
+.registrar h2{
+    margin: 0;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+
+}
+.contentedor-img-cargada{
+    grid-template-columns: repeat(10,1fr);
+    height: 4rem;
+}   
+.registrar img{
+    height: 100%;
+    
+}
+.registrar input{
+    margin-left: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-gris2);
+    color: var(--color-blanco);
+    border:none;
+    height: 1.5rem;
+    color: var(--color-verde2);
+    padding-left: 0.5rem;
+    
+    
+}
+
+.registrar label {
+    margin-left: 1rem;
+    justify-content: center;
+    align-items: center;
+    height: 1.5rem;     
+    
+}
+.registrar button {
+    margin-left: 1rem;
+}
+.mensaje-error{
+    color: red;
+}
+.carga-exitosa{
+    color: var(--color-verde2);
+}
+@media(max-width:425px){
+
+    .logo{
+        height: 40%;
+        margin-left: 1rem;
+    }
+    .buscador{
+        width: 100%;
+        background-size: 150%;
+        
+     
+    
+        height: 7rem;
+    }
+    .buscador h2{
+        font-size: 1.5rem;
+    }
+
+    #galeria-cat{
+        display: grid;
+        gap: 1vw;
+        padding: 15px;
+        grid-template-columns: 50% 50% ;
+    
+    }
+    #h2-cat, #recomendados h2{
+        text-align: center;
+    }
+    .contenedor-imagen{
+        grid-row:1/3;
+        height: 100%;
+        display: flex;
+    }
+    .card img{
+        border-radius: 4px;
+    }
+    .card{
+        grid-template-columns: 100%;
+        grid-template-rows: 60% 15% 15%;
+    }
+    .card h3{
+        font-size: 1.5rem;
+        padding: 0.1rem;
+    }
+    .card p{
+        font-size: 1rem;
+        padding: 0.1rem;
+    }
 
 }

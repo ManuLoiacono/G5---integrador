@@ -5,6 +5,7 @@ import Home from './Routes/Home';
 import Detail from './Routes/Detail';
 import React from "react";
 import Admin from "./components/Admin.jsx";
+import RegistrarProd from "./Routes/RegistrarProd.jsx";
 
 function App() {
   return ( 
@@ -14,6 +15,7 @@ function App() {
   <Routes>
     <Route path='/' element={<Home/>}/>
     <Route path='/admin' element={<Admin/>}/>
+    <Route path='/registrar' element={<RegistrarProd/>}/>
     <Route path='/productos/:id' element={<Detail/>}/>
   </Routes>
   </Router>
