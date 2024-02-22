@@ -30,7 +30,7 @@ function Galery(props){
      const productoMuestra = {
         id : 1,
         nombreProd : "Carpa asombrosa",
-        img :[imgCarpa,img2,img3,img4,img5,"asd"],
+        img :[imgCarpa,img2,img3,img4,img5],
         descripcion: "Carpa para 4 personas de lona, con encajes de aluminio y gran variedad de colores sdada das d asd sa da sd asdoome andisani emadajnhtl pafmpaemm",
         precioProd: 5000
       }

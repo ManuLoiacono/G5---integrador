@@ -61,9 +61,9 @@ function Detail(){
                     <img className="imgChiqui" src={img} alt=""/>
                   ))}
                   </div>
+                  <Link to={{ pathname: '/galery'}}><p id="galery-link">Ver más...</p></Link>
                   </div>
                   <div id="under-img">
-                  <Link to={{ pathname: '/galery'}}><p id="galery-link">Ver más...</p></Link>
                     <p className="detail-data">{productoMuestra.descripcion}</p>
                     <p className="detail-data">${productoMuestra.precioProd}</p>
                   </div>
