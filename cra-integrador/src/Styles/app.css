@@ -312,7 +312,7 @@ font-size: 1.9rem;
     font-size: larger;
 }
 
-.inputs input{
+.inputs input, select{
     width: 80%;
     font-size: 1rem;
 }
@@ -340,7 +340,8 @@ font-size: 1.9rem;
     height: 100%;
 
 }
-.registrar input{
+
+.registrar input, select{
     margin-left: 1rem;
     border-radius: 0.5rem;
     background-color: var(--color-gris2);

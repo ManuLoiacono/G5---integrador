@@ -1,14 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import Categorias from '../components/Categorias';
 
 const RegistrarProd = () => {
+    const [productoAgregado, setProductoAgregado] = useState({});
     const [nombreProd, setNombreProd] = useState('');
     const [descripcion, setDescripcion] = useState('');
-    const [info, setInfo] = useState('');
     const [show, setShow] = useState(false);
     const [error, setError] = useState('');
     const [selectedImages, setSelectedImages] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
+    const [precio, setPrecio] = useState('');
+    const [categoria, setCategoria] = useState([]);
+    const [product,setProduct] = useState([])
+    
 
+
+
+    let categorias=[
+      { id : 1,
+     nombre:"Carpas"
+    },
+      { id : 2,
+     nombre:"Kits"
+    },
+    { id : 3,
+     nombre:"Vehículos",
+    },
+    { id : 4,
+     nombre:"Senderismo",
+    }]
+   
     const handleImageChange = (files) => {
       if (files.length + selectedImages.length <= 10) {
         const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
@@ -41,6 +62,7 @@ const RegistrarProd = () => {
     const handleDragLeave = (e) => {
       e.preventDefault();
     };
+   
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -56,10 +78,39 @@ const RegistrarProd = () => {
         setShow(false);
       }
     };
+console.log(error);
 
+     function argegarProducto(){
+      setProductoAgregado({
+        nombre: {nombreProd},
+        descripción:{descripcion},
+        imagenesProd:{selectedImages},
+        precio:{precio},
+        categoria:{categoria}
+      })
+      window.scrollTo(0, 0);
+      const url = `http://localhost:3001/Producto`
+      const settings = {
+          method:'POST',
+          headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(productoAgregado)
+      }
+      fetch(url,settings)
+      .then((response) => response.json())
+      .then((data) => {
+           alert('Se cargó el producto ' + nombreProd +' correctamente')
+      })
+      .catch((error) => {
+        console.error('Error al cargar detalles del producto'+nombreProd, error);
+        alert('Error al cargar detalles del producto: '+ nombreProd);
+      });
+    }
+    console.log(productoAgregado);
+    
 
-
-    console.log(error);
+    
     return (
       <>
         <div className='registrar'>
@@ -77,6 +128,36 @@ const RegistrarProd = () => {
               }}
             />
             </div>
+                <div className='inputs'>
+                <label> Categoría: </label>
+                <select
+                className='input-cat'
+                value={categoria}
+                onChange={(e) => {
+                  setCategoria(e.target.value);
+                  setShow(false);
+                  setError('');
+                }}>
+                   <option value=''>Selecciona una categoria</option>
+            {categorias.map((categoria, index) => (
+              <option key={index} value={categoria.nombre}>
+                {categoria.nombre}
+              </option>
+            ))}
+            </select>
+            </div>
+            <div className='inputs'>
+                <label>Precio</label>
+                <input className='input-precio'
+              type="number"
+              placeholder="Ingrese un precio"
+              onChange={(e) => {
+                setPrecio(e.target.value);
+                setShow(false);
+                setError('');
+              }}
+            />
+            </div>
             <div className='inputs'>
                 <label> Descripción del producto: </label>
                 <input className='input-descripcion'
@@ -84,18 +165,6 @@ const RegistrarProd = () => {
               placeholder="Ingrese descripción"
               onChange={(e) => {
                 setDescripcion(e.target.value.trim());
-                setShow(false);
-                setError('');
-              }}
-            />
-            </div>
-                <div className='inputs'>
-                <label> Información relevante: </label>
-                <input className='input-info'
-              type="text"
-              placeholder="Ingrese información relevante"
-              onChange={(e) => {
-                setInfo(e.target.value.trim());
                 setShow(false);
                 setError('');
               }}
@@ -119,7 +188,7 @@ const RegistrarProd = () => {
               <input type="file" onChange={(e) => handleImageChange(e.target.files)} accept="image/*" style={{ display: 'none' }} />
             </label>
 
-            <button>Agregar producto</button>
+            <button onClick={argegarProducto}>Agregar producto</button>
           </form>
         <div>
           {errorMessage !== '' && <h3 className="mensaje-error">{errorMessage}</h3>}
