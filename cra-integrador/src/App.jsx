@@ -5,6 +5,8 @@ import Home from './Routes/Home';
 import Detail from './Routes/Detail';
 import React from "react";
 import Admin from "./components/Admin.jsx";
+import RegistrarProd from "./Routes/RegistrarProd.jsx";
+import Galery from './Routes/Galery.jsx'
 
 function App() {
   return ( 
@@ -13,8 +15,11 @@ function App() {
   <Header/>
   <Routes>
     <Route path='/' element={<Home/>}/>
-    <Route path='/admin' element={<Admin/>}/>
-    <Route path='/productos/:id' element={<Detail/>}/>
+    <Route path='admin' element={<Admin/>}/>
+    <Route path='registrar' element={<RegistrarProd/>}/>
+    <Route path='productos/:id' element={<Detail/>}/>
+      <Route path ='galery' element={<Galery/>}/>
+
   </Routes>
   </Router>
   </>
