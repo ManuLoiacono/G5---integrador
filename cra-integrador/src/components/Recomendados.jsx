@@ -33,13 +33,29 @@ function Galeria() {
           ]
           const longProductos = productosEjemplo.length
 
+
+          useEffect(()=>{
+            const productosAleatorios = []
+          function randomizar(){
+
+            while(productosAleatorios.length<6){
+               const numRandom = Math.floor(Math.random()*longProductos);
+               const productoSeleccionado = productosEjemplo[numRandom];
+               if(!productosAleatorios.some((p) => p.id === productoSeleccionado.id)){
+               productosAleatorios.push(productosEjemplo[numRandom])} else {continue};
+            }
+           }
+           randomizar();
+           setProductos(productosAleatorios)
+           console.log(productosAleatorios);
+          },[])
           
     return(
         <section className="galeria" id="recomendados">
       <h2>Productos recomendados:</h2>
       <div className="recomendados">
         {/* CAMBIAR ARRAY CUANDO YA ESTÉ LA API*/}
-        {productosEjemplo.map((producto) => (
+        {productos.map((producto) => (
           <Card key={producto.id} detalle={producto} />
         ))}
       </div>
