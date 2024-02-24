@@ -2,26 +2,12 @@ package com.PI.ProyectoIntegrado.dto;
 
 public class UsuarioDTO {
 
-    private Integer idUsuario;
     private String nombreUsuario;
     private String apellidoUsuario;
-
-    public UsuarioDTO() {
-    }
-
-    public UsuarioDTO(Integer idUsuario, String nombreUsuario, String apellidoUsuario) {
-        this.idUsuario = idUsuario;
-        this.nombreUsuario = nombreUsuario;
-        this.apellidoUsuario = apellidoUsuario;
-    }
-
-    public Integer getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+    private Long numTelefono;
+    private String email;
+    private String password;
+    private Integer id_rol;
 
     public String getNombreUsuario() {
         return nombreUsuario;
@@ -37,5 +23,37 @@ public class UsuarioDTO {
 
     public void setApellidoUsuario(String apellidoUsuario) {
         this.apellidoUsuario = apellidoUsuario;
+    }
+
+    public Long getNumTelefono() {
+        return numTelefono;
+    }
+
+    public void setNumTelefono(Long numTelefono) {
+        this.numTelefono = numTelefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getId_rol() {
+        return id_rol;
+    }
+
+    public void setId_rol(Integer id_rol) {
+        this.id_rol = id_rol;
     }
 }

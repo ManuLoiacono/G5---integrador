@@ -1,27 +1,13 @@
 package com.PI.ProyectoIntegrado.dto;
 
+
 public class ProductoDTO {
 
-    private Integer idProducto;
     private String nombreProd;
     private Float precioProd;
+    private Integer categoria;
 
-    public ProductoDTO() {
-    }
 
-    public ProductoDTO(Integer idProducto, String nombreProd, Float precioProd) {
-        this.idProducto = idProducto;
-        this.nombreProd = nombreProd;
-        this.precioProd = precioProd;
-    }
-
-    public Integer getIdProducto() {
-        return idProducto;
-    }
-
-    public void setIdProducto(Integer idProducto) {
-        this.idProducto = idProducto;
-    }
 
     public String getNombreProd() {
         return nombreProd;
@@ -37,5 +23,13 @@ public class ProductoDTO {
 
     public void setPrecioProd(Float precioProd) {
         this.precioProd = precioProd;
+    }
+
+    public Integer getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Integer categoria) {
+        this.categoria = categoria;
     }
 }

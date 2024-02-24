@@ -2,7 +2,6 @@ package com.PI.ProyectoIntegrado.controller;
 
 
 import com.PI.ProyectoIntegrado.dto.CategoriaDTO;
-import com.PI.ProyectoIntegrado.dto.ProductoDTO;
 import com.PI.ProyectoIntegrado.service.ICategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
