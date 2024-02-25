@@ -21,13 +21,17 @@ public class ImagenService implements IImagenService{
 
     @Autowired
     ProductoService productoService;
-    private ObjectMapper mapper;
+
+    @Autowired
+    ObjectMapper mapper;
+
 
     public List<Imagen> listaImagenes(){
         return imagenRepository.findAll();
     }
 
     public Imagen guardarImagen(ImagenDTO imagenDTO) throws ResourceNotFoundException {
+
         Imagen img = new Imagen(imagenDTO.getTitulo(), imagenDTO.getUrlimg(),  mapper.convertValue(productoService.listarUnProducto(imagenDTO.getIdProducto()), Producto.class));
         return imagenRepository.save(img);
     }

@@ -35,8 +35,7 @@ public class Usuario {
     @JoinColumn(name="id_rol", referencedColumnName = "id")
     private Rol id_rol;
     @OneToMany(mappedBy = "usuario")
-    @JsonIgnore
-    private Set<Reserva> reservas;
+     private Set<Reserva> reservas;
 
 
     public Usuario() {

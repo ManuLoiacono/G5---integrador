@@ -13,7 +13,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import java.util.List;
 
 @RestController
-@RequestMapping("/imagenes")
+@RequestMapping("/imagen")
 public class imagenController {
 
     @Autowired
@@ -23,20 +23,20 @@ public class imagenController {
     ImagenService imagenService;
 
     @Operation(summary = "Listar todas las imagenes")
-    @GetMapping("/lista")
+    @GetMapping
     public List<Imagen> listaImagenes(){
         return imagenService.listaImagenes();
     }
 
 
     @Operation(summary = "Crear nueva imagen de un producto")
-    @PostMapping("/nueva")
+    @PostMapping
     public Imagen guardarImagen(@RequestBody ImagenDTO imagenDTO) throws ResourceNotFoundException {
         return imagenService.guardarImagen(imagenDTO);
     }
 
     @Operation(summary = "Borrar imagen por id")
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteImagen(@PathVariable Integer id) throws ResourceNotFoundException {
         imagenService.deleteImagen(id);
         return ResponseEntity.ok("Imagen con ID: "+ id +" Borrada");

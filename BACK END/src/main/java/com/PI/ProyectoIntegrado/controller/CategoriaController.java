@@ -2,6 +2,7 @@ package com.PI.ProyectoIntegrado.controller;
 
 
 import com.PI.ProyectoIntegrado.dto.CategoriaDTO;
+import com.PI.ProyectoIntegrado.model.Categoria;
 import com.PI.ProyectoIntegrado.service.ICategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/Categoria")
@@ -18,16 +20,14 @@ public class CategoriaController {
     ICategoriaService categoriaService;
 
     @PostMapping
-    public ResponseEntity<?> crearCategoria(@RequestBody CategoriaDTO categoriaDTO){
-
-        categoriaService.agregarCategoria(categoriaDTO);
-        return ResponseEntity.ok(HttpStatus.OK);
-
+    public ResponseEntity<Categoria> crearCategoria(@RequestBody CategoriaDTO categoriaDTO){
+        ResponseEntity response = null;
+        response =  new ResponseEntity<>(categoriaService.agregarCategoria(categoriaDTO), HttpStatus.OK);
+        return response;
     }
 
     @GetMapping("/{idCategoria}")
-    public CategoriaDTO getCategoria(@PathVariable Integer idCategoria){
-
+    public Categoria getCategoria(@PathVariable Integer idCategoria){
         return  categoriaService.listarUnaCategoria(idCategoria);
 
     }

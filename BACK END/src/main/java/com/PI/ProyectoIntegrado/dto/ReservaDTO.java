@@ -10,7 +10,6 @@ public class ReservaDTO {
     private Date FechaFin;
     private Float PrecioTotal;
 
-
     public Integer getId_producto() {
         return id_producto;
     }

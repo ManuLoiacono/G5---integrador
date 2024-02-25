@@ -41,6 +41,7 @@ public class Imagen {
         this.idProducto = idProducto;
     }
 
+
     public Integer getId() {
         return id;
     }
@@ -69,7 +70,7 @@ public class Imagen {
         return idProducto;
     }
 
-    public void setIdProducto(Producto id_producto) {
+    public void setIdProducto(Producto idProducto) {
         this.idProducto = idProducto;
     }
 }

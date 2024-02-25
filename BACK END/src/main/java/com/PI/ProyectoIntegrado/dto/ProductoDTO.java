@@ -5,9 +5,7 @@ public class ProductoDTO {
 
     private String nombreProd;
     private Float precioProd;
-    private Integer categoria;
-
-
+    private Integer id_categoria;
 
     public String getNombreProd() {
         return nombreProd;
@@ -25,11 +23,13 @@ public class ProductoDTO {
         this.precioProd = precioProd;
     }
 
-    public Integer getCategoria() {
-        return categoria;
+    public Integer getId_categoria() {
+        return id_categoria;
     }
 
-    public void setCategoria(Integer categoria) {
-        this.categoria = categoria;
+    public void setId_categoria(Integer id_categoria) {
+        this.id_categoria = id_categoria;
     }
 }
+
+

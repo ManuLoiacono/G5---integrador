@@ -17,7 +17,7 @@ import java.util.Set;
 public class UsuarioService implements IUsuarioService {
 
     @Autowired
-    private IUsuarioRepository usuarioRepository;
+    IUsuarioRepository usuarioRepository;
 
     @Autowired
     ObjectMapper mapper;

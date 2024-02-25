@@ -1,5 +1,6 @@
 package com.PI.ProyectoIntegrado.service;
 
+import com.PI.ProyectoIntegrado.model.Producto;
 import com.PI.ProyectoIntegrado.repository.ICategoriaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.PI.ProyectoIntegrado.dto.CategoriaDTO;
@@ -16,16 +17,17 @@ import java.util.Set;
 public class CategoriaService implements ICategoriaService{
 
     @Autowired
-    private ICategoriaRepository categoriaRepository;
+    ICategoriaRepository categoriaRepository;
 
     @Autowired
     ObjectMapper mapper;
 
 
     @Override
-    public void agregarCategoria(CategoriaDTO categoriaDTO) {
-        Categoria categoria = mapper.convertValue(categoriaDTO, Categoria.class);
-        categoriaRepository.save(categoria);
+    public Categoria agregarCategoria(CategoriaDTO categoriaDTO) {
+        Set<Producto> producto = new HashSet<>();
+        Categoria categoria = new Categoria(categoriaDTO.getNombreCategoria() ,categoriaDTO.getUrlimg(),producto);
+        return categoriaRepository.save(categoria);
     }
 
     @Override
@@ -36,15 +38,9 @@ public class CategoriaService implements ICategoriaService{
     }
 
     @Override
-    public CategoriaDTO listarUnaCategoria(Integer idCategoria) {
-
-        Optional<Categoria> categoria = categoriaRepository.findById(idCategoria);
-        CategoriaDTO categoriaDTO = null;
-        if(categoria.isPresent()){
-            categoriaDTO = mapper.convertValue(categoria, CategoriaDTO.class);
-        }
-        return categoriaDTO;
-
+    public Categoria listarUnaCategoria(Integer idCategoria) {
+        Optional<Categoria> buscarCategoria = categoriaRepository.findById(idCategoria);
+        return buscarCategoria.orElse(null);
     }
 
     @Override

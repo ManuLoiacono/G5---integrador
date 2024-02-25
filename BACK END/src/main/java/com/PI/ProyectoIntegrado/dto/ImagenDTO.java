@@ -6,9 +6,6 @@ public class ImagenDTO {
     private String urlimg;
     private Integer idProducto;
 
-
-
-
     public String getTitulo() {
         return titulo;
     }
@@ -29,7 +26,7 @@ public class ImagenDTO {
         return idProducto;
     }
 
-    public void setId_producto(Integer idProducto) {
+    public void setIdProducto(Integer idProducto) {
         this.idProducto = idProducto;
     }
 }

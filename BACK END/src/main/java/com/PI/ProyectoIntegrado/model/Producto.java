@@ -24,31 +24,30 @@ public class Producto {
     @NotNull
     @OneToMany(mappedBy = "idProducto")
     private Set<Imagen> imagenes = new HashSet<>();
-    @NotNull
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "producto_id")
     private Set<Reserva> reservas;
-
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria_id;
 
     public Producto() {
     }
 
-    public Producto(Integer idProducto, String nombreProd, Float precioProd, Set<Imagen> imagenes, Categoria categoria, Set<Reserva> reservas) {
+    public Producto(Integer idProducto, String nombreProd, Float precioProd, Set<Imagen> imagenes, Categoria categoria_id, Set<Reserva> reservas) {
         this.idProducto = idProducto;
         this.nombreProd = nombreProd;
         this.precioProd = precioProd;
         this.imagenes = imagenes;
-        this.categoria = categoria;
+        this.categoria_id = categoria_id;
         this.reservas = reservas;
     }
 
-    public Producto(String nombreProd, Float precioProd, Set<Imagen> imagenes, Categoria categoria, Set<Reserva> reservas) {
+    public Producto(String nombreProd, Float precioProd, Set<Imagen> imagenes, Categoria categoria_id, Set<Reserva> reservas) {
         this.nombreProd = nombreProd;
         this.precioProd = precioProd;
         this.imagenes = imagenes;
-        this.categoria = categoria;
+        this.categoria_id = categoria_id;
         this.reservas = reservas;
     }
 
@@ -77,11 +76,11 @@ public class Producto {
     }
 
     public Categoria getCategoria() {
-        return categoria;
+        return categoria_id;
     }
 
     public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+        this.categoria_id = categoria_id;
     }
 
     public Set<Reserva> getReservas() {

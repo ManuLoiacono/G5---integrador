@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="Rol")
+@Table(name="Roles")
 public class Rol {
 
     @NotNull

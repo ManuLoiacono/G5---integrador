@@ -3,6 +3,8 @@ package com.PI.ProyectoIntegrado.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
+
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -22,8 +24,8 @@ public class Categoria {
     private String urlimg;
     @NotNull
     @JsonIgnore
-    @OneToMany(mappedBy = "categoria")
-    private Set<Producto> productos;
+    @OneToMany(mappedBy = "categoria_id")
+    private Set<Producto> productos = new HashSet<>();
 
 
     public Categoria() {
@@ -55,15 +57,7 @@ public class Categoria {
     }
 
     public void setNombreCategoria(String nombreCategoria) {
-        nombreCategoria = nombreCategoria;
-    }
-
-    public Set<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(Set<Producto> productos) {
-        this.productos = productos;
+        this.nombreCategoria = nombreCategoria;
     }
 
     public String getUrlimg() {
@@ -72,5 +66,13 @@ public class Categoria {
 
     public void setUrlimg(String urlimg) {
         this.urlimg = urlimg;
+    }
+
+    public Set<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(Set<Producto> productos) {
+        this.productos = productos;
     }
 }
