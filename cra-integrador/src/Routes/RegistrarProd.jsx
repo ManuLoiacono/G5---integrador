@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toastError, toastSuccess } from '../components/utils/Notificaciones'
 import image from '../img/TERRA_RENT_resol.png'
+import { json } from 'react-router-dom';
 
 
 const RegistrarProd = () => {
@@ -16,7 +17,7 @@ const RegistrarProd = () => {
     const [categoria, setCategoria] = useState([]);
     
     let categorias=[
-      { id : 1,
+      { id : 52,
      nombre:"Carpas"
     },
       { id : 2,
@@ -89,6 +90,7 @@ const RegistrarProd = () => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(productoAgregado)
+
       }
       fetch(url,settings)
       .then((response) => response.json())
@@ -107,15 +109,16 @@ console.log(error);
 
       if (nombreProd.length > 3 && descripcion.length > 10 && selectedImages.length > 0) {
       setProductoAgregado({
-        nombre: nombreProd,
-        descripción: descripcion,
+        nombreProd: nombreProd,
+        descripciónProd: descripcion,
         //imagenesProd: selectedImages,
-        precio: precio,
-        categoria: categoria
+        precioProd: precio,
+        categoria: {
+          idCategoria: categoria
+        }
       })}
-      
     }
-    console.log(productoAgregado);
+    console.log(JSON.stringify(productoAgregado));
     
 
     
@@ -144,7 +147,7 @@ console.log(error);
                   }}>
                    <option value=''>Selecciona una categoria</option>
             {categorias.map((cat, index) => (
-              <option key={index} value={cat.nombre}>
+              <option key={index} value={cat.id}>
                 {cat.nombre}
               </option>
             ))}
