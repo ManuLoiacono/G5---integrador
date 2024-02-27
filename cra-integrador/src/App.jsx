@@ -6,11 +6,13 @@ import Detail from './Routes/Detail';
 import React from "react";
 import Admin from "./components/Admin.jsx";
 import RegistrarProd from "./Routes/RegistrarProd.jsx";
-import Galery from './Routes/Galery.jsx'
+import Galery from './Routes/Galery.jsx';
+import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
   return ( 
     <>
+    <ToastContainer/>    
   <Router>
   <Header/>
   <Routes>

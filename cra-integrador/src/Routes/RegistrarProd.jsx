@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import Categorias from '../components/Categorias';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { toastError, toastSuccess } from '../components/utils/Notificaciones'
+import image from '../img/TERRA_RENT_resol.png'
+
 
 const RegistrarProd = () => {
     const [productoAgregado, setProductoAgregado] = useState({});
     const [nombreProd, setNombreProd] = useState('');
     const [descripcion, setDescripcion] = useState('');
-    const [show, setShow] = useState(false);
     const [error, setError] = useState('');
     const [selectedImages, setSelectedImages] = useState([]);
-    const [errorMessage, setErrorMessage] = useState('');
     const [precio, setPrecio] = useState('');
     const [categoria, setCategoria] = useState([]);
-        
+    
     let categorias=[
       { id : 1,
      nombre:"Carpas"
@@ -29,19 +32,16 @@ const RegistrarProd = () => {
     const handleImageChange = (files) => {
       if (files.length + selectedImages.length <= 10) {
         const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-
         for (const file of files) {
           if (!allowedTypes.includes(file.type)) {
-            setErrorMessage('Formato de archivo no válido. Por favor, seleccione imágenes (JPEG, PNG, o GIF).');
+            toastError('Formato de archivo no válido. Por favor, seleccione imágenes (JPEG, PNG, o GIF).');
             return;
           }
         }
-
-        setErrorMessage('');
-        setSelectedImages([...selectedImages, ...files]);
+      setSelectedImages([...selectedImages, ...files]);
       }else {
-        setErrorMessage('Se permiten hasta 10 imágenes por registro.');
-      }
+        toastError('Se permiten hasta 10 imágenes por registro.');
+        }
     };
 
     const handleDrop = (e) => {
@@ -59,31 +59,21 @@ const RegistrarProd = () => {
       e.preventDefault();
     };
    
+    const handleImageRemove = (indexToRemove) => {
+      const updatedImages = selectedImages.filter((image, index) => index !== indexToRemove);
+      setSelectedImages(updatedImages);
+      
+    };
 
     const handleSubmit = (e) => {
       e.preventDefault();
       if(selectedImages.length === 0){
-        setShow(false);
-        setError('Ingrese al menos una imágen');}
-        else if (nombreProd.length > 3 && descripcion.length > 10) {
-        setShow(true);
-        setError('');
-      } 
-        else {
-        setError('Por favor verifique su información nuevamente');
-        setShow(false);
-      }
-    };
-console.log(error);
-
-     function argegarProducto(){
-      setProductoAgregado({
-        nombre: {nombreProd},
-        descripción:{descripcion},
-        imagenesProd:{selectedImages},
-        precio:{precio},
-        categoria:{categoria}
-      })
+        toastError('Ingrese al menos una imágen')
+    } else if (nombreProd.length < 3) {
+      toastError('Nombre debe contener más de 3 caracteres') 
+     } else if (descripcion.length < 10) {
+        toastError('La descripción debe tener al menos 10 caracteres') 
+    } else{
       window.scrollTo(0, 0);
       const url = `http://localhost:3001/Producto`
       const settings = {
@@ -96,12 +86,27 @@ console.log(error);
       fetch(url,settings)
       .then((response) => response.json())
       .then((data) => {
-           alert('Se cargó el producto ' + nombreProd +' correctamente')
+        toastSuccess('Se cargó el producto ' + nombreProd +' correctamente')
       })
       .catch((error) => {
-        console.error('Error al cargar detalles del producto'+nombreProd, error);
-        alert('Error al cargar detalles del producto: '+ nombreProd);
+        console.error('Error al cargar detalles del producto' + nombreProd, error);
+        toastError('Error al cargar detalles del producto: ' + nombreProd)
       });
+    }}   
+    
+console.log(error);
+
+     function argegarProducto(){
+
+      if (nombreProd.length > 3 && descripcion.length > 10 && selectedImages.length > 0) {
+      setProductoAgregado({
+        nombre: nombreProd,
+        descripción: descripcion,
+        imagenesProd: selectedImages,
+        precio: precio,
+        categoria: categoria
+      })}
+      
     }
     console.log(productoAgregado);
     
@@ -113,15 +118,13 @@ console.log(error);
             <h2>Registrá tus productos</h2>
           <form onSubmit={handleSubmit}>
             <div className='inputs'>
-                <label> Nombre del producto: </label>
+                <label> Nombre: </label>
                 <input className='input-nombre'
               type="text"
               placeholder="Ingrese nombre"
               onChange={(e) => {
                 setNombreProd(e.target.value.trim());
-                setShow(false);
-                setError('');
-              }}
+                }}
             />
             </div>
                 <div className='inputs'>
@@ -131,9 +134,7 @@ console.log(error);
                 value={categoria}
                 onChange={(e) => {
                   setCategoria(e.target.value);
-                  setShow(false);
-                  setError('');
-                }}>
+                  }}>
                    <option value=''>Selecciona una categoria</option>
             {categorias.map((categoria, index) => (
               <option key={index} value={categoria.nombre}>
@@ -143,27 +144,23 @@ console.log(error);
             </select>
             </div>
             <div className='inputs'>
-                <label>Precio</label>
+                <label>Precio:</label>
                 <input className='input-precio'
               type="number"
               placeholder="Ingrese un precio"
               onChange={(e) => {
                 setPrecio(e.target.value);
-                setShow(false);
-                setError('');
               }}
             />
             </div>
             <div className='inputs'>
-                <label> Descripción del producto: </label>
+                <label> Descripción: </label>
                 <input className='input-descripcion'
               type="text"
               placeholder="Ingrese descripción"
               onChange={(e) => {
                 setDescripcion(e.target.value.trim());
-                setShow(false);
-                setError('');
-              }}
+                }}
             />
             </div>
             <label className='label-drop'>
@@ -172,25 +169,26 @@ console.log(error);
                 onDrop={handleDrop}
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragLeave}
-
               >
                 Arrastre y suelte imágenes aquí o haga clic para seleccionar.
-              <div className='contentedor-img-cargada'>
+                <div className='contentedor-img-cargada'>
                   {selectedImages.map((image, index) => (
-                    <img key={index} src={URL.createObjectURL(image)} alt={`Imagen ${index + 1}`} />
-                    ))}
-              </div>
+                    <div key={index} className="image-container" onClick={() => handleImageRemove(index)}>
+                      <img src={URL.createObjectURL(image)} alt={`Imagen ${index + 1}`} />
+                      <span className="remove-icon" onClick={() => handleImageRemove(index)}>X</span>
+                    </div>
+                  ))}
+                </div>  
               </div>
               <input type="file" onChange={(e) => handleImageChange(e.target.files)} accept="image/*" style={{ display: 'none' }} />
             </label>
 
             <button onClick={argegarProducto}>Agregar producto</button>
           </form>
-        <div>
-          {errorMessage !== '' && <h3 className="mensaje-error">{errorMessage}</h3>}
-          {show && <h3 className='carga-exitosa'>El producto "{nombreProd}" se agregó correctamente.</h3>}
-          {error !== '' && <h3 className="mensaje-error">{error}</h3>}
         </div>
+        <div className='mensaje-resolucion'>
+            <img src={image} alt="" />
+            <h2>Acceder desde un dispositivo compatible.</h2>
         </div>
       </>
     );

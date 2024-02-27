@@ -28,8 +28,7 @@ header{
     justify-content: space-between;
     position: sticky;
     height: 10vh;
-    top: 0;
-    left:0;
+    width: auto;
     z-index: 1000;
 }
 
@@ -45,7 +44,7 @@ header div {
 }*/
 header div button{
     
-    width: 7rem;
+    width: auto;
     background-color:transparent;
     border: none;
     color: var(--color-blanco);
@@ -307,17 +306,22 @@ font-size: 1.9rem;
     width: 100%;
     display: inline-flex;
     margin-bottom: 1rem;
+    height:fit-content ;
+    
+    
 }
 .inputs label{
     width: 20%;
     font-size: larger;
+    overflow: hidden;
+
 }
 
 .inputs input, select{
     width: 80%;
     font-size: 1rem;
 }
-.registrar .input-descripcion, .registrar .input-info{
+.registrar .input-descripcion{
     height:4rem;
 }
 .input-cat{
@@ -340,10 +344,44 @@ font-size: 1.9rem;
 .contentedor-img-cargada{
     grid-template-columns: repeat(10,1fr);
     height: 4rem;
+    display: flex;
 }   
-.registrar img{
+
+.image-container {
+    position: relative;
+    margin: 5px;
+    cursor: pointer;
+    overflow: hidden;
     height: 100%;
-}
+    width: fit-content;
+  }
+.image-container img{
+    height: 100%;
+  }
+  .image-container:hover img,
+  .remove-icon:hover + img {
+    filter: brightness(50%);
+    transition: filter 0.6s ease;
+  }
+  
+  .remove-icon {
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra la "X" en el centro del contenedor */
+    padding: 5px;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 3rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  
+  .image-container:hover .remove-icon {
+    opacity: 1;
+  }
 
 .registrar input, select{
     margin-left: 1rem;
@@ -351,7 +389,7 @@ font-size: 1.9rem;
     background-color: var(--color-gris2);
     color: var(--color-blanco);
     border:none;
-    height: 1.5rem;
+    height:auto;
     color: var(--color-verde2);
     padding-left: 0.5rem;
 }
@@ -371,6 +409,9 @@ font-size: 1.9rem;
 }
 .carga-exitosa{
     color: var(--color-verde2);
+}
+.mensaje-resolucion{
+    display: none;
 }
 @media(max-width:900px){
     .card h3{
@@ -438,5 +479,23 @@ font-size: 1.9rem;
     }
     .detail-data{
         font-size: 1.2rem;
+    }
+    .registrar{
+        display:none
+    }
+    .mensaje-resolucion{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        font-size:1rem ;
+    }
+    .mensaje-resolucion img{
+        width: 60vw;
+        
+        
     }
 }
