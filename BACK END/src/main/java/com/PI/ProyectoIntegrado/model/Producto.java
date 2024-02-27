@@ -14,6 +14,7 @@ public class Producto {
     @GeneratedValue
     private Integer idProducto;
     private String nombreProd;
+    private String descripcionProd;
     private Float precioProd;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
@@ -33,9 +34,10 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(Integer idProducto, String nombreProd, Float precioProd, Categoria categoria, Set<Reserva> reservas) {
+    public Producto(Integer idProducto, String nombreProd, String descripcionProd, Float precioProd, Categoria categoria, Set<Reserva> reservas) {
         this.idProducto = idProducto;
         this.nombreProd = nombreProd;
+        this.descripcionProd = descripcionProd;
         this.precioProd = precioProd;
         this.categoria = categoria;
         this.reservas = reservas;
@@ -81,5 +83,11 @@ public class Producto {
         this.reservas = reservas;
     }
 
+    public String getDescripcionProd() {
+        return descripcionProd;
+    }
 
+    public void setDescripcionProd(String descripcionProd) {
+        this.descripcionProd = descripcionProd;
+    }
 }

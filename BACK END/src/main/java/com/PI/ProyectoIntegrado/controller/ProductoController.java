@@ -27,7 +27,7 @@ public class ProductoController {
 
     }
 
-    @GetMapping("/{idProducto}")
+    @GetMapping("/:{idProducto}")
     public ProductoDTO getProducto(@PathVariable Integer idProducto){
 
         return  productoService.listarUnProducto(idProducto);
@@ -39,7 +39,7 @@ public class ProductoController {
         return productoService.listarProductos();
     }
 
-    @DeleteMapping("/{idProducto}")
+    @DeleteMapping("/:{idProducto}")
     public ResponseEntity<?> eliminarProducto(@PathVariable Integer idProducto){
         productoService.eliminarProducto(idProducto);
         return ResponseEntity.ok(HttpStatus.OK);

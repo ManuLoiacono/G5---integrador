@@ -82,6 +82,7 @@ const RegistrarProd = () => {
     } else{
       window.scrollTo(0, 0);
       const url = `http://localhost:3001/Producto`
+      
       const settings = {
           method:'POST',
           headers: {
@@ -108,7 +109,7 @@ console.log(error);
       setProductoAgregado({
         nombre: nombreProd,
         descripción: descripcion,
-        imagenesProd: selectedImages,
+        //imagenesProd: selectedImages,
         precio: precio,
         categoria: categoria
       })}

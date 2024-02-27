@@ -13,6 +13,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping("/Categoria")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CategoriaController {
 
     @Autowired
@@ -26,7 +27,7 @@ public class CategoriaController {
 
     }
 
-    @GetMapping("/{idCategoria}")
+    @GetMapping("/:{idCategoria}")
     public CategoriaDTO getCategoria(@PathVariable Integer idCategoria){
 
         return  categoriaService.listarUnaCategoria(idCategoria);
@@ -38,7 +39,7 @@ public class CategoriaController {
         return categoriaService.listarCategorias();
     }
 
-    @DeleteMapping("/{idCategoria}")
+    @DeleteMapping("/:{idCategoria}")
     public ResponseEntity<?> eliminarCategoria(@PathVariable Integer idCategoria){
         categoriaService.eliminarCategoria(idCategoria);
         return ResponseEntity.ok(HttpStatus.OK);

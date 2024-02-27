@@ -26,7 +26,7 @@ public class UsuarioController {
 
     }
 
-    @GetMapping("/{idUsuario}")
+    @GetMapping("/:{idUsuario}")
     public UsuarioDTO getUsuario(@PathVariable Integer idUsuario){
 
         return  usuarioService.listarUnUsuario(idUsuario);
@@ -38,7 +38,7 @@ public class UsuarioController {
         return usuarioService.listarUsuarios();
     }
 
-    @DeleteMapping("/{idUsuario}")
+    @DeleteMapping("/:{idUsuario}")
     public ResponseEntity<?> eliminarUsuario(@PathVariable Integer idUsuario){
         usuarioService.eliminarUsuario(idUsuario);
         return ResponseEntity.ok(HttpStatus.OK);

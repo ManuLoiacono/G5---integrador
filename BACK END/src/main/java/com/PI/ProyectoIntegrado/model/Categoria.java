@@ -26,6 +26,11 @@ public class Categoria {
     public Categoria() {
     }
 
+    public Categoria(Integer idCategoria, String nombreCategoria) {
+        this.idCategoria = idCategoria;
+        this.nombreCategoria = nombreCategoria;
+    }
+
     public Categoria(Integer idCategoria, String nombreCategoria, Set<Producto> productos) {
         this.idCategoria = idCategoria;
         nombreCategoria = nombreCategoria;
@@ -45,7 +50,7 @@ public class Categoria {
     }
 
     public void setNombreCategoria(String nombreCategoria) {
-        nombreCategoria = nombreCategoria;
+        this.nombreCategoria = nombreCategoria;
     }
 
     public Set<Producto> getProductos() {

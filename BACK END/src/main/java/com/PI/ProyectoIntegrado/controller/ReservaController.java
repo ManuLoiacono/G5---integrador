@@ -25,7 +25,7 @@ public class ReservaController {
 
     }
 
-    @GetMapping("/{idReserva}")
+    @GetMapping("/:{idReserva}")
     public ReservaDTO getReserva(@PathVariable Integer idReserva){
 
         return  reservaService.listarUnaReserva(idReserva);
@@ -37,7 +37,7 @@ public class ReservaController {
         return reservaService.listarReservas();
     }
 
-    @DeleteMapping("/{idReserva}")
+    @DeleteMapping("/:{idReserva}")
     public ResponseEntity<?> eliminarReserva(@PathVariable Integer idReserva){
         reservaService.eliminarReserva(idReserva);
         return ResponseEntity.ok(HttpStatus.OK);
