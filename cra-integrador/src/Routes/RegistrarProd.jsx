@@ -67,12 +67,18 @@ const RegistrarProd = () => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      if(selectedImages.length === 0){
+      if (nombreProd.length === 0) {
+        toastError('Ingrese un nombre')}
+      else if (nombreProd.length < 3) {
+        toastError('Nombre debe contener más de 3 caracteres')
+    } else if (categoria === '') {
+      toastError('Seleccione una categoria')
+    } else if (descripcion.length === 0) {
+      toastError('Ingrese una descripción')
+    } else if (descripcion.length < 10) {
+      toastError('La descripción debe tener al menos 10 caracteres') 
+     } else if(selectedImages.length === 0){
         toastError('Ingrese al menos una imágen')
-    } else if (nombreProd.length < 3) {
-      toastError('Nombre debe contener más de 3 caracteres') 
-     } else if (descripcion.length < 10) {
-        toastError('La descripción debe tener al menos 10 caracteres') 
     } else{
       window.scrollTo(0, 0);
       const url = `http://localhost:3001/Producto`
@@ -136,9 +142,9 @@ console.log(error);
                   setCategoria(e.target.value);
                   }}>
                    <option value=''>Selecciona una categoria</option>
-            {categorias.map((categoria, index) => (
-              <option key={index} value={categoria.nombre}>
-                {categoria.nombre}
+            {categorias.map((cat, index) => (
+              <option key={index} value={cat.nombre}>
+                {cat.nombre}
               </option>
             ))}
             </select>
