@@ -91,7 +91,18 @@ const RegistrarProd = () => {
       toastError('La descripción debe tener al menos 10 caracteres') 
      } else if(selectedImages.length === 0){
         toastError('Ingrese al menos una imágen')
-    } else{
+    } else{ 
+    
+    setProductoAgregado({
+      nombreProd: nombreProd,
+      descripciónProd: descripcion,
+      //imagenesProd: selectedImages,
+      precioProd: precio,
+      categoria: {
+        idCategoria: categoria
+      }
+    });
+  
       window.scrollTo(0, 0);
       const url = `http://localhost:3001/Producto`
       const settings = {
@@ -118,23 +129,10 @@ const RegistrarProd = () => {
     
 
 
-const argegarProducto = (nombre, descripcion, precio, categoria) => {
-  if (nombre.length > 3 && descripcion.length > 10 && selectedImages.length > 0) {
-    setProductoAgregado({
-      nombreProd: nombre,
-      descripciónProd: descripcion,
-      //imagenesProd: selectedImages,
-      precioProd: precio,
-      categoria: {
-        idCategoria: categoria
-      }
-    });
-  }
-};
+
     
     useEffect(() => {
       if (formSubmitted) {
-        argegarProducto(nombreProd, descripcion, precio, categoria);
         setFormSubmitted(false);
         console.log(JSON.stringify(productoAgregado));
       }
@@ -151,7 +149,7 @@ const argegarProducto = (nombre, descripcion, precio, categoria) => {
               value={nombreProd}
               placeholder="Ingrese nombre"
               onChange={(e) => {
-                setNombreProd(e.target.value.trim());
+                setNombreProd(e.target.value);
                 }}
             />
             </div>
@@ -189,7 +187,7 @@ const argegarProducto = (nombre, descripcion, precio, categoria) => {
               value={descripcion}
               placeholder="Ingrese descripción"
               onChange={(e) => {
-                setDescripcion(e.target.value.trim());
+                setDescripcion(e.target.value);
                 }}
             />
             </div>
@@ -213,7 +211,7 @@ const argegarProducto = (nombre, descripcion, precio, categoria) => {
               <input type="file" onChange={(e) => handleImageChange(e.target.files)} accept="image/*" style={{ display: 'none' }} />
             </label>
 
-            <button onClick={argegarProducto}>Agregar producto</button>
+            <button >Agregar producto</button>
           </form>
         </div>
         <div className='mensaje-resolucion'>
