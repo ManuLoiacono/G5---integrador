@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toastError, toastSuccess } from '../components/utils/Notificaciones'
 import image from '../img/TERRA_RENT_resol.png'
+import { json } from 'react-router-dom';
 
 
 const RegistrarProd = () => {
@@ -14,9 +15,20 @@ const RegistrarProd = () => {
     const [selectedImages, setSelectedImages] = useState([]);
     const [precio, setPrecio] = useState('');
     const [categoria, setCategoria] = useState([]);
-    
+    const [formSubmitted, setFormSubmitted] = useState(false);
+
+    const resetForm = () => {
+      setNombreProd('');
+      setDescripcion('');
+      setSelectedImages([]);
+      setPrecio('');
+      setCategoria([]);
+      // Reset other form fields as needed
+    };
+
+
     let categorias=[
-      { id : 1,
+      { id : 52,
      nombre:"Carpas"
     },
       { id : 2,
@@ -71,7 +83,7 @@ const RegistrarProd = () => {
         toastError('Ingrese un nombre')}
       else if (nombreProd.length < 3) {
         toastError('Nombre debe contener más de 3 caracteres')
-    } else if (categoria === '') {
+    } else if (categorias === '0') {
       toastError('Seleccione una categoria')
     } else if (descripcion.length === 0) {
       toastError('Ingrese una descripción')
@@ -88,36 +100,45 @@ const RegistrarProd = () => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(productoAgregado)
+
       }
       fetch(url,settings)
       .then((response) => response.json())
       .then((data) => {
         toastSuccess('Se cargó el producto ' + nombreProd +' correctamente')
+        resetForm();
       })
       .catch((error) => {
         console.error('Error al cargar detalles del producto' + nombreProd, error);
-        toastError('Error al cargar detalles del producto: ' + nombreProd)
+        toastError('Error al cargar detalles del producto: ' + nombreProd);
+        
       });
+      setFormSubmitted(true);
     }}   
     
-console.log(error);
 
-     function argegarProducto(){
 
-      if (nombreProd.length > 3 && descripcion.length > 10 && selectedImages.length > 0) {
-      setProductoAgregado({
-        nombre: nombreProd,
-        descripción: descripcion,
-        imagenesProd: selectedImages,
-        precio: precio,
-        categoria: categoria
-      })}
-      
-    }
-    console.log(productoAgregado);
+const argegarProducto = (nombre, descripcion, precio, categoria) => {
+  if (nombre.length > 3 && descripcion.length > 10 && selectedImages.length > 0) {
+    setProductoAgregado({
+      nombreProd: nombre,
+      descripciónProd: descripcion,
+      //imagenesProd: selectedImages,
+      precioProd: precio,
+      categoria: {
+        idCategoria: categoria
+      }
+    });
+  }
+};
     
-
-    
+    useEffect(() => {
+      if (formSubmitted) {
+        argegarProducto(nombreProd, descripcion, precio, categoria);
+        setFormSubmitted(false);
+        console.log(JSON.stringify(productoAgregado));
+      }
+    }, [formSubmitted, nombreProd, descripcion, precio, categoria]);
     return (
       <>
         <div className='registrar'>
@@ -127,6 +148,7 @@ console.log(error);
                 <label> Nombre: </label>
                 <input className='input-nombre'
               type="text"
+              value={nombreProd}
               placeholder="Ingrese nombre"
               onChange={(e) => {
                 setNombreProd(e.target.value.trim());
@@ -141,9 +163,9 @@ console.log(error);
                 onChange={(e) => {
                   setCategoria(e.target.value);
                   }}>
-                   <option value=''>Selecciona una categoria</option>
+                   <option value='0'>Selecciona una categoria</option>
             {categorias.map((cat, index) => (
-              <option key={index} value={cat.nombre}>
+              <option key={index} value={cat.id}>
                 {cat.nombre}
               </option>
             ))}
@@ -153,6 +175,7 @@ console.log(error);
                 <label>Precio:</label>
                 <input className='input-precio'
               type="number"
+              value={precio}
               placeholder="Ingrese un precio"
               onChange={(e) => {
                 setPrecio(e.target.value);
@@ -163,6 +186,7 @@ console.log(error);
                 <label> Descripción: </label>
                 <input className='input-descripcion'
               type="text"
+              value={descripcion}
               placeholder="Ingrese descripción"
               onChange={(e) => {
                 setDescripcion(e.target.value.trim());
