@@ -12,29 +12,30 @@ import java.util.Set;
 @Table(name="Productos")
 public class Producto {
 
-    @NotNull
+
     @Id
     @SequenceGenerator(name = "product_sequence", sequenceName = "product_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_sequence")
     private Integer idProducto;
-    @NotNull
+
     @Column
     private String nombreProd;
-    @NotNull
+
     @Column
     private Float precioProd;
 
-    @NotNull
+
     @Column
     private String descripcionProd;
 
-    @NotNull
+
     @OneToMany(mappedBy = "idProducto")
     private Set<Imagen> imagenes = new HashSet<>();
-    @OneToMany(mappedBy = "producto_id")
+    @OneToMany(mappedBy = "producto")
     private Set<Reserva> reservas;
+
     @NotNull
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 

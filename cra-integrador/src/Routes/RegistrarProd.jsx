@@ -28,7 +28,7 @@ const RegistrarProd = () => {
 
 
     let categorias=[
-      { id : 52,
+      { id : 5,
      nombre:"Carpas"
     },
       { id : 2,

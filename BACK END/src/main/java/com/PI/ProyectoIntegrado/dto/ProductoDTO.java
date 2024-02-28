@@ -4,21 +4,37 @@ import com.PI.ProyectoIntegrado.model.Categoria;
 
 public class ProductoDTO {
 
+    private Integer idProducto;
     private String nombreProd;
     private String descripcionProd;
     private Float precioProd;
-    private Integer id_categoria;
+    private CategoriaDTO categoria;
 
     public ProductoDTO() {
     }
 
-    public ProductoDTO(String nombreProd, String descripcionProd, Float precioProd, Integer id_categoria) {
+    public ProductoDTO(String nombreProd, String descripcionProd, Float precioProd, CategoriaDTO categoria) {
         this.nombreProd = nombreProd;
         this.descripcionProd = descripcionProd;
         this.precioProd = precioProd;
-        this.id_categoria = id_categoria;
+        this.categoria = categoria;
     }
 
+    public ProductoDTO(Integer idProducto, String nombreProd, String descripcionProd, Float precioProd, CategoriaDTO categoria) {
+        this.idProducto = idProducto;
+        this.nombreProd = nombreProd;
+        this.descripcionProd = descripcionProd;
+        this.precioProd = precioProd;
+        this.categoria = categoria;
+    }
+
+    public Integer getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(Integer idProducto) {
+        this.idProducto = idProducto;
+    }
     public String getNombreProd() {
         return nombreProd;
     }
@@ -43,11 +59,11 @@ public class ProductoDTO {
         this.precioProd = precioProd;
     }
 
-    public Integer getId_categoria() {
-        return id_categoria;
+    public CategoriaDTO getCategoria() {
+        return categoria;
     }
 
-    public void setId_categoria(Integer id_categoria) {
-        this.id_categoria = id_categoria;
+    public void setCategoria(CategoriaDTO categoria) {
+        this.categoria = categoria;
     }
 }
