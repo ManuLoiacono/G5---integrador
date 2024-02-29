@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 
 function Card({detalle}){
     return(
-        <Link to={`/productos/:${detalle.id}`}>
+        
+        <Link to={`/producto/:${detalle.idProducto}`}>
         <div className="card">
             <div className="contenedor-imagen">
                 <img src={detalle.img} alt="imagen de producto" />
             </div>
-        <h3>{detalle.nombre}</h3>
-        <p>${detalle.precio}</p>
+        <h3>{detalle.nombreProd}</h3>
+        <p>${detalle.precioProd}</p>
 
         </div>
         </Link>
