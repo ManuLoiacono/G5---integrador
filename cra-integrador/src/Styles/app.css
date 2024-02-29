@@ -512,7 +512,7 @@ font-size: 1.9rem;
     .detail-data{
         font-size: 1.2rem;
     }
-    .registrar{
+    .registrar, header{
         display:none
     }
     .mensaje-resolucion{
@@ -527,7 +527,5 @@ font-size: 1.9rem;
     }
     .mensaje-resolucion img{
         width: 60vw;
-        
-        
     }
 }

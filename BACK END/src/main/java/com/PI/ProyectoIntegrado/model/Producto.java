@@ -2,7 +2,9 @@ package com.PI.ProyectoIntegrado.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -10,20 +12,33 @@ import java.util.Set;
 @Table(name="Productos")
 public class Producto {
 
+
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "product_sequence", sequenceName = "product_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_sequence")
     private Integer idProducto;
+
+    @Column
     private String nombreProd;
-    private String descripcionProd;
+
+    @Column
     private Float precioProd;
 
+
+    @Column
+    private String descripcionProd;
+
+
+    @OneToMany(mappedBy = "idProducto")
+    private Set<Imagen> imagenes = new HashSet<>();
+    @OneToMany(mappedBy = "producto")
+    private Set<Reserva> reservas;
+
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-    @OneToMany(mappedBy = "producto")
-    @JsonIgnore
-    private Set<Reserva> reservas;
 
 
 
@@ -89,5 +104,13 @@ public class Producto {
 
     public void setDescripcionProd(String descripcionProd) {
         this.descripcionProd = descripcionProd;
+    }
+
+    public Set<Imagen> getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(Set<Imagen> imagenes) {
+        this.imagenes = imagenes;
     }
 }

@@ -1,7 +1,11 @@
 package com.PI.ProyectoIntegrado.model;
 
+import com.PI.ProyectoIntegrado.model.usuario.UserRol;
+import com.PI.ProyectoIntegrado.model.Reserva;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
+
 import java.util.Set;
 
 
@@ -9,21 +13,34 @@ import java.util.Set;
 @Table(name="Usuarios")
 public class Usuario {
 
+    @NotNull
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     private Integer idUsuario;
+    @NotNull
+    @Column
     private String nombreUsuario;
+    @NotNull
+    @Column
     private String apellidoUsuario;
+    @NotNull
+    @Column
     private Long numTelefono;
+    @NotNull
+    @Column
     private String email;
+    @NotNull
+    @Column
+    private String password;
+
+    @NotNull
+    @Column
+    @Enumerated(EnumType.STRING)
+    private UserRol userRol;
 
     @OneToMany(mappedBy = "usuario")
-    @JsonIgnore
     private Set<Reserva> reservas;
-
-
-
-
 
 
 
@@ -31,12 +48,14 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario, String nombreUsuario, String apellidoUsuario, Long numTelefono, String email, Set<Reserva> reservas) {
+    public Usuario(Integer idUsuario, String nombreUsuario, String apellidoUsuario, Long numTelefono, String email, String password, UserRol userRol, Set<Reserva> reservas) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
         this.numTelefono = numTelefono;
         this.email = email;
+        this.password = password;
+        this.userRol = userRol;
         this.reservas = reservas;
     }
 
@@ -86,5 +105,21 @@ public class Usuario {
 
     public void setReservas(Set<Reserva> reservas) {
         this.reservas = reservas;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UserRol getUserRol() {
+        return userRol;
+    }
+
+    public void setUserRol(UserRol userRol) {
+        this.userRol = userRol;
     }
 }

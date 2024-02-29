@@ -12,6 +12,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping("/Reserva")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ReservaController {
 
     @Autowired

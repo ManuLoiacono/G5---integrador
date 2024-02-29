@@ -8,12 +8,19 @@ public class ProductoDTO {
     private String nombreProd;
     private String descripcionProd;
     private Float precioProd;
-    private Categoria categoria;
+    private CategoriaDTO categoria;
 
     public ProductoDTO() {
     }
 
-    public ProductoDTO(Integer idProducto, String nombreProd, String descripcionProd, Float precioProd, Categoria categoria) {
+    public ProductoDTO(String nombreProd, String descripcionProd, Float precioProd, CategoriaDTO categoria) {
+        this.nombreProd = nombreProd;
+        this.descripcionProd = descripcionProd;
+        this.precioProd = precioProd;
+        this.categoria = categoria;
+    }
+
+    public ProductoDTO(Integer idProducto, String nombreProd, String descripcionProd, Float precioProd, CategoriaDTO categoria) {
         this.idProducto = idProducto;
         this.nombreProd = nombreProd;
         this.descripcionProd = descripcionProd;
@@ -28,21 +35,12 @@ public class ProductoDTO {
     public void setIdProducto(Integer idProducto) {
         this.idProducto = idProducto;
     }
-
     public String getNombreProd() {
         return nombreProd;
     }
 
     public void setNombreProd(String nombreProd) {
         this.nombreProd = nombreProd;
-    }
-
-    public Float getPrecioProd() {
-        return precioProd;
-    }
-
-    public void setPrecioProd(Float precioProd) {
-        this.precioProd = precioProd;
     }
 
     public String getDescripcionProd() {
@@ -53,11 +51,19 @@ public class ProductoDTO {
         this.descripcionProd = descripcionProd;
     }
 
-    public Categoria getCategoria() {
+    public Float getPrecioProd() {
+        return precioProd;
+    }
+
+    public void setPrecioProd(Float precioProd) {
+        this.precioProd = precioProd;
+    }
+
+    public CategoriaDTO getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(CategoriaDTO categoria) {
         this.categoria = categoria;
     }
 }
