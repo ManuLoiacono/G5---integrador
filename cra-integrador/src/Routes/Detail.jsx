@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link ,  useNavigate , useParams } from "react-router-dom";
+import { Link ,  useNavigate , useParams  , Outlet} from "react-router-dom";
 import imgCarpa from '../img/carpa-playera.jpg';
 import img2 from '../img/bicicleta.jpg'
 import img3 from '../img/baton_trakking.jpg'
 import img4 from '../img/conservadora-02.jpg'
 import img5 from '../img/mochila.jpg'
+import imgFlecha from '../img/flecha_blanca.png'
 
 function Detail(){
+  const navigate = useNavigate();
   const [product,setProduct] = useState([])
  const params = useParams()
   useEffect(() => {
@@ -52,7 +54,7 @@ function Detail(){
   console.log(imgSinPrimera);
     return(
         <section className="detail">
-            <div  id="detail-header"><h2 id="detail-header-name" className="detail-header-item">{productoMuestra.nombreProd}</h2>   <button className="detail-header-item" onClick={useNavigate(-1)}>{"<--"}</button> </div>
+            <div  id="detail-header"><h2 id="detail-header-name" className="detail-header-item">{productoMuestra.nombreProd}</h2>   <img src={imgFlecha} className="back" onClick={() => navigate(-1)}></img> </div>
             <main>
               <div id="imagenes">
                 <img className="imgGrande" src={productoMuestra.img[0]} alt="Imagen principal" />
@@ -61,7 +63,8 @@ function Detail(){
                     <img className="imgChiqui" src={img} alt=""/>
                   ))}
                   </div>
-                  <Link to={{ pathname: '/galery'}}><p id="galery-link">Ver más...</p></Link>
+                  <Link to={`/productos/${params.id}/galeria`}><p id="galery-link">Ver más...</p></Link>
+                  <Outlet/>
                   </div>
                   <div id="under-img">
                     <p className="detail-data">{productoMuestra.descripcion}</p>
