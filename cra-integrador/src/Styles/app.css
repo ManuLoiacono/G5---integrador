@@ -42,8 +42,10 @@ header div {
     width: 7rem;
     border-radius: 44px;
 }*/
+#button-container{
+margin-right: 1rem;
+}
 header div button{
-    
     width: auto;
     background-color:transparent;
     border: none;

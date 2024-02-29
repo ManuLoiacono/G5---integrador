@@ -11,7 +11,6 @@ const RegistrarProd = () => {
     const [productoAgregado, setProductoAgregado] = useState({});
     const [nombreProd, setNombreProd] = useState('');
     const [descripcion, setDescripcion] = useState('');
-    const [error, setError] = useState('');
     const [selectedImages, setSelectedImages] = useState([]);
     const [precio, setPrecio] = useState('');
     const [categoria, setCategoria] = useState('');
