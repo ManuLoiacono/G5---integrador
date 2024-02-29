@@ -13,7 +13,7 @@ const RegistrarProd = () => {
     const [descripcion, setDescripcion] = useState('');
     const [selectedImages, setSelectedImages] = useState([]);
     const [precio, setPrecio] = useState('');
-    const [categoria, setCategoria] = useState([]);
+    const [categoria, setCategoria] = useState('');
     const [formSubmitted, setFormSubmitted] = useState(false);
 
     const resetForm = () => {
@@ -21,7 +21,7 @@ const RegistrarProd = () => {
       setDescripcion('');
       setSelectedImages([]);
       setPrecio('');
-      setCategoria([]);
+      setCategoria('');
       // Reset other form fields as needed
     };
 
@@ -79,52 +79,54 @@ const RegistrarProd = () => {
     const handleSubmit = (e) => {
       e.preventDefault();
       if (nombreProd.length === 0) {
-        toastError('Ingrese un nombre')}
-      else if (nombreProd.length < 3) {
-        toastError('Nombre debe contener más de 3 caracteres')
-    } else if (categorias === '0') {
-      toastError('Seleccione una categoria')
-    } else if (descripcion.length === 0) {
-      toastError('Ingrese una descripción')
-    } else if (descripcion.length < 10) {
-      toastError('La descripción debe tener al menos 10 caracteres') 
-     } else if(selectedImages.length === 0){
-        toastError('Ingrese al menos una imágen')
-    } else{ 
+        toastError('Ingrese un nombre');
+      } else if (nombreProd.length < 3) {
+        toastError('Nombre debe contener más de 3 caracteres');
+      } else if (categoria === '0') {
+        toastError('Seleccione una categoria');
+      } else if (descripcion.length === 0) {
+        toastError('Ingrese una descripción');
+      } else if (descripcion.length < 10) {
+        toastError('La descripción debe tener al menos 10 caracteres');
+      } else if (selectedImages.length === 0) {
+        toastError('Ingrese al menos una imágen');
+      } else {
+        const nuevoProducto = {
+          nombreProd: nombreProd,
+          descripcionProd: descripcion,
+          precioProd: precio,
+          categoria: {
+            idCategoria: categoria
+          }
+        };
     
-    setProductoAgregado({
-      nombreProd: nombreProd,
-      descripciónProd: descripcion,
-      //imagenesProd: selectedImages,
-      precioProd: precio,
-      categoria: {
-        idCategoria: categoria
-      }
-    });
-  
-      window.scrollTo(0, 0);
-      const url = `http://localhost:3001/Producto`
-      const settings = {
-          method:'POST',
+        setProductoAgregado(nuevoProducto);
+    
+        window.scrollTo(0, 0);
+        const url = `http://localhost:3001/Producto`;
+        const settings = {
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(productoAgregado)
-
+          },
+          body: JSON.stringify(nuevoProducto)
+        };
+    
+        fetch(url, settings)
+          .then((response) => response.json())
+          .then((data) => {
+            toastSuccess('Se cargó el producto ' + nombreProd + ' correctamente');
+            resetForm();
+          })
+          .catch((error) => {
+            console.error('Error al cargar detalles del producto' + nombreProd, error);
+            toastError('Error al cargar detalles del producto: ' + nombreProd);
+          })
+          .finally(() => {
+            setFormSubmitted(true);
+          });
       }
-      fetch(url,settings)
-      .then((response) => response.json())
-      .then((data) => {
-        toastSuccess('Se cargó el producto ' + nombreProd +' correctamente')
-        resetForm();
-      })
-      .catch((error) => {
-        console.error('Error al cargar detalles del producto' + nombreProd, error);
-        toastError('Error al cargar detalles del producto: ' + nombreProd);
-        
-      });
-      setFormSubmitted(true);
-    }}   
+    };
     
 
 
@@ -133,7 +135,7 @@ const RegistrarProd = () => {
     useEffect(() => {
       if (formSubmitted) {
         setFormSubmitted(false);
-        console.log(JSON.stringify(productoAgregado));
+        //console.log(JSON.stringify(productoAgregado));
       }
     }, [formSubmitted, nombreProd, descripcion, precio, categoria]);
     return (

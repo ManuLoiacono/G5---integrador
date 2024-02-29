@@ -134,8 +134,8 @@ header div span{
 /*BUSCADOR*/
 /*GALERIA DE CATEGORIAS*/
 .galeria, .registrar , .detail{
-    width: 95%;
-    margin:10px;
+    width: 98%;
+    margin:8px;
     background-color: var(--color-gris1);
     border-radius: 5px;
     padding: 10px;
@@ -276,6 +276,7 @@ border-radius: 3px;
 
 #imagenes{
     display: flex;
+    position: relative;
 }
 .detail-data{
 margin-left: 10%;
@@ -288,11 +289,39 @@ font-size: 1.9rem;
 
 }
 #galery-link{
+    font-size: 1.4rem;
     position: absolute;
     right: 5%;
     bottom: 0%;
-}
 
+}
+.back{
+    height: 80%;
+    width: auto;
+}
+.carrousel{
+    border: 1px solid black;
+    height: 200px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+}
+.tarjeta-carrousel{
+    background-color: rgb(113, 113, 190);
+    height: 100%;
+    width: 80%;
+}
+.flechas-carrousel{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
 
 /*DETAIL*/
 /*REGISTRAR*/
@@ -424,6 +453,9 @@ font-size: 1.9rem;
     }
     .detail-data{
         font-size: 1.5rem;
+    }
+    #galery-link{
+        bottom: -10%;
     }
 
 }

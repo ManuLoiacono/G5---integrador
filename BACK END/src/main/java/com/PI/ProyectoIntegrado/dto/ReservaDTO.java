@@ -1,7 +1,5 @@
 package com.PI.ProyectoIntegrado.dto;
 
-import com.PI.ProyectoIntegrado.model.Producto;
-import com.PI.ProyectoIntegrado.model.Usuario;
 import java.util.Date;
 
 public class ReservaDTO {
