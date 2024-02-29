@@ -1,5 +1,6 @@
-package com.PI.ProyectoIntegrado.model.usuario;
+package com.PI.ProyectoIntegrado.model;
 
+import com.PI.ProyectoIntegrado.model.usuario.UserRol;
 import com.PI.ProyectoIntegrado.model.Reserva;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
