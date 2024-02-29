@@ -1,5 +1,6 @@
 package com.PI.ProyectoIntegrado.model;
 
+import com.PI.ProyectoIntegrado.model.usuario.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;

@@ -1,9 +1,7 @@
 package com.PI.ProyectoIntegrado.service;
 
-import com.PI.ProyectoIntegrado.dto.ProductoDTO;
 import com.PI.ProyectoIntegrado.dto.UsuarioDTO;
-import com.PI.ProyectoIntegrado.model.Producto;
-import com.PI.ProyectoIntegrado.model.Usuario;
+import com.PI.ProyectoIntegrado.model.usuario.Usuario;
 import com.PI.ProyectoIntegrado.repository.IUsuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

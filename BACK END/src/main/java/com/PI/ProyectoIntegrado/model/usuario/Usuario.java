@@ -1,5 +1,6 @@
-package com.PI.ProyectoIntegrado.model;
+package com.PI.ProyectoIntegrado.model.usuario;
 
+import com.PI.ProyectoIntegrado.model.Reserva;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -32,10 +33,10 @@ public class Usuario {
     @Column
     private String password;
 
-    /*@NotNull
-    @ManyToOne
-    @JoinColumn(name="id_rol", referencedColumnName = "id")
-    private Rol id_rol;*/
+    @NotNull
+    @Column
+    @Enumerated(EnumType.STRING)
+    private UserRol userRol;
 
     @OneToMany(mappedBy = "usuario")
     private Set<Reserva> reservas;
@@ -46,13 +47,14 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario, String nombreUsuario, String apellidoUsuario, Long numTelefono, String email, String password, Set<Reserva> reservas) {
+    public Usuario(Integer idUsuario, String nombreUsuario, String apellidoUsuario, Long numTelefono, String email, String password, UserRol userRol, Set<Reserva> reservas) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
         this.numTelefono = numTelefono;
         this.email = email;
         this.password = password;
+        this.userRol = userRol;
         this.reservas = reservas;
     }
 
@@ -110,5 +112,13 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserRol getUserRol() {
+        return userRol;
+    }
+
+    public void setUserRol(UserRol userRol) {
+        this.userRol = userRol;
     }
 }
