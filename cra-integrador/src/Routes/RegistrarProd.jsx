@@ -142,6 +142,7 @@ const RegistrarProd = () => {
       <>
         <div className='registrar'>
             <h2>Registrá tus productos</h2>
+          <div className='form-container'>
           <form onSubmit={handleSubmit}>
             <div className='inputs'>
                 <label> Nombre: </label>
@@ -212,8 +213,9 @@ const RegistrarProd = () => {
               <input type="file" onChange={(e) => handleImageChange(e.target.files)} accept="image/*" style={{ display: 'none' }} />
             </label>
 
-            <button >Agregar producto</button>
+            <button>Agregar producto</button>
           </form>
+          </div>
         </div>
         <div className='mensaje-resolucion'>
             <img src={image} alt="" />

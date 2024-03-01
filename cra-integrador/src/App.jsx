@@ -7,6 +7,7 @@ import React from "react";
 import Admin from "./components/Admin.jsx";
 import RegistrarProd from "./Routes/RegistrarProd.jsx";
 import Galery from './Routes/Galery.jsx';
+import Footer from "./components/Footer.jsx";
 import RegistrarUsuario from './Routes/RegistrarUsuario.jsx'
 import InicioSesion from './Routes/InicioSesion.jsx'
 import { ToastContainer, toast } from 'react-toastify';
@@ -26,6 +27,7 @@ function App() {
     <Route path='registro-usuario' element={<RegistrarUsuario/>}/>
     <Route path='inicio-sesion' element={<InicioSesion/>}/>
   </Routes>
+    <Footer/>
   </Router>
   </>
   );
