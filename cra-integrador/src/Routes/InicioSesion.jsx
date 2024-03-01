@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom";
 
 
 function InicioSesion(){
@@ -34,7 +35,7 @@ function InicioSesion(){
                 <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <button>Ingresar</button>
-                <p>Necesitas una cuenta?</p> <p className="registrarse">Registrarse</p>
+                <p>Necesitas una cuenta?</p> <Link to={'/registrar-usuario'}><p className="registrarse">Registrarse</p></Link>
 
             </section>
         </div>
@@ -42,3 +43,4 @@ function InicioSesion(){
 
     )
 }
+export default InicioSesion;

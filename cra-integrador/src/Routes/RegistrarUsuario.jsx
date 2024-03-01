@@ -7,7 +7,10 @@ function RegistrarUsuario(){
 
 
     return(
-        <></>
-
+        <>
+        
+        
+        </>
     )
 }
+export default RegistrarUsuario

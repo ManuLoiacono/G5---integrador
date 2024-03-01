@@ -6,11 +6,11 @@ function Header(){
     return(
         <>
         <header>
-            <Link to={'/'}><img className="logo" src={image} /></Link>
+            <Link to={'/'}><img className="logo" src={image} alt="Terrarent logo" /></Link>
             <div id="button-container">
-                <button>Crear Cuenta</button>
+                <Link to={'registrar-usuario'}><button>Crear Cuenta</button></Link>
                 <span>|</span>
-                <button>Iniciar Sesión</button>
+                <Link to={'inicio-sesion'}><button>Iniciar Sesión</button></Link>
             </div>
         </header>
         </>
