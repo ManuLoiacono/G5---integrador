@@ -296,19 +296,21 @@ font-size: 1.9rem;
 .back{
     height: 80%;
     width: auto;
+    cursor: pointer;
 }
 .carrousel{
     border: 1px solid black;
-    height: 200px;
     position: relative;
     display: flex;
     justify-content: center;
 
 }
 .tarjeta-carrousel{
-    background-color: rgb(113, 113, 190);
+    background-color: var(--color-gris1);
     height: 100%;
     width: 80%;
+    display: flex;
+    justify-content: center;
 }
 .flechas-carrousel{
     height: 100%;
@@ -319,6 +321,16 @@ font-size: 1.9rem;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+}
+.flecha-navegacion{
+    width: 3%;
+    height: auto;
+    cursor: pointer;
+}
+.img-carrousel{
+    width: 50%;
+    height: auto;
+
 }
 
 /*DETAIL*/
@@ -442,6 +454,21 @@ font-size: 1.9rem;
 .mensaje-resolucion{
     display: none;
 }
+/* LOGIN Y REGISTRAR USUARIO*/
+
+.input-user-card-container{
+    width: 100%;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+}
+.input-user-card{
+    height: 300px;
+    width: 100px;
+}
+
+/* LOGIN Y REGISTRAR USUARIO*/
+
 @media(max-width:900px){
     .card h3{
         font-size:1.2rem ;
