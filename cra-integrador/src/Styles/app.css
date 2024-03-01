@@ -368,7 +368,7 @@ font-size: 1.9rem;
 }
 
 /*DETAIL*/
-/*REGISTRAR*/
+/*REGISTRAR PRODUCTO*/
 .drop{
     border: 2px dashed var(--color-gris2);
     padding: 10px;
@@ -501,13 +501,47 @@ font-size: 1.9rem;
 
 .input-user-card-container{
     width: 100%;
-    height: 800px;
+    height: 84vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-user-card{
+    height: 320px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.4);
+    background-color: var(--color-blanco);
+}
+.input-user-card form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.login-text-container{
     display: flex;
     justify-content: center;
 }
-.input-user-card{
-    height: 300px;
-    width: 100px;
+
+.login-input, .login-button{
+margin: 10px;
+width: 200px;
+height: 30px;
+border:1px rgb(170, 170, 170) solid;
+border-radius:20px;
+}
+.login-button{
+    border:0px;
+    background-color: var(--color-verde2);
+    color: white;
+
+}
+.login-text, .registrarse{
+    display:inline;
+    margin: 50px,10px;
 }
 
 /* LOGIN Y REGISTRAR USUARIO*/
