@@ -7,6 +7,7 @@ import React from "react";
 import Admin from "./components/Admin.jsx";
 import RegistrarProd from "./Routes/RegistrarProd.jsx";
 import Galery from './Routes/Galery.jsx';
+import Footer from "./components/Footer.jsx";
 import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Route path='productos/:id/galeria' element={<Galery />} />
 
   </Routes>
+    <Footer/>
   </Router>
   </>
   );
