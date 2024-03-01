@@ -6,6 +6,8 @@ import img3 from '../img/baton_trakking.jpg'
 import img4 from '../img/conservadora-02.jpg'
 import img5 from '../img/mochila.jpg'
 import imgFlecha from '../img/flecha_blanca.png'
+import imgFlechaL from '../img/flecha-left.png'
+import imgFlechaR from '../img/flecha-right.png'
 
 
 function Galery(){
@@ -53,9 +55,9 @@ function Galery(){
           <div  id="detail-header"><h2 id="detail-header-name" className="detail-header-item">{productoMuestra.nombreProd}</h2>   <img src={imgFlecha} className="back" onClick={() => (navigate(-1))}></img> </div>
           <div className="cont-items-carrousel">
             <section className="carrousel">
-              <div className="tarjeta-carrousel"><img src={productoMuestra.img[index]} alt="imagen de producto" /></div>
+              <div className="tarjeta-carrousel"><img className="img-carrousel" src={productoMuestra.img[index]} alt="imagen de producto" /></div>
               <div className="flechas-carrousel">
-                <i onClick={()=>(cambiarImagen('izquierda'))}>{index}</i><i onClick={()=>(cambiarImagen('derecha'))}>{index}</i>
+                <img className="flecha-navegacion" src={imgFlechaL} alt="flecha de navegacion" onClick={()=>(cambiarImagen('izquierda'))}></img><img className="flecha-navegacion" src={imgFlechaR} alt="flecha de navegacion" onClick={()=>(cambiarImagen('derecha'))}></img>
               </div>
             
               {/*productoMuestra.img.map((img,i)=>(
