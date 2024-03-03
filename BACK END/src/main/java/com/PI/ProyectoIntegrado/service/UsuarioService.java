@@ -6,6 +6,9 @@ import com.PI.ProyectoIntegrado.model.Usuario;
 import com.PI.ProyectoIntegrado.repository.IUsuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -15,10 +18,10 @@ import java.util.Set;
 
 
 @Service
-public class UsuarioService implements IUsuarioService {
+public class UsuarioService implements IUsuarioService , UserDetailsService {
 
     @Autowired
-    private IUsuarioRepository usuarioRepository;
+    IUsuarioRepository usuarioRepository;
 
     @Autowired
     ObjectMapper mapper;
@@ -54,5 +57,10 @@ public class UsuarioService implements IUsuarioService {
         }
 
         return usuariosDTO;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return (UserDetails) usuarioRepository.findByEmail(email).orElseThrow((() -> new UsernameNotFoundException("User email not found!")));
     }
 }

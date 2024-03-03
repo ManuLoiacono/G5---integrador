@@ -5,7 +5,7 @@ public class UsuarioDTO {
     private Integer idUsuario;
     private String nombreUsuario;
     private String apellidoUsuario;
-    private Long numTelefono;
+    private int numTelefono;
     private String email;
     private String password;
 
@@ -13,7 +13,7 @@ public class UsuarioDTO {
     public UsuarioDTO() {
     }
 
-    public UsuarioDTO(String nombreUsuario, String apellidoUsuario, Long numTelefono, String email, String password) {
+    public UsuarioDTO(String nombreUsuario, String apellidoUsuario, int numTelefono, String email, String password) {
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
         this.numTelefono = numTelefono;
@@ -21,7 +21,7 @@ public class UsuarioDTO {
         this.password = password;
     }
 
-    public UsuarioDTO(Integer idUsuario, String nombreUsuario, String apellidoUsuario, Long numTelefono, String email, String password) {
+    public UsuarioDTO(Integer idUsuario, String nombreUsuario, String apellidoUsuario, int numTelefono, String email, String password) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
@@ -54,11 +54,11 @@ public class UsuarioDTO {
         this.apellidoUsuario = apellidoUsuario;
     }
 
-    public Long getNumTelefono() {
+    public int getNumTelefono() {
         return numTelefono;
     }
 
-    public void setNumTelefono(Long numTelefono) {
+    public void setNumTelefono(int numTelefono) {
         this.numTelefono = numTelefono;
     }
 

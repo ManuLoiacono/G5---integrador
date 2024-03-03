@@ -26,7 +26,7 @@ public class Usuario {
     private String apellidoUsuario;
     @NotNull
     @Column
-    private Long numTelefono;
+    private int numTelefono;
     @NotNull
     @Column
     private String email;
@@ -43,12 +43,10 @@ public class Usuario {
     private Set<Reserva> reservas;
 
 
-
-
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario, String nombreUsuario, String apellidoUsuario, Long numTelefono, String email, String password, UserRol userRol, Set<Reserva> reservas) {
+    public Usuario(Integer idUsuario, String nombreUsuario, String apellidoUsuario, int numTelefono, String email, String password, UserRol userRol, Set<Reserva> reservas) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
@@ -57,6 +55,15 @@ public class Usuario {
         this.password = password;
         this.userRol = userRol;
         this.reservas = reservas;
+    }
+
+    public Usuario(String nombreUsuario, String apellidoUsuario, int numTelefono, String email, String password, UserRol userRol) {
+        this.nombreUsuario = nombreUsuario;
+        this.apellidoUsuario = apellidoUsuario;
+        this.numTelefono = numTelefono;
+        this.email = email;
+        this.password = password;
+        this.userRol = userRol;
     }
 
     public Integer getIdUsuario() {
@@ -83,11 +90,11 @@ public class Usuario {
         this.apellidoUsuario = apellidoUsuario;
     }
 
-    public Long getNumTelefono() {
+    public int getNumTelefono() {
         return numTelefono;
     }
 
-    public void setNumTelefono(Long numTelefono) {
+    public void setNumTelefono(int numTelefono) {
         this.numTelefono = numTelefono;
     }
 
