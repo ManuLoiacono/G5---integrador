@@ -11,26 +11,21 @@ import java.util.Set;
 @Table(name="Categorias")
 public class Categoria {
 
-
+    @NotNull
     @Id
     @SequenceGenerator(name = "category_sequence", sequenceName = "category_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_sequence")
     private Integer idCategoria;
-
+    @NotNull
     @Column
     private String nombreCategoria;
-
-
+    @NotNull
     @Column
     private String urlimg;
-
+    @NotNull
     @JsonIgnore
-    @OneToMany(mappedBy = "categoria")
-    private Set<Producto> productos;
-
-
-
-
+    @OneToMany(mappedBy = "categoria_id")
+    private Set<Producto> productos = new HashSet<>();
 
 
     public Categoria() {
@@ -80,5 +75,4 @@ public class Categoria {
     public void setProductos(Set<Producto> productos) {
         this.productos = productos;
     }
-
 }

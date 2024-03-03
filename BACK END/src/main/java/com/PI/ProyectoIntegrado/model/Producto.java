@@ -1,9 +1,7 @@
 package com.PI.ProyectoIntegrado.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,49 +10,44 @@ import java.util.Set;
 @Table(name="Productos")
 public class Producto {
 
-
+    @NotNull
     @Id
     @SequenceGenerator(name = "product_sequence", sequenceName = "product_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_sequence")
     private Integer idProducto;
-
+    @NotNull
     @Column
     private String nombreProd;
-
+    @NotNull
     @Column
     private Float precioProd;
-
-
-    @Column
-    private String descripcionProd;
-
-
+    @NotNull
     @OneToMany(mappedBy = "idProducto")
     private Set<Imagen> imagenes = new HashSet<>();
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "producto_id")
     private Set<Reserva> reservas;
-
     @NotNull
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
-
-
-
-
-
-
-
+    private Categoria categoria_id;
 
     public Producto() {
     }
 
-    public Producto(Integer idProducto, String nombreProd, String descripcionProd, Float precioProd, Categoria categoria, Set<Reserva> reservas) {
+    public Producto(Integer idProducto, String nombreProd, Float precioProd, Set<Imagen> imagenes, Categoria categoria_id, Set<Reserva> reservas) {
         this.idProducto = idProducto;
         this.nombreProd = nombreProd;
-        this.descripcionProd = descripcionProd;
         this.precioProd = precioProd;
-        this.categoria = categoria;
+        this.imagenes = imagenes;
+        this.categoria_id = categoria_id;
+        this.reservas = reservas;
+    }
+
+    public Producto(String nombreProd, Float precioProd, Set<Imagen> imagenes, Categoria categoria_id, Set<Reserva> reservas) {
+        this.nombreProd = nombreProd;
+        this.precioProd = precioProd;
+        this.imagenes = imagenes;
+        this.categoria_id = categoria_id;
         this.reservas = reservas;
     }
 
@@ -83,11 +76,11 @@ public class Producto {
     }
 
     public Categoria getCategoria() {
-        return categoria;
+        return categoria_id;
     }
 
     public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+        this.categoria_id = categoria_id;
     }
 
     public Set<Reserva> getReservas() {
@@ -96,14 +89,6 @@ public class Producto {
 
     public void setReservas(Set<Reserva> reservas) {
         this.reservas = reservas;
-    }
-
-    public String getDescripcionProd() {
-        return descripcionProd;
-    }
-
-    public void setDescripcionProd(String descripcionProd) {
-        this.descripcionProd = descripcionProd;
     }
 
     public Set<Imagen> getImagenes() {

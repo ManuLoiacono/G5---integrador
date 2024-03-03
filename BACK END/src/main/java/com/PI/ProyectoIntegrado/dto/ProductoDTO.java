@@ -1,54 +1,18 @@
 package com.PI.ProyectoIntegrado.dto;
 
-import com.PI.ProyectoIntegrado.model.Categoria;
 
 public class ProductoDTO {
 
-    private Integer idProducto;
     private String nombreProd;
-    private String descripcionProd;
     private Float precioProd;
-    private CategoriaDTO categoria;
+    private Integer id_categoria;
 
-    public ProductoDTO() {
-    }
-
-    public ProductoDTO(String nombreProd, String descripcionProd, Float precioProd, CategoriaDTO categoria) {
-        this.nombreProd = nombreProd;
-        this.descripcionProd = descripcionProd;
-        this.precioProd = precioProd;
-        this.categoria = categoria;
-    }
-
-    public ProductoDTO(Integer idProducto, String nombreProd, String descripcionProd, Float precioProd, CategoriaDTO categoria) {
-        this.idProducto = idProducto;
-        this.nombreProd = nombreProd;
-        this.descripcionProd = descripcionProd;
-        this.precioProd = precioProd;
-        this.categoria = categoria;
-    }
-
-    public Integer getIdProducto() {
-        return idProducto;
-    }
-
-    public void setIdProducto(Integer idProducto) {
-        this.idProducto = idProducto;
-    }
     public String getNombreProd() {
         return nombreProd;
     }
 
     public void setNombreProd(String nombreProd) {
         this.nombreProd = nombreProd;
-    }
-
-    public String getDescripcionProd() {
-        return descripcionProd;
-    }
-
-    public void setDescripcionProd(String descripcionProd) {
-        this.descripcionProd = descripcionProd;
     }
 
     public Float getPrecioProd() {
@@ -59,11 +23,13 @@ public class ProductoDTO {
         this.precioProd = precioProd;
     }
 
-    public CategoriaDTO getCategoria() {
-        return categoria;
+    public Integer getId_categoria() {
+        return id_categoria;
     }
 
-    public void setCategoria(CategoriaDTO categoria) {
-        this.categoria = categoria;
+    public void setId_categoria(Integer id_categoria) {
+        this.id_categoria = id_categoria;
     }
 }
+
+

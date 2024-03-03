@@ -1,11 +1,8 @@
 package com.PI.ProyectoIntegrado.model;
 
-import com.PI.ProyectoIntegrado.model.usuario.UserRol;
-import com.PI.ProyectoIntegrado.model.Reserva;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
-
 import java.util.Set;
 
 
@@ -26,44 +23,42 @@ public class Usuario {
     private String apellidoUsuario;
     @NotNull
     @Column
-    private int numTelefono;
+    private Long numTelefono;
     @NotNull
     @Column
     private String email;
     @NotNull
     @Column
     private String password;
-
     @NotNull
-    @Column
-    @Enumerated(EnumType.STRING)
-    private UserRol userRol;
-
+    @ManyToOne
+    @JoinColumn(name="id_rol", referencedColumnName = "id")
+    private Rol id_rol;
     @OneToMany(mappedBy = "usuario")
-    private Set<Reserva> reservas;
+     private Set<Reserva> reservas;
 
 
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario, String nombreUsuario, String apellidoUsuario, int numTelefono, String email, String password, UserRol userRol, Set<Reserva> reservas) {
-        this.idUsuario = idUsuario;
+    public Usuario(Integer idUsuario, String nombreUsuario, String apellidoUsuario, Long numTelefono, String email, String password, Rol id_rol, Set<Reserva> reservas) {
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
         this.numTelefono = numTelefono;
         this.email = email;
         this.password = password;
-        this.userRol = userRol;
+        this.id_rol = id_rol;
         this.reservas = reservas;
     }
 
-    public Usuario(String nombreUsuario, String apellidoUsuario, int numTelefono, String email, String password, UserRol userRol) {
+    public Usuario(String nombreUsuario, String apellidoUsuario, Long numTelefono, String email, String password, Rol id_rol, Set<Reserva> reservas) {
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
         this.numTelefono = numTelefono;
         this.email = email;
         this.password = password;
-        this.userRol = userRol;
+        this.id_rol = id_rol;
+        this.reservas = reservas;
     }
 
     public Integer getIdUsuario() {
@@ -90,11 +85,11 @@ public class Usuario {
         this.apellidoUsuario = apellidoUsuario;
     }
 
-    public int getNumTelefono() {
+    public Long getNumTelefono() {
         return numTelefono;
     }
 
-    public void setNumTelefono(int numTelefono) {
+    public void setNumTelefono(Long numTelefono) {
         this.numTelefono = numTelefono;
     }
 
@@ -106,14 +101,6 @@ public class Usuario {
         this.email = email;
     }
 
-    public Set<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(Set<Reserva> reservas) {
-        this.reservas = reservas;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -122,11 +109,19 @@ public class Usuario {
         this.password = password;
     }
 
-    public UserRol getUserRol() {
-        return userRol;
+    public Rol getId_rol() {
+        return id_rol;
     }
 
-    public void setUserRol(UserRol userRol) {
-        this.userRol = userRol;
+    public void setId_rol(Rol id_rol) {
+        this.id_rol = id_rol;
+    }
+
+    public Set<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(Set<Reserva> reservas) {
+        this.reservas = reservas;
     }
 }

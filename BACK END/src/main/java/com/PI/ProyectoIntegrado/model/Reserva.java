@@ -1,10 +1,8 @@
 package com.PI.ProyectoIntegrado.model;
 
-import com.PI.ProyectoIntegrado.model.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
-
 import java.util.Date;
 
 @Entity
@@ -20,8 +18,8 @@ public class Reserva {
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JsonIgnore
-    @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
-    private Producto producto;
+    @JoinColumn(name = "producto_id")
+    private Producto producto_id;
 
     @NotNull
     @JsonIgnore
@@ -42,16 +40,20 @@ public class Reserva {
     private Float PrecioTotal;
 
 
-
-
-
-
     public Reserva() {
     }
 
-    public Reserva(Integer idReserva, Producto producto, Usuario usuario, Date fechaInicio, Date fechaFin, Float precioTotal) {
+    public Reserva(Integer idReserva, Producto producto_id, Usuario usuario, Date fechaInicio, Date fechaFin, Float precioTotal) {
         this.idReserva = idReserva;
-        this.producto = producto;
+        this.producto_id = producto_id;
+        this.usuario = usuario;
+        FechaInicio = fechaInicio;
+        FechaFin = fechaFin;
+        PrecioTotal = precioTotal;
+    }
+
+    public Reserva(Producto producto_id, Usuario usuario, Date fechaInicio, Date fechaFin, Float precioTotal) {
+        this.producto_id = producto_id;
         this.usuario = usuario;
         FechaInicio = fechaInicio;
         FechaFin = fechaFin;
@@ -67,11 +69,11 @@ public class Reserva {
     }
 
     public Producto getProducto() {
-        return producto;
+        return producto_id;
     }
 
     public void setProducto(Producto producto) {
-        this.producto = producto;
+        this.producto_id = producto_id;
     }
 
     public Usuario getUsuario() {
@@ -105,7 +107,6 @@ public class Reserva {
     public void setPrecioTotal(Float precioTotal) {
         PrecioTotal = precioTotal;
     }
-
 
 
 }

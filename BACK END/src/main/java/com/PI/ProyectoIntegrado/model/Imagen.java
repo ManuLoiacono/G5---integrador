@@ -11,7 +11,7 @@ public class Imagen {
     @Id
     @SequenceGenerator(name = "image_sequence", sequenceName = "image_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "image_sequence")
-    private Integer idImagen;
+    private Integer id;
     @NotNull
     @Column
     private String titulo;
@@ -28,8 +28,8 @@ public class Imagen {
     public Imagen() {
     }
 
-    public Imagen(Integer idImagen, String titulo, String urlimg, Producto idProducto) {
-        this.idImagen = idImagen;
+    public Imagen(Integer id, String titulo, String urlimg, Producto idProducto) {
+        this.id = id;
         this.titulo = titulo;
         this.urlimg = urlimg;
         this.idProducto = idProducto;
@@ -43,11 +43,11 @@ public class Imagen {
 
 
     public Integer getId() {
-        return idImagen;
+        return id;
     }
 
-    public void setId(Integer idImagen) {
-        this.idImagen = idImagen;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitulo() {

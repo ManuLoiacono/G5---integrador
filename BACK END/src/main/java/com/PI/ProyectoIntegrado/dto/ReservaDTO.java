@@ -4,55 +4,26 @@ import java.util.Date;
 
 public class ReservaDTO {
 
-    private Integer idReserva;
-    private Integer producto;
-    private Integer usuario;
+    private Integer id_producto;
+    private Integer id_usuario;
     private Date FechaInicio;
     private Date FechaFin;
     private Float PrecioTotal;
 
-    public ReservaDTO() {
+    public Integer getId_producto() {
+        return id_producto;
     }
 
-    public ReservaDTO(Integer producto, Integer usuario, Date fechaInicio, Date fechaFin, Float precioTotal) {
-        this.producto = producto;
-        this.usuario = usuario;
-        FechaInicio = fechaInicio;
-        FechaFin = fechaFin;
-        PrecioTotal = precioTotal;
+    public void setId_producto(Integer id_producto) {
+        this.id_producto = id_producto;
     }
 
-    public ReservaDTO(Integer idReserva, Integer producto, Integer usuario, Date fechaInicio, Date fechaFin, Float precioTotal) {
-        this.idReserva = idReserva;
-        this.producto = producto;
-        this.usuario = usuario;
-        FechaInicio = fechaInicio;
-        FechaFin = fechaFin;
-        PrecioTotal = precioTotal;
+    public Integer getId_usuario() {
+        return id_usuario;
     }
 
-    public Integer getIdReserva() {
-        return idReserva;
-    }
-
-    public void setIdReserva(Integer idReserva) {
-        this.idReserva = idReserva;
-    }
-
-    public Integer getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Integer producto) {
-        this.producto = producto;
-    }
-
-    public Integer getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Integer usuario) {
-        this.usuario = usuario;
+    public void setId_usuario(Integer id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public Date getFechaInicio() {

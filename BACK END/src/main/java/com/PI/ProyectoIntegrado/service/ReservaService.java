@@ -18,7 +18,7 @@ public class ReservaService implements IReservaService{
 
 
     @Autowired
-    private IReservaRepository reservaRepository;
+    IReservaRepository reservaRepository;
 
     @Autowired
     ObjectMapper mapper;

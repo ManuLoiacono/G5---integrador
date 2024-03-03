@@ -1,7 +1,6 @@
 package com.PI.ProyectoIntegrado.controller;
 
 
-import com.PI.ProyectoIntegrado.dto.ProductoDTO;
 import com.PI.ProyectoIntegrado.dto.UsuarioDTO;
 import com.PI.ProyectoIntegrado.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;

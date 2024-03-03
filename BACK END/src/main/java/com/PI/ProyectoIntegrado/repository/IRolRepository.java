@@ -1,9 +1,10 @@
 package com.PI.ProyectoIntegrado.repository;
-import com.PI.ProyectoIntegrado.model.Imagen;
+
+import com.PI.ProyectoIntegrado.model.Rol;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
-public interface IImagenRepository  extends JpaRepository<Imagen, Integer> {
+public interface IRolRepository extends JpaRepository<Rol, Integer> {
+
 }
