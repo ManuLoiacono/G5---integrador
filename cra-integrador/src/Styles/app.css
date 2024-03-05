@@ -399,9 +399,7 @@ font-size: 1.9rem;
     flex: 1; 
     
 }
-.form-container{
-    display: contents;
-}
+
 
 .inputs input, select{
     width: 80%;
