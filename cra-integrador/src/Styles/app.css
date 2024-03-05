@@ -7,10 +7,12 @@
 html{
     font-size: 16px;
 }
+
 body{
     margin: 0px;
     padding: 0px;
-    min-height: 100vh;
+ 
+ 
 }
 /*HEADER*/
 .logo{
@@ -165,13 +167,14 @@ header div span{
 }
 /*BUSCADOR*/
 /*GALERIA DE CATEGORIAS*/
-.galeria, .registrar , .detail{
+.galeria, .registrar , .detail, .registrar-usuario{
     width: 98%;
     margin:8px;
     background-color: var(--color-gris1);
     border-radius: 5px;
     padding: 10px;
     box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.4);
+   
 }
 .galeria h2{
     font-size: 1.5rem;
@@ -397,7 +400,7 @@ font-size: 1.9rem;
     
 }
 .form-container{
-    
+    display: contents;
 }
 
 .inputs input, select{
@@ -412,8 +415,8 @@ font-size: 1.9rem;
     padding-left: 0.3rem;
 }
 
-.registrar{
-    width: 98%;
+.registrar, .registrar-usuario{
+    flex:1;
     display: flex;
     flex-direction:column;
     height: calc(100vh - 10vh - 3rem - 16px);
@@ -543,7 +546,51 @@ border-radius:20px;
     display:inline;
     margin: 50px,10px;
 }
-
+.registrar-usuario form input{
+   width: 90%;
+   margin-left: 5%;
+  }
+  .registrar-usuario form h2{
+    text-align: center;
+    
+   }
+  .password-input-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+    
+  }
+  
+   
+  .password-input-wrapper input {
+    
+    
+  }
+  
+  .toggle-password-button {
+    position: absolute;
+    left: 20rem;
+    top: 1.4rem; /* Ajusta según sea necesario para alinear el botón */
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .registrar-usuario form{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    background-color: yellowgreen;
+    height:80%;
+  }
+  .registrar-usuario form label{
+    display: block;
+    margin-left: 5%;
+    width: 90%;
+  }
+.registrar-usuario{
+    justify-content: center;
+    align-items: center;
+   
+}
 /* LOGIN Y REGISTRAR USUARIO*/
 
 @media(max-width:900px){
