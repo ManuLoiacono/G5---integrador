@@ -1,10 +1,12 @@
 package com.PI.ProyectoIntegrado.controller;
 
 import com.PI.ProyectoIntegrado.dto.ImagenDTO;
+import com.PI.ProyectoIntegrado.dto.ProductoDTO;
 import com.PI.ProyectoIntegrado.model.Imagen;
 import com.PI.ProyectoIntegrado.service.IImagenService;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,8 +34,11 @@ public class ImagenController {
 
     @Operation(summary = "Crear nueva imagen de un producto")
     @PostMapping
-    public Imagen guardarImagen(@RequestBody ImagenDTO imagenDTO) throws ResourceNotFoundException {
-        return imagenService.guardarImagen(imagenDTO);
+    public ResponseEntity<?> guardarImagen(@RequestBody ImagenDTO imagenDTO){
+
+        imagenService.guardarImagen(imagenDTO);
+        return ResponseEntity.ok(HttpStatus.OK);
+
     }
 
     @Operation(summary = "Borrar imagen por id")
