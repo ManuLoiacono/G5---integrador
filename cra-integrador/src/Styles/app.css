@@ -35,7 +35,7 @@ header{
     z-index: 1000;
 }
 
-header div {
+header ul{
     display: flex;
     justify-content: space-between;
 }
@@ -48,17 +48,17 @@ header div {
 #button-container{
 margin-right: 1rem;
 }
-header div button{
+header ul button{
     width: auto;
     background-color:transparent;
     border: none;
     color: var(--color-blanco);
     font-size: large;
 }
-header div button:hover{
+header ul button:hover{
     color: var(--color-gris2);
 }
-header div span{
+header ul span{
     border: none;
     color: var(--color-blanco);
     font-size: large;
