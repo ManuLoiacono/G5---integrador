@@ -547,37 +547,46 @@ border-radius:20px;
 .registrar-usuario form input{
    width: 90%;
    margin-left: 5%;
+   border: none;
+   height: 2rem;
+   border-radius: 6px;
   }
+  .registrar-usuario form div input{
+    padding-left: 0.5rem;
+}
   .registrar-usuario form h2{
     text-align: center;
-    
-   }
+  }
+  .registrar-usuario form h3{
+   text-align: center;
+  }
+  .registrar-usuario form a{
+    display: inline-block;
+  }
   .password-input-wrapper {
     position: relative;
     margin-bottom: 20px;
-    
+    width: 100%;
   }
-  
-   
-  .password-input-wrapper input {
-    
-    
+  #password{
+    width: 80%;
+    border-radius: 6px 0 0 6px;
   }
-  
   .toggle-password-button {
-    position: absolute;
-    left: 20rem;
-    top: 1.4rem; /* Ajusta según sea necesario para alinear el botón */
-    background: none;
+    background: white;
     border: none;
     cursor: pointer;
+    width: 10%;
+    height: 2rem;
+    border-radius: 0 6px 6px 0;
   }
   .registrar-usuario form{
     display: flex;
     flex-direction: column;
     width: 40%;
-    background-color: yellowgreen;
+    background-color: var(--color-gris2);
     height:80%;
+    border-radius: 2rem;
   }
   .registrar-usuario form label{
     display: block;
@@ -587,7 +596,14 @@ border-radius:20px;
 .registrar-usuario{
     justify-content: center;
     align-items: center;
-   
+}
+.registrar-usuario button:nth-last-child(2){
+    background-color: var(--color-verde2);
+    width: 50%;
+    margin-left: 5%;
+    border: none;
+    height: 2rem;
+    border-radius: 6px;
 }
 /* LOGIN Y REGISTRAR USUARIO*/
 

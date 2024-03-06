@@ -62,6 +62,7 @@ function RegistrarUsuario(){
                 </button>
               </div>
               <button>CREAR CUENTA</button>
+            <h3>Ya tienes cuenta? <a href="">Ingresar</a></h3>
             </form>
           </div>
         </>
