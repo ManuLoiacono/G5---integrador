@@ -38,7 +38,7 @@ function InicioSesion(){
                 <button className="login-button">Ingresar</button>
                 </form>
                 <div className="login-text-container">
-                <p className="login-text">¿Necesitas una cuenta?</p> <Link to={'/registrar-usuario'}><p className="registrarse">Registrarse</p></Link>
+                <p className="login-text">¿Necesitas una cuenta?</p> <Link to={'/registro-usuario'}><p className="registrarse">Registrarse</p></Link>
                 </div>
 
             </section>
