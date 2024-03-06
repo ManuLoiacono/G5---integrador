@@ -1,9 +1,10 @@
 import { useState } from "react"
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 function RegistrarUsuario(){
-
+    
     const [showPassword, setShowPassword] = useState(false);
     const [password, setPassword] = useState('');
   
@@ -62,6 +63,7 @@ function RegistrarUsuario(){
                 </button>
               </div>
               <button>CREAR CUENTA</button>
+            <h3>Ya tienes cuenta?  <Link to={'/inicio-sesion'}><p className="Ingresar">Ingresar</p></Link></h3>
             </form>
           </div>
         </>
