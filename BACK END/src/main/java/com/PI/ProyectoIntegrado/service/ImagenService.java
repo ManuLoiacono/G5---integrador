@@ -30,13 +30,14 @@ public class ImagenService implements IImagenService{
         return imagenRepository.findAll();
     }
 
-    public Imagen guardarImagen(ImagenDTO imagenDTO) throws ResourceNotFoundException {
 
-        Imagen img = new Imagen(imagenDTO.getTitulo(), imagenDTO.getUrlimg(),  mapper.convertValue(productoService.listarUnProducto(imagenDTO.getIdProducto()), Producto.class));
-        return imagenRepository.save(img);
+    @Override
+    public void guardarImagen(ImagenDTO imagenDTO) {
+        Imagen imagen = mapper.convertValue(imagenDTO, Imagen.class);
+        imagenRepository.save(imagen);
     }
 
-    public Imagen actualizarImagen(Imagen imagen) throws ResourceNotFoundException {
+    /*public void actualizarImagen(Imagen imagen) throws ResourceNotFoundException {
         Optional<Imagen> searchedCategory = imagenRepository.findById(imagen.getId());
         if (searchedCategory.isPresent()){
             return imagenRepository.save(imagen);
@@ -44,7 +45,7 @@ public class ImagenService implements IImagenService{
         else {
             throw new ResourceNotFoundException("Imagen con ID: "+ imagen.getId()+" no existe");
         }
-    }
+    }*/
 
     public void deleteImagen(Integer id) throws ResourceNotFoundException{
         Optional<Imagen> searchedImage = imagenRepository.findById(id);

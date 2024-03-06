@@ -5,22 +5,20 @@ import com.PI.ProyectoIntegrado.model.Producto;
 public class ImagenDTO {
 
     private Integer idImagen;
-    private String titulo;
+    //private String titulo;
     private String urlimg;
     private Integer idProducto;
 
     public ImagenDTO() {
     }
 
-    public ImagenDTO(String titulo, String urlimg, Integer idProducto) {
-        this.titulo = titulo;
+    public ImagenDTO(String urlimg, Integer idProducto){
         this.urlimg = urlimg;
         this.idProducto = idProducto;
     }
 
-    public ImagenDTO(Integer idImagen, String titulo, String urlimg, Integer idProducto) {
+    public ImagenDTO(Integer idImagen, String urlimg, Integer idProducto) {
         this.idImagen = idImagen;
-        this.titulo = titulo;
         this.urlimg = urlimg;
         this.idProducto = idProducto;
     }
@@ -31,14 +29,6 @@ public class ImagenDTO {
 
     public void setIdImagen(Integer idImagen) {
         this.idImagen = idImagen;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
     }
 
     public String getUrlimg() {

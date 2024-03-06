@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface IImagenService {
 
-    Imagen guardarImagen(ImagenDTO imagenDTO);
-    Imagen actualizarImagen(Imagen imagen);
+    void guardarImagen(ImagenDTO imagenDTO);
+    //void actualizarImagen(Imagen imagen);
     void deleteImagen(Integer id);
 
     List<Imagen> listaImagenes();
