@@ -8,7 +8,7 @@ function Header({estaLogueado, esAdmin, cierreDeSesion}){
         <header>
             <Link to={'/'}><img className="logo" src={image} alt="Terrarent logo" /></Link>
                 <ul id="button-container">
-                 {esAdmin && <button><Link to="/admin">Admin Dashboard</Link></button>}
+                 {esAdmin && <Link to="/panel-de-control"><button className="panel-button">Admin Dashboard</button></Link>}
                  {estaLogueado ? (
                    <button onClick={cierreDeSesion}>Cerrar Sesión</button>
                 ) : (
