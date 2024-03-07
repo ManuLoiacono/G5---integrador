@@ -41,11 +41,7 @@ function cerrarSesion(){
     <Route path='productos/:id/galeria' element={<Galery />} />
     <Route path='registro-usuario' element={<RegistrarUsuario/>}/>
     <Route path='inicio-sesion' element={<InicioSesion/>}/>
-<<<<<<< HEAD
     <Route path='listado-productos' element={<ListadoDeProd/>}/>
-=======
-    <Route path='lista-productos' element={<ListaProductos/>}/>
->>>>>>> 16134e0a10cc0839f0b1309ff8d5486796a08656
   </Routes>
     <Footer/>
   </Router>
