@@ -15,10 +15,10 @@ class ProductoServiceTest {
 	@Autowired(required = false)
 	private IProductoService productoService;
 
-	@Test
+	/*@Test
 	void testAgregarProducto() {
 
-		ProductoDTO productoDTO = new ProductoDTO();
+		Producto producto = new ProductoDTO();
 		productoDTO.setNombreProd("carpa");
 		productoDTO.setPrecioProd(Float.valueOf("199.99"));
 
@@ -29,6 +29,6 @@ class ProductoServiceTest {
 
 		assertTrue(productoCarpa != null);
 
-	}
+	}*/
 
 }

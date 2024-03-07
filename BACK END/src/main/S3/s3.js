@@ -14,8 +14,8 @@ const uploadFile = async () => {
   const bucketName = "imagenesterrarent"
 
   AWS.config.update({
-    accessKeyId: "AKIA25QRTCUVNATBS2U7",
-    secretAccessKey: "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",
+    accessKeyId: "",
+    secretAccessKey: "",
   });
 
   const s3 = new AWS.S3({
