@@ -1,16 +1,18 @@
 package com.PI.ProyectoIntegrado.service;
-import com.PI.ProyectoIntegrado.dto.ImagenDTO;
 import com.PI.ProyectoIntegrado.model.Imagen;
+import org.apache.velocity.exception.ResourceNotFoundException;
+
+import java.io.IOException;
 import java.util.List;
 
 
 
 public interface IImagenService {
 
-    void guardarImagen(ImagenDTO imagenDTO);
+    void guardarImagen(Imagen imagen);
     //void actualizarImagen(Imagen imagen);
-    void deleteImagen(Integer id);
+    void deleteImagen(Integer id) throws ResourceNotFoundException;
 
-    List<Imagen> listaImagenes();
+    List<String> listaImagenes() throws IOException;
 
 }

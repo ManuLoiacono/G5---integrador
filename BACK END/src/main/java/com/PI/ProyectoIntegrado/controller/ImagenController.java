@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 
 
-
-
-
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -26,17 +24,17 @@ public class ImagenController {
     IImagenService imagenService;
 
     @Operation(summary = "Listar todas las imagenes")
-    @GetMapping
-    public List<Imagen> listaImagenes(){
+    @GetMapping("/listarImagenes")
+    public List<String> listaImagenes() throws IOException {
         return imagenService.listaImagenes();
     }
 
 
     @Operation(summary = "Crear nueva imagen de un producto")
-    @PostMapping
-    public ResponseEntity<?> guardarImagen(@RequestBody ImagenDTO imagenDTO){
+    @PostMapping("/uploadImageToS3")
+    public ResponseEntity<?> guardarImagen(@RequestBody Imagen imagen){
 
-        imagenService.guardarImagen(imagenDTO);
+        imagenService.guardarImagen(imagen);
         return ResponseEntity.ok(HttpStatus.OK);
 
     }

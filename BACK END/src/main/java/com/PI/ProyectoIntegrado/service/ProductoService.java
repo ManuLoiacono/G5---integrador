@@ -1,9 +1,9 @@
 package com.PI.ProyectoIntegrado.service;
 
+import com.PI.ProyectoIntegrado.dto.ProductoDTO;
 import com.PI.ProyectoIntegrado.repository.IProductoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import com.PI.ProyectoIntegrado.dto.ProductoDTO;
 import com.PI.ProyectoIntegrado.model.Producto;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,24 +39,25 @@ public class ProductoService implements IProductoService{
     }
 
     @Override
-    public ProductoDTO listarUnProducto(Integer idProducto) {
+    public Producto listarUnProducto(Integer idProducto) {
 
         Optional<Producto> producto = productoRepository.findById(idProducto);
-        ProductoDTO productoDTO = null;
+        //ProductoDTO productoDTO = null;
+        Producto productoDevolver = null;
         if(producto.isPresent()){
-            productoDTO = mapper.convertValue(producto, ProductoDTO.class);
+            productoDevolver = mapper.convertValue(producto, Producto.class);
         }
-        return productoDTO;
+        return productoDevolver;
 
     }
 
     @Override
-    public Set<ProductoDTO> listarProductos() {
+    public Set<com.PI.ProyectoIntegrado.dto.ProductoDTO> listarProductos() {
 
         List<Producto> productos = productoRepository.findAll();
-        Set<ProductoDTO> productosDTO = new HashSet<>();
+        Set<com.PI.ProyectoIntegrado.dto.ProductoDTO> productosDTO = new HashSet<>();
         for(Producto producto: productos){
-            productosDTO.add(mapper.convertValue(producto, ProductoDTO.class));
+            productosDTO.add(mapper.convertValue(producto, com.PI.ProyectoIntegrado.dto.ProductoDTO.class));
         }
 
         return productosDTO;
