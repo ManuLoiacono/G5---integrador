@@ -6,31 +6,39 @@ import img2 from '../img/bicicleta.jpg'
 import img3 from '../img/baton_trakking.jpg'
 import img4 from '../img/conservadora-02.jpg'
 import img5 from '../img/mochila.jpg'
-import imgFlecha from '../img/flecha_blanca.png'
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
 const ListadoDeProd = () => {
   
-  const [product,setProduct] = useState([])
-   const params = useParams()
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        const url = `http://localhost:3001/Producto/${params.id}`
+  const [productos, setProductos] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const url = `http://localhost:3001/Producto`;
         const settings = {
-            method:'GET'
-        }
-        fetch(url,settings)
-        .then((response) => response.json())
-        .then((data) => {
-          setProduct(data);
-          console.log(product.nombreProd);
-          console.log(product.idProducto);
-        })
-        .catch((error) => {
-          console.error('Error al obtener detalles del producto:', error);
-        });
- 
-    }, []);
+          method: 'GET',
+          mode: 'cors'
+        };
+
+        const response = await fetch(url, settings);
+        const data = await response.json();
+
+        console.log(data);
+
+        const longProductos = data.length;
+        setProductos(data);
+      } catch (error) {
+        console.error('Error al obtener detalles del producto:', error);
+        setError(error);
+      }
+    };
+
+   // fetchData();
+  }, []);
     const productoMuestra = [
       {
       id : 1,

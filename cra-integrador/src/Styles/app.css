@@ -286,6 +286,9 @@ figure{
 .detail-header-item{
     margin: 0px 20px
 }
+#detail-header-name{
+    color: white;
+}
 #cuadrilla-img{
     margin:5%;
     display: grid;
@@ -340,6 +343,7 @@ font-size: 1.9rem;
     position: relative;
     display: flex;
     justify-content: center;
+    max-height: 70vh;
 
 }
 .tarjeta-carrousel{
@@ -360,14 +364,20 @@ font-size: 1.9rem;
     padding: 20px;
 }
 .flecha-navegacion{
-    width: 3%;
+    max-width: 100px;
+    width: 10vw;
     height: auto;
     cursor: pointer;
 }
 .img-carrousel{
-    width: 50%;
+    max-width: 500px;
+    width: 70%;
     height: auto;
+    max-height: 68vh;
 
+}
+#galeriaCompleta{
+    height: 80vh;
 }
 
 /*DETAIL*/
