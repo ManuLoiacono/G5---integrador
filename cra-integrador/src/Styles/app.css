@@ -316,7 +316,7 @@ border-radius: 3px;
 .detail-data{
 width: 70%;
 font-size: 1.4rem;
-margin:  0 0 0 5%;
+padding:  0 0 0 5%;
 }
 .precio{
     font-size: 1.4rem;
@@ -424,7 +424,6 @@ margin:  0 0 0 5%;
     flex: 1; 
     
 }
-
 
 .inputs input, select{
     width: 80%;
@@ -682,14 +681,46 @@ table {
         font-size:1.2rem ;
     }
     .detail-data{
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     #galery-link{
         bottom: -10%;
     }
+    #under-img{
+        flex-direction: column-reverse;
+        margin-top: 2%;
+    }
+    .precio-container{
+        width: 100%;
+        border-left: none;
+        border-bottom: solid 2px var(--color-gris2);
+    }
+    .descripcion-container{
+        margin-top: 1rem;
+        width: fit-content;
+        
+    }
+    .detail-data{
+        width: auto;
+        font-size: 1.2rem;
+    }
 
 }
 @media(max-width:425px){
+    #button-container{
+        margin: 0;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+       
+    }
+    #button-container span{
+        display: none;
+    }
+    #button-container button{
+        font-size: 0.8rem;
+    }
     .logo{
         height: 40%;
         margin-left: 1rem;
@@ -713,6 +744,9 @@ table {
         padding: 15px;
         grid-template-columns: 50% 50% ;
 
+    }
+    #galery-link{
+        font-size: 1rem;
     }
     #h2-cat, #recomendados h2{
         text-align: center;
@@ -742,9 +776,19 @@ table {
         display: none;
     }
     .detail-data{
-        font-size: 1.2rem;
+        font-size: 1rem;
+        width: 100%;
     }
-   
+    .input-user-card{
+        width:80vw
+    }
+    .footer h3{
+        font-size: 0.9rem;
+    }  
+    .footer-Items img{
+        height: 40%; 
+        
+     }
     .mensaje-resolucion{
         position: absolute;
         top: 0;
