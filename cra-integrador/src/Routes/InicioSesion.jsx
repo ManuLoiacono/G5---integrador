@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom";
-
+import imageInicio from '../img/TERRA_RENT_resol.png'
 
 function InicioSesion(){
     const [email, setEmail] = useState("")
@@ -31,7 +31,8 @@ function InicioSesion(){
     return(
         <div className="input-user-card-container">
             <section className="input-user-card">
-                <h2>Iniciar sesión</h2>
+                <img src={imageInicio} alt="" />
+                <h2>INICIAR SESIÓN</h2>
                 <form action="POST">
                 <input id="get-mail" className="login-input" type="text" value={email} placeholder="Tu Email o nombre de usuario" onChange={(e) => setEmail(e.target.value)}/>
                 <input id ="get-password"className="login-input" type="password" value={password} placeholder="Tu Contraseña" onChange={(e) => setPassword(e.target.value)}/>
