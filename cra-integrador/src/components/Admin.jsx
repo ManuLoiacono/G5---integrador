@@ -1,5 +1,5 @@
 import React from 'react'
-
+import MensajeResolucion from '../components/MensajeResolucion.jsx'
 const Admin = () => {
   return (
     <div>
@@ -9,6 +9,7 @@ const Admin = () => {
         <button>
             Agregar producto
         </button>
+    <MensajeResolucion/>
     </div>
   )
 }
