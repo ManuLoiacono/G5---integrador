@@ -10,6 +10,7 @@ import Galery from './Routes/Galery.jsx';
 import Footer from "./components/Footer.jsx";
 import RegistrarUsuario from './Routes/RegistrarUsuario.jsx'
 import InicioSesion from './Routes/InicioSesion.jsx'
+import ListaProductos from "./Routes/ListaProductos.jsx";
 import { ToastContainer, toast } from 'react-toastify';
 import ListadoDeProd from './Routes/ListadoDeProd.jsx';
 
@@ -40,7 +41,11 @@ function cerrarSesion(){
     <Route path='productos/:id/galeria' element={<Galery />} />
     <Route path='registro-usuario' element={<RegistrarUsuario/>}/>
     <Route path='inicio-sesion' element={<InicioSesion/>}/>
+<<<<<<< HEAD
     <Route path='listado-productos' element={<ListadoDeProd/>}/>
+=======
+    <Route path='lista-productos' element={<ListaProductos/>}/>
+>>>>>>> 16134e0a10cc0839f0b1309ff8d5486796a08656
   </Routes>
     <Footer/>
   </Router>
