@@ -67,8 +67,14 @@ function Detail(){
                   <Outlet/>
                   </div>
                   <div id="under-img">
-                    <p className="detail-data">{productoMuestra.descripcion}</p>
-                    <p className="detail-data">${productoMuestra.precioProd}</p>
+                    <div className="descripcion-container">
+                      <h4>Descripción:</h4>
+                      <p className="detail-data">{productoMuestra.descripcion}</p>
+                    </div>
+                    <div className="precio-container">
+                      <h4>Alquiler por día:</h4>
+                      <p className="precio">${productoMuestra.precioProd}</p>
+                    </div>
                   </div>
             </main>
         </section>
