@@ -55,10 +55,10 @@ function Detail(){
   console.log(imgSinPrimera);
     return(
         <section className="detail">
-            <div  id="detail-header"><h2 id="detail-header-name" className="detail-header-item">{productoMuestra.nombreProd}</h2>   <img src={imgFlecha} className="back" onClick={() => navigate(-1)}></img> </div>
+            <div  id="detail-header"><h2 id="detail-header-name" className="detail-header-item">{product.nombreProd}</h2>   <img src={imgFlecha} className="back" onClick={() => navigate(-1)}></img> </div>
             <main>
               <div id="imagenes">
-                <img className="imgGrande" src={product.img[0]?product.img[0]:noImage} alt="Imagen principal" />
+                <img className="imgGrande" src={productoMuestra.img[0]?productoMuestra.img[0]:noImage} alt="Imagen principal" />
                 <div id="cuadrilla-img">
                   {imgSinPrimera.map((img)=>(
                     <img className="imgChiqui" src={img} alt=""/>

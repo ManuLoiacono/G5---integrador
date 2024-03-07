@@ -64,7 +64,6 @@ header ul span{
     font-size: large;
     align-self: center;
 }
-
 /*HEADER*/
 /*FOOTER*/
 .footer{
@@ -167,7 +166,7 @@ header ul span{
 }
 /*BUSCADOR*/
 /*GALERIA DE CATEGORIAS*/
-.galeria, .registrar , .detail, .registrar-usuario, .listado-productos{
+.galeria, .registrar , .detail, .registrar-usuario, .listado-productos, .panel-de-control{
     width: 98%;
     margin:8px;
     background-color: var(--color-gris1);
@@ -682,7 +681,34 @@ table {
     color: var(--color-verde1);
     cursor: pointer;
   }
+/*PANEL DE CONTROL*/
+#panel-container{
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#panel-container section{
+    width: 550px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 
+}
+.boton-panel{
+    width: 310px;
+    height: 35px;
+    background-color: white;
+    color: var(--color-verde2);
+    border-radius: 15px;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+/*PANEL DE CONTROL*/
 @media(max-width:900px){
     .card h3{
         font-size:1.2rem ;
