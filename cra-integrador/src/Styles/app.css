@@ -167,7 +167,7 @@ header ul span{
 }
 /*BUSCADOR*/
 /*GALERIA DE CATEGORIAS*/
-.galeria, .registrar , .detail, .registrar-usuario{
+.galeria, .registrar , .detail, .registrar-usuario, .listado-productos{
     width: 98%;
     margin:8px;
     background-color: var(--color-gris1);
@@ -413,11 +413,11 @@ font-size: 1.9rem;
     padding-left: 0.3rem;
 }
 
-.registrar, .registrar-usuario{
+.registrar, .registrar-usuario, .listado-productos{
     flex:1;
     display: flex;
     flex-direction:column;
-    height: calc(100vh - 10vh - 3rem - 16px);
+    min-height: calc(100vh - 10vh - 3rem - 16px);
     
 }
 .registrar h2{
@@ -467,7 +467,9 @@ font-size: 1.9rem;
   .image-container:hover .remove-icon {
     opacity: 1;
   }
-
+.input-user-card input{
+    padding-left: 0.5rem;
+}
 .registrar input, select{
     margin-left: 1rem;
     border-radius: 0.5rem;
@@ -515,7 +517,7 @@ font-size: 1.9rem;
     align-items: center;
     border-radius: 5px;
     box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.4);
-    background-color: var(--color-blanco);
+    background-color: var(--color-gris2);
 }
 .input-user-card form{
     display: flex;
@@ -542,7 +544,7 @@ border-radius:20px;
 }
 .login-text, .registrarse{
     display:inline;
-    margin: 50px,10px;
+    margin: 2rem 0.5rem;
 }
 .registrar-usuario form input{
    width: 90%;
@@ -557,17 +559,17 @@ border-radius:20px;
   .registrar-usuario form h2{
     text-align: center;
   }
-  .registrar-usuario form h3{
+  .registrar-usuario form h3, .listado-productos h3{
    text-align: center;
    font-weight: lighter;
    margin: 0;
   }
-  .registrar-usuario form a{
+  .registrar-usuario form a, .registrarse{
     display: inline-block;
     color: var(--color-verde2);
-    font-weight: bolder;
+    
   }
-  .registrar-usuario form a:hover{
+  .registrar-usuario form a:hover, .registrarse:hover{
     color: var(--color-verde2);
     font-weight: bold;
   }
@@ -617,12 +619,31 @@ border-radius:20px;
     color: white;
     font-size: 1.1rem;
 }
-.registrar-usuario button:nth-last-child(2):hover{
+.registrar-usuario button:nth-last-child(2):hover, .login-button:hover{
     background-color: var(--color-verde1);
     transition: background-color 0.3s ease-in-out; ;
     font-weight: bold;
 }
 /* LOGIN Y REGISTRAR USUARIO*/
+
+/*LISTADO DE PRODUCTOS*/
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+  }
+
+  th {
+    background-color: var(--color-verde2);
+    color: white;
+  }
 
 @media(max-width:900px){
     .card h3{
@@ -695,9 +716,12 @@ border-radius:20px;
         font-size: 1.2rem;
     }
     .registrar, header, .footer{
-        display:none
+
     }
     .mensaje-resolucion{
+        position: absolute;
+        top: 0;
+        background-color: #fff;
         display:flex;
         flex-direction: column;
         justify-content: center;
@@ -706,6 +730,7 @@ border-radius:20px;
         height: 100vh;
         text-align: center;
         font-size:1rem ;
+        z-index: 10556;
     }
     .mensaje-resolucion img{
         width: 60vw;

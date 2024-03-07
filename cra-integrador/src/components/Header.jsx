@@ -13,7 +13,7 @@ function Header({estaLogueado, esAdmin, cierreDeSesion}){
                    <button onClick={cierreDeSesion}>Cerrar Sesión</button>
                 ) : (
                     <>
-                    <Link to={'registrar-usuario'}><button>Crear Cuenta</button></Link>
+                    <Link to={'registro-usuario'}><button>Crear Cuenta</button></Link>
                     <span>|</span>
                     <Link to={'inicio-sesion'}><button>Iniciar Sesión</button></Link>
                     </>
