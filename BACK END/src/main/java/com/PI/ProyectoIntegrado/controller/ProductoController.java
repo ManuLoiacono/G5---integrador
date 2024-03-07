@@ -2,8 +2,10 @@ package com.PI.ProyectoIntegrado.controller;
 
 
 import com.PI.ProyectoIntegrado.dto.ProductoDTO;
+import com.PI.ProyectoIntegrado.model.Producto;
 import com.PI.ProyectoIntegrado.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +23,30 @@ public class ProductoController {
 
     @PostMapping
     public ResponseEntity<?> crearProducto(@RequestBody ProductoDTO productoDTO){
+    //public ResponseEntity<?> crearProducto(@RequestHeader("Authorization") String token, @RequestBody ProductoDTO productoDTO){
 
-        productoService.agregarProducto(productoDTO);
-        return ResponseEntity.ok(HttpStatus.OK);
+        try {
+            System.out.println("Nuevo producto: " + productoDTO.getNombreProd());
+            //tieneRolAdmin = AuthenticationService.getRolesFromToken(token);
+            /*if(!tieneRolAdmin){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No tiene permisos para realizar esta accion.");
+            }*/
+            productoService.agregarProducto(productoDTO);
+            return ResponseEntity.ok(HttpStatus.OK);
 
+        } catch (DataIntegrityViolationException e){
+            return new ResponseEntity<>("ya existe un producto con ese nombre.", HttpStatus.BAD_REQUEST);
+        } catch (Exception e){
+            return new ResponseEntity<>("Error al procesar la solicitud.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        //ANTES
+        /*productoService.agregarProducto(productoDTO);
+        return ResponseEntity.ok(HttpStatus.OK);*/
     }
 
     @GetMapping("/:{idProducto}")
-    public ProductoDTO getProducto(@PathVariable Integer idProducto){
+    public Producto getProducto(@PathVariable Integer idProducto){
 
         return  productoService.listarUnProducto(idProducto);
 
