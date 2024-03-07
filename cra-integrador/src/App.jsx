@@ -10,6 +10,7 @@ import Galery from './Routes/Galery.jsx';
 import Footer from "./components/Footer.jsx";
 import RegistrarUsuario from './Routes/RegistrarUsuario.jsx'
 import InicioSesion from './Routes/InicioSesion.jsx'
+import ListaProductos from "./Routes/ListaProductos.jsx";
 import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
@@ -39,6 +40,7 @@ function cerrarSesion(){
     <Route path='productos/:id/galeria' element={<Galery />} />
     <Route path='registro-usuario' element={<RegistrarUsuario/>}/>
     <Route path='inicio-sesion' element={<InicioSesion/>}/>
+    <Route path='lista-productos' element={<ListaProductos/>}/>
   </Routes>
     <Footer/>
   </Router>

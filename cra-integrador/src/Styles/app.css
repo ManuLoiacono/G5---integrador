@@ -167,7 +167,7 @@ header ul span{
 }
 /*BUSCADOR*/
 /*GALERIA DE CATEGORIAS*/
-.galeria, .registrar , .detail, .registrar-usuario{
+.galeria, .registrar , .detail, .registrar-usuario, table{
     width: 98%;
     margin:8px;
     background-color: var(--color-gris1);
