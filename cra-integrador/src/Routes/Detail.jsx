@@ -6,6 +6,7 @@ import img3 from '../img/baton_trakking.jpg'
 import img4 from '../img/conservadora-02.jpg'
 import img5 from '../img/mochila.jpg'
 import imgFlecha from '../img/flecha_blanca.png'
+import noImage from '../img/no-image.jpg'
 
 function Detail(){
   const navigate = useNavigate();
@@ -50,14 +51,14 @@ function Detail(){
     }
   }
   
-  filtrarImg(productoMuestra.img)
+  filtrarImg(product.img)
   console.log(imgSinPrimera);
     return(
         <section className="detail">
             <div  id="detail-header"><h2 id="detail-header-name" className="detail-header-item">{productoMuestra.nombreProd}</h2>   <img src={imgFlecha} className="back" onClick={() => navigate(-1)}></img> </div>
             <main>
               <div id="imagenes">
-                <img className="imgGrande" src={productoMuestra.img[0]} alt="Imagen principal" />
+                <img className="imgGrande" src={product.img[0]?product.img[0]:noImage} alt="Imagen principal" />
                 <div id="cuadrilla-img">
                   {imgSinPrimera.map((img)=>(
                     <img className="imgChiqui" src={img} alt=""/>
@@ -69,11 +70,11 @@ function Detail(){
                   <div id="under-img">
                     <div className="descripcion-container">
                       <h4>Descripción:</h4>
-                      <p className="detail-data">{productoMuestra.descripcion}</p>
+                      <p className="detail-data">{product.descripcionProd}</p>
                     </div>
                     <div className="precio-container">
                       <h4>Alquiler por día:</h4>
-                      <p className="precio">${productoMuestra.precioProd}</p>
+                      <p className="precio">${product.precioProd}</p>
                     </div>
                   </div>
             </main>
