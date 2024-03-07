@@ -33,12 +33,12 @@ function InicioSesion(){
             <section className="input-user-card">
                 <h2>Iniciar sesión</h2>
                 <form action="POST">
-                <input id="get-mail" className="login-input" type="text" value={email} placeholder="Tu Email" onChange={(e) => setEmail(e.target.value)}/>
+                <input id="get-mail" className="login-input" type="text" value={email} placeholder="Tu Email o nombre de usuario" onChange={(e) => setEmail(e.target.value)}/>
                 <input id ="get-password"className="login-input" type="password" value={password} placeholder="Tu Contraseña" onChange={(e) => setPassword(e.target.value)}/>
                 <button className="login-button">Ingresar</button>
                 </form>
                 <div className="login-text-container">
-                <p className="login-text">¿Necesitas una cuenta?</p> <Link to={'/registrar-usuario'}><p className="registrarse">Registrarse</p></Link>
+                <p className="login-text">¿Necesitas una cuenta?</p> <Link to={'/registro-usuario'}><p className="registrarse">Registrarse</p></Link>
                 </div>
 
             </section>

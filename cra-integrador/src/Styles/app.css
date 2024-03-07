@@ -35,7 +35,7 @@ header{
     z-index: 1000;
 }
 
-header div {
+header ul{
     display: flex;
     justify-content: space-between;
 }
@@ -48,17 +48,17 @@ header div {
 #button-container{
 margin-right: 1rem;
 }
-header div button{
+header ul button{
     width: auto;
     background-color:transparent;
     border: none;
     color: var(--color-blanco);
     font-size: large;
 }
-header div button:hover{
+header ul button:hover{
     color: var(--color-gris2);
 }
-header div span{
+header ul span{
     border: none;
     color: var(--color-blanco);
     font-size: large;
@@ -167,7 +167,7 @@ header div span{
 }
 /*BUSCADOR*/
 /*GALERIA DE CATEGORIAS*/
-.galeria, .registrar , .detail, .registrar-usuario{
+.galeria, .registrar , .detail, .registrar-usuario, .listado-productos{
     width: 98%;
     margin:8px;
     background-color: var(--color-gris1);
@@ -286,6 +286,9 @@ figure{
 .detail-header-item{
     margin: 0px 20px
 }
+#detail-header-name{
+    color: white;
+}
 #cuadrilla-img{
     margin:5%;
     display: grid;
@@ -314,13 +317,34 @@ border-radius: 3px;
     position: relative;
 }
 .detail-data{
-margin-left: 10%;
-font-size: 1.9rem;
-
+width: 70%;
+font-size: 1.4rem;
+padding:  0 0 0 5%;
+}
+.precio{
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 0.5rem 0;
+}
+.precio-container h4{
+    margin: 0;
+}
+.precio-container{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    text-align: center;
+    border-left: solid 2px var(--color-gris2) ;
+    align-items: center;
+    justify-content: center;
+}
+.descripcion-container h4{
+    margin:  0 0 0 5%;
+    
 }
 #under-img{
     display:flex;
-    flex-direction:column ;
+    flex-direction:row ;
 
 }
 #galery-link{
@@ -328,8 +352,12 @@ font-size: 1.9rem;
     position: absolute;
     right: 5%;
     bottom: 0%;
-
+    color: var(--color-verde2);
 }
+#galery-link:hover{
+    font-weight: bolder;
+}
+
 .back{
     height: 80%;
     width: auto;
@@ -340,6 +368,7 @@ font-size: 1.9rem;
     position: relative;
     display: flex;
     justify-content: center;
+    max-height: 70vh;
 
 }
 .tarjeta-carrousel{
@@ -360,14 +389,20 @@ font-size: 1.9rem;
     padding: 20px;
 }
 .flecha-navegacion{
-    width: 3%;
+    max-width: 100px;
+    width: 10vw;
     height: auto;
     cursor: pointer;
 }
 .img-carrousel{
-    width: 50%;
+    max-width: 500px;
+    width: 70%;
     height: auto;
+    max-height: 68vh;
 
+}
+#galeriaCompleta{
+    height: 80vh;
 }
 
 /*DETAIL*/
@@ -400,7 +435,6 @@ font-size: 1.9rem;
     
 }
 
-
 .inputs input, select{
     width: 80%;
     font-size: 1rem;
@@ -413,11 +447,11 @@ font-size: 1.9rem;
     padding-left: 0.3rem;
 }
 
-.registrar, .registrar-usuario{
+.registrar, .registrar-usuario, .listado-productos{
     flex:1;
     display: flex;
     flex-direction:column;
-    height: calc(100vh - 10vh - 3rem - 16px);
+    min-height: calc(100vh - 10vh - 3rem - 16px);
     
 }
 .registrar h2{
@@ -467,7 +501,9 @@ font-size: 1.9rem;
   .image-container:hover .remove-icon {
     opacity: 1;
   }
-
+.input-user-card input{
+    padding-left: 0.5rem;
+}
 .registrar input, select{
     margin-left: 1rem;
     border-radius: 0.5rem;
@@ -515,7 +551,7 @@ font-size: 1.9rem;
     align-items: center;
     border-radius: 5px;
     box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.4);
-    background-color: var(--color-blanco);
+    background-color: var(--color-gris2);
 }
 .input-user-card form{
     display: flex;
@@ -542,42 +578,60 @@ border-radius:20px;
 }
 .login-text, .registrarse{
     display:inline;
-    margin: 50px,10px;
+    margin: 2rem 0.5rem;
 }
 .registrar-usuario form input{
    width: 90%;
    margin-left: 5%;
+   border: none;
+   height: 2rem;
+   border-radius: 6px;
   }
+  .registrar-usuario form div input{
+    padding-left: 0.5rem;
+}
   .registrar-usuario form h2{
     text-align: center;
+  }
+  .registrar-usuario form h3, .listado-productos h3{
+   text-align: center;
+   font-weight: lighter;
+   margin: 0;
+  }
+  .registrar-usuario form a, .registrarse{
+    display: inline-block;
+    color: var(--color-verde2);
     
-   }
+  }
+  .registrar-usuario form a:hover, .registrarse:hover{
+    color: var(--color-verde2);
+    font-weight: bold;
+  }
   .password-input-wrapper {
     position: relative;
     margin-bottom: 20px;
-    
+    width: 100%;
   }
-  
-   
-  .password-input-wrapper input {
-    
-    
+  #password{
+    width: 80%;
+    border-radius: 6px 0 0 6px;
   }
-  
   .toggle-password-button {
-    position: absolute;
-    left: 20rem;
-    top: 1.4rem; /* Ajusta según sea necesario para alinear el botón */
-    background: none;
+    background: white;
     border: none;
     cursor: pointer;
+    width: 10%;
+    height: 2rem;
+    border-radius: 0 6px 6px 0;
   }
   .registrar-usuario form{
     display: flex;
     flex-direction: column;
-    width: 40%;
-    background-color: yellowgreen;
-    height:80%;
+    width: 60%;
+    background-color: var(--color-gris2);
+    height:fit-content;
+    border-radius: 2rem;
+    
   }
   .registrar-usuario form label{
     display: block;
@@ -587,9 +641,47 @@ border-radius:20px;
 .registrar-usuario{
     justify-content: center;
     align-items: center;
-   
+    
+}
+.registrar-usuario button:nth-last-child(2){
+    background-color: var(--color-verde2);
+    width: 50%;
+    border: none;
+    height: 2rem;
+    border-radius: 6px;
+    align-self: center;
+    color: white;
+    font-size: 1.1rem;
+}
+.registrar-usuario button:nth-last-child(2):hover, .login-button:hover{
+    background-color: var(--color-verde1);
+    transition: background-color 0.3s ease-in-out; ;
+    font-weight: bold;
 }
 /* LOGIN Y REGISTRAR USUARIO*/
+
+/*LISTADO DE PRODUCTOS*/
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+  }
+
+  th {
+    background-color: var(--color-verde2);
+    color: white;
+  }
+  .eliminar-producto:hover{
+    color: var(--color-verde1);
+    cursor: pointer;
+  }
 
 @media(max-width:900px){
     .card h3{
@@ -599,14 +691,46 @@ border-radius:20px;
         font-size:1.2rem ;
     }
     .detail-data{
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     #galery-link{
         bottom: -10%;
     }
+    #under-img{
+        flex-direction: column-reverse;
+        margin-top: 2%;
+    }
+    .precio-container{
+        width: 100%;
+        border-left: none;
+        border-bottom: solid 2px var(--color-gris2);
+    }
+    .descripcion-container{
+        margin-top: 1rem;
+        width: fit-content;
+        
+    }
+    .detail-data{
+        width: auto;
+        font-size: 1.2rem;
+    }
 
 }
 @media(max-width:425px){
+    #button-container{
+        margin: 0;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+       
+    }
+    #button-container span{
+        display: none;
+    }
+    #button-container button{
+        font-size: 0.8rem;
+    }
     .logo{
         height: 40%;
         margin-left: 1rem;
@@ -630,6 +754,9 @@ border-radius:20px;
         padding: 15px;
         grid-template-columns: 50% 50% ;
 
+    }
+    #galery-link{
+        font-size: 1rem;
     }
     #h2-cat, #recomendados h2{
         text-align: center;
@@ -659,20 +786,32 @@ border-radius:20px;
         display: none;
     }
     .detail-data{
-        font-size: 1.2rem;
+        font-size: 1rem;
+        width: 100%;
     }
-    .registrar, header, .footer{
-        display:none
+    .input-user-card{
+        width:80vw
     }
+    .footer h3{
+        font-size: 0.9rem;
+    }  
+    .footer-Items img{
+        height: 40%; 
+        
+     }
     .mensaje-resolucion{
+        position: absolute;
+        top: 0;
+        background-color: #fff;
         display:flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100vw;
-        height: 100vh;
+        min-width: 100vw;
+        min-height: 100vh;
         text-align: center;
         font-size:1rem ;
+        z-index: 10556;
     }
     .mensaje-resolucion img{
         width: 60vw;
