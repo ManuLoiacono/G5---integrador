@@ -314,13 +314,34 @@ border-radius: 3px;
     position: relative;
 }
 .detail-data{
-margin-left: 10%;
-font-size: 1.9rem;
-
+width: 70%;
+font-size: 1.4rem;
+margin:  0 0 0 5%;
+}
+.precio{
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 0.5rem 0;
+}
+.precio-container h4{
+    margin: 0;
+}
+.precio-container{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    text-align: center;
+    border-left: solid 2px var(--color-gris2) ;
+    align-items: center;
+    justify-content: center;
+}
+.descripcion-container h4{
+    margin:  0 0 0 5%;
+    
 }
 #under-img{
     display:flex;
-    flex-direction:column ;
+    flex-direction:row ;
 
 }
 #galery-link{
@@ -328,8 +349,12 @@ font-size: 1.9rem;
     position: absolute;
     right: 5%;
     bottom: 0%;
-
+    color: var(--color-verde2);
 }
+#galery-link:hover{
+    font-weight: bolder;
+}
+
 .back{
     height: 80%;
     width: auto;
