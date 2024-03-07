@@ -98,10 +98,10 @@ header ul span{
 /*FOOTER*/
 .home{
     background-color: var(--color-gris2);
-    
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    flex-direction: column;
 }
 /*BUSCADOR*/
 .buscador{
@@ -457,7 +457,7 @@ padding:  0 0 0 5%;
     padding-left: 0.3rem;
 }
 
-.registrar, .registrar-usuario, .listado-productos, .galeria{
+.registrar, .registrar-usuario, .listado-productos, .galery{
     flex:1;
     display: flex;
     flex-direction:column;

@@ -53,7 +53,7 @@ function Galery(){
 
     return(
       
-        <div className="galeria" id="galeriaCompleta">
+        <div className="galery" id="galeriaCompleta">
           <div  id="detail-header"><h2 id="detail-header-name" className="detail-header-item">{productoMuestra.nombreProd}</h2>   <img src={imgFlecha} className="back" onClick={() => (navigate(-1))}></img> </div>
           <div className="cont-items-carrousel">
             <section className="carrousel">
