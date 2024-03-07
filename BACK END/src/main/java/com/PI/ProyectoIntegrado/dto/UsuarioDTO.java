@@ -3,9 +3,10 @@ package com.PI.ProyectoIntegrado.dto;
 public class UsuarioDTO {
 
     private Integer idUsuario;
+    //private String user;
     private String nombreUsuario;
     private String apellidoUsuario;
-    private Long numTelefono;
+    private Integer numTelefono;
     private String email;
     private String password;
 
@@ -13,7 +14,8 @@ public class UsuarioDTO {
     public UsuarioDTO() {
     }
 
-    public UsuarioDTO(String nombreUsuario, String apellidoUsuario, Long numTelefono, String email, String password) {
+    public UsuarioDTO(String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password) {
+
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
         this.numTelefono = numTelefono;
@@ -21,7 +23,7 @@ public class UsuarioDTO {
         this.password = password;
     }
 
-    public UsuarioDTO(Integer idUsuario, String nombreUsuario, String apellidoUsuario, Long numTelefono, String email, String password) {
+    public UsuarioDTO(Integer idUsuario, String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
@@ -54,11 +56,11 @@ public class UsuarioDTO {
         this.apellidoUsuario = apellidoUsuario;
     }
 
-    public Long getNumTelefono() {
+    public Integer getNumTelefono() {
         return numTelefono;
     }
 
-    public void setNumTelefono(Long numTelefono) {
+    public void setNumTelefono(Integer numTelefono) {
         this.numTelefono = numTelefono;
     }
 
@@ -77,4 +79,6 @@ public class UsuarioDTO {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }

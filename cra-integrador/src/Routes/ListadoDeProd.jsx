@@ -37,7 +37,7 @@ const ListadoDeProd = () => {
       }
     };
 
-   // fetchData();
+    fetchData();
   }, []);
     const productoMuestra = [
       {
@@ -75,14 +75,15 @@ const ListadoDeProd = () => {
           </tr>
         </thead>
         <tbody>
-        {productoMuestra.map(producto => (
-                <tr key={producto.id}>
-                  <td>{producto.id}</td>
+        {productos.map(producto => (
+                <tr key={producto.idProducto}>
+                  <td>{producto.idProducto}</td>
                   <td>{producto.nombreProd}</td>
-                  <td>{producto.categoria}</td>
+                  <td>{producto.categoria.nombreCategoria}</td>
                   <td>{producto.precioProd}</td>
-                  <td>{producto.descripcion}</td>
-                  <td>{producto.img.length}</td>
+                  <td>{producto.descripcionProd}</td>
+                  <td>{5}</td>
+                  {/*<td>{producto.img.length}</td>*/}
                   <td>
                     <FontAwesomeIcon className='eliminar-producto' icon={faTrash} />
                   </td>

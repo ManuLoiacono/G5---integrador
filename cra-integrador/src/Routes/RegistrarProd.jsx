@@ -32,7 +32,7 @@ const RegistrarProd = () => {
 
 
     let categorias=[
-      { id : 5,
+      { id : 1,
      nombre:"Carpas"
     },
       { id : 2,
@@ -108,13 +108,14 @@ const RegistrarProd = () => {
         toastError('Ingrese una descripción');
       } else if (descripcion.length < 10) {
         toastError('La descripción debe tener al menos 10 caracteres');
-      } else if (selectedImages.length === 0) {
-        toastError('Ingrese al menos una imágen');
-      } else {
+      } //else if (selectedImages.length === 0) {
+        //toastError('Ingrese al menos una imágen');
+      //} 
+      else {
 
-        try{
+        //try{
         
-          const nuevoProducto = await fetchProductoNuevo ({
+          const nuevoProducto = ({
           nombreProd: nombreProd,
           descripcionProd: descripcion,
           precioProd: precio,
@@ -123,7 +124,7 @@ const RegistrarProd = () => {
           }
         });
 
-        if(nuevoProducto == 400){
+        /*if(nuevoProducto == 400){
           console.log("Ya existe un producto con ese nombre");
           return;
         } else {
@@ -134,18 +135,18 @@ const RegistrarProd = () => {
               id: Number(nuevoProducto)
             }
           });
-        }
+        }*/
 
-      setProductoAgregado(nuevoProducto);
+      
 
-      }catch (error) {
-        console.error("Error al procesar la solicitud:", error);
+      //}catch (error) {
+        //console.error("Error al procesar la solicitud:", error);
       
         // Manejo genérico de errores
-        console.error("Ocurrió un error inesperado. Consulta la consola para obtener más detalles.");
+        //console.error("Ocurrió un error inesperado. Consulta la consola para obtener más detalles.");
       
         // Aquí puedes realizar otras acciones según tus necesidades, como mostrar un mensaje al usuario, enviar logs a un servidor, etc.
-      }
+      //}
         
         
     
@@ -176,6 +177,10 @@ const RegistrarProd = () => {
             });
         }
 
+        setProductoAgregado(nuevoProducto);
+        fetchProductoNuevo(nuevoProducto);
+
+
         const fetchCargarImagen = (imagen) => {
           const url = `http://localhost:3001/imagen`;
           const settings = {
@@ -199,6 +204,8 @@ const RegistrarProd = () => {
         }
       }
     };
+
+
     
     
     useEffect(() => {

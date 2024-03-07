@@ -18,6 +18,11 @@ public class Usuario {
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     private Integer idUsuario;
+
+    /*@NotNull
+    @Column
+    private String user;
+*/
     @NotNull
     @Column
     private String nombreUsuario;
@@ -26,7 +31,7 @@ public class Usuario {
     private String apellidoUsuario;
     @NotNull
     @Column
-    private Long numTelefono;
+    private Integer numTelefono;
     @NotNull
     @Column
     private String email;
@@ -48,7 +53,18 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario, String nombreUsuario, String apellidoUsuario, Long numTelefono, String email, String password, UserRol userRol, Set<Reserva> reservas) {
+    public Usuario(String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password, UserRol userRol, Set<Reserva> reservas) {
+
+        this.nombreUsuario = nombreUsuario;
+        this.apellidoUsuario = apellidoUsuario;
+        this.numTelefono = numTelefono;
+        this.email = email;
+        this.password = password;
+        this.userRol = userRol;
+        this.reservas = reservas;
+    }
+
+    public Usuario(Integer idUsuario, String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password, UserRol userRol, Set<Reserva> reservas) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
@@ -83,11 +99,11 @@ public class Usuario {
         this.apellidoUsuario = apellidoUsuario;
     }
 
-    public Long getNumTelefono() {
+    public Integer getNumTelefono() {
         return numTelefono;
     }
 
-    public void setNumTelefono(Long numTelefono) {
+    public void setNumTelefono(Integer numTelefono) {
         this.numTelefono = numTelefono;
     }
 
@@ -122,4 +138,5 @@ public class Usuario {
     public void setUserRol(UserRol userRol) {
         this.userRol = userRol;
     }
+
 }

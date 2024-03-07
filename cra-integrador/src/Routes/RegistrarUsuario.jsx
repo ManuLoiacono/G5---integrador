@@ -36,7 +36,7 @@ function RegistrarUsuario(){
     } 
     toastSuccess('El usuario ' + newUser.userName + ' ha sido creado');
     console.log('Usuario creado:', newUser);
-    const url = `http://localhost:3001/Users`;
+    const url = `http://localhost:3001/Usuario`;
     const settings = {
       method: 'POST',
       headers: {
