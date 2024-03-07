@@ -3,7 +3,8 @@ import Categorias from '../components/Categorias';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toastError, toastSuccess } from '../components/utils/Notificaciones'
-import image from '../img/TERRA_RENT_resol.png'
+import MensajeResolucion from '../components/MensajeResolucion.jsx'
+
 import { json } from 'react-router-dom';
 import AWS from 'aws-sdk';
 import { promisify } from "util"
@@ -359,10 +360,7 @@ const RegistrarProd = () => {
           </form>
           </div>
         </div>
-        <div className='mensaje-resolucion'>
-            <img src={image} alt="" />
-            <h2>Acceder desde un dispositivo compatible.</h2>
-        </div>
+       <MensajeResolucion/>
       </>
     );
   };

@@ -644,6 +644,10 @@ table {
     background-color: var(--color-verde2);
     color: white;
   }
+  .eliminar-producto:hover{
+    color: var(--color-verde1);
+    cursor: pointer;
+  }
 
 @media(max-width:900px){
     .card h3{
@@ -724,8 +728,8 @@ table {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100vw;
-        height: 100vh;
+        min-width: 100vw;
+        min-height: 100vh;
         text-align: center;
         font-size:1rem ;
         z-index: 10556;
