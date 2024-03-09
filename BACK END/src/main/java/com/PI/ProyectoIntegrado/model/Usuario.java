@@ -13,33 +13,31 @@ import java.util.Set;
 @Table(name="Usuarios")
 public class Usuario {
 
-    @NotNull
+
     @Id
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     private Integer idUsuario;
 
-    /*@NotNull
     @Column
-    private String user;
-*/
-    @NotNull
+    private String username;
+
     @Column
     private String nombreUsuario;
-    @NotNull
+
     @Column
     private String apellidoUsuario;
-    @NotNull
+
     @Column
     private Integer numTelefono;
-    @NotNull
+
     @Column
     private String email;
-    @NotNull
+
     @Column
     private String password;
 
-    @NotNull
+
     @Column
     @Enumerated(EnumType.STRING)
     private UserRol userRol;
@@ -48,13 +46,12 @@ public class Usuario {
     private Set<Reserva> reservas;
 
 
-
-
     public Usuario() {
     }
 
-    public Usuario(String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password, UserRol userRol, Set<Reserva> reservas) {
-
+    public Usuario(Integer idUsuario, String username, String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password, UserRol userRol, Set<Reserva> reservas) {
+        this.idUsuario = idUsuario;
+        this.username = username;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
         this.numTelefono = numTelefono;
@@ -64,8 +61,8 @@ public class Usuario {
         this.reservas = reservas;
     }
 
-    public Usuario(Integer idUsuario, String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password, UserRol userRol, Set<Reserva> reservas) {
-        this.idUsuario = idUsuario;
+    public Usuario(String username, String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password, UserRol userRol, Set<Reserva> reservas) {
+        this.username = username;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
         this.numTelefono = numTelefono;
@@ -139,4 +136,11 @@ public class Usuario {
         this.userRol = userRol;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

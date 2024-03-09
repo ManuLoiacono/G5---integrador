@@ -3,7 +3,8 @@ package com.PI.ProyectoIntegrado.dto;
 public class UsuarioDTO {
 
     private Integer idUsuario;
-    //private String user;
+
+    private String username;
     private String nombreUsuario;
     private String apellidoUsuario;
     private Integer numTelefono;
@@ -14,8 +15,9 @@ public class UsuarioDTO {
     public UsuarioDTO() {
     }
 
-    public UsuarioDTO(String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password) {
-
+    public UsuarioDTO(Integer idUsuario, String username, String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password) {
+        this.idUsuario = idUsuario;
+        this.username = username;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
         this.numTelefono = numTelefono;
@@ -23,8 +25,8 @@ public class UsuarioDTO {
         this.password = password;
     }
 
-    public UsuarioDTO(Integer idUsuario, String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password) {
-        this.idUsuario = idUsuario;
+    public UsuarioDTO(String username, String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password) {
+        this.username = username;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
         this.numTelefono = numTelefono;
@@ -80,5 +82,11 @@ public class UsuarioDTO {
         this.password = password;
     }
 
+    public String getUsername() {
+        return username;
+    }
 
+    public void setUsername(String user) {
+        this.username = username;
+    }
 }
