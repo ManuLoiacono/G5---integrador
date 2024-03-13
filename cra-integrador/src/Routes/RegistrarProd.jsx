@@ -233,10 +233,10 @@ const RegistrarProd = () => {
                   setCategoria(e.target.value);
                   }}>
                    <option value='0'>Selecciona una categoria</option>
-            {categorias.map((cat, index) => (
-              <option key={index} value={cat.id}>
-                {cat.nombre}
-              </option>
+                    {categorias.map((cat, index) => (
+                    <option key={index} value={cat.id}>
+                      {cat.nombre}
+                    </option>
             ))}
             </select>
             </div>
