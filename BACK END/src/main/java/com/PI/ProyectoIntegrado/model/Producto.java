@@ -1,5 +1,7 @@
 package com.PI.ProyectoIntegrado.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -28,8 +30,12 @@ public class Producto {
     private String descripcionProd;
 
 
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Imagen> imagenes = new HashSet<>();
+
+
+
     @OneToMany(mappedBy = "producto")
     private Set<Reserva> reservas;
 
