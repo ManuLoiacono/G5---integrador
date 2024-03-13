@@ -7,7 +7,7 @@ import java.util.Set;
 
 public interface IProductoService {
 
-    void agregarProducto(ProductoDTO productoDTO);
+    Producto agregarProducto(ProductoDTO productoDTO);
     void eliminarProducto(Integer idProducto);
     Producto listarUnProducto(Integer idProducto);
 

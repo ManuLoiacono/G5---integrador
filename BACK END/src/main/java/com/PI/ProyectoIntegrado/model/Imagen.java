@@ -2,6 +2,9 @@ package com.PI.ProyectoIntegrado.model;
 
 
 import com.PI.ProyectoIntegrado.dto.ProductoDTO;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,8 +30,9 @@ public class Imagen {
     private List<String> imgPath;
     @NotNull
     @ManyToOne
-    @JsonIgnore
+    @JsonBackReference
     @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
+    @JsonProperty("producto")
     private Producto producto;
 
 

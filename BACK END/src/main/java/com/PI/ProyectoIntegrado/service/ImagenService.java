@@ -7,6 +7,7 @@ import com.PI.ProyectoIntegrado.repository.IImagenRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
@@ -67,10 +68,11 @@ public class ImagenService implements IImagenService {
     @Override
     public void guardarImagen(Imagen imagen) {
 
-        Integer productoId = imagen.getProducto().getIdProducto();
-        Producto producto = productoService.listarUnProducto(productoId);
-        //String bucketName = "imagenesterrarent";
+        //System.out.println("null?: " + imagen.getProducto());
 
+
+        Integer productoId = imagen.getProducto().getIdProducto();
+        Producto product = productoService.listarUnProducto(productoId);
 
         List<String> base64Images = imagen.getImgPath() != null ? imagen.getImgPath() : Collections.emptyList();
         String altText = imagen.getTitulo() != null ? imagen.getTitulo() : "img";
@@ -93,7 +95,7 @@ public class ImagenService implements IImagenService {
             Imagen imagenNueva = new Imagen();
             imagenNueva.setTitulo(altText);
             imagenNueva.setUrlimg("https://imagenesterrarent.s3.us-east-2.amazonaws.com/" + keyName);
-            imagenNueva.setProducto(producto);
+            imagenNueva.setProducto(product);
             imagenRepository.save(imagenNueva);
 
             if(!doesObjectExists(imagen)){
@@ -107,7 +109,7 @@ public class ImagenService implements IImagenService {
                     .build();
 
             // Realiza la carga del objeto
-            s3Client.putObject(putObjectRequest, RequestBody.fromBytes(file.getPath().getBytes()));
+            s3Client.putObject(putObjectRequest, RequestBody.fromFile(file));
 
             System.out.println("Imagen cargada exitosamente a S3.");
 

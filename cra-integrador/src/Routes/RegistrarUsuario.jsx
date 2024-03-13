@@ -6,11 +6,11 @@ import { toastError, toastSuccess } from '../components/utils/Notificaciones'
 function RegistrarUsuario(){
   const navigate = useNavigate();
   const [newUser, setNewUser] = useState({
-    userName:'',
-    nombre:'',
-    apellido:'',
-    telefono:'',
-    mail:'',
+    username:'',
+    nombreUsuario:'',
+    apellidoUsuario:'',
+    numTelefono:'',
+    email:'',
     password:'',
   });
   const handleInputChange = (fieldName, value) => {
@@ -22,19 +22,19 @@ function RegistrarUsuario(){
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(newUser.userName.length === 0 || newUser.nombre.length === 0 || newUser.apellido.length === 0 || newUser.telefono.length === 0 || newUser.mail.length === 0 || newUser.password.length === 0 ){
+    if(newUser.username.length === 0 || newUser.nombreUsuario.length === 0 || newUser.apellidoUsuario.length === 0 || newUser.numTelefono.length === 0 || newUser.email.length === 0 || newUser.password.length === 0 ){
       toastError('Complete los campos vacíos ');
       return;
     } 
-    else if(newUser.userName.length <=3){
+    else if(newUser.username.length <=3){
       toastError('El username debe tener al menos 4 caracteres');
       return;
     } 
-    else if(newUser.userName.length <=3){
+    else if(newUser.username.length <=3){
       toastError('El username debe tener al menos 4 caracteres');
       return;
     } 
-    toastSuccess('El usuario ' + newUser.userName + ' ha sido creado');
+    toastSuccess('El usuario ' + newUser.username + ' ha sido creado');
     console.log('Usuario creado:', newUser);
     const url = `http://localhost:3001/Usuario`;
     const settings = {
@@ -48,11 +48,11 @@ function RegistrarUsuario(){
     fetch(url, settings)
       .then((response) => response.json())
       .then((data) => {
-        toastSuccess('Se cargó el usuario ' + newUser.nombre + ' correctamente');
+        toastSuccess('Se cargó el usuario ' + newUser.nombreUsuario + ' correctamente');
       })
       .catch((error) => {
-        console.error('Error al cargar el ususario' + newUser.nombre, error);
-        toastError('Error al cargar  el ususario: ' + newUser.nombre);
+        console.error('Error al cargar el ususario' + newUser.nombreUsuario, error);
+        toastError('Error al cargar  el ususario: ' + newUser.nombreUsuario);
         navigate('/');
       })
       .finally(() => {
@@ -80,9 +80,9 @@ function RegistrarUsuario(){
                     className='input-username-usuario'
                     type="text"
                     placeholder="Ingrese username"
-                    value={newUser.userName.trim()}
+                    value={newUser.username.trim()}
                     onChange={(e) => {
-                      handleInputChange('userName', e.target.value)
+                      handleInputChange('username', e.target.value)
                     }}
                 />
               </div>
@@ -93,7 +93,7 @@ function RegistrarUsuario(){
                     type="text"
                     placeholder="Ingrese nombre"
                     onChange={(e) => {
-                      handleInputChange('nombre', e.target.value)
+                      handleInputChange('nombreUsuario', e.target.value)
                     }}
                 />
               </div>
@@ -104,7 +104,7 @@ function RegistrarUsuario(){
                     type="text"
                     placeholder="Ingrese telefono"
                     onChange={(e) => {
-                      handleInputChange('apellido', e.target.value)
+                      handleInputChange('apellidoUsuario', e.target.value)
                     }}
                 />
               </div>
@@ -115,7 +115,7 @@ function RegistrarUsuario(){
                     type="number"
                     placeholder="Ingrese apellido"
                     onChange={(e) => {
-                      handleInputChange('telefono', e.target.value)
+                      handleInputChange('numTelefono', e.target.value)
                     }}
                 />
               </div>
@@ -126,7 +126,7 @@ function RegistrarUsuario(){
                     type="mail"
                     placeholder="Ingrese e-mail"
                     onChange={(e) => {
-                      handleInputChange('mail', e.target.value)
+                      handleInputChange('email', e.target.value)
                     }}
                 />
               </div>
