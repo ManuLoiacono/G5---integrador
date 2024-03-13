@@ -12,6 +12,7 @@ import InicioSesion from './Routes/InicioSesion.jsx'
 import PanelDeControl from './Routes/PanelDeControl.jsx'
 import { ToastContainer, toast } from 'react-toastify';
 import ListadoDeProd from './Routes/ListadoDeProd.jsx';
+import ListadoUsers from './Routes/ListadoUsers.jsx';
 
 function App() {
   const [estaLogueado,setEstaLogueado] = useState(false)
@@ -42,6 +43,7 @@ function cerrarSesion(){
     <Route path='registro-usuario' element={<RegistrarUsuario/>}/>
     <Route path='inicio-sesion' element={<InicioSesion/>}/>
     <Route path='listado-productos' element={<ListadoDeProd/>}/>
+    <Route path='listado-usuarios' element={<ListadoUsers/>}/>
     <Route path='panel-de-control' element={<PanelDeControl/>}/>
   </Routes>
     <Footer/>

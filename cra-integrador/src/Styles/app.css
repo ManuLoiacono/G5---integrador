@@ -164,7 +164,7 @@ header ul span{
 }
 /*BUSCADOR*/
 /*GALERIA DE CATEGORIAS*/
-.galeria, .registrar , .detail, .registrar-usuario, .listado-productos, .panel-de-control{
+.galeria, .registrar , .detail, .registrar-usuario, .listado-productos, .panel-de-control, .listado-usuarios{
     width: 98%;
     margin:8px;
     background-color: var(--color-gris1);
@@ -457,7 +457,7 @@ padding:  0 0 0 5%;
     padding-left: 0.3rem;
 }
 
-.registrar, .registrar-usuario, .listado-productos, .galery{
+.registrar, .registrar-usuario, .listado-productos,.listado-usuarios, .galery {
     flex:1;
     display: flex;
     flex-direction:column;
@@ -553,14 +553,14 @@ padding:  0 0 0 5%;
 
 .input-user-card-container{
     width: 100%;
-    height: 84vh;
+    min-height: calc(100vh - 10vh - 3rem);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .input-user-card{
     
-    width: 350px;
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -572,6 +572,8 @@ padding:  0 0 0 5%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    width: 70%;
 }
 .login-text-container{
     display: flex;
@@ -580,7 +582,7 @@ padding:  0 0 0 5%;
 
 .login-input, .login-button{
 margin: 10px;
-width: 200px;
+width: 100%;
 height: 30px;
 border:1px rgb(170, 170, 170) solid;
 border-radius:20px;
@@ -608,7 +610,7 @@ border-radius:20px;
   .registrar-usuario form h2{
     text-align: center;
   }
-  .registrar-usuario form h3, .listado-productos h3{
+  .registrar-usuario form h3, .listado-productos h3 .listado-usuarios h3{
    text-align: center;
    font-weight: lighter;
    margin: 0;
@@ -693,7 +695,7 @@ table {
     background-color: var(--color-verde2);
     color: white;
   }
-  .eliminar-producto:hover{
+  .eliminar-producto:hover,.eliminar-usuario:hover{
     color: var(--color-verde1);
     cursor: pointer;
   }
@@ -757,6 +759,47 @@ table {
         font-size: 1.2rem;
     }
 
+}
+/*LISTADO USUARIOS*/
+.tipo-usuario{
+    display: flex;
+}
+.tipo-usuario select{
+    margin-right: 0.5rem;
+}
+.tipo-usuario button{
+    color: white;
+    background-color: var(--color-verde2);
+    border: none;
+    border-radius: 0.2rem;
+}
+.tipo-usuario button:hover{
+    
+    background-color: var(--color-verde1);
+    
+
+}
+@media(max-width:768px){
+    .listado-usuarios + .mensaje-resolucion{
+        position: absolute;
+        top: 0;
+        background-color: #fff;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-width: 100vw;
+        min-height: 100vh;
+        text-align: center;
+        font-size:1rem ;
+        z-index: 10556;
+    }
+    .listado-usuarios + .mensaje-resolucion img{
+        width: 60vw;
+    }
+    .listado-usuarios{
+        display: none;
+    }
 }
 @media(max-width:480px){
     #button-container{
