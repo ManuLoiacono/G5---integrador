@@ -4,6 +4,7 @@ import Categorias from "../components/Categorias";
 import Header from "../components/Header";
 import Recomendados from "../components/Recomendados";
 import style from "../Styles/app.css";
+import 'react-calendar/dist/Calendar.css';
 
 function Home() {
     

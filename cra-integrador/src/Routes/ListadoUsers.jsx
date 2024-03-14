@@ -30,7 +30,7 @@ const ListadoUsers = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `http://localhost:3001/Users`;
+        const url = `http://localhost:3001/Usuario`;
         const settings = {
           method: 'GET',
           mode: 'cors'

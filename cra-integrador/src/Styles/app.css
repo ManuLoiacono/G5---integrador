@@ -727,6 +727,11 @@ table {
 }
 
 /*PANEL DE CONTROL*/
+
+.react-calendar {
+    background: var(--color-verde2);
+}
+
 @media(max-width:900px){
     .card h3{
         font-size:1.2rem ;
@@ -775,7 +780,7 @@ table {
 }
 .tipo-usuario button:hover{
     
-    background-color: var(--color-verde1);
+    background-color: var(--color-verde2);
     
 
 }
