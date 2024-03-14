@@ -46,11 +46,12 @@ const RegistrarProd = () => {
     { id : 4,
      nombre:"Senderismo",
     }]
+
    
 
   const handleImageChange = async (event) => {
     const files = Array.from(event.target.files);
-    const imagenes = new Array ();
+    const imagenes = [];
 
     Promise.all(
       files.map((file) => {
@@ -60,6 +61,7 @@ const RegistrarProd = () => {
           reader.onload = () => {
             const base64String = reader.result.split(",")[1];
             imagenes.push(base64String);
+            //console.log(imagenes);
             resolve(imagenes);
           };
           reader.onerror = (error) => reject(error);
@@ -67,9 +69,11 @@ const RegistrarProd = () => {
       })
     ).then(() => {
       console.log("Imagenes convertidas a base64:", imagenes);
-      setImagenes(imagenes.length === 0 ? [] : imagenes);
+      if(imagenes.length !== 0){
+        console.log("entro")
+        setImagenes([...Imagenes, ...imagenes]);
+      }
       console.log("Estado de imagenes actualizado:", imagenes.length);
-
       setSelectedImages([...selectedImages, ...files]);
 
     });
@@ -140,6 +144,8 @@ const RegistrarProd = () => {
           }
         };
 
+
+        console.log(Imagenes);
 
         const fetchCargarImagen = async (imagen) => {
           console.log(JSON.stringify(imagen.producto));
