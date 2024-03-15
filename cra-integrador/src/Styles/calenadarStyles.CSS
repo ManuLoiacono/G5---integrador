@@ -1,0 +1,6 @@
+@import './variables.css';
+
+.react-calendar {
+    background: var(--color-amarillo);
+   
+  }

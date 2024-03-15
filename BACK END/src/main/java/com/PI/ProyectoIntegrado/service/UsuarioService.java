@@ -55,4 +55,10 @@ public class UsuarioService implements IUsuarioService {
 
         return usuariosDTO;
     }
+
+    @Override
+    public void modificarUsuario(UsuarioDTO usuarioDTO) {
+        Usuario usuario = mapper.convertValue(usuarioDTO, Usuario.class);
+        usuarioRepository.save(usuario);
+    }
 }

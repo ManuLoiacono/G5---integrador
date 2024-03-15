@@ -11,12 +11,12 @@ function InicioSesion(){
       
         const userData = {
           email,
-          password,
+          password
         };
       
         try {
           const response = await fetch('/api/login', {
-            method: 'POST',
+            method: 'GET',
             headers: {
               'Content-Type': 'application/json',
             },

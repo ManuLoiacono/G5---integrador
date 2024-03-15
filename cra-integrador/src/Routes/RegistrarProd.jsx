@@ -19,6 +19,8 @@ const RegistrarProd = () => {
     const [categoria, setCategoria] = useState('');
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [Imagenes, setImagenes] = useState([]);
+    //const [idP, setIdP] = useState([]);
+
 
 
     const resetForm = () => {
@@ -27,6 +29,7 @@ const RegistrarProd = () => {
       setSelectedImages([]);
       setPrecio('');
       setCategoria('');
+      setImagenes([]);
       // Reset other form fields as needed
     };
 
@@ -44,35 +47,38 @@ const RegistrarProd = () => {
     { id : 4,
      nombre:"Senderismo",
     }]
+
    
 
+  const handleImageChange = async (event) => {
+    const files = Array.from(event.target.files);
+    const imagenes = [];
 
-    const handleImageChange = async (event) => {
-        const files = Array.from(event.target.files);
-        const imagenes = new Array ();
-
-        Promise.all(
-          files.map((file) => {
-            return new Promise((resolve, reject) => {
-              const reader = new FileReader();
-              reader.readAsDataURL(file);
-              reader.onload = () => {
-                const base64String = reader.result.split(",")[1];
-                imagenes.push(base64String);
-                resolve(imagenes);
-              };
-              reader.onerror = (error) => reject(error);
-            });
-          })
-        ).then(() => {
-          console.log("Imagenes convertidas a base64:", imagenes);
-          setImagenes(imagenes.length === 0 ? [] : imagenes);
-          console.log("Estado de imagenes actualizado:", imagenes.length);
+    Promise.all(
+      files.map((file) => {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => {
+            const base64String = reader.result.split(",")[1];
+            imagenes.push(base64String);
+            //console.log(imagenes);
+            resolve(imagenes);
+          };
+          reader.onerror = (error) => reject(error);
         });
-    };
+      })
+    ).then(() => {
+      console.log("Imagenes convertidas a base64:", imagenes);
+      if(imagenes.length !== 0){
+        console.log("entro")
+        setImagenes([...Imagenes, ...imagenes]);
+      }
+      console.log("Estado de imagenes actualizado:", imagenes.length);
+      setSelectedImages([...selectedImages, ...files]);
 
-
-
+    });
+};
 
     const handleDrop = (e) => {
       e.preventDefault();
@@ -108,81 +114,43 @@ const RegistrarProd = () => {
         toastError('Ingrese una descripción');
       } else if (descripcion.length < 10) {
         toastError('La descripción debe tener al menos 10 caracteres');
-      } //else if (selectedImages.length === 0) {
-        //toastError('Ingrese al menos una imágen');
-      //} 
+      } else if (selectedImages.length === 0) {
+        toastError('Ingrese al menos una imágen');
+      } 
       else {
-
-        //try{
         
-          const nuevoProducto = ({
-          nombreProd: nombreProd,
-          descripcionProd: descripcion,
-          precioProd: precio,
-          categoria: {
-            idCategoria: categoria
-          }
-        });
 
-        /*if(nuevoProducto == 400){
-          console.log("Ya existe un producto con ese nombre");
-          return;
-        } else {
-          await fetchCargarImagen({
-            imgPath: Imagenes,
-            altText: "Img",
-            producto: {
-              id: Number(nuevoProducto)
-            }
-          });
-        }*/
-
-      
-
-      //}catch (error) {
-        //console.error("Error al procesar la solicitud:", error);
-      
-        // Manejo genérico de errores
-        //console.error("Ocurrió un error inesperado. Consulta la consola para obtener más detalles.");
-      
-        // Aquí puedes realizar otras acciones según tus necesidades, como mostrar un mensaje al usuario, enviar logs a un servidor, etc.
-      //}
-        
-        
-    
-        
-      //window.scrollTo(0, 0);  
-        const fetchProductoNuevo = (nuevoProducto) => {
-          const url = `http://localhost:3001/Producto`;
+        const fetchProductoNuevo = async (p) => {
+          
+          const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/Producto`;
           const settings = {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(nuevoProducto)
+            body: JSON.stringify(p)
           };
       
-          fetch(url, settings)
-            .then((response) => response.json())
-            .then((data) => {
-              toastSuccess('Se cargó el producto ' + nombreProd + ' correctamente');
-              resetForm();
-            })
-            .catch((error) => {
-              console.error('Error al cargar detalles del producto' + nombreProd, error);
-              toastError('Error al cargar detalles del producto: ' + nombreProd);
-            })
-            .finally(() => {
-              setFormSubmitted(true);
-            });
-        }
-
-        setProductoAgregado(nuevoProducto);
-        fetchProductoNuevo(nuevoProducto);
+          try {
+            const response = await fetch(url, settings);
+        
+            const data = await response.json();
+            console.log(JSON.stringify(data));
+            resetForm();
+            return data;
+          } catch (error) {
+            console.error('Error al procesar la respuesta:', error);
+            toastError('Ocurrió un error inesperado al procesar la respuesta del servidor.');
+            return null;
+          }
+        };
 
 
-        const fetchCargarImagen = (imagen) => {
-          const url = `http://localhost:3001/imagen`;
+        console.log(Imagenes);
+
+        const fetchCargarImagen = async (imagen) => {
+          console.log(JSON.stringify(imagen.producto));
+          const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/imagen/uploadImageToS3`;
           const settings = {
             method: 'POST',
             headers: {
@@ -190,24 +158,57 @@ const RegistrarProd = () => {
             },
             body: JSON.stringify(imagen)
           };
-          fetch(url, settings)
+          await fetch(url, settings)
             .then((response) => response.json())
             .then((data) => {
               console.log("Se cargo la imagen")
-              //toastSuccess('Se cargó el producto ' + nombreProd + ' correctamente');
-              //resetForm();
+              
             })
             .catch((error) => {
               console.error('Error al cargar');
-              //toastError('Error al cargar detalles del producto: ' + nombreProd);
             })
+        } 
+        
+        
+        try {
+          const nuevoProducto = {
+            nombreProd: nombreProd,
+            descripcionProd: descripcion,
+            precioProd: precio,
+            categoria: {
+              idCategoria: categoria
+            }
+          };
+      
+          const responseProducto = await fetchProductoNuevo(nuevoProducto);
+          console.log(responseProducto);
+          if (responseProducto != null) {
+            const idProducto = await responseProducto;
+            const imagenCargar = {
+              titulo: "Img",
+              urlimg: "",
+              imgPath: Imagenes,
+              producto: {
+                idProducto: idProducto.idProducto
+              }
+            };
+    
+            const responseImagen = await fetchCargarImagen(imagenCargar);
+          
+          } else {
+            console.error("Error al cargar el producto");
+            toastError('Error al cargar el producto: ' + nombreProd);
+          }
+        } catch (error) {
+          console.error('Error general:', error);
+          toastError('Ocurrió un error inesperado. Consulta la consola para obtener más detalles.');
+        } finally {
+          setFormSubmitted(true);
         }
+    
       }
     };
 
-
-    
-    
     useEffect(() => {
       if (formSubmitted) {
         setFormSubmitted(false);
@@ -239,10 +240,10 @@ const RegistrarProd = () => {
                   setCategoria(e.target.value);
                   }}>
                    <option value='0'>Selecciona una categoria</option>
-            {categorias.map((cat, index) => (
-              <option key={index} value={cat.id}>
-                {cat.nombre}
-              </option>
+                    {categorias.map((cat, index) => (
+                    <option key={index} value={cat.id}>
+                      {cat.nombre}
+                    </option>
             ))}
             </select>
             </div>
@@ -285,7 +286,7 @@ const RegistrarProd = () => {
                   ))}
                 </div>  
               </div>
-              <input type="file" onChange={(e) => handleImageChange(e.target.files)} accept="image/*" style={{ display: 'none' }} />
+              <input type="file" onChange={handleImageChange} accept="image/*" style={{ display: 'none' }} />
             </label>
             <button>Agregar producto</button>
           </form>

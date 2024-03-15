@@ -1,6 +1,8 @@
 import React from 'react'
 import style from "../Styles/app.css";
 import lupa from "../img/lupa.png"
+import Calendario from "../components/Calendario";
+//import 'react-calendar/dist/Calendar.css';
 
 const Buscador = () => {
   const handleSubmit = (e) => {

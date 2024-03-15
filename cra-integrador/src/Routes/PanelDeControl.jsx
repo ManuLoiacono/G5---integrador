@@ -8,7 +8,7 @@ function PanelDeControl(){
             <h2>Panel de control</h2>
             <Link to={'/listado-productos'}><button className="boton-panel">Lista de productos</button></Link>
             <Link to={'/registrar'}><button className="boton-panel">Agregar productos</button></Link>
-            <Link to={''}><button className="boton-panel">Asignar administrador</button></Link>
+            <Link to={'/listado-usuarios'}><button className="boton-panel">Lista de Usuarios</button></Link>
             <Link to={''}><button className="boton-panel">Agregar categorias</button></Link>
         </section>
         <MensajeResolucion/>
