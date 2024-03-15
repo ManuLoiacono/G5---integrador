@@ -53,12 +53,26 @@ const ListadoUsers = () => {
 
   }
   
+  const fetchEliminarUsuario = async (del) => {
+    const url = `http://localhost:3001/Usuario/:${del.idUsuario}`;
+
+    console.log(url);
+    const settings = {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(del)
+    };
+    const response = await fetch(url, settings);
+    const data = await response.json();
+  }
+
+
   
   const handleTipoUsuarioChange = async (e) => {
     
-    const modifiedUser = {...e}
-
-
     if(e.userRol === "ADMIN"){
       e.userRol = tipoUsuario[0];
     }else{
@@ -84,7 +98,15 @@ const ListadoUsers = () => {
     toastSuccess("Se modificó el usuario correctamente")
   };
 
-  
+  const handleEliminarUsuario = (del) => { 
+    fetchEliminarUsuario(del);
+
+    const refresh = users.filter(user => user.idUsuario !== del.idUsuario)
+
+    setUsers(refresh);
+
+    toastSuccess("Se modificó el usuario correctamente")
+  }
   
   return (
     <>
@@ -111,16 +133,17 @@ const ListadoUsers = () => {
                   <td>{user.apellidoUsuario}</td>
                   <td>{user.email}</td>
                   <td className='tipo-usuario'>
-                    <select value={user.userRol} onChange={(e) => handleTipoUsuarioChange(user)}>
+                    <select value={user.userRol} onChange={() =>handleTipoUsuarioChange(user)}>
                       <option value={user.userRol}>{user.userRol}</option>
                         <option key={user.userRol} value={user.userRol}>
                           {user.userRol === "ADMIN"? tipoUsuario[0] : tipoUsuario[1]}
                         </option>
-                      
                     </select>
                   </td>
                   <td>
-                    <FontAwesomeIcon className='eliminar-usuario' icon={faTrash} />
+                    <button onClick={() => handleEliminarUsuario(user)}>
+                      <FontAwesomeIcon className='eliminar-usuario' icon={faTrash}/>
+                    </button>
                   </td>
                   
                 </tr>
