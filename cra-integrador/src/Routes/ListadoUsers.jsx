@@ -17,7 +17,7 @@ const ListadoUsers = () => {
     
     const fetchData = async () => {
       try {
-        const url = `http://localhost:3001/Usuario`;
+        const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/Usuario`;
         const settings = {
           method: 'GET',
           mode: 'cors'
@@ -39,7 +39,7 @@ const ListadoUsers = () => {
   
 
   const fetchModificarUsuario = async (mod) => {
-    const url = `http://localhost:3001/Usuario`;
+    const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/Usuario`;
     const settings = {
       method: 'PUT',
       headers: {
@@ -54,7 +54,7 @@ const ListadoUsers = () => {
   }
   
   const fetchEliminarUsuario = async (del) => {
-    const url = `http://localhost:3001/Usuario/:${del.idUsuario}`;
+    const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/Usuario/:${del.idUsuario}`;
 
     console.log(url);
     const settings = {

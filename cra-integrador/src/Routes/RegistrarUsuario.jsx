@@ -12,7 +12,21 @@ function RegistrarUsuario(){
     numTelefono:'',
     email:'',
     password:'',
+    userRol: "USER",
   });
+  const u = {
+      username:'',
+      nombreUsuario:'',
+      apellidoUsuario:'',
+      numTelefono:'',
+      email:'',
+      password:'',
+      userRol: "USER",
+    }
+  const resetForm = () => {
+    setNewUser(u);
+  };
+
   const handleInputChange = (fieldName, value) => {
     setNewUser((prevUser) => ({
       ...prevUser,
@@ -36,7 +50,7 @@ function RegistrarUsuario(){
     } 
     toastSuccess('El usuario ' + newUser.username + ' ha sido creado');
     console.log('Usuario creado:', newUser);
-    const url = `http://localhost:3001/Usuario`;
+    const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/Usuario`;
     const settings = {
       method: 'POST',
       headers: {
@@ -49,6 +63,7 @@ function RegistrarUsuario(){
       .then((response) => response.json())
       .then((data) => {
         toastSuccess('Se cargó el usuario ' + newUser.nombreUsuario + ' correctamente');
+        resetForm();
       })
       .catch((error) => {
         console.error('Error al cargar el ususario' + newUser.nombreUsuario, error);
@@ -92,6 +107,7 @@ function RegistrarUsuario(){
                     className='input-nombre-usuario'
                     type="text"
                     placeholder="Ingrese nombre"
+                    value={newUser.nombreUsuario}
                     onChange={(e) => {
                       handleInputChange('nombreUsuario', e.target.value)
                     }}
@@ -103,6 +119,7 @@ function RegistrarUsuario(){
                     className='input-apellido-usuario'
                     type="text"
                     placeholder="Ingrese telefono"
+                    value={newUser.apellidoUsuario}
                     onChange={(e) => {
                       handleInputChange('apellidoUsuario', e.target.value)
                     }}
@@ -114,6 +131,7 @@ function RegistrarUsuario(){
                     className='input-telefono-usuario'
                     type="number"
                     placeholder="Ingrese apellido"
+                    value={newUser.numTelefono}
                     onChange={(e) => {
                       handleInputChange('numTelefono', e.target.value)
                     }}
@@ -125,6 +143,7 @@ function RegistrarUsuario(){
                     className='input-mail-usuario'
                     type="mail"
                     placeholder="Ingrese e-mail"
+                    value={newUser.email}
                     onChange={(e) => {
                       handleInputChange('email', e.target.value)
                     }}
