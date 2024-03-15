@@ -45,5 +45,11 @@ public class UsuarioController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
+    @PutMapping
+    public ResponseEntity<?> modificarUsuario(@RequestBody UsuarioDTO usuarioDTO){
+        usuarioService.modificarUsuario(usuarioDTO);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
 
 }

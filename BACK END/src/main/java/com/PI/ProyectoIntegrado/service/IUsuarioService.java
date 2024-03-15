@@ -13,5 +13,7 @@ public interface IUsuarioService {
 
     Set<UsuarioDTO> listarUsuarios();
 
+    void modificarUsuario(UsuarioDTO usuarioDTO);
+
 
 }

@@ -9,25 +9,12 @@ const ListadoUsers = () => {
   
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
-  const [usuariosMuestra, setUsuariosMuestra] = useState([
-    {
-      id: 1,
-      username: "User1",
-      nombreUsuario: "Joan Sebastian",
-      apellidoUsuario: "Mastropiero",
-      email: "eljohan@mail.com",
-      tipoUsuario: "ADMIN"
-    },
-    {
-      id: 2,
-      username: "User2",
-      nombreUsuario: "Sebastian",
-      apellidoUsuario: "Vidal",
-      email: "elseba@mail.com",
-      tipoUsuario: "USER"
-    },
-  ]);
+
+  
+  const tipoUsuario = ['USER', 'ADMIN']
+  
   useEffect(() => {
+    
     const fetchData = async () => {
       try {
         const url = `http://localhost:3001/Usuario`;
@@ -39,36 +26,65 @@ const ListadoUsers = () => {
         const response = await fetch(url, settings);
         const data = await response.json();
 
-        console.log(data);
-
-        const longUsers = data.length;
         setUsers(data);
       } catch (error) {
         console.error('Error al obtener listado de Usuarios:', error);
-        /*toastError("Error al obtener listado de Usuarios")*/
         setError(error);
       }
     };
    
     fetchData();
   }, []);
-  const handleTipoUsuarioChange = (e, userId) => {
-    const { value } = e.target;
+  
+  
+
+  const fetchModificarUsuario = async (mod) => {
+    const url = `http://localhost:3001/Usuario`;
+    const settings = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(mod)
+    };
+
+    const response = await fetch(url, settings);
+    const data = await response.json();
+
+  }
+  
+  
+  const handleTipoUsuarioChange = async (e) => {
     
-    const updatedUsers = usuariosMuestra.map(user => {
-      if (user.id === userId) {
-        return { ...user, tipoUsuario: value };
-      }
-      return user;
-    });
-    setUsuariosMuestra(updatedUsers);
+    const modifiedUser = {...e}
+
+
+    if(e.userRol === "ADMIN"){
+      e.userRol = tipoUsuario[0];
+    }else{
+      e.userRol = tipoUsuario[1];
+    }
+
+    const modified = {
+        idUsuario: e.idUsuario,
+        username: e.username,
+        nombreUsuario: e.nombreUsuario,
+        apellidoUsuario: e.apellidoUsuario,
+        numTelefono: e.numTelefono,
+        email: e.email,
+        password: e.password,
+        userRol: e.userRol
+    }
+
+
+    fetchModificarUsuario(modified);
+
+    setUsers(users.map(user => (user.idUsuario === modified.idUsuario ? modified : user)));
+
     toastSuccess("Se modificó el usuario correctamente")
   };
 
-  const tipoUsuario = ['USER', 'ADMIN']
-
-  console.log(usuariosMuestra[0].tipoUsuario);
-  console.log(usuariosMuestra[1].tipoUsuario);
+  
   
   return (
     <>
@@ -87,21 +103,20 @@ const ListadoUsers = () => {
           </tr>
         </thead>
         <tbody>
-        {usuariosMuestra.map(user => (
-                <tr key={user.id}>
-                  <td>{user.id}</td>
+        {users.map(user => (
+                <tr key={user.idUsuario}>
+                  <td>{user.idUsuario}</td>
                   <td>{user.username}</td>
                   <td>{user.nombreUsuario}</td>
                   <td>{user.apellidoUsuario}</td>
                   <td>{user.email}</td>
                   <td className='tipo-usuario'>
-                    <select value={user.tipoUsuario} onChange={(e) => handleTipoUsuarioChange(e, user.id)}>
-                      <option value={user.tipoUsuario}>{user.tipoUsuario}</option>
-                      {tipoUsuario.map((tipo, index) => (
-                        <option key={index} value={tipo}>
-                          {tipo}
+                    <select value={user.userRol} onChange={(e) => handleTipoUsuarioChange(user)}>
+                      <option value={user.userRol}>{user.userRol}</option>
+                        <option key={user.userRol} value={user.userRol}>
+                          {user.userRol === "ADMIN"? tipoUsuario[0] : tipoUsuario[1]}
                         </option>
-                      ))}
+                      
                     </select>
                   </td>
                   <td>
