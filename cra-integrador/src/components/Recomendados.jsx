@@ -1,6 +1,5 @@
 import Card from "./Card";
 import { useState, useEffect } from "react";
-import imgCarpa from '../img/carpa-playera.jpg';
 
 function Galeria() {
   const [productosMostrar, setProductosMostrar] = useState([]);
