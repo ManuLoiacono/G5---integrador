@@ -1,9 +1,7 @@
 package com.PI.ProyectoIntegrado.controller;
 
-import com.PI.ProyectoIntegrado.dto.CategoriaDTO;
-import com.PI.ProyectoIntegrado.model.Caracteristicas;
-import com.PI.ProyectoIntegrado.service.ICaracteristicasService;
-import com.PI.ProyectoIntegrado.service.ICategoriaService;
+import com.PI.ProyectoIntegrado.model.Caracteristica;
+import com.PI.ProyectoIntegrado.service.ICaracteristicaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,25 +15,25 @@ import java.util.Collection;
 public class CaracteristicaController {
 
     @Autowired
-    ICaracteristicasService caracteristicasService;
+    ICaracteristicaService caracteristicasService;
 
     @PostMapping
-    public ResponseEntity<?> crearCaracteristica(@RequestBody Caracteristicas caracteristicas){
+    public ResponseEntity<?> crearCaracteristica(@RequestBody Caracteristica caracteristica){
 
-        caracteristicasService.agregarCaracteristica(caracteristicas);
+        caracteristicasService.agregarCaracteristica(caracteristica);
         return ResponseEntity.ok(HttpStatus.OK);
 
     }
 
     @GetMapping("/:{idCaracteristica}")
-    public Caracteristicas getCaracteristica(@PathVariable Integer idCaracteristica){
+    public Caracteristica getCaracteristica(@PathVariable Integer idCaracteristica){
 
         return caracteristicasService.listarUnaCaracteristica(idCaracteristica);
 
     }
 
     @GetMapping
-    public Collection<Caracteristicas> getTodasCaracteristicas(){
+    public Collection<Caracteristica> getTodasCaracteristicas(){
         return caracteristicasService.listarCaracteristicas();
     }
 

@@ -1,6 +1,5 @@
 package com.PI.ProyectoIntegrado.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -8,7 +7,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
 @Table(name="Caracteristicas")
-public class Caracteristicas {
+public class Caracteristica {
 
     @Id
     @SequenceGenerator(name = "caracteristica_sequence", sequenceName = "caracteristica_sequence", allocationSize = 1)
@@ -25,12 +24,12 @@ public class Caracteristicas {
     @JsonProperty("producto")
     private Producto producto;
 
-    public Caracteristicas(String nombreCaracteristicas, Producto producto) {
+    public Caracteristica(String nombreCaracteristicas, Producto producto) {
         this.nombreCaracteristicas = nombreCaracteristicas;
         this.producto = producto;
     }
 
-    public Caracteristicas(Integer idCaracteristica, String nombreCaracteristicas, Producto producto) {
+    public Caracteristica(Integer idCaracteristica, String nombreCaracteristicas, Producto producto) {
         this.idCaracteristica = idCaracteristica;
         this.nombreCaracteristicas = nombreCaracteristicas;
         this.producto = producto;

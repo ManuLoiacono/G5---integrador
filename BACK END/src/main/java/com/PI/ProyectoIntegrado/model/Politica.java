@@ -1,14 +1,12 @@
 package com.PI.ProyectoIntegrado.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
-import software.amazon.awssdk.services.s3.endpoints.internal.Value;
 
 @Entity
 @Table(name="Politicas")
-public class Politicas {
+public class Politica {
 
     @Id
     @SequenceGenerator(name = "politica_sequence", sequenceName = "politica_sequence", allocationSize = 1)
@@ -29,13 +27,13 @@ public class Politicas {
     private Producto producto;
 
 
-    public Politicas(String nombrePolitica, String descripcionPolitica, Producto producto) {
+    public Politica(String nombrePolitica, String descripcionPolitica, Producto producto) {
         this.nombrePolitica = nombrePolitica;
         this.descripcionPolitica = descripcionPolitica;
         this.producto = producto;
     }
 
-    public Politicas(Integer idPolitica, String nombrePolitica, String descripcionPolitica, Producto producto) {
+    public Politica(Integer idPolitica, String nombrePolitica, String descripcionPolitica, Producto producto) {
         this.idPolitica = idPolitica;
         this.nombrePolitica = nombrePolitica;
         this.descripcionPolitica = descripcionPolitica;

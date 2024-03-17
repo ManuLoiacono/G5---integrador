@@ -1,6 +1,5 @@
 package com.PI.ProyectoIntegrado.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -44,18 +43,18 @@ public class Producto {
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
     //@JsonManagedReference
-    private Set<Caracteristicas> caracteristicas = new HashSet<>();
+    private Set<Caracteristica> caracteristicas = new HashSet<>();
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
     //@JsonManagedReference
-    private Set<Politicas> politicas = new HashSet<>();
+    private Set<Politica> politicas = new HashSet<>();
 
 
 
     public Producto() {
     }
 
-    public Producto(Integer idProducto, String nombreProd, Float precioProd, String descripcionProd, Set<Imagen> imagenes, Set<Reserva> reservas, Categoria categoria, Set<Caracteristicas> caracteristicas, Set<Politicas> politicas) {
+    public Producto(Integer idProducto, String nombreProd, Float precioProd, String descripcionProd, Set<Imagen> imagenes, Set<Reserva> reservas, Categoria categoria, Set<Caracteristica> caracteristicas, Set<Politica> politicas) {
         this.idProducto = idProducto;
         this.nombreProd = nombreProd;
         this.precioProd = precioProd;
@@ -123,19 +122,19 @@ public class Producto {
         this.imagenes = imagenes;
     }
 
-    public Set<Caracteristicas> getCaracteristicas() {
+    public Set<Caracteristica> getCaracteristicas() {
         return caracteristicas;
     }
 
-    public void setCaracteristicas(Set<Caracteristicas> caracteristicas) {
+    public void setCaracteristicas(Set<Caracteristica> caracteristicas) {
         this.caracteristicas = caracteristicas;
     }
 
-    public Set<Politicas> getPoliticas() {
+    public Set<Politica> getPoliticas() {
         return politicas;
     }
 
-    public void setPoliticas(Set<Politicas> politicas) {
+    public void setPoliticas(Set<Politica> politicas) {
         this.politicas = politicas;
     }
 }
