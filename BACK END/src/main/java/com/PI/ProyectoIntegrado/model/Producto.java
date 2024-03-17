@@ -25,15 +25,12 @@ public class Producto {
     @Column
     private Float precioProd;
 
-
     @Column
     private String descripcionProd;
-
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Set<Imagen> imagenes = new HashSet<>();
-
 
 
     @OneToMany(mappedBy = "producto")
@@ -45,22 +42,29 @@ public class Producto {
     private Categoria categoria;
 
 
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+    //@JsonManagedReference
+    private Set<Caracteristicas> caracteristicas = new HashSet<>();
 
-
-
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+    //@JsonManagedReference
+    private Set<Politicas> politicas = new HashSet<>();
 
 
 
     public Producto() {
     }
 
-    public Producto(Integer idProducto, String nombreProd, String descripcionProd, Float precioProd, Categoria categoria, Set<Reserva> reservas) {
+    public Producto(Integer idProducto, String nombreProd, Float precioProd, String descripcionProd, Set<Imagen> imagenes, Set<Reserva> reservas, Categoria categoria, Set<Caracteristicas> caracteristicas, Set<Politicas> politicas) {
         this.idProducto = idProducto;
         this.nombreProd = nombreProd;
-        this.descripcionProd = descripcionProd;
         this.precioProd = precioProd;
-        this.categoria = categoria;
+        this.descripcionProd = descripcionProd;
+        this.imagenes = imagenes;
         this.reservas = reservas;
+        this.categoria = categoria;
+        this.caracteristicas = caracteristicas;
+        this.politicas = politicas;
     }
 
     public Integer getIdProducto() {
@@ -117,5 +121,21 @@ public class Producto {
 
     public void setImagenes(Set<Imagen> imagenes) {
         this.imagenes = imagenes;
+    }
+
+    public Set<Caracteristicas> getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(Set<Caracteristicas> caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
+
+    public Set<Politicas> getPoliticas() {
+        return politicas;
+    }
+
+    public void setPoliticas(Set<Politicas> politicas) {
+        this.politicas = politicas;
     }
 }

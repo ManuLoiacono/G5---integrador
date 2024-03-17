@@ -12,22 +12,22 @@ function InicioSesion(){
 
     const handleToken = async (token) => {
 
-    const jwt = require('jsonwebtoken');
+      const jwt = require('jsonwebtoken');
 
-    const decodedToken = jwt.decode(token);
+      const decodedToken = jwt.decode(token);
 
 
-    const u = {
-          username: decodedToken.username,
-          nombreUsuario:decodedToken.nombreUsuario,
-          apellidoUsuario:decodedToken.apellidoUsuario,
-          numTelefono:decodedToken.numTelefono,
-          email:decodedToken.email,
-          userRol: decodedToken.userRol,
-        }
+      const u = {
+            username: decodedToken.username,
+            nombreUsuario:decodedToken.nombreUsuario,
+            apellidoUsuario:decodedToken.apellidoUsuario,
+            numTelefono:decodedToken.numTelefono,
+            email:decodedToken.email,
+            userRol: decodedToken.userRol,
+          }
 
-        console.log(u);
-        return u;
+      console.log(u);
+      return u;
     }
 
     const handleSubmit = async (e) => {
@@ -57,8 +57,6 @@ function InicioSesion(){
             console.log("Error al recuperar dato del servidor: " + error);
         }
       };
-
-
 
     return(
         <div className="input-user-card-container">
