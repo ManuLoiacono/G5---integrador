@@ -10,6 +10,26 @@ function InicioSesion(){
 
     const user = useLogin()
 
+    const handleToken = async (token) => {
+
+    const jwt = require('jsonwebtoken');
+
+    const decodedToken = jwt.decode(token);
+
+
+    const u = {
+          username: decodedToken.username,
+          nombreUsuario:decodedToken.nombreUsuario,
+          apellidoUsuario:decodedToken.apellidoUsuario,
+          numTelefono:decodedToken.numTelefono,
+          email:decodedToken.email,
+          userRol: decodedToken.userRol,
+        }
+
+        console.log(u);
+        return u;
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
       
@@ -31,11 +51,14 @@ function InicioSesion(){
           console.log(data)
           setToken(data.token)
           localStorage.setItem("token", data.token)
+          //RENZO!!! Agregar el handleToken y manejar el objeto "u"
 
         } catch (error) {
             console.log("Error al recuperar dato del servidor: " + error);
         }
       };
+
+
 
     return(
         <div className="input-user-card-container">

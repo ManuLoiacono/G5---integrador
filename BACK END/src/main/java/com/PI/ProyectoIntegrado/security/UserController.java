@@ -19,7 +19,7 @@ public class UserController {
     public String login(@RequestBody LoginRequest loginRequest) {
         Usuario usuario = loginService.authenticate(loginRequest.getEmail(), loginRequest.getPassword());
         if (usuario != null) {
-            return loginService.generateToken(loginRequest.getEmail()); // Devuelve el token JWT si las credenciales son válidas
+            return loginService.generateToken(loginRequest.getEmail(), usuario.getNombreUsuario(), usuario.getApellidoUsuario(), usuario.getNumTelefono(), usuario.getUsername(), usuario.getUserRol().name());
         } else {
             throw new RuntimeException("Autenticación fallida");
         }
