@@ -1,11 +1,14 @@
 import { useState } from "react"
 import { Link } from "react-router-dom";
 import imageInicio from '../img/TERRA_RENT_resol.png'
+import { useLogin } from "../components/utils/LoginContext";
 
 function InicioSesion(){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [token, setToken] = useState(null)
+
+    const user = useLogin()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,9 +29,9 @@ function InicioSesion(){
           const data = await response.json()
           console.log(userData);
           console.log(data)
-          setToken(data)
+          setToken(data.token)
+          localStorage.setItem("token", data.token)
 
-      
         } catch (error) {
             console.log("Error al recuperar dato del servidor: " + error);
         }

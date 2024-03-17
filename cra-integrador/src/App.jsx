@@ -13,6 +13,7 @@ import PanelDeControl from './Routes/PanelDeControl.jsx'
 import { ToastContainer, toast } from 'react-toastify';
 import ListadoDeProd from './Routes/ListadoDeProd.jsx';
 import ListadoUsers from './Routes/ListadoUsers.jsx';
+import {LoginProvider} from './components/utils/LoginContext.jsx'
 
 function App() {
   const [estaLogueado,setEstaLogueado] = useState(false)
@@ -20,7 +21,7 @@ function App() {
 function x(){
   setEstaLogueado(true)
   setEsAdmin(true)
-}
+} 
 useEffect(()=>{x()},[])
 function cerrarSesion(){
 
@@ -28,9 +29,9 @@ function cerrarSesion(){
   setEsAdmin(false)
 }
 
-
   return ( 
     <>
+    <LoginProvider>
     <ToastContainer/>    
   <Router>
   <Header estaLogueado={estaLogueado} esAdmin={esAdmin} cierreDeSesion = {cerrarSesion}/>
@@ -48,6 +49,7 @@ function cerrarSesion(){
   </Routes>
     <Footer/>
   </Router>
+  </LoginProvider >
   </>
   );
 }

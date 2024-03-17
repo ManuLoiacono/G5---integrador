@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react"
 import image from "../img/TERRA_RENT4.png"
 import { Link } from "react-router-dom"
+import { useLogin } from "./utils/LoginContext"
 
 function Header({estaLogueado, esAdmin, cierreDeSesion}){
     const [iniciales,setIniciales] = useState(null)
+    const user = useLogin()
 
     let userMuestra={
         nombre:"Juan",
