@@ -72,6 +72,16 @@ public class Usuario {
         this.reservas = reservas;
     }
 
+    public Usuario(String username, String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password, UserRol userRol) {
+        this.username = username;
+        this.nombreUsuario = nombreUsuario;
+        this.apellidoUsuario = apellidoUsuario;
+        this.numTelefono = numTelefono;
+        this.email = email;
+        this.password = password;
+        this.userRol = userRol;
+    }
+
     public Integer getIdUsuario() {
         return idUsuario;
     }
