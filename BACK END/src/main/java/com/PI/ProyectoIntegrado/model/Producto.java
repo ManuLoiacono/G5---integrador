@@ -1,6 +1,5 @@
 package com.PI.ProyectoIntegrado.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -25,15 +24,12 @@ public class Producto {
     @Column
     private Float precioProd;
 
-
     @Column
     private String descripcionProd;
-
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Set<Imagen> imagenes = new HashSet<>();
-
 
 
     @OneToMany(mappedBy = "producto")
@@ -45,22 +41,29 @@ public class Producto {
     private Categoria categoria;
 
 
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+    //@JsonManagedReference
+    private Set<Caracteristica> caracteristicas = new HashSet<>();
 
-
-
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+    //@JsonManagedReference
+    private Set<Politica> politicas = new HashSet<>();
 
 
 
     public Producto() {
     }
 
-    public Producto(Integer idProducto, String nombreProd, String descripcionProd, Float precioProd, Categoria categoria, Set<Reserva> reservas) {
+    public Producto(Integer idProducto, String nombreProd, Float precioProd, String descripcionProd, Set<Imagen> imagenes, Set<Reserva> reservas, Categoria categoria, Set<Caracteristica> caracteristicas, Set<Politica> politicas) {
         this.idProducto = idProducto;
         this.nombreProd = nombreProd;
-        this.descripcionProd = descripcionProd;
         this.precioProd = precioProd;
-        this.categoria = categoria;
+        this.descripcionProd = descripcionProd;
+        this.imagenes = imagenes;
         this.reservas = reservas;
+        this.categoria = categoria;
+        this.caracteristicas = caracteristicas;
+        this.politicas = politicas;
     }
 
     public Integer getIdProducto() {
@@ -117,5 +120,21 @@ public class Producto {
 
     public void setImagenes(Set<Imagen> imagenes) {
         this.imagenes = imagenes;
+    }
+
+    public Set<Caracteristica> getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(Set<Caracteristica> caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
+
+    public Set<Politica> getPoliticas() {
+        return politicas;
+    }
+
+    public void setPoliticas(Set<Politica> politicas) {
+        this.politicas = politicas;
     }
 }

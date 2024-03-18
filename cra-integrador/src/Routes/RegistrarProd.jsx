@@ -29,6 +29,7 @@ const RegistrarProd = () => {
       setSelectedImages([]);
       setPrecio('');
       setCategoria('');
+      setImagenes([]);
       // Reset other form fields as needed
     };
 
@@ -149,7 +150,7 @@ const RegistrarProd = () => {
 
         const fetchCargarImagen = async (imagen) => {
           console.log(JSON.stringify(imagen.producto));
-          const url = `http://localhost:3001/imagen/uploadImageToS3`;
+          const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/imagen/uploadImageToS3`;
           const settings = {
             method: 'POST',
             headers: {

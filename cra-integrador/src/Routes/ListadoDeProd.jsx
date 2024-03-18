@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link ,  useNavigate , useParams  , Outlet} from "react-router-dom";
 import { useEffect, useState } from "react";
+import { toastError, toastSuccess } from '../components/utils/Notificaciones'
 import imgCarpa from '../img/carpa-playera.jpg';
 import img2 from '../img/bicicleta.jpg'
 import img3 from '../img/baton_trakking.jpg'
@@ -39,25 +40,33 @@ const ListadoDeProd = () => {
 
     fetchData();
   }, []);
-    const productoMuestra = [
-      {
-      id : 1,
-      nombreProd : "Carpa asombrosa",
-      categoria:"Carpas",
-      img :[imgCarpa,img2,img3,img4,img5,"asd"],
-      descripcion: "Carpa para 4 personas de lona, con encajes de aluminio y gran variedad de colores sdada das d asd sa da sd asdoome andisani emadajnhtl pafmpaemm",
-      precioProd: 5000
-    },
-      {
-      id : 2,
-      nombreProd : "Carpa asombrosa PRO",
-      categoria:"Carpas",
-      img :[imgCarpa,img2,img3,img4,img5,"asd"],
-      descripcion: "Carpa para 8 personas de lona, con encajes de aluminio y gran variedad de colores sdada das d asd sa da sd asdoome andisani emadajnhtl pafmpaemm",
-      precioProd: 7000
-    },
-  ]
 
+  const fetchEliminarProducto = async (del) => {
+    const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/Producto/:${del.idProducto}`;
+
+    console.log(url);
+    const settings = {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(del)
+    };
+    const response = await fetch(url, settings);
+    const data = await response.json();
+  }
+
+
+  const handleEliminarProducto = (del) => { 
+    fetchEliminarProducto(del);
+
+    const refresh = productos.filter(producto => producto.idProducto !== del.idProducto);
+
+    setProductos(refresh);
+
+    toastSuccess("Se modificó el usuario correctamente")
+  }
 
   return (
     <div className='listado-productos'>
@@ -82,10 +91,11 @@ const ListadoDeProd = () => {
                   <td>{producto.categoria.nombreCategoria}</td>
                   <td>{producto.precioProd}</td>
                   <td>{producto.descripcionProd}</td>
-                  <td>{5}</td>
-                  {/*<td>{producto.img.length}</td>*/}
+                  <td>{producto.imagenes.length}</td>
                   <td>
-                    <FontAwesomeIcon className='eliminar-producto' icon={faTrash} />
+                  <button onClick={() => handleEliminarProducto(producto)}>
+                  <FontAwesomeIcon className='eliminar-producto' icon={faTrash} />
+                    </button>
                   </td>
                   
                 </tr>

@@ -47,13 +47,18 @@ header ul{
 }*/
 #button-container{
 margin-right: 1rem;
+width: 500px;
 }
-header ul button{
+header ul button, .header-item{
     width: auto;
+    margin: 0px 20px;
     background-color:transparent;
     border: none;
     color: var(--color-blanco);
     font-size: large;
+}
+header ul button{
+    cursor: pointer;
 }
 header ul button:hover{
     color: var(--color-gris2);
@@ -63,6 +68,36 @@ header ul span{
     color: var(--color-blanco);
     font-size: large;
     align-self: center;
+}
+.bienvenida{
+    color: white;
+}
+.perfil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: fit-content;
+    width: fit-content;
+
+}
+.iniciales{
+    background-color: yellow;
+    color: black;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    font-weight: 600;
+}
+#login-data{
+    width: 65%;
+    display: flex;
+    flex-direction: row;
 }
 /*HEADER*/
 /*FOOTER*/
@@ -591,6 +626,7 @@ border-radius:20px;
     border:0px;
     background-color: var(--color-verde2);
     color: white;
+    cursor: pointer;
 
 }
 .login-text, .registrarse{

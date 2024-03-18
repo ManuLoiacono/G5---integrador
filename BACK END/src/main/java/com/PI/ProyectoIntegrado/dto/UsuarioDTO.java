@@ -1,5 +1,7 @@
 package com.PI.ProyectoIntegrado.dto;
 
+import com.PI.ProyectoIntegrado.model.usuario.UserRol;
+
 public class UsuarioDTO {
 
     private Integer idUsuario;
@@ -10,12 +12,12 @@ public class UsuarioDTO {
     private Integer numTelefono;
     private String email;
     private String password;
-
+    private UserRol userRol;
 
     public UsuarioDTO() {
     }
 
-    public UsuarioDTO(Integer idUsuario, String username, String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password) {
+    public UsuarioDTO(Integer idUsuario, String username, String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password, UserRol userRol) {
         this.idUsuario = idUsuario;
         this.username = username;
         this.nombreUsuario = nombreUsuario;
@@ -23,15 +25,17 @@ public class UsuarioDTO {
         this.numTelefono = numTelefono;
         this.email = email;
         this.password = password;
+        this.userRol = userRol;
     }
 
-    public UsuarioDTO(String username, String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password) {
+    public UsuarioDTO(String username, String nombreUsuario, String apellidoUsuario, Integer numTelefono, String email, String password, UserRol userRol) {
         this.username = username;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
         this.numTelefono = numTelefono;
         this.email = email;
         this.password = password;
+        this.userRol = userRol;
     }
 
     public Integer getIdUsuario() {
@@ -88,5 +92,13 @@ public class UsuarioDTO {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public UserRol getUserRol() {
+        return userRol;
+    }
+
+    public void setUserRol(UserRol userRol) {
+        this.userRol = userRol;
     }
 }

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css'; // Importa los estilos predeterminados de react-calendar
+/*import React, { useState } from 'react';
+//import Calendar from 'react-calendar';
+//import 'react-calendar/dist/Calendar.css'; // Importa los estilos predeterminados de react-calendar
 import '../Styles/calenadarStyles.CSS'
 
 function MyCalendar() {
@@ -37,4 +37,4 @@ function MyCalendar() {
   );
 }
 
-export default MyCalendar;
+export default MyCalendar;*/
