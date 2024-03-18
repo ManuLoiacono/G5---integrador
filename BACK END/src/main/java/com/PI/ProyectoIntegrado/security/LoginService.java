@@ -27,10 +27,11 @@ public class LoginService {
     public String generateToken(String nombreUsuario, String apellidoUsuario, String username, Integer numTelefono, String email, String userRol) {
         return Jwts.builder()
                 .setSubject(email)
+                .claim("username", username)
                 .claim("nombreUsuario", nombreUsuario)
                 .claim("apellidoUsuario", apellidoUsuario)
-                .claim("username", username)
                 .claim("numTelefono", numTelefono)
+                .claim("email", email)
                 .claim("userRol", userRol)
 
                 .setExpiration(new Date(System.currentTimeMillis() + 864_000_000)) // Token válido por 10 días

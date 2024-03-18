@@ -10,25 +10,19 @@ function InicioSesion(){
 
     const user = useLogin()
 
-    const handleToken = async (token) => {
+    function decodeToken(token) {
+      const payload = token.split('.')[1];
+      const decodedPayload = JSON.parse(atob(payload));
+      return {
+          username: decodedPayload.username,
+          nombreUsuario: decodedPayload.nombreUsuario,
+          apellidoUsuario: decodedPayload.apellidoUsuario,
+          numTelefono: decodedPayload.numTelefono,
+          email: decodedPayload.email,
+          userRol: decodedPayload.userRol
+      };
 
-      const jwt = require('jsonwebtoken');
-
-      const decodedToken = jwt.decode(token);
-
-
-      const u = {
-            username: decodedToken.username,
-            nombreUsuario:decodedToken.nombreUsuario,
-            apellidoUsuario:decodedToken.apellidoUsuario,
-            numTelefono:decodedToken.numTelefono,
-            email:decodedToken.email,
-            userRol: decodedToken.userRol,
-          }
-
-      console.log(u);
-      return u;
-    }
+  }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,18 +33,21 @@ function InicioSesion(){
         };
       
         try {
-          const response = await fetch('https://reqres.in/api/login', {
+          const response = await fetch('http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/api/login', {
+            
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(userData),
           });
-          const data = await response.json()
-          console.log(userData);
-          console.log(data)
-          setToken(data.token)
-          localStorage.setItem("token", data.token)
+          const data = await response.text();
+
+          console.log(data);
+          const u = decodeToken(data);
+          console.log(JSON.stringify(u));
+          //setToken(data.token)
+          //localStorage.setItem("token", data.token)
           //RENZO!!! Agregar el handleToken y manejar el objeto "u"
 
         } catch (error) {
