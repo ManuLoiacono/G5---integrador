@@ -10,7 +10,7 @@ function InicioSesion(){
 
     const user = useLogin()
 
-    const handleToken = async (token) => {
+    /*const handleToken = async (token) => {
 
       const jwt = require('jsonwebtoken');
 
@@ -28,7 +28,7 @@ function InicioSesion(){
 
       console.log(u);
       return u;
-    }
+    }*/
 
     const handleSubmit = async (e) => {
         e.preventDefault();
