@@ -13,6 +13,7 @@ function InicioSesion(){
     function decodeToken(token) {
       const payload = token.split('.')[1];
       const decodedPayload = JSON.parse(atob(payload));
+      console.log(JSON.stringify(decodedPayload))
       return {
           username: decodedPayload.username,
           nombreUsuario: decodedPayload.nombreUsuario,
@@ -20,6 +21,13 @@ function InicioSesion(){
           numTelefono: decodedPayload.numTelefono,
           email: decodedPayload.email,
           userRol: decodedPayload.userRol
+
+          /*username: decodedPayload.email,
+          nombreUsuario: decodedPayload.apellidoUsuario,
+          apellidoUsuario: decodedPayload.username,
+          numTelefono: decodedPayload.numTelefono,
+          email: decodedPayload.nombreUsuario,
+          userRol: decodedPayload.userRol*/
       };
 
   }
