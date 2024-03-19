@@ -6,23 +6,6 @@ import { useLogin } from "../components/utils/LoginContext";
 function InicioSesion(){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [token, setToken] = useState(null)
-
-    const user = useLogin()
-
-    function decodeToken(token) {
-      const payload = token.split('.')[1];
-      const decodedPayload = JSON.parse(atob(payload));
-      return {
-          username: decodedPayload.username,
-          nombreUsuario: decodedPayload.nombreUsuario,
-          apellidoUsuario: decodedPayload.apellidoUsuario,
-          numTelefono: decodedPayload.numTelefono,
-          email: decodedPayload.email,
-          userRol: decodedPayload.userRol
-      };
-
-  }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -43,12 +26,8 @@ function InicioSesion(){
           });
           const data = await response.text();
 
-          console.log(data);
-          const u = decodeToken(data);
-          console.log(JSON.stringify(u));
-          //setToken(data.token)
-          //localStorage.setItem("token", data.token)
-          //RENZO!!! Agregar el handleToken y manejar el objeto "u"
+          localStorage.setItem("token", data)
+          window.location.replace(`${window.location.origin}`);
 
         } catch (error) {
             console.log("Error al recuperar dato del servidor: " + error);
