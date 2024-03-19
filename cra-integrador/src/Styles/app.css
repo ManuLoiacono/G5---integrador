@@ -68,7 +68,7 @@ header ul span{
     border: none;
     color: var(--color-blanco);
     font-size: large;
-    align-self: center;
+ 
 }
 .bienvenida{
     color: white;
@@ -108,7 +108,7 @@ header ul span{
 .user-saludo{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    
 }
 /*HEADER*/
 /*FOOTER*/
