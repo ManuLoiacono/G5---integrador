@@ -1,8 +1,7 @@
 import React from 'react'
 import style from "../Styles/app.css";
 import lupa from "../img/lupa.png"
-import Calendario from "../components/Calendario";
-//import 'react-calendar/dist/Calendar.css';
+import Calendar from "../components/Calendar";
 
 const Buscador = () => {
   const handleSubmit = (e) => {
@@ -12,11 +11,12 @@ const Buscador = () => {
       <h2>
         Buscá lo necesario para tu aventura
       </h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="formulario">
           <label>
             <img src={lupa} alt="" />
           </label>
           <input type="text" placeholder='Buscá!'/>
+          <Calendar/>
           <button>Lo encontraremos</button>
         </form>
     </div>
