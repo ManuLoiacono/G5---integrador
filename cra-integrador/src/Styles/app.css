@@ -813,6 +813,8 @@ table {
 }
 
 @media(max-width:900px){
+   
+
     .card h3{
         font-size:1.2rem ;
     }
@@ -872,6 +874,9 @@ table {
         gap: 10px;
         
     }
+    .calendarElement {
+        left:0
+    }
     
     .buscador{
         height: 8rem;
@@ -902,10 +907,10 @@ table {
         flex-wrap: wrap;
     }
     input[type="text"] {
-        flex-grow: 1; /* Hace que el campo de entrada ocupe todo el espacio disponible en la fila */
+        flex-grow: 1;
       }
-      button {
-        flex-grow: 1; /* Hace que el botón ocupe todo el espacio disponible en la fila */
+      button:nth-last-child() {
+        flex-grow: 1;
       }
     .listado-usuarios + .mensaje-resolucion{
         position: absolute;
