@@ -1,12 +1,15 @@
 package com.PI.ProyectoIntegrado.dto;
 
+import com.PI.ProyectoIntegrado.model.Producto;
+import com.PI.ProyectoIntegrado.model.Usuario;
+
 import java.util.Date;
 
 public class ReservaDTO {
 
     private Integer idReserva;
-    private Integer producto;
-    private Integer usuario;
+    private Producto producto;
+    private Usuario usuario;
     private Date FechaInicio;
     private Date FechaFin;
     private Float PrecioTotal;
@@ -14,7 +17,7 @@ public class ReservaDTO {
     public ReservaDTO() {
     }
 
-    public ReservaDTO(Integer producto, Integer usuario, Date fechaInicio, Date fechaFin, Float precioTotal) {
+    public ReservaDTO(Producto producto, Usuario usuario, Date fechaInicio, Date fechaFin, Float precioTotal) {
         this.producto = producto;
         this.usuario = usuario;
         FechaInicio = fechaInicio;
@@ -22,7 +25,7 @@ public class ReservaDTO {
         PrecioTotal = precioTotal;
     }
 
-    public ReservaDTO(Integer idReserva, Integer producto, Integer usuario, Date fechaInicio, Date fechaFin, Float precioTotal) {
+    public ReservaDTO(Integer idReserva, Producto producto, Usuario usuario, Date fechaInicio, Date fechaFin, Float precioTotal) {
         this.idReserva = idReserva;
         this.producto = producto;
         this.usuario = usuario;
@@ -39,19 +42,19 @@ public class ReservaDTO {
         this.idReserva = idReserva;
     }
 
-    public Integer getProducto() {
+    public Producto getProducto() {
         return producto;
     }
 
-    public void setProducto(Integer producto) {
+    public void setProducto(Producto producto) {
         this.producto = producto;
     }
 
-    public Integer getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Integer usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
