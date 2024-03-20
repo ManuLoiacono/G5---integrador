@@ -1,6 +1,7 @@
 package com.PI.ProyectoIntegrado.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -18,8 +19,8 @@ public class Reserva {
 
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JsonIgnore
     @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
+    @JsonProperty("producto")
     private Producto producto;
 
     @NotNull
