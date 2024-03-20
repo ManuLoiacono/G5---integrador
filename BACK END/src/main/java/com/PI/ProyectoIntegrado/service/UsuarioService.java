@@ -27,7 +27,12 @@ public class UsuarioService implements IUsuarioService {
     @Override
     public void agregarUsuario(UsuarioDTO usuarioDTO) {
         Usuario usuario = mapper.convertValue(usuarioDTO, Usuario.class);
-        usuarioRepository.save(usuario);
+        Optional<Usuario> usuarioExistente = usuarioRepository.findByEmail(usuario.getEmail());
+        if (usuarioExistente.isPresent()) {
+            throw new RuntimeException("El usuario ya existe");
+        } else {
+            usuarioRepository.save(usuario);
+        }
     }
 
     @Override

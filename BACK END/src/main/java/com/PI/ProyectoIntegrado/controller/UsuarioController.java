@@ -21,10 +21,12 @@ public class UsuarioController {
 
     @PostMapping
     public ResponseEntity<?> crearUsuario(@RequestBody UsuarioDTO usuarioDTO){
-
-        usuarioService.agregarUsuario(usuarioDTO);
-        return ResponseEntity.ok(HttpStatus.OK);
-
+        try {
+            usuarioService.agregarUsuario(usuarioDTO);
+            return ResponseEntity.ok().build();
+            } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @GetMapping("/{idUsuario}")
