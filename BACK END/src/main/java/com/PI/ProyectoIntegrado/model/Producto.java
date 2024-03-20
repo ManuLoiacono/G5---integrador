@@ -36,7 +36,7 @@ public class Producto {
 
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idReserva")
+    @JsonIgnore
     private Set<Reserva> reservas = new HashSet<>();
 
     @NotNull
