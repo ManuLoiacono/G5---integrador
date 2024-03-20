@@ -20,7 +20,6 @@ public class Reserva {
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
-    @JsonIgnore
     private Producto producto;
 
     @NotNull
