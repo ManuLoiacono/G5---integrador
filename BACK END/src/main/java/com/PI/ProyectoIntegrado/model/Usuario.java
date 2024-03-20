@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -42,8 +43,9 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private UserRol userRol;
 
-    @OneToMany(mappedBy = "usuario")
-    private Set<Reserva> reservas;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Reserva> reservas = new HashSet<>();
 
 
     public Usuario() {
