@@ -1,5 +1,6 @@
 package com.PI.ProyectoIntegrado.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -32,8 +33,9 @@ public class Producto {
     private Set<Imagen> imagenes = new HashSet<>();
 
 
-    @OneToMany(mappedBy = "producto")
-    private Set<Reserva> reservas;
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Set<Reserva> reservas = new HashSet<>();
 
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
@@ -42,11 +44,11 @@ public class Producto {
 
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
-    //@JsonManagedReference
+    @JsonIgnore
     private Set<Caracteristica> caracteristicas = new HashSet<>();
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
-    //@JsonManagedReference
+    @JsonIgnore
     private Set<Politica> politicas = new HashSet<>();
 
 
