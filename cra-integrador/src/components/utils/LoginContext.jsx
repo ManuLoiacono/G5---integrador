@@ -19,6 +19,13 @@ export const LoginProvider = ({ children }) => {
     };
 
 }
+const handleLoginFailure = () => {
+  localStorage.removeItem("token");
+};
+const handleLoginSuccess = (token) => {
+  setUser(decodeToken(token));
+};
+
 useEffect(()=>{
   const localToken = localStorage.getItem("token")
   if (localToken&&!user){
@@ -37,6 +44,7 @@ useEffect(()=>{
     setUser(null);
     setToken(null);
     localStorage.removeItem("token");
+    window.location.replace(`${window.location.origin}`)
   };
   useEffect(()=>{console.log(user);},[user])
 
