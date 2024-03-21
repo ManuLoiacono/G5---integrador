@@ -394,6 +394,11 @@ figure{
     width: 100%;
     border-radius: 4px;
 }
+#recomendados .card .contenedor-imagen img{
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
 .card h3{
     font-size: 1.7rem;
     margin: 0;
@@ -981,7 +986,21 @@ table {
 
 /*PANEL DE CONTROL*/
 /*PRODUCTOS BUSCADOS*/
+.listado-productos-buscados{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-self: center;
 
+}
+.listado-productos-buscados .card{
+}
+.listado-productos-buscados .card .contenedor-imagen img{
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+}
 
 
 /*PRODUCTOS BUSCADOS*/

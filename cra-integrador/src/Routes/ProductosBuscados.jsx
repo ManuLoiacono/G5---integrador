@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import Card from "../components/Card";
+import imgFlecha from '../img/flecha_blanca.png';
 
 
 function ProductosBuscados(){
     const [productosFiltrados, setProductosFiltrados] = useState([])
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
     const params = useParams();
     let parametro = ""
     useEffect(()=>{console.log(productosFiltrados);},[productosFiltrados])
@@ -67,8 +69,13 @@ function ProductosBuscados(){
 
     return(
         <div className="listado-productos">
-            <h2>Resultados para "{params.parametro}"</h2>
-            <section>
+           <div id="detail-header">
+        <h2 id="detail-header-name" className="detail-header-item">
+        Resultados para "{params.parametro}":
+        </h2>
+        <img src={imgFlecha} className="back" onClick={() => navigate(-1)} alt="Back" />
+      </div>
+            <section className="listado-productos-buscados">
             {productosFiltrados.map((producto)=>(
                 <Card key={producto.idProducto} detalle={producto} />
                 
