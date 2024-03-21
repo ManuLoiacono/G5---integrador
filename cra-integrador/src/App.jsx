@@ -14,6 +14,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import ListadoDeProd from './Routes/ListadoDeProd.jsx';
 import ListadoUsers from './Routes/ListadoUsers.jsx';
 import {LoginProvider} from './components/utils/LoginContext.jsx'
+import ProductosBuscados from "./Routes/ProductosBuscados.jsx";
 
 function App() {
   const [estaLogueado,setEstaLogueado] = useState(false)
@@ -46,6 +47,7 @@ function cerrarSesion(){
     <Route path='listado-productos' element={<ListadoDeProd/>}/>
     <Route path='listado-usuarios' element={<ListadoUsers/>}/>
     <Route path='panel-de-control' element={<PanelDeControl/>}/>
+    <Route path='busqueda/:parametro' element={<ProductosBuscados/>}/>
   </Routes>
     <Footer/>
   </Router>
