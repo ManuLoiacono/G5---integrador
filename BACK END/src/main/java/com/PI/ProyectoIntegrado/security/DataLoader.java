@@ -6,14 +6,12 @@ import com.PI.ProyectoIntegrado.model.usuario.UserRol;
 import com.PI.ProyectoIntegrado.repository.IUsuarioRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DataLoader implements ApplicationRunner {
 
-
-    private IUsuarioRepository userRepository;
+    private final IUsuarioRepository userRepository;
 
     public DataLoader(IUsuarioRepository userRepository) {
         this.userRepository = userRepository;
@@ -21,9 +19,17 @@ public class DataLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        //BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        //String password = passwordEncoder.encode("1234");
+        if (!superAdminExists()) {
+            createSuperAdmin();
+        }
+    }
 
-        userRepository.save(new Usuario("Leo10", "Leo", "Messi", 1123456789, "LMessi@gmail.com", "1234", UserRol.SUPERADMIN));
+    private boolean superAdminExists() {
+        return userRepository.findByUserRol(UserRol.SUPERADMIN).isPresent();
+    }
+
+    private void createSuperAdmin() {
+        Usuario superAdmin = new Usuario("Leo10", "Leo", "Messi", 1123456789, "LMessi@gmail.com", "1234", UserRol.SUPERADMIN);
+        userRepository.save(superAdmin);
     }
 }

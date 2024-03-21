@@ -1,9 +1,11 @@
-import React from 'react'
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import style from "../Styles/app.css";
 import lupa from "../img/lupa.png"
 import Calendar from "../components/Calendar";
 
 const Buscador = () => {
+  const [parametro,setParametro] = useState("")
   const handleSubmit = (e) => {
     e.preventDefault()}
   return (
@@ -15,9 +17,9 @@ const Buscador = () => {
           <label>
             <img src={lupa} alt="" />
           </label>
-          <input type="text" placeholder='Buscá!'/>
+          <input type="text" placeholder='Buscá!' value={parametro} onChange={(e)=>{setParametro(e.target.value)}}/>
           <Calendar/>
-          <button>Lo encontraremos</button>
+          <Link  to={`/busqueda/${parametro}`}><button>Lo encontraremos</button></Link>
         </form>
     </div>
   )

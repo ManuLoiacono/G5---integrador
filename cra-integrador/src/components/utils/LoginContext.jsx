@@ -27,9 +27,16 @@ const handleLoginSuccess = (token) => {
 };
 
 useEffect(()=>{
+  
   const localToken = localStorage.getItem("token")
-  if (localToken&&!user){
-    setUser(decodeToken(localToken))
+  if(typeof variable !== 'undefined') {
+    console.log(localStorage.getItem("token"));
+    if (localToken&&!user){
+      setUser(decodeToken(localToken))
+    }
+  }
+  else{
+    console.log("undefined");
   }
 })
 

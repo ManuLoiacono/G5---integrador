@@ -24,10 +24,11 @@ function InicioSesion(){
             },
             body: JSON.stringify(userData),
           });
-          const data = await response.text();
+          const data = await response.json();
 
-          localStorage.setItem("token", data)
-          window.location.replace(`${window.location.origin}`);
+          console.log(data.token);
+          localStorage.setItem("token", data.token)
+          //window.location.replace(`${window.location.origin}`);
 
         } catch (error) {
             console.log("Error al recuperar dato del servidor: " + error);
