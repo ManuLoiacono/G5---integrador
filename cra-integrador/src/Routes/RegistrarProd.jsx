@@ -141,6 +141,7 @@ const RegistrarProd = () => {
             const data = await response.json();
             console.log(JSON.stringify(data));
             resetForm();
+            toastSuccess("Se cargó el producto correctamente")
             return data;
           } catch (error) {
             console.error('Error al procesar la respuesta:', error);

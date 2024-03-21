@@ -68,7 +68,7 @@ const ListadoDeProd = () => {
 
     setProductos(refresh);
 
-    toastSuccess("Se modificó el usuario correctamente")
+    toastSuccess("Se eliminó el producto correctamente")
   }
   if(user.user===null){return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>}
   if(user.user.userRol=="ADMIN"||user.user.userRol=="SUPERADMIN"){
@@ -92,7 +92,7 @@ const ListadoDeProd = () => {
         {productos.map(producto => (
                 <tr key={producto.idProducto}>
                   <td>{producto.idProducto}</td>
-                  <td>{producto.nombreProd}</td>
+                  <td><Link className="link-detail" to={`/productos/:${producto.idProducto}`}>{producto.nombreProd}</Link></td>
                   <td>{producto.categoria.nombreCategoria}</td>
                   <td>{producto.precioProd}</td>
                   <td>{producto.descripcionProd}</td>
