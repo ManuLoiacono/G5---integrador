@@ -50,7 +50,7 @@ function InicioSesion(){
                 <img src={imageInicio} alt="" />
                 <h2>INICIAR SESIÓN</h2>
                 <form action="POST" onSubmit={handleSubmit}>
-                <input id="get-mail" className="login-input" type="text" value={email} placeholder="Tu Email o nombre de usuario" onChange={(e) => setEmail(e.target.value)}/>
+                <input id="get-mail" className="login-input" type="text" value={email} placeholder="Tu Email o nombre de usuario" onChange={(e) => setEmail(e.target.value.toLowerCase())}/>
                 <input id ="get-password"className="login-input" type="password" value={password} placeholder="Tu Contraseña" onChange={(e) => setPassword(e.target.value)}/>
                 <button className="login-button" type="submit">Ingresar</button>
                 </form>

@@ -68,7 +68,7 @@ function RegistrarUsuario(){
       .catch((error) => {
         console.error('Error al cargar el usuario' + newUser.nombreUsuario, error);
         toastError('El usuario con email ' + newUser.email + ' ya está registrado');
-        navigate('/');
+       
       })
       .finally(() => {
       
@@ -145,7 +145,7 @@ function RegistrarUsuario(){
                     placeholder="Ingrese e-mail"
                     value={newUser.email}
                     onChange={(e) => {
-                      handleInputChange('email', e.target.value)
+                      handleInputChange('email', e.target.value.toLowerCase())
                     }}
                 />
               </div>
