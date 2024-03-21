@@ -30,8 +30,8 @@ useEffect(()=>{
   
   console.log(localStorage.getItem("token"));
   const localToken = localStorage.getItem("token");
-  if(typeof localToken !== 'undefined') {
-    console.log(localStorage.getItem("token"));
+  if(localToken !== 'undefined') {
+    console.log(localToken);
     if (localToken&&!user){
       setUser(decodeToken(localToken))
     }
