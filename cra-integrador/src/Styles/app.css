@@ -566,7 +566,38 @@ text-align: center;
 #galeriaCompleta{
     height: 80vh;
 }
+#caracteristicas .contenido{
+    background-color: var(--color-verde1);
+    color: white;
+    flex:1;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    padding-right: 1rem;
 
+}
+#caracteristicas p{
+    font-weight: bold;
+    padding: 10px;
+    flex: 1;
+    background-color: var(--color-verde1);
+    margin: 0;
+    color: white;
+
+}
+ 
+#caracteristicas p:nth-child(1){
+    text-align: center;
+    grid-column: span 2;
+}
+#caracteristicas .contenido {
+    display: none; 
+  }
+  
+  #caracteristicas .contenido {
+    display: grid;
+  }
 /*DETAIL*/
 /*REGISTRAR PRODUCTO*/
 .drop{
