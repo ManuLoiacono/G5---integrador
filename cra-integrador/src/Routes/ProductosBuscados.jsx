@@ -7,7 +7,9 @@ function ProductosBuscados(){
     const [productosFiltrados, setProductosFiltrados] = useState([])
     const [error, setError] = useState(null);
     const params = useParams();
-    useEffect(()=>{console.log(params);},[])
+    let parametro = ""
+    useEffect(()=>{console.log(productosFiltrados);},[productosFiltrados])
+    useEffect(()=>{parametro=params},[])
 
 
 
@@ -24,17 +26,28 @@ function ProductosBuscados(){
             const data = await response.json();
     
             console.log(data);
-            let dataLenght = data.lenght
+            let dataLength = data.length
     
             const productos = [];
-            function filtrar(){
-               for(let i = 0; i>dataLenght;i++){
-                if (data[i].nombreProd.includes(params.parametro)) {
-                    productos.push(data[i])
-                } else {continue}
-               }
-            }
+            function filtrar() {
+              const keywords = params.parametro.toLowerCase().split(" ");
+          
+              for (let i = 0; i < dataLength; i++) {
+                  const nombreProdLowerCase = data[i].nombreProd.toLowerCase();
+                  let encontrado = true;
+                  for (let j = 0; j < keywords.length; j++) {
+                      if (!nombreProdLowerCase.includes(keywords[j])) {
+                          encontrado = false;
+                          break;
+                      }
+                  }
+                  if (encontrado) {
+                      productos.push(data[i]);
+                  }
+              }
+          }
             filtrar();
+
             setProductosFiltrados(productos)
           } catch (error) {
             console.error('Error al obtener detalles del producto:', error);
@@ -43,6 +56,7 @@ function ProductosBuscados(){
         };
     
         fetchData();
+        
 
       }, []);
     
@@ -52,13 +66,13 @@ function ProductosBuscados(){
     
 
     return(
-        <div>
+        <div className="listado-productos">
             <h2>Resultados para "{params.parametro}"</h2>
             <section>
-            {/*productosFiltrados.map((producto)=>(
+            {productosFiltrados.map((producto)=>(
                 <Card key={producto.idProducto} detalle={producto} />
                 
-            ))*/}
+            ))}
             </section>
         </div>
     )

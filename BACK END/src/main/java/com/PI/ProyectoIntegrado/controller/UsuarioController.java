@@ -25,7 +25,7 @@ public class UsuarioController {
             usuarioService.agregarUsuario(usuarioDTO);
             return ResponseEntity.ok().build();
             } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         }
     }
 

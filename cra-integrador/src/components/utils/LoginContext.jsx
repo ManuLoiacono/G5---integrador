@@ -28,8 +28,9 @@ const handleLoginSuccess = (token) => {
 
 useEffect(()=>{
   
-  const localToken = localStorage.getItem("token")
-  if(typeof variable !== 'undefined') {
+  console.log(localStorage.getItem("token"));
+  const localToken = localStorage.getItem("token");
+  if(localToken !== 'undefined') {
     console.log(localStorage.getItem("token"));
     if (localToken&&!user){
       setUser(decodeToken(localToken))
@@ -38,16 +39,14 @@ useEffect(()=>{
   else{
     console.log("undefined");
   }
-})
+},[])
 
   const login = (userData, token) => {
-    // Lógica de inicio de sesión y actualización del estado de usuario
     setUser(userData);
     setToken(token)
   };
 
   const logout = () => {
-    // Lógica de cierre de sesión y restablecimiento del estado de usuario
     setUser(null);
     setToken(null);
     localStorage.removeItem("token");
