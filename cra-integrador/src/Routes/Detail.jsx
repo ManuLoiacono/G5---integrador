@@ -84,21 +84,25 @@ function Detail() {
           <div id="cuadrilla-img">
             {/* Renderizamos las imágenes procesadas */}
             {imgSinPrimera.map((img, index) => (
+              <div className="imgChiqui">
               <img
                 key={index}
-                className="imgChiqui"
+                
                 src={img.urlimg}
                 alt={`Imagen ${index}`}
               />
+              </div>
             ))}
             {imgSinPrimera.length < 4 && (
               Array.from({ length: 4 - imgSinPrimera.length }).map((_, index) => (
+                <div className="imgChiqui">
                 <img
                   key={imgSinPrimera.length + index} 
-                  className="imgChiqui"
+                  
                   src={noImage}
                   alt={`Imagen no encontrada`}
                 />
+                </div>
               ))
             )}
           </div>

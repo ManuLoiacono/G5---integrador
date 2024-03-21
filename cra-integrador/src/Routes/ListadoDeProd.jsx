@@ -65,7 +65,7 @@ const ListadoDeProd = () => {
 
     setProductos(refresh);
 
-    toastSuccess("Se modificó el usuario correctamente")
+    toastSuccess("Se eliminó el producto correctamente")
   }
 
   return (
@@ -87,7 +87,7 @@ const ListadoDeProd = () => {
         {productos.map(producto => (
                 <tr key={producto.idProducto}>
                   <td>{producto.idProducto}</td>
-                  <td>{producto.nombreProd}</td>
+                  <td><Link className="link-detail" to={`/productos/:${producto.idProducto}`}>{producto.nombreProd}</Link></td>
                   <td>{producto.categoria.nombreCategoria}</td>
                   <td>{producto.precioProd}</td>
                   <td>{producto.descripcionProd}</td>
