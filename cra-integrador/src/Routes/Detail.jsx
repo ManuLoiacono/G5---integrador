@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams, Outlet } from "react-router-dom";
 import imgFlecha from '../img/flecha_blanca.png';
 import noImage from '../img/no-image.jpg';
+import CalendarReserva from "../components/CalendarReserva";
 
 function Detail() {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ function Detail() {
   useEffect(() => {
     fetchData();
   }, [params.id]);
-
+  console.log(product.imagenes);
   return (
     <section className="detail">
       <div id="detail-header">
@@ -41,8 +42,9 @@ function Detail() {
         </h2>
         <img src={imgFlecha} className="back" onClick={() => navigate(-1)} alt="Back" />
       </div>
-      <main>
-        <div id="imagenes">
+      <div className="detail-container">
+        <div className="contenedor-imgs">
+          <div id="imagenes">
           <img
             className="imgGrande"
             src={product.imagenes && product.imagenes.length > 0 ? product.imagenes[0].urlimg : noImage}
@@ -51,11 +53,29 @@ function Detail() {
           <div id="cuadrilla-img">
             {/* Renderizamos las imágenes procesadas */}
             {imgSinPrimera.map((img, index) => (
-              <img key={index} className="imgChiqui" src={img.urlimg} alt={`Imagen ${index}`} />
+              <img
+                key={index}
+                className="imgChiqui"
+                src={img.urlimg}
+                alt={`Imagen ${index}`}
+              />
             ))}
+            {imgSinPrimera.length < 4 && (
+              Array.from({ length: 4 - imgSinPrimera.length }).map((_, index) => (
+                <img
+                  key={imgSinPrimera.length + index} 
+                  className="imgChiqui"
+                  src={noImage}
+                  alt={`Imagen no encontrada`}
+                />
+              ))
+            )}
           </div>
-          <Link to={`/productos/${params.id}/galeria`}><p id="galery-link">Ver más...</p></Link>
-          <Outlet />
+          </div>
+            <div id="galery-link">
+              <Link to={`/productos/${params.id}/galeria`}><p>Ver más...</p></Link>
+              <Outlet />
+            </div>
         </div>
         <div id="under-img">
           <div className="descripcion-container">
@@ -66,8 +86,10 @@ function Detail() {
             <h4>Alquiler por día:</h4>
             <p className="precio">${product.precioProd}</p>
           </div>
+          <CalendarReserva />
+          <button className="rent-button">Alquilar</button>
         </div>
-      </main>
+      </div>
     </section>
   );
 }
