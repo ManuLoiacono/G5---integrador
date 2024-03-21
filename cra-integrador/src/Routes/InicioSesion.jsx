@@ -28,7 +28,7 @@ function InicioSesion(){
 
           console.log(data.token);
           localStorage.setItem("token", data.token)
-          //window.location.replace(`${window.location.origin}`);
+          window.location.replace(`${window.location.origin}`);
 
         } catch (error) {
             console.log("Error al recuperar dato del servidor: " + error);
