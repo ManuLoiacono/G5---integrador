@@ -48,8 +48,8 @@ function RegistrarUsuario(){
       toastError('El username debe tener al menos 4 caracteres');
       return;
     } 
-    //toastSuccess('El usuario ' + newUser.username + ' ha sido creado');
-    console.log('Usuario creado:', newUser);
+
+
     const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/Usuario`;
     const settings = {
       method: 'POST',
@@ -60,7 +60,17 @@ function RegistrarUsuario(){
     };
 
     fetch(url, settings)
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          toastSuccess('Se creó el usuario ' + newUser.nombreUsuario + ' correctamente');
+          console.log('Usuario creado:', newUser);
+          resetForm();
+        } //else if (response.status === 409) {
+          //return response.text();}
+          else {
+          throw new Error('Usuario con email: ' + newUser.email + ' ya existe');
+        }
+      })
       .then((data) => {
         toastSuccess('Se cargó el usuario ' + newUser.nombreUsuario + ' correctamente');
         resetForm();
