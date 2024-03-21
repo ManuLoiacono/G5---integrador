@@ -44,9 +44,7 @@ const DateRangeComp = () => {
       setOpen(false)
     }
   }
-  console.log('Rango de fechas');
-  console.log(range);
-
+  
   return (
     <div className="calendarWrap">
 
