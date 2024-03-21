@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom";
 import imageInicio from '../img/TERRA_RENT_resol.png'
 import { useLogin } from "../components/utils/LoginContext";
+import { toastError, toastSuccess } from '../components/utils/Notificaciones'
 
 function InicioSesion(){
     const [email, setEmail] = useState("")
@@ -29,7 +30,15 @@ function InicioSesion(){
           //console.log(data.token);
           localStorage.setItem("token", data.token)
           //console.log(localStorage.getItem("token"));
-          window.location.replace(`${window.location.origin}`);
+          if (data.token!== undefined) {
+            window.location.replace(`${window.location.origin}`);
+            
+          } else {
+            setPassword('')
+            setEmail('')
+            toastError('Email o contraseña incorrectos.')
+          }
+
 
         } catch (error) {
             console.log("Error al recuperar dato del servidor: " + error);

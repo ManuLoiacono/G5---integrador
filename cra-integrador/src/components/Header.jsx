@@ -26,7 +26,7 @@ function Header(){
         <header>
             <Link to={'/'}><img className="logo" src={image} alt="Terrarent logo" /></Link>
                 <ul id="button-container">
-                {estadoUser==="ADMIN" && <Link to="/panel-de-control"><img className="imageAdmin" src={imageAdmin} alt="Terrarent logo" /></Link>}
+                {(estadoUser==="ADMIN"||estadoUser==="SUPERADMIN") && <Link to="/panel-de-control"><img className="imageAdmin" src={imageAdmin} alt="Terrarent logo" /></Link>}
                  {user.user!==null ? (
                   <div id="login-data">
                     <div className="user-saludo">
