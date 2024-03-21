@@ -4,6 +4,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toastError, toastSuccess } from '../components/utils/Notificaciones'
 import MensajeResolucion from '../components/MensajeResolucion.jsx'
+import { useLogin } from "../components/utils/LoginContext"
+
 
 import { json } from 'react-router-dom';
 import AWS from 'aws-sdk';
@@ -19,6 +21,8 @@ const RegistrarProd = () => {
     const [categoria, setCategoria] = useState('');
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [Imagenes, setImagenes] = useState([]);
+    const user = useLogin()
+
     //const [idP, setIdP] = useState([]);
 
 
@@ -214,6 +218,9 @@ const RegistrarProd = () => {
         setFormSubmitted(false);
       }
     }, [formSubmitted, nombreProd, descripcion, precio, categoria]);
+    if(user.user===null){return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>}
+    if(user.user.userRol=="ADMIN"||user.user.userRol=="SUPERADMIN"){
+      
     return (
       <>
         <div className='registrar'>
@@ -295,6 +302,7 @@ const RegistrarProd = () => {
        <MensajeResolucion/>
       </>
     );
-  };
+  } else return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>
+};
 
   export default RegistrarProd;

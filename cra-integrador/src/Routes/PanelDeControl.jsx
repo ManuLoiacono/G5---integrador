@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom"
 import MensajeResolucion from "../components/MensajeResolucion"
+import { useLogin } from "../components/utils/LoginContext"
+
 
 function PanelDeControl(){
+    const user = useLogin()
+ if(user.user===null){return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>}
+if(user.user.userRol=="ADMIN"||user.user.userRol=="SUPERADMIN"){
+
     return(
         <div id="panel-container">
         <section className="panel-de-control">
@@ -14,5 +20,6 @@ function PanelDeControl(){
         <MensajeResolucion/>
         </div>
     )
+} else return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>
 }
 export default PanelDeControl

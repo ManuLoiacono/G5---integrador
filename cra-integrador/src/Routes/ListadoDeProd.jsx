@@ -9,12 +9,15 @@ import img4 from '../img/conservadora-02.jpg'
 import img5 from '../img/mochila.jpg'
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useLogin } from "../components/utils/LoginContext"
+
 
 
 const ListadoDeProd = () => {
   
   const [productos, setProductos] = useState([]);
   const [error, setError] = useState(null);
+  const user = useLogin()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,7 +70,9 @@ const ListadoDeProd = () => {
 
     toastSuccess("Se modificó el usuario correctamente")
   }
-
+  if(user.user===null){return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>}
+  if(user.user.userRol=="ADMIN"||user.user.userRol=="SUPERADMIN"){
+      
   return (
     <div className='listado-productos'>
       <h3>Listado de Productos</h3>
@@ -104,6 +109,8 @@ const ListadoDeProd = () => {
       </table>
     </div>
   )
+        }else return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>
+    
 }
 
 export default ListadoDeProd

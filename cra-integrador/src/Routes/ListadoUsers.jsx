@@ -5,10 +5,13 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { toastError, toastSuccess } from '../components/utils/Notificaciones'
 import MensajeResolucion from '../components/MensajeResolucion.jsx'
+import { useLogin } from "../components/utils/LoginContext"
+
 const ListadoUsers = () => {
   
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
+  const user = useLogin()
 
   
   const tipoUsuario = ['USER', 'ADMIN']
@@ -107,7 +110,9 @@ const ListadoUsers = () => {
 
     toastSuccess("Se modificó el usuario correctamente")
   }
-  
+  if(user.user===null){return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>}
+  if(user.user.userRol=="ADMIN"||user.user.userRol=="SUPERADMIN"){
+
   return (
     <>
     <div className='listado-usuarios'>
@@ -154,6 +159,7 @@ const ListadoUsers = () => {
     <MensajeResolucion />
     </>
   )
+        } else return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>
 }
 
 export default ListadoUsers
