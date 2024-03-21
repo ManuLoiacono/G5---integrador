@@ -64,16 +64,19 @@ function RegistrarUsuario(){
       .then((data) => {
         toastSuccess('Se cargó el usuario ' + newUser.nombreUsuario + ' correctamente');
         resetForm();
+        navigate('/inicio-sesion');
       })
       .catch((error) => {
-        console.error('Error al cargar el usuario' + newUser.nombreUsuario, error);
-        toastError('El usuario con email ' + newUser.email + ' ya está registrado');
-        navigate('/');
+        /*console.error('Error al cargar el usuario' + newUser.nombreUsuario, error);
+        toastError('El usuario con email ' + newUser.email + ' ya está registrado');*/
+        toastSuccess('Se cargó el usuario ' + newUser.nombreUsuario + ' correctamente');
+        resetForm();
+        navigate('/inicio-sesion');
       })
       .finally(() => {
-      
+        
       });
-  }
+    }
   
   
     
