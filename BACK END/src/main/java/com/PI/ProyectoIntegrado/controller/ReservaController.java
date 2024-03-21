@@ -12,7 +12,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping("/Reserva")
-@CrossOrigin(origins = "http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ReservaController {
 
     @Autowired
