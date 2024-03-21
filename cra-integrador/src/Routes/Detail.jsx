@@ -3,6 +3,8 @@ import { Link, useNavigate, useParams, Outlet } from "react-router-dom";
 import imgFlecha from '../img/flecha_blanca.png';
 import noImage from '../img/no-image.jpg';
 import CalendarReserva from "../components/CalendarReserva";
+import { FaPalette, FaUsers, FaTag, FaWeight, FaRuler, FaWindowMaximize, FaDoorOpen, FaShoppingBag } from 'react-icons/fa';
+
 
 function Detail() {
   const navigate = useNavigate();
@@ -29,6 +31,28 @@ function Detail() {
       console.error('Error al obtener detalles del producto:', error);
     }
   };
+  const caracteristicas = [
+    { titulo: 'Color:', icono: FaPalette },
+    { titulo: 'Capacidad:', icono: FaUsers },
+    { titulo: 'Material:', icono: FaTag },
+    { titulo: 'Peso:', icono: FaWeight },
+    { titulo: 'Dimensiones:', icono: FaRuler },
+    { titulo: 'Ventanas:', icono: FaWindowMaximize },
+    { titulo: 'Puertas:', icono: FaDoorOpen },
+    { titulo: 'Incluye:', icono: FaShoppingBag }
+  ];
+
+  const productoCaracterísticas = [
+    { titulo: 'Color:', detalle: "Azul" },
+    { titulo: 'Capacidad:', detalle: "4 personas" },
+    { titulo: 'Material:', detalle: "Nylon"},
+    { titulo: 'Peso:', detalle:"4 Kgs." },
+    { titulo: 'Dimensiones:', detalle: " 2m x 2m" },
+    { titulo: 'Ventanas:', detalle: "2 laterales" },
+    { titulo: 'Puertas:', detalle: "1 frontal" },
+    { titulo: 'Incluye:', detalle: "Bolsa de transporte"}
+  ];
+
 
   useEffect(() => {
     fetchData();
@@ -51,11 +75,12 @@ function Detail() {
       <div className="detail-container">
         <div className="contenedor-imgs">
           <div id="imagenes">
-          <img
-            className="imgGrande"
-            src={product.imagenes && product.imagenes.length > 0 ? product.imagenes[0].urlimg : noImage}
-            alt="Imagen principal"
-          />
+            <div className="imgGrande">
+              <img
+              
+              src={product.imagenes && product.imagenes.length > 0 ? product.imagenes[0].urlimg : noImage}
+              alt="Imagen principal"/>
+          </div>
           <div id="cuadrilla-img">
             {/* Renderizamos las imágenes procesadas */}
             {imgSinPrimera.map((img, index) => (
@@ -83,8 +108,30 @@ function Detail() {
               <Outlet />
             </div>
             <div id="caracteristicas">
-      <p className="titulo" onClick={toggleContenido}>Políticas y devoluciones</p>
-      {mostrarContenido && (
+              <div>
+                <p className="titulo">CARACTERÍSTICAS</p>
+                <ul className="caracteristicas-producto">
+      {caracteristicas.map(({ titulo, icono: Icono }, index) => (
+          <li key={index}>
+          <strong><Icono /> {titulo}</strong>
+          {productoCaracterísticas.map((producto) => {
+            if (producto.titulo === titulo) {
+              return (
+                <span key={producto.titulo}>{producto.detalle}</span>
+              );
+            }
+          })}
+        </li>
+      
+      ))}
+    </ul>
+              </div>
+              
+              <div className="titulo">
+                <p >Políticas y devoluciones</p>
+                <img onClick={toggleContenido} src={imgFlecha} className={mostrarContenido?"flecha-arriba":"flecha-abajo"} alt="" />
+            </div>
+        {mostrarContenido && (
         <div className="contenido">
           <ul>
           <p>Políticas generales:</p>

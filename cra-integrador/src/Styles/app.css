@@ -162,7 +162,10 @@ input.inputBox {
    width: 10rem;
   
   }
-  
+
+  .rdrCalendarWrapper{
+    
+  }
   .calendarWrap {
     display: inline-block;
     position: relative;
@@ -177,6 +180,7 @@ input.inputBox {
   top: 40px;
   border: 1px solid #ccc;
   z-index: 999;
+  font-size: 1rem;
   }
 
 .buscador{
@@ -212,9 +216,11 @@ input.inputBox {
     color: var(--color-blanco);
     height: 1.5rem;
 }
+.rdrMonthsHorizontal{
+    align-self: center;
+}
 .rdrDays button {
     background-color: var(--color-verde1);
-    
 }
 .rdrDays button span{
     color: var(--color-naranja);
@@ -225,6 +231,18 @@ input.inputBox {
 }
 .rdrDayToday .rdrDayNumber span{
     text-decoration: none;
+}
+.rdrDays, .rdrWeekDays{
+    align-self: center;
+    width: 80%;
+}
+.rdrMonth{
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+}
+.rdrCalendarWrapper{
+    font-size: 1rem;
 }
 
 .buscador input{
@@ -268,10 +286,19 @@ input.inputBox {
     width: 100%;
     align-items: center;
     justify-content: center;
+    
     }
 
 .calendarElementReserva {
     width: 80%;
+      }
+.calendarElementReserva .rdrMonths {
+    
+    width: 100%;
+      }
+.calendarElementReserva .rdrMonths .rdrMonth {
+    
+    width: 100%;
       }
 .rdrDateDisplayWrapper{
     display: none;
@@ -433,18 +460,29 @@ border-radius: 3px;
 
 }
 .imgGrande{
+    background-color: #fff;
     width: 48%;
-    height: auto;
+    height: 0;
     margin:1%;
     border: solid black 1px;
     border-radius: 3px;
-
+    overflow: hidden;
+    padding-top: 48%;
+    position: relative;
+}
+.imgGrande img{
+    width: 100%; 
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);;
 }
 .contenedor-imgs{
     display: flex;
     position: relative;
     flex-direction: column;
-    width: 70%;
+    width: 60%;
 }
 #imagenes{
     width: 100%;
@@ -477,12 +515,19 @@ text-align: center;
     align-items: center;
     justify-content: center;
 }
+.rent-button{
+    font-size: 1.5rem;
+    height: 40px;
+    border:1px rgb(170, 170, 170) solid;
+    border-radius:20px;
+    margin-top: 1rem;
+}
 .descripcion-container h4{
     margin:  5% 0 0 5%;
     text-align: center;
 }
 #under-img{
-    width: 30%;
+    width:40%;
     display:flex;
     flex-direction:column;
 
@@ -512,7 +557,7 @@ text-align: center;
     width: auto;
     cursor: pointer;
 }
-.back:hover {
+.back:hover, .titulo img:hover {
     filter: drop-shadow( 2px 2px 5px var(--color-blanco));
 
 }
@@ -579,9 +624,9 @@ text-align: center;
 }
 #caracteristicas p{
     font-weight: bold;
-    padding: 10px;
+   
     flex: 1;
-    background-color: var(--color-verde1);
+  
     margin: 0;
     color: white;
 
@@ -595,9 +640,33 @@ text-align: center;
     display: none; 
   }
   
-  #caracteristicas .contenido {
+#caracteristicas .contenido {
     display: grid;
   }
+.titulo{
+    display: flex;
+    background-color:var(--color-verde1);
+    align-items: center;
+    height: 1.2rem;
+    padding-left: 1rem;
+}
+.titulo img{
+    height: 1.5rem;
+    margin-right: 0.5rem;
+}
+.flecha-abajo{
+    transform: rotate(-90deg);
+}
+.flecha-arriba{
+    transform: rotate(90deg);
+}
+.caracteristicas-producto{
+    margin-bottom: 20px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
 /*DETAIL*/
 /*REGISTRAR PRODUCTO*/
 .drop{
@@ -763,13 +832,15 @@ text-align: center;
     justify-content: center;
 }
 
-.login-input, .login-button, .rent-button{
+.login-input, .login-button{
 margin: 10px;
 width: 100%;
 height: 30px;
 border:1px rgb(170, 170, 170) solid;
 border-radius:20px;
 }
+
+
 .login-button, .rent-button{
     border:0px;
     background-color: var(--color-verde2);
@@ -935,16 +1006,16 @@ table {
         bottom: -10%;
     }
     #under-img{
-        flex-direction: column-reverse;
-        margin-top: 2%;
+        
+        
     }
     .precio-container{
         width: 100%;
         border-left: none;
-        border-bottom: solid 2px var(--color-gris2);
+        
     }
     .descripcion-container{
-        margin-top: 1rem;
+        
         width: fit-content;
         
     }
@@ -968,11 +1039,11 @@ table {
     border-radius: 0.2rem;
 }
 .tipo-usuario button:hover{
-    
     background-color: var(--color-verde2);
-    
-
-}
+    }
+    .descripcion-container{
+        width: 100%;
+    }
 @media(max-width:768px){
     .formulario {
         display: grid;
@@ -1042,6 +1113,25 @@ table {
     .logo{
         height: 50%;
     }
+    .detail-container{
+        flex-direction: column;
+    }
+    .contenedor-imgs, #under-img{
+        width: 100%;
+    }
+    
+    .descripcion-container, .precio-container{
+        width: 100%;
+        flex: 1;
+        display:inline-block ;
+    }
+    .descripcion-container h4, .detail-data{
+        margin:0;
+        padding: 0;
+    }
+    
+    
+
 }
 @media(max-width:480px){
     .buscador h2{
@@ -1085,6 +1175,12 @@ table {
     }
     .mensaje-resolucion img{
         width: 60vw;
+    }
+    .caracteristicas-producto{
+
+        columns: 1;
+        -webkit-columns: 1;
+        -moz-columns: 1;
     }
 }
 @media(max-width:425px){
@@ -1187,5 +1283,19 @@ table {
     }
     .mensaje-resolucion img{
         width: 60vw;
+    }
+    .imgGrande img {
+        width: auto;
+        height: 250px;
+    }
+    .imgGrande {
+            width: 100%;
+            height: 250px;
+            margin: 1%;
+            padding-top: 0;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
     }
 }

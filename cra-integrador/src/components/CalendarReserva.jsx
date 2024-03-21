@@ -19,7 +19,6 @@ const CalendarioReserva = () => {
   // get the target element to toggle 
   const refOne = useRef(null)
 
-  
   const reservas = [
   {
   nombreReserva: "uno",
@@ -32,32 +31,16 @@ const CalendarioReserva = () => {
     endDate : new Date(2024, 3, 15)
     }]
 
-
   const datesArray = [];
-
 
   reservas.forEach(reserva => {
     let currentDate = new Date(reserva.startDate);
-  
-    // Generar fechas para cada reserva
     while (currentDate <= reserva.endDate) {
       datesArray.push(new Date(currentDate));
       currentDate.setDate(currentDate.getDate() + 1);
     }
   });
-  
-
-
-
-console.log('start');
-console.log(datesArray);
-
-  const disabledDates = [
-      
-    ];
-  console.log('Rango de fechas');
-  console.log(range);
-  /*console.log(disabledDates[0].start);*/
+ 
   return (
     
        <div ref={refOne} className="calendarWrapReserva">
