@@ -54,7 +54,7 @@ const ListadoUsers = () => {
   }
   
   const fetchEliminarUsuario = async (del) => {
-    const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/Usuario/:${del.idUsuario}`;
+    const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/Usuario/${del.idUsuario}`;
 
     console.log(url);
     const settings = {
