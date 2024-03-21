@@ -39,7 +39,6 @@ function InicioSesion(){
             toastError('Email o contraseña incorrectos.')
           }
 
-
         } catch (error) {
             console.log("Error al recuperar dato del servidor: " + error);
         }

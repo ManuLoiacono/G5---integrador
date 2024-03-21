@@ -42,13 +42,11 @@ useEffect(()=>{
 },[])
 
   const login = (userData, token) => {
-    // Lógica de inicio de sesión y actualización del estado de usuario
     setUser(userData);
     setToken(token)
   };
 
   const logout = () => {
-    // Lógica de cierre de sesión y restablecimiento del estado de usuario
     setUser(null);
     setToken(null);
     localStorage.removeItem("token");
