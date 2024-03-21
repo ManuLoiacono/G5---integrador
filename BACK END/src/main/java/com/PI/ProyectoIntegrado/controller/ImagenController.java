@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/imagen")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://react-app-terra-rent.s3-website.us-east-2.amazonaws.com"})
 public class ImagenController {
 
     @Autowired
