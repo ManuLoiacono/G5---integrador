@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/imagen")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001")
 public class ImagenController {
 
     @Autowired
