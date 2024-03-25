@@ -126,7 +126,7 @@ const RegistrarProd = () => {
 
         const fetchProductoNuevo = async (p) => {
           
-          const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/Producto`;
+          const url = `https://api-terrarent.ddns.net:3001/Producto`;
           const settings = {
             method: 'POST',
             headers: {
@@ -155,7 +155,7 @@ const RegistrarProd = () => {
 
         const fetchCargarImagen = async (imagen) => {
           console.log(JSON.stringify(imagen.producto));
-          const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/imagen/uploadImageToS3`;
+          const url = `https://api-terrarent.ddns.net:3001/imagen/uploadImageToS3`;
           const settings = {
             method: 'POST',
             headers: {

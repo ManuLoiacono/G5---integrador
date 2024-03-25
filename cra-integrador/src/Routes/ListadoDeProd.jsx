@@ -22,7 +22,7 @@ const ListadoDeProd = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/Producto`;
+        const url = `https://api-terrarent.ddns.net:3001/Producto`;
         const settings = {
           method: 'GET',
           mode: 'cors'
@@ -45,7 +45,7 @@ const ListadoDeProd = () => {
   }, []);
 
   const fetchEliminarProducto = async (del) => {
-    const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/Producto/:${del.idProducto}`;
+    const url = `https://api-terrarent.ddns.net:3001/Producto/:${del.idProducto}`;
 
     console.log(url);
     const settings = {

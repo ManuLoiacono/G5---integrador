@@ -50,7 +50,7 @@ function RegistrarUsuario(){
     } 
 
 
-    const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/Usuario`;
+    const url = `https://api-terrarent.ddns.net:3001/Usuario`;
     const settings = {
       method: 'POST',
       headers: {

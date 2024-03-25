@@ -12,7 +12,7 @@ function Galery() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/Producto/${params.id}`;
+    const url = `https://api-terrarent.ddns.net:3001/Producto/${params.id}`;
     const settings = {
       method: 'GET',
       mode: 'cors'
