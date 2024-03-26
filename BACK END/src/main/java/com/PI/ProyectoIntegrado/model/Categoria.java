@@ -1,8 +1,10 @@
 package com.PI.ProyectoIntegrado.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,9 +20,9 @@ public class Categoria {
     @Column
     private String nombreCategoria;
 
-
-    @Column
-    private String urlimg;
+    @OneToOne
+    @JsonManagedReference
+    private ImagenCategoria imagenCategoria;
 
     @JsonIgnore
     @OneToMany(mappedBy = "categoria")
@@ -35,17 +37,17 @@ public class Categoria {
     public Categoria() {
     }
 
-    public Categoria(String nombreCategoria, String urlimg, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
+    public Categoria(String nombreCategoria, ImagenCategoria imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
         this.nombreCategoria = nombreCategoria;
-        this.urlimg = urlimg;
+        this.imagenCategoria = imagenCategoria;
         this.productos = productos;
         this.caracteristicas = caracteristicas;
     }
 
-    public Categoria(Integer idCategoria, String nombreCategoria, String urlimg, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
+    public Categoria(Integer idCategoria, String nombreCategoria, ImagenCategoria imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
         this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
-        this.urlimg = urlimg;
+        this.imagenCategoria = imagenCategoria;
         this.productos = productos;
         this.caracteristicas = caracteristicas;
     }
@@ -66,12 +68,12 @@ public class Categoria {
         this.nombreCategoria = nombreCategoria;
     }
 
-    public String getUrlimg() {
-        return urlimg;
+    public ImagenCategoria getImagenCategoria() {
+        return imagenCategoria;
     }
 
-    public void setUrlimg(String urlimg) {
-        this.urlimg = urlimg;
+    public void setImagenCategoria(ImagenCategoria imagenCategoria) {
+        this.imagenCategoria = imagenCategoria;
     }
 
     public Set<Producto> getProductos() {

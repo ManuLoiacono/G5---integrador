@@ -1,6 +1,7 @@
 package com.PI.ProyectoIntegrado.service;
 
 
+import com.PI.ProyectoIntegrado.model.Producto;
 import com.PI.ProyectoIntegrado.repository.ICategoriaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.PI.ProyectoIntegrado.dto.CategoriaDTO;
@@ -37,14 +38,14 @@ public class CategoriaService implements ICategoriaService{
     }
 
     @Override
-    public CategoriaDTO listarUnaCategoria(Integer idCategoria) {
+    public Categoria listarUnaCategoria(Integer idCategoria) {
 
         Optional<Categoria> categoria = categoriaRepository.findById(idCategoria);
-        CategoriaDTO categoriaDTO = null;
+        Categoria categoriaDevolver = null;
         if(categoria.isPresent()){
-            categoriaDTO = mapper.convertValue(categoria, CategoriaDTO.class);
+            categoriaDevolver = mapper.convertValue(categoria, Categoria.class);
         }
-        return categoriaDTO;
+        return categoriaDevolver;
 
     }
 

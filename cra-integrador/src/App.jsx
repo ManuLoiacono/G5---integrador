@@ -15,6 +15,7 @@ import ListadoDeProd from './Routes/ListadoDeProd.jsx';
 import ListadoUsers from './Routes/ListadoUsers.jsx';
 import {LoginProvider} from './components/utils/LoginContext.jsx'
 import ProductosBuscados from "./Routes/ProductosBuscados.jsx";
+import CrearCategoria from "./Routes/CrearCategoria.jsx";
 
 function App() {
   const [estaLogueado,setEstaLogueado] = useState(false)
@@ -48,6 +49,7 @@ function cerrarSesion(){
     <Route path='listado-usuarios' element={<ListadoUsers/>}/>
     <Route path='panel-de-control' element={<PanelDeControl/>}/>
     <Route path='busqueda/:parametro' element={<ProductosBuscados/>}/>
+    <Route path='crearCategoria' element={<CrearCategoria/>}/>
   </Routes>
     <Footer/>
   </Router>

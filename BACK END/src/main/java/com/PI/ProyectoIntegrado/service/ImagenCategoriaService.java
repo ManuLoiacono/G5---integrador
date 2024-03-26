@@ -1,18 +1,16 @@
 package com.PI.ProyectoIntegrado.service;
 
 import com.PI.ProyectoIntegrado.AWS.RandomLetras;
-import com.PI.ProyectoIntegrado.model.Imagen;
-import com.PI.ProyectoIntegrado.model.Producto;
-import com.PI.ProyectoIntegrado.repository.IImagenRepository;
+import com.PI.ProyectoIntegrado.model.Categoria;
+import com.PI.ProyectoIntegrado.model.ImagenCategoria;
+import com.PI.ProyectoIntegrado.repository.IImagenCategoriaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.*;
-
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -21,26 +19,25 @@ import java.io.OutputStream;
 import java.util.*;
 
 @Service
-public class ImagenService implements IImagenService {
+public class ImagenCategoriaService implements IImagenCategoriaService{
 
     private final S3Client s3Client;
 
     @Autowired
-    public ImagenService(S3Client s3Client){
+    public ImagenCategoriaService(S3Client s3Client){
 
         this.s3Client = s3Client;
 
     }
 
     @Autowired
-    IImagenRepository  imagenRepository;
+    IImagenCategoriaRepository imagenCategoriaRepository;
 
     @Autowired
-    ProductoService productoService;
+    CategoriaService categoriaService;
 
     @Autowired
     ObjectMapper mapper;
-
 
     public List<String> listaImagenes() throws IOException {
         try {
@@ -63,10 +60,10 @@ public class ImagenService implements IImagenService {
 
 
     @Override
-    public void guardarImagen(Imagen imagen) {
+    public void guardarImagen(ImagenCategoria imagen) {
 
-        Integer productoId = imagen.getProducto().getIdProducto();
-        Producto product = productoService.listarUnProducto(productoId);
+        Integer categoriaId = imagen.getCategoria().getIdCategoria();
+        Categoria cat = categoriaService.listarUnaCategoria(categoriaId);
 
         List<String> base64Images = imagen.getImgPath() != null ? imagen.getImgPath() : Collections.emptyList();
         String altText = imagen.getTitulo() != null ? imagen.getTitulo() : "img";
@@ -86,11 +83,11 @@ public class ImagenService implements IImagenService {
                 e.printStackTrace();
             }
 
-            Imagen imagenNueva = new Imagen();
+            ImagenCategoria imagenNueva = new ImagenCategoria();
             imagenNueva.setTitulo(altText);
             imagenNueva.setUrlimg("https://imagenesterrarent.s3.us-east-2.amazonaws.com/" + keyName);
-            imagenNueva.setProducto(product);
-            imagenRepository.save(imagenNueva);
+            imagenNueva.setCategoria(cat);
+            imagenCategoriaRepository.save(imagenNueva);
 
             if(!doesObjectExists(imagen)){
                 System.out.println("El archivo introducido no existe");
@@ -108,49 +105,22 @@ public class ImagenService implements IImagenService {
             System.out.println("Imagen cargada exitosamente a S3.");
 
         }
+
+
     }
 
-    /*public void actualizarImagen(Imagen imagen) throws ResourceNotFoundException {
-        Optional<Imagen> searchedCategory = imagenRepository.findById(imagen.getId());
-        if (searchedCategory.isPresent()){
-            return imagenRepository.save(imagen);
-        }
-        else {
-            throw new ResourceNotFoundException("Imagen con ID: "+ imagen.getId()+" no existe");
-        }
-    }*/
-
     @Override
-    public void deleteImagen(Integer id) throws ResourceNotFoundException{
-        Optional<Imagen> searchedImage = imagenRepository.findById(id);
+    public void deleteImagen(Integer id) throws ResourceNotFoundException {
+        Optional<ImagenCategoria> searchedImage = imagenCategoriaRepository.findById(id);
         if (searchedImage.isPresent()){
-            imagenRepository.deleteById(id);
+            imagenCategoriaRepository.deleteById(id);
         }
         else {
             throw new ResourceNotFoundException("imagen con ID: "+ id +" no existe");
         }
     }
 
-
-    /*public String deleteFile(ImagenDTO imagenDTO) throws IOException {
-        if(!doesObjectExists(imagenDTO)){
-            return "El Arvhico introducido no existe";
-        }
-        try {
-            DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder()
-                    .bucket("imagenesterrarent")
-                    .key(imagenDTO.getTitulo())
-                    .build();
-
-            s3Client.deleteObject(deleteObjectRequest);
-            return "Archivo borrado correctamente";
-
-        }catch (S3Exception e){
-            throw new IOException(e.getMessage());
-        }
-    }*/
-
-    private boolean doesObjectExists(Imagen objectKey){
+    private boolean doesObjectExists(ImagenCategoria objectKey){
         try {
             HeadObjectRequest headObjectRequest = HeadObjectRequest.builder()
                     .bucket("imagenesterrarent")
