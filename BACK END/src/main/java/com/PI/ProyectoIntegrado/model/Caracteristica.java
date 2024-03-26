@@ -15,7 +15,8 @@ public class Caracteristica {
     private Integer idCaracteristica;
 
     @Column
-    private String nombreCaracteristicas;
+    private String nombreCaracteristica;
+    private String descripCaracteristica;
 
     @NotNull
     @ManyToOne
@@ -32,15 +33,17 @@ public class Caracteristica {
     public Caracteristica() {
     }
 
-    public Caracteristica(String nombreCaracteristicas, Producto producto, Categoria categoria) {
-        this.nombreCaracteristicas = nombreCaracteristicas;
+    public Caracteristica(String nombreCaracteristica, String descripCaracteristica, Producto producto, Categoria categoria) {
+        this.nombreCaracteristica = nombreCaracteristica;
+        this.descripCaracteristica = descripCaracteristica;
         this.producto = producto;
         this.categoria = categoria;
     }
 
-    public Caracteristica(Integer idCaracteristica, String nombreCaracteristicas, Producto producto, Categoria categoria) {
+    public Caracteristica(Integer idCaracteristica, String nombreCaracteristica, String descripCaracteristica, Producto producto, Categoria categoria) {
         this.idCaracteristica = idCaracteristica;
-        this.nombreCaracteristicas = nombreCaracteristicas;
+        this.nombreCaracteristica = nombreCaracteristica;
+        this.descripCaracteristica = descripCaracteristica;
         this.producto = producto;
         this.categoria = categoria;
     }
@@ -53,12 +56,20 @@ public class Caracteristica {
         this.idCaracteristica = idCaracteristica;
     }
 
-    public String getNombreCaracteristicas() {
-        return nombreCaracteristicas;
+    public String getNombreCaracteristica() {
+        return nombreCaracteristica;
     }
 
-    public void setNombreCaracteristicas(String nombreCaracteristicas) {
-        this.nombreCaracteristicas = nombreCaracteristicas;
+    public void setNombreCaracteristica(String nombreCaracteristica) {
+        this.nombreCaracteristica = nombreCaracteristica;
+    }
+
+    public String getDescripCaracteristica() {
+        return descripCaracteristica;
+    }
+
+    public void setDescripCaracteristica(String descripCaracteristica) {
+        this.descripCaracteristica = descripCaracteristica;
     }
 
     public Producto getProducto() {
