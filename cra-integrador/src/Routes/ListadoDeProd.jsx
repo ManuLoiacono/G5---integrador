@@ -10,6 +10,7 @@ import img5 from '../img/mochila.jpg'
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useLogin } from "../components/utils/LoginContext"
+import Swal from 'sweetalert2';
 
 
 
@@ -62,13 +63,29 @@ const ListadoDeProd = () => {
 
 
   const handleEliminarProducto = (del) => { 
-    fetchEliminarProducto(del);
+    
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetchEliminarProducto(del);
+        const refresh = productos.filter(producto => producto.idProducto !== del.idProducto);
+        setProductos(refresh);
+        Swal.fire({  
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+      }
+    });
 
-    const refresh = productos.filter(producto => producto.idProducto !== del.idProducto);
-
-    setProductos(refresh);
-
-    toastSuccess("Se eliminó el producto correctamente")
+    //toastSuccess("Se eliminó el producto correctamente")
   }
   if(user.user===null){return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>}
   if(user.user.userRol=="ADMIN"||user.user.userRol=="SUPERADMIN"){

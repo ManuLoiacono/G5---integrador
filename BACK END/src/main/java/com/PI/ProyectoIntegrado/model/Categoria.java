@@ -26,25 +26,28 @@ public class Categoria {
     @OneToMany(mappedBy = "categoria")
     private Set<Producto> productos;
 
-
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "categoria")
+    private Set<Caracteristica> caracteristicas;
 
 
 
     public Categoria() {
     }
 
-    public Categoria(Integer idCategoria, String nombreCategoria, String urlimg, Set<Producto> productos) {
+    public Categoria(String nombreCategoria, String urlimg, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
+        this.nombreCategoria = nombreCategoria;
+        this.urlimg = urlimg;
+        this.productos = productos;
+        this.caracteristicas = caracteristicas;
+    }
+
+    public Categoria(Integer idCategoria, String nombreCategoria, String urlimg, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
         this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
         this.urlimg = urlimg;
         this.productos = productos;
-    }
-
-    public Categoria(String nombreCategoria, String urlimg, Set<Producto> productos) {
-        this.nombreCategoria = nombreCategoria;
-        this.urlimg = urlimg;
-        this.productos = productos;
+        this.caracteristicas = caracteristicas;
     }
 
     public Integer getIdCategoria() {
@@ -79,4 +82,11 @@ public class Categoria {
         this.productos = productos;
     }
 
+    public Set<Caracteristica> getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(Set<Caracteristica> caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
 }

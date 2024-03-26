@@ -49,9 +49,11 @@ public class Producto {
     @JsonIgnore
     private Set<Caracteristica> caracteristicas = new HashSet<>();
 
+
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Politica> politicas = new HashSet<>();
+
 
 
 

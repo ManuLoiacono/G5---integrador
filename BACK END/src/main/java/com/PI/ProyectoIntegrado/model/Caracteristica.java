@@ -19,20 +19,30 @@ public class Caracteristica {
 
     @NotNull
     @ManyToOne
-    //@JsonBackReference
     @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
     @JsonProperty("producto")
     private Producto producto;
 
-    public Caracteristica(String nombreCaracteristicas, Producto producto) {
-        this.nombreCaracteristicas = nombreCaracteristicas;
-        this.producto = producto;
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
+
+    public Caracteristica() {
     }
 
-    public Caracteristica(Integer idCaracteristica, String nombreCaracteristicas, Producto producto) {
+    public Caracteristica(String nombreCaracteristicas, Producto producto, Categoria categoria) {
+        this.nombreCaracteristicas = nombreCaracteristicas;
+        this.producto = producto;
+        this.categoria = categoria;
+    }
+
+    public Caracteristica(Integer idCaracteristica, String nombreCaracteristicas, Producto producto, Categoria categoria) {
         this.idCaracteristica = idCaracteristica;
         this.nombreCaracteristicas = nombreCaracteristicas;
         this.producto = producto;
+        this.categoria = categoria;
     }
 
     public Integer getIdCaracteristica() {
@@ -49,5 +59,21 @@ public class Caracteristica {
 
     public void setNombreCaracteristicas(String nombreCaracteristicas) {
         this.nombreCaracteristicas = nombreCaracteristicas;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }
