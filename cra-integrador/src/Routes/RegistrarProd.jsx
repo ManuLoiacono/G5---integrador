@@ -21,11 +21,8 @@ const RegistrarProd = () => {
     const [categoria, setCategoria] = useState('');
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [Imagenes, setImagenes] = useState([]);
+    
     const user = useLogin()
-
-    //const [idP, setIdP] = useState([]);
-
-
 
     const resetForm = () => {
       setNombreProd('');

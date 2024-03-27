@@ -7,7 +7,7 @@ import java.util.Set;
 
 public interface ICategoriaService {
 
-    void agregarCategoria(CategoriaDTO categoriaDTO);
+    Categoria agregarCategoria(CategoriaDTO categoriaDTO);
     void eliminarCategoria(Integer idCategoria);
     Categoria listarUnaCategoria(Integer idCategoria);
 

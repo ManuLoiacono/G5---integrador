@@ -6,7 +6,7 @@ import { toastError, toastSuccess } from '../components/utils/Notificaciones'
 
 const CrearCategoria = () => {
     const [nombreCategoria, setNombreCategoria] = useState('');
-    const [selectedImages, setSelectedImages] = useState('');
+    const [selectedImages, setSelectedImages] = useState([]);
     const [Imagenes, setImagenes] = useState([]);
     const [formSubmitted, setFormSubmitted] = useState(false);
     const user = useLogin();
@@ -40,35 +40,23 @@ const CrearCategoria = () => {
     
         });
     };
-
-
-
-
-
-
     const handleDrop = (e) => {
         e.preventDefault();
   
         const files = e.dataTransfer.files;
         handleImageChange(files);
     };
-  
     const handleDragOver = (e) => {
     e.preventDefault();
     };
-
     const handleDragLeave = (e) => {
     e.preventDefault();
     };
-    
     const handleImageRemove = (indexToRemove) => {
     const updatedImages = selectedImages.filter((image, index) => index !== indexToRemove);
     setSelectedImages(updatedImages);
     
     };
-
-
-
 
     const handleSubmit = async (e) => {
 
@@ -79,13 +67,15 @@ const CrearCategoria = () => {
           toastError('Nombre debe contener más de 3 caracteres');
         } else if (selectedImages.length === 0) {
           toastError('Ingrese al menos una imágen');
-        } 
+        } else if (selectedImages.length > 1) {
+          toastError('La categoria puede tener solo una imagen');
+        }
         else {
           
   
-          const fetchProductoNuevo = async (p) => {
+          const fetchCategoriaNueva = async (p) => {
             
-            const url = `https://api-terrarent.ddns.net:3001/Producto`;
+            const url = `https://api-terrarent.ddns.net:3001/Categoria`;
             const settings = {
               method: 'POST',
               headers: {
@@ -100,7 +90,7 @@ const CrearCategoria = () => {
               const data = await response.json();
               console.log(JSON.stringify(data));
               //resetForm();
-              toastSuccess("Se cargó el producto correctamente")
+              toastSuccess("Se cargó la categoria correctamente")
               return data;
             } catch (error) {
               console.error('Error al procesar la respuesta:', error);
@@ -113,7 +103,7 @@ const CrearCategoria = () => {
 
         const fetchCargarImagen = async (imagen) => {
           console.log(JSON.stringify(imagen.producto));
-          const url = `https://api-terrarent.ddns.net:3001/imagen/uploadImageToS3`;
+          const url = `https://api-terrarent.ddns.net:3001/imagenCategoria/uploadImageToS3`;
           const settings = {
             method: 'POST',
             headers: {
@@ -138,7 +128,7 @@ const CrearCategoria = () => {
             nombreCategoria: nombreCategoria,
           };
       
-          const responseCategoria = await fetchProductoNuevo(nuevaCategoria);
+          const responseCategoria = await fetchCategoriaNueva(nuevaCategoria);
           console.log(responseCategoria);
           if (responseCategoria != null) {
             const idCategoria = await responseCategoria;
@@ -154,8 +144,8 @@ const CrearCategoria = () => {
             const responseImagen = await fetchCargarImagen(imagenCargar);
           
           } else {
-            console.error("Error al cargar el producto");
-            toastError('Error al cargar el producto: ' + nombreCategoria);
+            console.error("Error al cargar la categoria");
+            toastError('Error al cargar la categoria: ' + nombreCategoria);
           }
         } catch (error) {
           console.error('Error general:', error);

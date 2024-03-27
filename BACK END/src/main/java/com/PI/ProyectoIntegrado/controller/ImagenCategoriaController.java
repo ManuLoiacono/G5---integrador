@@ -4,7 +4,6 @@ package com.PI.ProyectoIntegrado.controller;
 import com.PI.ProyectoIntegrado.model.Imagen;
 import com.PI.ProyectoIntegrado.model.ImagenCategoria;
 import com.PI.ProyectoIntegrado.service.IImagenCategoriaService;
-import com.PI.ProyectoIntegrado.service.IImagenService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

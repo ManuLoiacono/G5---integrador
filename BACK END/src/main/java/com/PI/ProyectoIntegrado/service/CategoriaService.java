@@ -25,9 +25,10 @@ public class CategoriaService implements ICategoriaService{
 
 
     @Override
-    public void agregarCategoria(CategoriaDTO categoriaDTO) {
+    public Categoria agregarCategoria(CategoriaDTO categoriaDTO) {
         Categoria categoria = mapper.convertValue(categoriaDTO, Categoria.class);
         categoriaRepository.save(categoria);
+        return categoria;
     }
 
     @Override

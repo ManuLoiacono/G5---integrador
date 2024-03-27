@@ -21,10 +21,11 @@ public class CategoriaController {
     ICategoriaService categoriaService;
 
     @PostMapping
-    public ResponseEntity<?> crearCategoria(@RequestBody CategoriaDTO categoriaDTO){
+    public Categoria crearCategoria(@RequestBody CategoriaDTO categoriaDTO){
 
-        categoriaService.agregarCategoria(categoriaDTO);
-        return ResponseEntity.ok(HttpStatus.OK);
+        System.out.println("Nueva categoria: " + categoriaDTO.getNombreCategoria());
+        Categoria categoria = categoriaService.agregarCategoria(categoriaDTO);
+        return categoria;
 
     }
 
