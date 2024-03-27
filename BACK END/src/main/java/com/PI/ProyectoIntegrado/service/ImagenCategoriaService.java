@@ -87,6 +87,7 @@ public class ImagenCategoriaService implements IImagenCategoriaService{
             imagenNueva.setTitulo(altText);
             imagenNueva.setUrlimg("https://imagenesterrarent.s3.us-east-2.amazonaws.com/" + keyName);
             imagenNueva.setCategoria(cat);
+            System.out.println(imagenNueva);
             imagenCategoriaRepository.save(imagenNueva);
 
             if(!doesObjectExists(imagen)){
