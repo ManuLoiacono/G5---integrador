@@ -138,6 +138,7 @@ const CrearCategoria = () => {
                 idCategoria: idCategoria.idCategoria
               }
             };
+            console.log(JSON.stringify(imagenCargar));
     
             const responseImagen = await fetchCargarImagen(imagenCargar);
           

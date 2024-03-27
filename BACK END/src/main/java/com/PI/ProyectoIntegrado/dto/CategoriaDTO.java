@@ -8,6 +8,7 @@ import java.util.Set;
 public class CategoriaDTO {
 
     private Integer idCategoria;
+
     private String nombreCategoria;
 
     private ImagenCategoria imagenCategoria;
