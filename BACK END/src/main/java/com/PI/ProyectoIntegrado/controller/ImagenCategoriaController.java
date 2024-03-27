@@ -29,7 +29,7 @@ public class ImagenCategoriaController {
     }
 
     @Operation(summary = "Crear nueva imagen de un producto")
-    @PostMapping("/uploadCategoryImageToS3")
+    @PostMapping("/uploadCategoryToS3")
     public ResponseEntity<?> guardarImagen(@RequestBody ImagenCategoria imagen){
 
         imagenCategoriaService.guardarImagen(imagen);
