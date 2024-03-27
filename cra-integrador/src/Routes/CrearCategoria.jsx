@@ -23,7 +23,7 @@ const CrearCategoria = () => {
               reader.onload = () => {
                 const base64String = reader.result.split(",")[1];
                 imagenes.push(base64String);
-                //console.log(imagenes);
+                console.log(imagenes);
                 resolve(imagenes);
               };
               reader.onerror = (error) => reject(error);
@@ -33,10 +33,10 @@ const CrearCategoria = () => {
           console.log("Imagenes convertidas a base64:", imagenes);
           if(imagenes.length !== 0){
             console.log("entro")
-            setImagenes(imagenes);
+            setImagenes([...Imagenes, ...imagenes]);
           }
           console.log("Estado de imagenes actualizado:", imagenes.length);
-          setSelectedImages(files);
+          setSelectedImages([...selectedImages, ...files]);
     
         });
     };
@@ -71,8 +71,6 @@ const CrearCategoria = () => {
           toastError('La categoria puede tener solo una imagen');
         }
         else {
-          
-  
           const fetchCategoriaNueva = async (p) => {
             
             const url = `https://api-terrarent.ddns.net:3001/Categoria`;
@@ -125,7 +123,7 @@ const CrearCategoria = () => {
         
         try {
           const nuevaCategoria = {
-            nombreCategoria: nombreCategoria,
+            nombreCategoria: nombreCategoria
           };
       
           const responseCategoria = await fetchCategoriaNueva(nuevaCategoria);

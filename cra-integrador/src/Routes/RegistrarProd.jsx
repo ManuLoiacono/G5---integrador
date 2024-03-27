@@ -119,8 +119,6 @@ const RegistrarProd = () => {
         toastError('Ingrese al menos una imágen');
       } 
       else {
-        
-
         const fetchProductoNuevo = async (p) => {
           
           const url = `https://api-terrarent.ddns.net:3001/Producto`;
