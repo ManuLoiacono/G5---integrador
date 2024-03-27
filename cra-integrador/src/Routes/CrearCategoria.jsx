@@ -102,7 +102,7 @@ const CrearCategoria = () => {
           console.log(Imagenes);
 
         const fetchCargarImagen = async (imagen) => {
-          console.log(JSON.stringify(imagen.producto));
+          console.log(JSON.stringify(imagen.categoria));
           const url = `https://api-terrarent.ddns.net:3001/imagenCategoria/uploadImageToS3`;
           const settings = {
             method: 'POST',

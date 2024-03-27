@@ -11,7 +11,7 @@ public interface ICategoriaService {
     void eliminarCategoria(Integer idCategoria);
     Categoria listarUnaCategoria(Integer idCategoria);
 
-    Set<CategoriaDTO> listarCategorias();
+    Set<Categoria> listarCategorias();
 
 
 }

@@ -4,20 +4,17 @@ public class CategoriaDTO {
 
     private Integer idCategoria;
     private String nombreCategoria;
-    private String urlimg;
 
     public CategoriaDTO() {
     }
 
-    public CategoriaDTO(String nombreCategoria, String urlimg) {
+    public CategoriaDTO(String nombreCategoria) {
         this.nombreCategoria = nombreCategoria;
-        this.urlimg = urlimg;
     }
 
-    public CategoriaDTO(Integer idCategoria, String nombreCategoria, String urlimg) {
+    public CategoriaDTO(Integer idCategoria, String nombreCategoria) {
         this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
-        this.urlimg = urlimg;
     }
 
     public Integer getIdCategoria() {
@@ -36,11 +33,4 @@ public class CategoriaDTO {
         this.nombreCategoria = nombreCategoria;
     }
 
-    public String getUrlimg() {
-        return urlimg;
-    }
-
-    public void setUrlimg(String urlimg) {
-        this.urlimg = urlimg;
-    }
 }
