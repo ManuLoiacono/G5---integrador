@@ -1,7 +1,7 @@
 package com.PI.ProyectoIntegrado.controller;
 
 
-import com.PI.ProyectoIntegrado.model.Imagen;
+
 import com.PI.ProyectoIntegrado.model.ImagenCategoria;
 import com.PI.ProyectoIntegrado.service.IImagenCategoriaService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,7 +29,7 @@ public class ImagenCategoriaController {
     }
 
     @Operation(summary = "Crear nueva imagen de un producto")
-    @PostMapping("/uploadImageToS3")
+    @PostMapping("/uploadCategoryImageToS3")
     public ResponseEntity<?> guardarImagen(@RequestBody ImagenCategoria imagen){
 
         imagenCategoriaService.guardarImagen(imagen);

@@ -51,13 +51,13 @@ public class CategoriaService implements ICategoriaService{
     }
 
     @Override
-    public Set<Categoria> listarCategorias() {
+    public Set<CategoriaDTO> listarCategorias() {
 
         List<Categoria> categorias = categoriaRepository.findAll();
-        Set<Categoria> cats = new HashSet<>();
+        Set<CategoriaDTO> categoriasDTO = new HashSet<>();
         for(Categoria categoria: categorias){
-            cats.add(mapper.convertValue(categoria, Categoria.class));
+            categoriasDTO.add(mapper.convertValue(categoria, CategoriaDTO.class));
         }
-        return cats;
+        return categoriasDTO;
     }
 }

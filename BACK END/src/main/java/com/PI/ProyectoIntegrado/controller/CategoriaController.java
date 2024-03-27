@@ -37,7 +37,7 @@ public class CategoriaController {
     }
 
     @GetMapping
-    public Collection<Categoria> getTodasCategorias(){
+    public Collection<CategoriaDTO> getTodasCategorias(){
         return categoriaService.listarCategorias();
     }
 
