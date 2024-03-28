@@ -4,6 +4,7 @@ import imgFlecha from '../img/flecha_blanca.png';
 import noImage from '../img/no-image.jpg';
 import CalendarReserva from "../components/CalendarReserva";
 import { FaPalette, FaUsers, FaTag, FaWeight, FaRuler, FaWindowMaximize, FaDoorOpen, FaShoppingBag } from 'react-icons/fa';
+import NewCalendar from "../components/NewCalendar";
 
 
 function Detail() {
@@ -174,7 +175,8 @@ function Detail() {
             <h4>Alquiler por día:</h4>
             <p className="precio">${product.precioProd}</p>
           </div>
-          <CalendarReserva />
+          <p>Fecha Inicio - Fecha Fin</p>
+          <NewCalendar/>
           <button className="rent-button">Alquilar</button>
         </div>
       </div>
