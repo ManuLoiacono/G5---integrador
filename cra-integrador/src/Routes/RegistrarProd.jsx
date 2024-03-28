@@ -21,11 +21,8 @@ const RegistrarProd = () => {
     const [categoria, setCategoria] = useState('');
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [Imagenes, setImagenes] = useState([]);
+    
     const user = useLogin()
-
-    //const [idP, setIdP] = useState([]);
-
-
 
     const resetForm = () => {
       setNombreProd('');
@@ -122,8 +119,6 @@ const RegistrarProd = () => {
         toastError('Ingrese al menos una imágen');
       } 
       else {
-        
-
         const fetchProductoNuevo = async (p) => {
           
           const url = `https://api-terrarent.ddns.net:3001/Producto`;
