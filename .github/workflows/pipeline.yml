@@ -1,0 +1,72 @@
+name: DeployInEc2
+on:
+    push: 
+        branches: 
+            - main
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-20.04
+    environment: production
+
+    steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+        
+        - name: Build Front End
+          uses: actions/setup-node@v2
+          with:
+            node-version: '18.18.1'
+        - name: Install dependencies
+          run: cd cra-integrador && npm install
+        - name: Build
+          run: cd cra-integrador && npm run build
+          continue-on-error: true
+        
+        - name: SCP
+          uses: appleboy/scp-action@v0.1.7
+          with:
+            host: ${{ secrets.EC2_HOST }}
+            username: ${{ secrets.EC2_USERNAME }}
+            port: ${{ secrets.PORT }}
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
+            source: "cra-integrador/build"
+            target: /home/ubuntu
+
+        - name: Deploy Front End
+          uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.EC2_HOST }}
+            username: ${{ secrets.EC2_USERNAME }}
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
+            port: ${{ secrets.EC2_PORT }}
+            script: |
+                cd /home/ubuntu
+                sudo cp -r build/* /var/www/html
+                exit
+
+                
+        - name: Deploy Back End
+          uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.EC2_HOST_BACK }}
+            username: ${{ secrets.EC2_USERNAME }}
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
+            port: ${{ secrets.EC2_PORT }}
+            script: |
+              sudo docker stop a4ce
+              sudo docker start a4ce
+              sudo docker exec a4ce /bin/bash -c "cd /home/G5---integrador/BACK\ END && mvn package -DskipTests"
+              sudo docker exec a4ce /bin/bash -c "cd /home/G5---integrador/BACK\ END/target && java -jar ProyectoIntegrado-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &"
+              exit
+              
+        
+
+
+
+
+
+
+
+
+
