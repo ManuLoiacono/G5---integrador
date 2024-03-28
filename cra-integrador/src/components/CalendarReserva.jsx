@@ -40,20 +40,21 @@ const CalendarioReserva = () => {
       currentDate.setDate(currentDate.getDate() + 1);
     }
   });
- 
+
   return (
-    
+      
        <div ref={refOne} className="calendarWrapReserva">
         {<DateRange
             onChange={item => setRange([item.selection])}
             editableDateInputs={true}
             moveRangeOnFirstSelection={false}
             ranges={range}
-            months={1}
-            direction="horizontal"
+            months={2}
+            direction="vertical"
             className="calendarElementReserva"
-            fixedHeight="true"
+            fixedHeight="false"
             disabledDates={datesArray}
+            
             />
         }
       </div>
