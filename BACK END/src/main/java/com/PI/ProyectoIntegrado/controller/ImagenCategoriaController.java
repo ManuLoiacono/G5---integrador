@@ -1,40 +1,38 @@
 package com.PI.ProyectoIntegrado.controller;
 
-import com.PI.ProyectoIntegrado.dto.ImagenDTO;
-import com.PI.ProyectoIntegrado.dto.ProductoDTO;
-import com.PI.ProyectoIntegrado.model.Imagen;
-import com.PI.ProyectoIntegrado.service.IImagenService;
+
+
+import com.PI.ProyectoIntegrado.model.ImagenCategoria;
+import com.PI.ProyectoIntegrado.service.IImagenCategoriaService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.v3.oas.annotations.Operation;
-
 
 import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/imagen")
+@RequestMapping("/imagenCategoria")
 @CrossOrigin(origins = {"http://localhost:3000", "http://react-app-terra-rent.s3-website.us-east-2.amazonaws.com", "https://terrarent.ddns.net"})
-public class ImagenController {
+public class ImagenCategoriaController {
 
     @Autowired
-    IImagenService imagenService;
+    IImagenCategoriaService imagenCategoriaService;
 
     @Operation(summary = "Listar todas las imagenes")
     @GetMapping("/listarImagenes")
     public List<String> listaImagenes() throws IOException {
-        return imagenService.listaImagenes();
+        return imagenCategoriaService.listaImagenes();
     }
 
-
     @Operation(summary = "Crear nueva imagen de un producto")
-    @PostMapping("/uploadImageToS3")
-    public ResponseEntity<?> guardarImagen(@RequestBody Imagen imagen){
+    @PostMapping("/uploadCategoryToS3")
+    public ResponseEntity<?> guardarImagen(@RequestBody ImagenCategoria imagen){
 
-        imagenService.guardarImagen(imagen);
+        imagenCategoriaService.guardarImagen(imagen);
         return ResponseEntity.ok(HttpStatus.OK);
 
     }
@@ -42,9 +40,8 @@ public class ImagenController {
     @Operation(summary = "Borrar imagen por id")
     @DeleteMapping("/:{id}")
     public ResponseEntity<String> deleteImagen(@PathVariable Integer id) throws ResourceNotFoundException {
-        imagenService.deleteImagen(id);
+        imagenCategoriaService.deleteImagen(id);
         return ResponseEntity.ok("Imagen con ID: "+ id +" Borrada");
     }
-
 
 }

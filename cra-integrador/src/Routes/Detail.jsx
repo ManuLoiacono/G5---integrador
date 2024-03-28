@@ -4,6 +4,7 @@ import imgFlecha from '../img/flecha_blanca.png';
 import noImage from '../img/no-image.jpg';
 import CalendarReserva from "../components/CalendarReserva";
 import { FaPalette, FaUsers, FaTag, FaWeight, FaRuler, FaWindowMaximize, FaDoorOpen, FaShoppingBag } from 'react-icons/fa';
+import NewCalendar from "../components/NewCalendar";
 
 
 function Detail() {
@@ -14,7 +15,7 @@ function Detail() {
 
   const fetchData = async () => {
     try {
-      const url = `http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/Producto/${params.id}`;
+      const url = `https://api-terrarent.ddns.net:3001/Producto/${params.id}`;
       const settings = {
         method: 'GET',
         mode: 'cors'
@@ -174,7 +175,8 @@ function Detail() {
             <h4>Alquiler por día:</h4>
             <p className="precio">${product.precioProd}</p>
           </div>
-          <CalendarReserva />
+          <p>Fecha Inicio - Fecha Fin</p>
+          <NewCalendar/>
           <button className="rent-button">Alquilar</button>
         </div>
       </div>

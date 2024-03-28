@@ -14,7 +14,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping("/Producto")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://react-app-terra-rent.s3-website.us-east-2.amazonaws.com", "https://terrarent.ddns.net"})
 public class ProductoController {
 
     @Autowired
@@ -23,26 +23,11 @@ public class ProductoController {
 
     @PostMapping
     public Producto crearProducto(@RequestBody ProductoDTO productoDTO){
-    //public ResponseEntity<?> crearProducto(@RequestHeader("Authorization") String token, @RequestBody ProductoDTO productoDTO){
 
-        //try {
-            System.out.println("Nuevo producto: " + productoDTO.getNombreProd());
-            //tieneRolAdmin = AuthenticationService.getRolesFromToken(token);
-            /*if(!tieneRolAdmin){
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No tiene permisos para realizar esta accion.");
-            }*/
-            Producto producto = productoService.agregarProducto(productoDTO);
-            return producto;
+        System.out.println("Nuevo producto: " + productoDTO.getNombreProd());
+        Producto producto = productoService.agregarProducto(productoDTO);
+        return producto;
 
-       /* } catch (DataIntegrityViolationException e){
-            return //new ResponseEntity<>("ya existe un producto con ese nombre.", HttpStatus.BAD_REQUEST);
-        } catch (Exception e){
-            return //new ResponseEntity<>("Error al procesar la solicitud.", HttpStatus.INTERNAL_SERVER_ERROR);
-        }*/
-
-        //ANTES
-        /*productoService.agregarProducto(productoDTO);
-        return ResponseEntity.ok(HttpStatus.OK);*/
     }
 
     @GetMapping("/:{idProducto}")

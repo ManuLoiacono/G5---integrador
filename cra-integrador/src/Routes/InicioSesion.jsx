@@ -17,7 +17,7 @@ function InicioSesion(){
         };
       
         try {
-          const response = await fetch('http://ec2-18-219-62-16.us-east-2.compute.amazonaws.com:3001/api/login', {
+          const response = await fetch('https://api-terrarent.ddns.net:3001/api/login', {
             
             method: 'POST',
             headers: {

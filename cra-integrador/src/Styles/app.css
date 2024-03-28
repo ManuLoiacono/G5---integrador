@@ -216,37 +216,10 @@ input.inputBox {
     color: var(--color-blanco);
     height: 1.5rem;
 }
-.rdrMonthsHorizontal{
-    align-self: center;
-}
-.rdrDays button {
-    background-color: var(--color-verde1);
-}
-.rdrDays button span{
-    color: var(--color-naranja);
-}
-.rdrDays button .rdrStartEdge, .rdrDays button .rdrInRange, .rdrDays button .rdrEndEdge{
-    background-color: var(--color-naranja);
-    
-}
-.rdrDayToday .rdrDayNumber span{
-    text-decoration: none;
-}
-.rdrDays, .rdrWeekDays{
-    align-self: center;
-    width: 80%;
-}
-.rdrMonth{
-    display: flex;
-    align-self: center;
-    flex-direction: column;
-}
-.rdrCalendarWrapper{
-    font-size: 1rem;
-}
+
 
 .buscador input{
-    margin-left: 1rem;
+    
     border-radius: 0.5rem;
     background-color: var(--color-gris2);
     color: var(--color-verde1);
@@ -395,9 +368,9 @@ figure{
     border-radius: 4px;
 }
 #recomendados .card .contenedor-imagen img{
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
+    max-width: 400px;
+    min-height: 400px;
+    object-fit:cover
 }
 .card h3{
     font-size: 1.7rem;
@@ -1020,7 +993,56 @@ table {
     object-fit: cover;
 }
 
-
+/*CALENDARIOS*/
+.react-datepicker-wrapper{
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 50%;
+    align-content: center;
+    justify-content: center;
+}
+.react-datepicker__input-container input{
+    width: 100%;
+    text-align: center;
+}
+.calendario-input{
+    justify-self: center;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    margin-left: 1rem;
+    
+    }
+    #under-img p{
+        text-align: center;
+        margin: 0.5rem
+    }
+    .react-datepicker__close-icon{
+        position: relative;
+    }
+    .formulario .react-datepicker-wrapper{
+                width: 100%;
+    }
+    .formulario .react-datepicker__input-container input{
+        margin: 0;
+        text-align: left;
+        
+    }
+    .calendario-input button{
+        margin: 0;
+        align-items: center;
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        
+    }
+    .react-datepicker__navigation{
+        top: 1px;
+    }
+    .react-datepicker__current-month{
+        text-transform: uppercase;
+    }
 /*PRODUCTOS BUSCADOS*/
 
 .react-calendar {
