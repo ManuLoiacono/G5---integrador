@@ -42,7 +42,7 @@ jobs:
             port: ${{ secrets.EC2_PORT }}
             script: |
                 cd /home/ubuntu
-                sudo cp -r build/* /var/www/html
+                sudo cp -r cra-integrador/build/* /var/www/html
                 exit
 
                 
