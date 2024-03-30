@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import style from "../Styles/app.css";
 import lupa from "../img/lupa.png"
-import Calendar from "../components/Calendar";
-import NewCalendar from "../components/NewCalendar";
+import CalendarioBuscador from "../components/CalendarioBuscador";
+
 
 const Buscador = () => {
   const [parametro, setParametro] = useState("");
@@ -16,8 +16,7 @@ const Buscador = () => {
   const handleDateRangeChange = (newRange) => {
     setSelectedDateRange(newRange);
   };
-console.log("selectedDateRange");
-console.log(selectedDateRange);
+
   return (
     <div className='buscador'>
       <h2>
@@ -25,7 +24,7 @@ console.log(selectedDateRange);
       </h2>
       <form onSubmit={handleSubmit} className="formulario">
           <input type="text" placeholder='Buscá!' value={parametro} onChange={(e)=>{setParametro(e.target.value)}}/>
-          <NewCalendar/>
+          <CalendarioBuscador/>
           <Link  to={`/busqueda/${parametro}`}><button>Lo encontraremos</button></Link>
         </form>
     </div>
