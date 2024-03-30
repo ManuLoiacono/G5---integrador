@@ -4,7 +4,6 @@ import imgBici from '../img/bicicleta.jpg'
 import imgBaton from '../img/baton_trakking.jpg'
 import imgCons from '../img/conservadora-02.jpg'
 
-import { useState, useEffect } from "react";
 
 
 
@@ -13,7 +12,7 @@ const Categorias = () => {
   const [categoriaMostrar, setCategoriasMostrar] = useState([]);
   const [error, setError] = useState(null);
 
-  let categorias=[
+  /*let categorias=[
    { id : 1,
   nombre:"Carpas",
   img:imgCarpa,
@@ -30,7 +29,7 @@ cantProductos:0},
   nombre:"Senderismo",
   img:imgBaton,
 cantProductos:0}
-  ]
+  ]*/
 
   useEffect(() => {
     const fetchData = async () => {
