@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams, Outlet } from "react-router-dom";
 import imgFlecha from '../img/flecha_blanca.png';
 import noImage from '../img/no-image.jpg';
-import CalendarReserva from "../components/CalendarReserva";
 import { FaPalette, FaUsers, FaTag, FaWeight, FaRuler, FaWindowMaximize, FaDoorOpen, FaShoppingBag } from 'react-icons/fa';
+import CalendarioReserva from "../components/CalendarioReserva";
+import Politicas from "../components/Politicas";
 import NewCalendar from "../components/NewCalendar";
+import { useLogin } from "../components/utils/LoginContext";
 
 
 function Detail() {
@@ -12,7 +14,12 @@ function Detail() {
   const [product, setProduct] = useState([]);
   const params = useParams();
   const [imgSinPrimera, setImgSinPrimera] = useState([]);
+  const [dateRange, setDateRange] = useState([null, null]); // Nuevo estado para el rango de fechas
+  const user = useLogin()
 
+  const handleDateChange = (range) => {
+    setDateRange(range);
+  };
   const fetchData = async () => {
     try {
       const url = `https://api-terrarent.ddns.net:3001/Producto/${params.id}`;
@@ -54,11 +61,12 @@ function Detail() {
     { titulo: 'Incluye:', detalle: "Bolsa de transporte"}
   ];
 
-
+  console.log("dateRange");
+  console.log(dateRange);
   useEffect(() => {
     fetchData();
   }, [params.id]);
-  console.log(product.imagenes);
+ 
     
   const [mostrarContenido, setMostrarContenido] = useState(false);
   
@@ -132,38 +140,7 @@ function Detail() {
     </ul>
               </div>
               
-              <div className="titulo">
-                <p >Políticas y devoluciones</p>
-                <img onClick={toggleContenido} src={imgFlecha} className={mostrarContenido?"flecha-arriba":"flecha-abajo"} alt="" />
-            </div>
-        {mostrarContenido && (
-        <div className="contenido">
-          <ul>
-          <p>Políticas generales:</p>
-            <li>El cliente debe leer y aceptar todas las políticas y condiciones antes de realizar una reserva o alquiler en Terrarent.</li>
-            <li>Las tarifas de alquiler están sujetas a cambios sin previo aviso.</li>
-            <li>Los precios pueden variar según la temporada y la disponibilidad del producto.</li>
-          </ul>
-          <ul>
-          <p>Políticas de Devolución del Producto:</p>
-            <li>El cliente es responsable de devolver los productos de alquiler en la fecha y hora acordadas durante la reserva.</li>
-            <li>Los productos deben ser devueltos en las mismas condiciones en las que fueron entregados. Se aplicarán cargos adicionales por daños o pérdida.</li>
-            <li>Se proporcionará un período de gracia de 30 minutos para la devolución de los productos. Después de este tiempo, se aplicarán cargos adicionales.</li>
-          </ul>
-          <ul>
-          <p>Políticas de Cancelación:</p>
-            <li>Las cancelaciones deben realizarse con al menos 48 horas de anticipación para recibir un reembolso completo.</li>
-            <li>Se aplicará un cargo por cancelación del 50% para cancelaciones realizadas dentro de las 48 horas previas a la fecha de inicio del alquiler.</li>
-            <li>Las cancelaciones realizadas dentro de las 24 horas previas al inicio del alquiler no serán elegibles para reembolso.</li>
-          </ul>
-          <ul>
-          <p>Políticas de Reserva:</p>
-            <li>Las reservas deben realizarse con al menos 24 horas de anticipación para garantizar la disponibilidad del producto.</li>
-            <li>Las reservas están sujetas a disponibilidad y pueden requerir un depósito anticipado para confirmar la reserva.</li>
-            <li>Terrarent se reserva el derecho de cancelar o modificar una reserva en caso de circunstancias imprevistas o situaciones fuera de nuestro control.</li>
-          </ul>
-        </div>
-      )}
+    <Politicas/>
     </div>
         </div>
         <div id="under-img">
@@ -176,8 +153,12 @@ function Detail() {
             <p className="precio">${product.precioProd}</p>
           </div>
           <p>Fecha Inicio - Fecha Fin</p>
+          <CalendarioReserva onDateChange={handleDateChange} />
+
+          <button className="rent-button">Reservar</button>
+          <Politicas/>
           <NewCalendar/>
-          <button className="rent-button">Alquilar</button>
+          {user.user ? (<Link to={`/reserva/${params.id}`}><button className="rent-button">Alquilar</button></Link>) : (<Link to={'/inicio-sesion'}><button className="rent-button">Alquilar</button></Link>)}
         </div>
       </div>
     </section>
