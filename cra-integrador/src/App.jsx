@@ -16,6 +16,8 @@ import ListadoUsers from './Routes/ListadoUsers.jsx';
 import {LoginProvider} from './components/utils/LoginContext.jsx'
 import ProductosBuscados from "./Routes/ProductosBuscados.jsx";
 import CrearCategoria from "./Routes/CrearCategoria.jsx";
+import { ProductProvider } from "./components/utils/ProductContext.jsx";
+import Reserva from "./Routes/Reserva.jsx";
 
 function App() {
   const [estaLogueado,setEstaLogueado] = useState(false)
@@ -33,6 +35,7 @@ function cerrarSesion(){
 
   return ( 
     <>
+    <ProductProvider>
     <LoginProvider>
     <ToastContainer/>    
   <Router>
@@ -48,12 +51,14 @@ function cerrarSesion(){
     <Route path='listado-productos' element={<ListadoDeProd/>}/>
     <Route path='listado-usuarios' element={<ListadoUsers/>}/>
     <Route path='panel-de-control' element={<PanelDeControl/>}/>
-    <Route path='busqueda/:parametro' element={<ProductosBuscados/>}/>
+    <Route path='busqueda/:parametro/:fechas' element={<ProductosBuscados/>}/>
     <Route path='crearCategoria' element={<CrearCategoria/>}/>
+    <Route path='reserva/:id' element={<Reserva/>}/>
   </Routes>
     <Footer/>
   </Router>
   </LoginProvider >
+  </ProductProvider>
   </>
   );
 }

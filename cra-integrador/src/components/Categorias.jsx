@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useEffect , useState} from 'react'
 import imgCarpa from '../img/carpa-playera.jpg'
 import imgBici from '../img/bicicleta.jpg'
 import imgBaton from '../img/baton_trakking.jpg'
 import imgCons from '../img/conservadora-02.jpg'
+import { useProduct } from './utils/ProductContext'
 const Categorias = () => {
+  let products = useProduct()
+  const [productos, setProductos] = useState([])
+  useEffect(()=>{console.log(setProductos(products.productsData));},[products.productsData])
   let categorias=[
    { id : 1,
   nombre:"Carpas",
   img:imgCarpa,
-cantProductos:0},
+cantProductos:productos.length},
 { id : 2,
   nombre:"Kits",
   img:imgCons,

@@ -29,7 +29,7 @@ console.log(dateRange);
       endDate={endDate}
       onChange={handleDateChange}
       isClearable={false}
-      placeholderText="Elija fechas para reerva"
+      placeholderText="Elija fechas para reserva"
       excludeDateIntervals={excludeIntervals}
       dateFormat="dd/MM/YY"
       locale="es-ES"

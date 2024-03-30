@@ -26,7 +26,7 @@ console.log(selectedDateRange);
       <form onSubmit={handleSubmit} className="formulario">
           <input type="text" placeholder='Buscá!' value={parametro} onChange={(e)=>{setParametro(e.target.value)}}/>
           <NewCalendar/>
-          <Link  to={`/busqueda/${parametro}`}><button>Lo encontraremos</button></Link>
+          <Link  to={`/busqueda/${parametro}/${selectedDateRange}`}><button>Lo encontraremos</button></Link>
         </form>
     </div>
   )

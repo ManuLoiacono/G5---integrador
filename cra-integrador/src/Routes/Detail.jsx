@@ -5,6 +5,8 @@ import noImage from '../img/no-image.jpg';
 import CalendarReserva from "../components/CalendarReserva";
 import { FaPalette, FaUsers, FaTag, FaWeight, FaRuler, FaWindowMaximize, FaDoorOpen, FaShoppingBag } from 'react-icons/fa';
 import NewCalendar from "../components/NewCalendar";
+import { useLogin } from "../components/utils/LoginContext";
+import { toastError } from "../components/utils/Notificaciones";
 
 
 function Detail() {
@@ -12,6 +14,7 @@ function Detail() {
   const [product, setProduct] = useState([]);
   const params = useParams();
   const [imgSinPrimera, setImgSinPrimera] = useState([]);
+  const user = useLogin()
 
   const fetchData = async () => {
     try {
@@ -177,7 +180,7 @@ function Detail() {
           </div>
           <p>Fecha Inicio - Fecha Fin</p>
           <NewCalendar/>
-          <button className="rent-button">Alquilar</button>
+          {user.user ? (<Link to={`/reserva/${params.id}`}><button className="rent-button">Alquilar</button></Link>) : (<Link to={'/inicio-sesion'}><button className="rent-button">Alquilar</button></Link>)}
         </div>
       </div>
     </section>
