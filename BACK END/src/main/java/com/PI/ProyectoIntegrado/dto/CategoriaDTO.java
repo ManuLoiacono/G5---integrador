@@ -3,6 +3,7 @@ package com.PI.ProyectoIntegrado.dto;
 import com.PI.ProyectoIntegrado.model.Caracteristica;
 import com.PI.ProyectoIntegrado.model.ImagenCategoria;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class CategoriaDTO {
@@ -11,20 +12,20 @@ public class CategoriaDTO {
 
     private String nombreCategoria;
 
-    private ImagenCategoria imagenCategoria;
+    private Set<ImagenCategoria> imagenCategoria = new HashSet<>();
 
     private Set<Caracteristica> caracteristicas;
 
     public CategoriaDTO() {
     }
 
-    public CategoriaDTO(String nombreCategoria, ImagenCategoria imagenCategoria, Set<Caracteristica> caracteristicas) {
+    public CategoriaDTO(String nombreCategoria, Set<ImagenCategoria> imagenCategoria, Set<Caracteristica> caracteristicas) {
         this.nombreCategoria = nombreCategoria;
         this.imagenCategoria = imagenCategoria;
         this.caracteristicas = caracteristicas;
     }
 
-    public CategoriaDTO(Integer idCategoria, String nombreCategoria, ImagenCategoria imagenCategoria, Set<Caracteristica> caracteristicas) {
+    public CategoriaDTO(Integer idCategoria, String nombreCategoria, Set<ImagenCategoria> imagenCategoria, Set<Caracteristica> caracteristicas) {
         this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
         this.imagenCategoria = imagenCategoria;
@@ -47,11 +48,11 @@ public class CategoriaDTO {
         this.nombreCategoria = nombreCategoria;
     }
 
-    public ImagenCategoria getImagenCategoria() {
+    public Set<ImagenCategoria> getImagenCategoria() {
         return imagenCategoria;
     }
 
-    public void setImagenCategoria(ImagenCategoria imagenCategoria) {
+    public void setImagenCategoria(Set<ImagenCategoria> imagenCategoria) {
         this.imagenCategoria = imagenCategoria;
     }
 

@@ -26,7 +26,7 @@ public class ImagenCategoria {
 
     private List<String> imgPath;
     @NotNull
-    @OneToOne
+    @ManyToOne
     @JsonBackReference
     @JoinColumn(name = "idCategoria", referencedColumnName = "idCategoria")
     @JsonProperty("categoria")
