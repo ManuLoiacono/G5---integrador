@@ -66,9 +66,9 @@ public class ProductoService implements IProductoService{
     }
 
     @Override
-    public void modificarProducto(ProductoDTO productoDTO){
+    public void modificarProducto(Producto producto){
 
-        Producto producto = mapper.convertValue(productoDTO, Producto.class);
+        //Producto producto = mapper.convertValue(productoDTO, Producto.class);
         productoRepository.save(producto);
 
     }

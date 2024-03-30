@@ -13,6 +13,6 @@ public interface IProductoService {
 
     Set<ProductoDTO> listarProductos();
 
-    void modificarProducto(ProductoDTO productoDTO);
+    void modificarProducto(Producto producto);
 
 }
