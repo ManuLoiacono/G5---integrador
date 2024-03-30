@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface IReservaRepository extends JpaRepository <Reserva, Integer> {
 
-    @Query(value = "SELECT * FROM Reservas r WHERE r.idProducto = :id", nativeQuery = true)
-    List<Reserva> buscarReservaPorProductoID(@Param("id")Integer id);
+    @Query(value = "SELECT * FROM RESERVAS WHERE ID_PRODUCTO = :idProducto", nativeQuery = true)
+    List<Reserva> buscarReservaPorProductoID(@Param("idProducto")Integer idProducto);
 
 }

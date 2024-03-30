@@ -22,14 +22,12 @@ public class ReservaController {
     IReservaService reservaService;
 
     @PostMapping
-    public ResponseEntity<?> crearReserva(@RequestBody ReservaDTO reservaDTO){
-
-        reservaService.agregarReserva(reservaDTO);
-        return ResponseEntity.ok(HttpStatus.OK);
-
+    public Reserva crearReserva(@RequestBody ReservaDTO reservaDTO){
+        Reserva reserva = reservaService.agregarReserva(reservaDTO);
+        return reserva;
     }
 
-    @GetMapping("/:{idReserva}")
+    @GetMapping("/{idReserva}")
     public ReservaDTO getReserva(@PathVariable Integer idReserva){
 
         return  reservaService.listarUnaReserva(idReserva);
@@ -37,19 +35,19 @@ public class ReservaController {
     }
 
     @GetMapping
-    public Collection<ReservaDTO> getTodasReservas(){
+    public Collection<Reserva> getTodasReservas(){
         return reservaService.listarReservas();
     }
 
-    @DeleteMapping("/:{idReserva}")
+    @DeleteMapping("/{idReserva}")
     public ResponseEntity<?> eliminarReserva(@PathVariable Integer idReserva){
         reservaService.eliminarReserva(idReserva);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @GetMapping("/:{idProducto}")
-    public List<Reserva> obtenerReservaPorProductoID(@PathVariable Integer id) throws ResourceNotFoundException {
-        return reservaService.buscarReservaPorProductoID(id);
+    @GetMapping("/producto/{idProducto}")
+    public List<Reserva> obtenerReservaPorProductoID(@PathVariable Integer idProducto) throws ResourceNotFoundException {
+        return reservaService.buscarReservaPorProductoID(idProducto);
     }
 
 
