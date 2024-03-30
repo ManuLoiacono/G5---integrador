@@ -37,20 +37,6 @@ const RegistrarProd = () => {
     };
 
 
-    let categorias=[
-      { id : 1,
-     nombre:"Carpas"
-    },
-      { id : 2,
-     nombre:"Kits"
-    },
-    { id : 3,
-     nombre:"Vehículos",
-    },
-    { id : 4,
-     nombre:"Senderismo",
-    }]
-
    const fetchObtenerCategorias = async () => {
           try {
             const url = `https://api-terrarent.ddns.net:3001/Categoria`;

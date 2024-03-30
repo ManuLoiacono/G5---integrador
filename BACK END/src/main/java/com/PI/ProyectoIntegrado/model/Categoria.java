@@ -20,6 +20,9 @@ public class Categoria {
     @Column
     private String nombreCategoria;
 
+    @Column
+    private String descripcionCacteristica;
+
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Set<ImagenCategoria> imagenCategoria = new HashSet<>();
@@ -37,16 +40,18 @@ public class Categoria {
     public Categoria() {
     }
 
-    public Categoria(String nombreCategoria, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
+    public Categoria(String nombreCategoria, String descripcionCacteristica, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
         this.nombreCategoria = nombreCategoria;
+        this.descripcionCacteristica = descripcionCacteristica;
         this.imagenCategoria = imagenCategoria;
         this.productos = productos;
         this.caracteristicas = caracteristicas;
     }
 
-    public Categoria(Integer idCategoria, String nombreCategoria, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
+    public Categoria(Integer idCategoria, String nombreCategoria, String descripcionCacteristica, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
         this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
+        this.descripcionCacteristica = descripcionCacteristica;
         this.imagenCategoria = imagenCategoria;
         this.productos = productos;
         this.caracteristicas = caracteristicas;
@@ -90,5 +95,13 @@ public class Categoria {
 
     public void setCaracteristicas(Set<Caracteristica> caracteristicas) {
         this.caracteristicas = caracteristicas;
+    }
+
+    public String getDescripcionCacteristica() {
+        return descripcionCacteristica;
+    }
+
+    public void setDescripcionCacteristica(String descripcionCacteristica) {
+        this.descripcionCacteristica = descripcionCacteristica;
     }
 }
