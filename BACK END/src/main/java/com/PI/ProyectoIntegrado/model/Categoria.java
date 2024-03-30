@@ -20,9 +20,9 @@ public class Categoria {
     @Column
     private String nombreCategoria;
 
-    @OneToOne
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private ImagenCategoria imagenCategoria;
+    private Set<ImagenCategoria> imagenCategoria = new HashSet<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "categoria")
@@ -37,14 +37,14 @@ public class Categoria {
     public Categoria() {
     }
 
-    public Categoria(String nombreCategoria, ImagenCategoria imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
+    public Categoria(String nombreCategoria, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
         this.nombreCategoria = nombreCategoria;
         this.imagenCategoria = imagenCategoria;
         this.productos = productos;
         this.caracteristicas = caracteristicas;
     }
 
-    public Categoria(Integer idCategoria, String nombreCategoria, ImagenCategoria imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
+    public Categoria(Integer idCategoria, String nombreCategoria, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
         this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
         this.imagenCategoria = imagenCategoria;
@@ -68,11 +68,11 @@ public class Categoria {
         this.nombreCategoria = nombreCategoria;
     }
 
-    public ImagenCategoria getImagenCategoria() {
+    public Set<ImagenCategoria> getImagenCategoria() {
         return imagenCategoria;
     }
 
-    public void setImagenCategoria(ImagenCategoria imagenCategoria) {
+    public void setImagenCategoria(Set<ImagenCategoria> imagenCategoria) {
         this.imagenCategoria = imagenCategoria;
     }
 

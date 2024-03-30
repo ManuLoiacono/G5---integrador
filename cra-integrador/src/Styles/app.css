@@ -370,7 +370,7 @@ figure{
 #recomendados .card .contenedor-imagen img{
     max-width: 400px;
     min-height: 400px;
-    object-fit:cover
+    object-fit: cover;
 }
 .card h3{
     font-size: 1.7rem;
