@@ -48,6 +48,11 @@ public class ProductoController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
+    @PutMapping("/:{idPrducto}")
+    public ResponseEntity<?> modificarProducto(@RequestBody ProductoDTO productoDTO){
+        productoService.modificarProducto(productoDTO);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
 
 
 }

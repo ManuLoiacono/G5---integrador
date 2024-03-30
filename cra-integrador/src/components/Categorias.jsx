@@ -3,7 +3,16 @@ import imgCarpa from '../img/carpa-playera.jpg'
 import imgBici from '../img/bicicleta.jpg'
 import imgBaton from '../img/baton_trakking.jpg'
 import imgCons from '../img/conservadora-02.jpg'
-const Categorias = () => {
+
+import { useState, useEffect } from "react";
+
+
+
+const Categorias = () => {    
+
+  const [categoriaMostrar, setCategoriasMostrar] = useState([]);
+  const [error, setError] = useState(null);
+
   let categorias=[
    { id : 1,
   nombre:"Carpas",
@@ -22,24 +31,55 @@ cantProductos:0},
   img:imgBaton,
 cantProductos:0}
   ]
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const url = `https://api-terrarent.ddns.net:3001/Categoria`;
+        const settings = {
+          method: 'GET',
+          mode: 'cors'
+        };
+
+        const response = await fetch(url, settings);
+        const data = await response.json();
+
+        console.log(data);
+
+        setCategoriasMostrar(data);
+
+        
+      } catch (error) {
+        console.error('Error al obtener detalles del producto:', error);
+        setError(error);
+      }
+    };
+
+
+    fetchData();
+  }, []); // La dependencia está vacía para que se ejecute solo en el montaje inicial
+
+  if (error) {
+    return <div>Error al cargar los productos. Por favor, inténtalo de nuevo más tarde.</div>;
+  }
+
+
+
   return (
     <div className='galeria'>
         <h2 id='h2-cat'>Categorías</h2>
         <section id="galeria-cat">
-          {categorias.map((categoria) => (
-            <article className='categoria-card' key={categoria.id}>
+          {categoriaMostrar.map((categoria) => (
+            <article className='categoria-card' key={categoria.idCategoria}>
               <figure>
-                <img src={categoria.img} alt="imagen de categoría" />
+                <img src={categoria.idCategoria !== 1 ? categoria.imagenCategoria[0].urlimg : null} alt="imagen de categoría" />
               </figure>
               <figcaption>
-              <h4 className='categoria-text'>{categoria.nombre}</h4>
-              <p className='categoria-text'>{categoria.cantProductos } productos</p>
+              <h4 className='categoria-text'>{categoria.idCategoria !== 1 ? categoria.nombreCategoria : null}</h4>
+              {/*<p className='categoria-text'>{categoria.cantProductos} productos</p>*/}
               </figcaption>
             </article>
-
           ))}
-
-
         </section>
     </div>
   )

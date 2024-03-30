@@ -64,4 +64,12 @@ public class ProductoService implements IProductoService{
         return productosDTO;
 
     }
+
+    @Override
+    public void modificarProducto(ProductoDTO productoDTO){
+
+        Producto producto = mapper.convertValue(productoDTO, Producto.class);
+        productoRepository.save(producto);
+
+    }
 }

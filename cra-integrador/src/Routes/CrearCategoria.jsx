@@ -88,7 +88,7 @@ const CrearCategoria = () => {
               const data = await response.json();
               console.log(JSON.stringify(data));
               //resetForm();
-              toastSuccess("Se cargó la categoria correctamente")
+              toastSuccess("Se cargó la categoria correctamente") 
               return data;
             } catch (error) {
               console.error('Error al procesar la respuesta:', error);

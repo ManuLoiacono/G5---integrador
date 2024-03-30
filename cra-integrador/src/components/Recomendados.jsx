@@ -44,6 +44,7 @@ function Galeria() {
       }
     };
 
+
     fetchData();
   }, []); // La dependencia está vacía para que se ejecute solo en el montaje inicial
 
