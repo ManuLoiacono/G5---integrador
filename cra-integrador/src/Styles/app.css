@@ -370,7 +370,7 @@ figure{
 #recomendados .card .contenedor-imagen img{
     max-width: 400px;
     min-height: 400px;
-    object-fit:cover
+    object-fit: cover;
 }
 .card h3{
     font-size: 1.7rem;
@@ -606,7 +606,7 @@ text-align: center;
 #galeriaCompleta{
     height: 80vh;
 }
-#caracteristicas .contenido{
+.contenido-politicas{
     background-color: var(--color-verde1);
     color: white;
     flex:1;
@@ -617,29 +617,46 @@ text-align: center;
     padding-right: 1rem;
 
 }
+#under-img .titulo{
+    display: none;
+}
+
 #caracteristicas p{
     font-weight: bold;
-   
     flex: 1;
-  
     margin: 0;
     color: white;
 
 }
- 
-#caracteristicas p:nth-child(1){
-    text-align: center;
-    grid-column: span 2;
-}
-#caracteristicas .contenido {
-    display: none; 
-  }
+ .ocultar-politicas:first-of-type{
+    display:none
+ }
+
+
   
-#caracteristicas .contenido {
+  .contenido-politicas {
     display: grid;
+    height: fit-content;
+    
+  }
+  .titulo p{
+    font-weight: bold;
+    flex: 1;
+    margin: 0;
+    color: white;
+    
+  }
+  .contenedor-visible{
+    width: 100%;
+    flex-direction: row;
+  }
+  .contenedor-visible p{
+    width: 70%;
+    
   }
 .titulo{
     display: flex;
+    flex-direction: row;
     background-color:var(--color-verde1);
     align-items: center;
     height: 1.2rem;
@@ -1006,7 +1023,15 @@ table {
     width: 100%;
     text-align: center;
 }
-.calendario-input{
+#under-img .calendario-input{
+    justify-self: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.formulario .calendario-input{
     justify-self: center;
     width: 20%;
     display: flex;
@@ -1043,6 +1068,9 @@ table {
     .react-datepicker__current-month{
         text-transform: uppercase;
     }
+
+
+      
 /*PRODUCTOS BUSCADOS*/
 
 .react-calendar {
@@ -1064,10 +1092,7 @@ table {
     #galery-link{
         bottom: -10%;
     }
-    #under-img{
-        
-        
-    }
+ 
     .precio-container{
         width: 100%;
         border-left: none;
@@ -1103,53 +1128,57 @@ table {
     .descripcion-container{
         width: 100%;
     }
+  
 @media(max-width:768px){
-    .formulario {
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: auto auto;
-        gap: 10px;
-        
+    #under-img .titulo{
+        display: flex;
+        margin-top: 1rem;
     }
-    .calendarElement {
-        left:0
+    #caracteristicas div:nth-child(2){
+        display: none;
     }
-    
-    .buscador{
-        height: 8rem;
+    .buscador form{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        align-items: center;
     }
-    .buscador input[type="text"]{
-        margin-left: 1rem;
-    }
-    .formulario > *:nth-child(-n+3) {
-        grid-column: 1;
+    .formulario .calendario-input{
+        width: 70%;
         margin: 0;
     }
+    .formulario a{
+        width: 100%;
+        margin: 0;
+    }
+    .react-datepicker-wrapper{
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    .buscador{
+        height: fit-content;
+        padding: 1rem;
+    }
+    .buscador input[type="text"]:nth-child(1){
+        width: 70%;
+        margin: 0;
+        margin-bottom: 0.5rem;
+    }
+    .calendario-input input[type="text"]:nth-child(1){
+        width: 100%;
+        margin: 0;
+    }
+    
     .buscador input{
         margin-left: 0;
         margin-right: 1rem;
     }
-    .formulario > button {
-        grid-column: 1;
-        grid-row: 2; 
-        width: 100%; 
-        margin: 0 1rem;
+    .buscador button{
+        width: 70%;
+        margin: 0;
     }
     
-  
-    form {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    input[type="text"] {
-        flex-grow: 1;
-      }
-      button:nth-last-child() {
-        flex-grow: 1;
-      }
-      .form-container form{
-        display: block;
-      }
+   
     .listado-usuarios + .mensaje-resolucion{
         position: absolute;
         top: 0;
@@ -1194,6 +1223,13 @@ table {
 
 }
 @media(max-width:480px){
+    .contenido-politicas {
+        display: flex;
+        height: fit-content;
+        flex-direction: column;
+        
+      }
+    
     .buscador h2{
         font-size: 1.5rem;
     }
@@ -1266,7 +1302,7 @@ table {
     .buscador{
         width: 100%;
         background-size: 150%;
-        height: 9rem;
+        height: fit-content;
     }
     .buscador h2{
         font-size: 1.5rem;
