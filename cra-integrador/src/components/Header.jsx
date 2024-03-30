@@ -6,6 +6,7 @@ import imageNewUser from "../img/newUser.png"
 import imageLogout from "../img/logout.png"
 import { Link } from "react-router-dom"
 import { useLogin } from "./utils/LoginContext"
+import Navbar from "./Navbar"
 
 function Header(){
     const [iniciales,setIniciales] = useState(null)
@@ -25,10 +26,11 @@ function Header(){
         <>
         <header>
             <Link to={'/'}><img className="logo" src={image} alt="Terrarent logo" /></Link>
+                <Navbar/>
                 <ul id="button-container">
                 {(estadoUser==="ADMIN"||estadoUser==="SUPERADMIN") && <Link to="/panel-de-control"><img className="imageAdmin" src={imageAdmin} alt="Terrarent logo" /></Link>}
                  {user.user!==null ? (
-                  <div id="login-data">
+                                    <div id="login-data">
                     <div className="user-saludo">
 
                     <span>BIENVENIDO</span>

@@ -154,6 +154,7 @@ header ul span{
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: column;
+    z-index: 0;
 }
 /*BUSCADOR*/
 
@@ -245,7 +246,7 @@ input.inputBox {
 }
 /*BUSCADOR*/
 /*GALERIA DE CATEGORIAS*/
-.galeria, .registrar , .detail, .registrar-usuario, .listado-productos, .panel-de-control, .listado-usuarios{
+.galery, .galeria, .registrar , .detail, .registrar-usuario, .listado-productos, .panel-de-control, .listado-usuarios{
     width: 98%;
     margin:8px;
     background-color: var(--color-gris1);
@@ -722,7 +723,7 @@ text-align: center;
     padding-left: 0.3rem;
 }
 
- .registrar, .registrar-usuario, .listado-productos,.listado-usuarios, .galery {
+ .registrar, .registrar-usuario, .listado-productos,.listado-usuarios, .galery{
     flex:1;
     display: flex;
     flex-direction:column;
@@ -815,7 +816,9 @@ text-align: center;
     display: none;
 }
 /* LOGIN Y REGISTRAR USUARIO*/
-
+.galery{
+flex-direction: column;
+}
 .input-user-card-container, #panel-container{
     width: 100%;
     min-height: calc(100vh - 10vh - 3rem);
@@ -1076,6 +1079,11 @@ table {
 .react-calendar {
     background: var(--color-verde2);
 }
+/*HAMBURGUESA*/
+.navbar{
+    display: none;
+}
+
 
 @media(max-width:900px){
    
@@ -1130,6 +1138,95 @@ table {
     }
   
 @media(max-width:768px){
+    #button-container{
+        display: none;
+    }
+    #button-container-navbar{
+        flex-direction: column;
+        margin: 0;
+        height:200vh;
+        padding: 0;
+        align-items:center;
+        overflow: hidden;
+        
+    }
+    #button-container-navbar a{
+        margin: 0;;
+        width: 100%;
+    }
+    .imageLogout{
+        margin-left: 0;
+    }
+    .navbar{
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100000;
+    }
+
+    .nav_items a{
+        margin: 15px;
+        color: white;
+        position: relative;
+        text-decoration: none;
+        z-index: 100000;
+    }
+    .nav_toggle{
+        display: none;
+    }
+    .nav_items{
+        position: absolute;
+        top: 10vh;
+        left: 0;
+        background-color: var(--color-verde1);
+        opacity: 0.98;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: fit-content;        
+        transform: translateX(-100%);
+        transition: 0.3s ease all;
+        z-index: 100000;
+    }
+    .nav_items.open{
+        transform: translateX(0) !important;
+        z-index: 100000;
+
+    }
+    .nav_toggle{
+        display: flex !important;
+        flex-direction: column;                
+        margin: 15px;
+    }
+    .nav_toggle span{
+        width: 30px;
+        height: 2px;
+        background: white;
+        margin-bottom: 5px;
+        border-radius: 2px;             
+        transform-origin: 5px 0px;
+        transition: all 0.2s linear;
+    }
+    .nav_toggle.open > span{
+        transform: rotate(45deg) translate(-2px, 0px);
+    }
+    .nav_toggle.open > span:nth-child(2){
+        display: none;
+    }
+    .nav_toggle.open > span:nth-child(3){
+        transform: rotate(-45deg) translate(-5px, 1px);
+    }
+   
+    #login-data{
+        flex-direction: column;
+        width: 50%;
+        margin-top: 1rem;
+    }
+    #login-data a{
+        margin: 0;
+       
+    }
     #under-img .titulo{
         display: flex;
         margin-top: 1rem;
@@ -1158,6 +1255,7 @@ table {
     .buscador{
         height: fit-content;
         padding: 1rem;
+        z-index: 1;
     }
     .buscador input[type="text"]:nth-child(1){
         width: 70%;
@@ -1237,11 +1335,7 @@ table {
         height: 10rem;
     }
     #button-container{
-        margin: 0;
-        align-self: center;
-        display: flex;
-        flex-direction: row;
-        padding: 0;
+       display: none;
        
     }
   
@@ -1282,18 +1376,9 @@ table {
 @media(max-width:425px){
    
     #button-container{
-        margin: 0;
-        align-self: center;
-        display: flex;
-        flex-direction: row;
-        padding: 0;
+   display: none;
     }
-    #button-container button, #button-container ul {
-        font-size: 1.3rem;
-        text-align: right;
-        padding-right: 0.9rem;
-        padding: 0;
-    }
+
 
     .logo{
         height: 35%;
