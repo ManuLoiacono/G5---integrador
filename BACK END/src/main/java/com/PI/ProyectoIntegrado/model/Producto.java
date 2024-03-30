@@ -41,7 +41,7 @@ public class Producto {
 
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "categoria_id")
+    @JoinColumn(name = "idCategoria")
     private Categoria categoria;
 
 
