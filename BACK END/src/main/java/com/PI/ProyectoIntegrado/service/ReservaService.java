@@ -5,6 +5,7 @@ import com.PI.ProyectoIntegrado.model.Reserva;
 import com.PI.ProyectoIntegrado.repository.IReservaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.PI.ProyectoIntegrado.dto.ReservaDTO;
+import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,5 +63,14 @@ public class ReservaService implements IReservaService{
         }
 
         return reservasDTO;
+    }
+
+    public List<Reserva> buscarReservaPorProductoID(Integer id) throws ResourceNotFoundException {
+        List<Reserva> buscarReserva = reservaRepository.buscarReservaPorProductoID(id);
+        if (buscarReserva != null) {
+            return reservaRepository.buscarReservaPorProductoID(id);
+        } else {
+            throw new ResourceNotFoundException("Reserva con producto ID: " + id + " No existe");
+        }
     }
 }

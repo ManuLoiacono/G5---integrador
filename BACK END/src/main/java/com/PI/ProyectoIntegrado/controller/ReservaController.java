@@ -2,13 +2,16 @@ package com.PI.ProyectoIntegrado.controller;
 
 
 import com.PI.ProyectoIntegrado.dto.ReservaDTO;
+import com.PI.ProyectoIntegrado.model.Reserva;
 import com.PI.ProyectoIntegrado.service.IReservaService;
+import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/Reserva")
@@ -44,6 +47,10 @@ public class ReservaController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
+    @GetMapping("/:{idProducto}")
+    public List<Reserva> obtenerReservaPorProductoID(@PathVariable Integer id) throws ResourceNotFoundException {
+        return reservaService.buscarReservaPorProductoID(id);
+    }
 
 
 }
