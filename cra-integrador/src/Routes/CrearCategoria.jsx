@@ -110,9 +110,10 @@ const CrearCategoria = () => {
         
             try {
               const response = await fetch(url, settings);
-          
               const data = await response.json();
+
               console.log(JSON.stringify(data));
+              
               resetForm();
               toastSuccess("Se cargó la categoria correctamente") 
               return data;
@@ -175,7 +176,8 @@ const CrearCategoria = () => {
         try {
           
           const nuevaCategoria = {
-            nombreCategoria: nombreCategoria
+            nombreCategoria: nombreCategoria,
+            descripcionCategoria: descripcionCategoria
           };
       
           const responseCategoria = await fetchCategoriaNueva(nuevaCategoria);
@@ -196,7 +198,7 @@ const CrearCategoria = () => {
             };
             
             const responseImagen = await fetchCargarImagen(imagenCargar);
-            
+            console.log(JSON.stringify(caracteristicas));
             for(var i = 0; i < caracteristicas.length; i++) {
               const caracteristicasCargar = {
                 descripCaracteristica: caracteristicas[i],
@@ -204,6 +206,7 @@ const CrearCategoria = () => {
                   idCategoria: idCategoria.idCategoria
                 }
               };
+              console.log(JSON.stringify(caracteristicasCargar));
               const responseCaracteristica = await fetchCargarCaracteristica(caracteristicasCargar);
             }
             
