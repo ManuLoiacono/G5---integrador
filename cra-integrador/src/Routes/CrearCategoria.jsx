@@ -17,7 +17,7 @@ const CrearCategoria = () => {
       setNombreCategoria('');
       setDescripcionCategoria('');
       setSelectedImages([]);
-      setCaracteristicas([]);
+      setCaracteristicas(['']);
       // Reset other form fields as needed
     };
 
@@ -148,7 +148,27 @@ const CrearCategoria = () => {
 
         const fetchCargarCaracteristica = async (caracteristicas) => {
 
-
+          const url = `https://api-terrarent.ddns.net:3001/Caracteristica`;
+            const settings = {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(caracteristicas)
+            };
+        
+            try {
+              const response = await fetch(url, settings);
+          
+              const data = await response.json();
+              console.log(JSON.stringify(data));
+              console.log("Se cargaron las caracteristicas correctamente")
+              return data;
+            } catch (error) {
+              console.error('Error al procesar la respuesta:', error);
+              toastError('Ocurrió un error inesperado al procesar la respuesta del servidor.');
+              return null;
+            }
 
         }
         
@@ -177,7 +197,10 @@ const CrearCategoria = () => {
             };
 
             const caracteristicasCargar = {
-              descripcionCaracteristica: caracteristicas
+              descripcionCaracteristica: caracteristicas,
+              categoria: {
+                idCategoria: idCategoria.idCategoria
+              }
             };
             
             //console.log(JSON.stringify(imagenCargar));
