@@ -36,7 +36,6 @@ public class Categoria {
     private Set<Caracteristica> caracteristicas = new HashSet<>();
 
 
-
     public Categoria() {
     }
 
@@ -73,6 +72,14 @@ public class Categoria {
         this.nombreCategoria = nombreCategoria;
     }
 
+    public String getDescripcionCategoria() {
+        return descripcionCategoria;
+    }
+
+    public void setDescripcionCategoria(String descripcionCategoria) {
+        this.descripcionCategoria = descripcionCategoria;
+    }
+
     public Set<ImagenCategoria> getImagenCategoria() {
         return imagenCategoria;
     }
@@ -95,13 +102,5 @@ public class Categoria {
 
     public void setCaracteristicas(Set<Caracteristica> caracteristicas) {
         this.caracteristicas = caracteristicas;
-    }
-
-    public String getDescripcionCategoria() {
-        return descripcionCategoria;
-    }
-
-    public void setDescripcionCategoria(String descripcionCategoria) {
-        this.descripcionCategoria = descripcionCategoria;
     }
 }

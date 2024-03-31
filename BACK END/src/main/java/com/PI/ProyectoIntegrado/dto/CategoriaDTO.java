@@ -49,16 +49,16 @@ public class CategoriaDTO {
         this.nombreCategoria = nombreCategoria;
     }
 
-    public Set<ImagenCategoria> getImagenCategoria() {
-        return imagenCategoria;
-    }
-
     public String getDescripcionCategoria() {
         return descripcionCategoria;
     }
 
     public void setDescripcionCategoria(String descripcionCategoria) {
         this.descripcionCategoria = descripcionCategoria;
+    }
+
+    public Set<ImagenCategoria> getImagenCategoria() {
+        return imagenCategoria;
     }
 
     public void setImagenCategoria(Set<ImagenCategoria> imagenCategoria) {
