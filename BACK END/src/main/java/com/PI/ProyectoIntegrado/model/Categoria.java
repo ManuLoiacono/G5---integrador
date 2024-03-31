@@ -21,7 +21,7 @@ public class Categoria {
     private String nombreCategoria;
 
     @Column
-    private String descripcionCaracteristica;
+    private String descripcionCategoria;
 
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
     @JsonManagedReference
@@ -40,18 +40,18 @@ public class Categoria {
     public Categoria() {
     }
 
-    public Categoria(String nombreCategoria, String descripcionCaracteristica, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
+    public Categoria(String nombreCategoria, String descripcionCategoria, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
         this.nombreCategoria = nombreCategoria;
-        this.descripcionCaracteristica = descripcionCaracteristica;
+        this.descripcionCategoria = descripcionCategoria;
         this.imagenCategoria = imagenCategoria;
         this.productos = productos;
         this.caracteristicas = caracteristicas;
     }
 
-    public Categoria(Integer idCategoria, String nombreCategoria, String descripcionCaracteristica, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
+    public Categoria(Integer idCategoria, String nombreCategoria, String descripcionCategoria, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
         this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
-        this.descripcionCaracteristica = descripcionCaracteristica;
+        this.descripcionCategoria = descripcionCategoria;
         this.imagenCategoria = imagenCategoria;
         this.productos = productos;
         this.caracteristicas = caracteristicas;
@@ -97,11 +97,11 @@ public class Categoria {
         this.caracteristicas = caracteristicas;
     }
 
-    public String getDescripcionCaracteristica() {
-        return descripcionCaracteristica;
+    public String getDescripcionCategoria() {
+        return descripcionCategoria;
     }
 
-    public void setDescripcionCaracteristica(String descripcionCaracteristica) {
-        this.descripcionCaracteristica = descripcionCaracteristica;
+    public void setDescripcionCategoria(String descripcionCategoria) {
+        this.descripcionCategoria = descripcionCategoria;
     }
 }
