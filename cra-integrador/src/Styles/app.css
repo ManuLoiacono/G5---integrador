@@ -1144,7 +1144,7 @@ table {
     #button-container-navbar{
         flex-direction: column;
         margin: 0;
-        height:200vh;
+        
         padding: 0;
         align-items:center;
         overflow: hidden;
@@ -1188,10 +1188,12 @@ table {
         transform: translateX(-100%);
         transition: 0.3s ease all;
         z-index: 100000;
+        
     }
     .nav_items.open{
         transform: translateX(0) !important;
         z-index: 100000;
+        
 
     }
     .nav_toggle{
