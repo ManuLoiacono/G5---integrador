@@ -6,6 +6,7 @@ import { toastError, toastSuccess } from '../components/utils/Notificaciones'
 
 const CrearCategoria = () => {
     const [nombreCategoria, setNombreCategoria] = useState('');
+    const [descripcionCategoria, setDescripcionCategoria] = useState('');
     const [selectedImages, setSelectedImages] = useState([]);
     const [Imagenes, setImagenes] = useState([]);
     const [formSubmitted, setFormSubmitted] = useState(false);
@@ -14,7 +15,9 @@ const CrearCategoria = () => {
 
     const resetForm = () => {
       setNombreCategoria('');
+      setDescripcionCategoria('');
       setSelectedImages([]);
+      setCaracteristicas([]);
       // Reset other form fields as needed
     };
 
@@ -219,6 +222,18 @@ const CrearCategoria = () => {
               placeholder="Ingrese el nombre de la Categoria"
               onChange={(e) => {
                 setNombreCategoria(e.target.value);
+                }}
+            />
+           </div> 
+
+           <div className='inputs'>
+                <label> Descripcion de la Categoria: </label>
+                <input className='input-descripcion'
+              type="text"
+              value={descripcionCategoria}
+              placeholder="Ingrese la descripcion de la Categoria"
+              onChange={(e) => {
+                setDescripcionCategoria(e.target.value);
                 }}
             />
            </div> 

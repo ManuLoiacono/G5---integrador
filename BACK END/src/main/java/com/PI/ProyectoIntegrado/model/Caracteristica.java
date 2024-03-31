@@ -32,6 +32,10 @@ public class Caracteristica {
     public Caracteristica() {
     }
 
+    public Caracteristica(String descripCaracteristica) {
+        this.descripCaracteristica = descripCaracteristica;
+    }
+
     public Caracteristica(String descripCaracteristica, Producto producto, Categoria categoria) {
         this.descripCaracteristica = descripCaracteristica;
         this.producto = producto;

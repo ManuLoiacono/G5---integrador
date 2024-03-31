@@ -174,9 +174,6 @@ const RegistrarProd = () => {
         } 
         
         
-        
-        
-        
         try {
           const nuevoProducto = {
             nombreProd: nombreProd,
