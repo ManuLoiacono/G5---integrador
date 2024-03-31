@@ -162,7 +162,6 @@ const CrearCategoria = () => {
           
               const data = await response.json();
               console.log(JSON.stringify(data));
-              console.log("Se cargaron las caracteristicas correctamente")
               return data;
             } catch (error) {
               console.error('Error al procesar la respuesta:', error);

@@ -23,7 +23,7 @@ public class Caracteristica {
     @JsonProperty("producto")
     private Producto producto;
 
-    @NotNull
+    
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
@@ -32,18 +32,9 @@ public class Caracteristica {
     public Caracteristica() {
     }
 
-    public Caracteristica(String descripCaracteristica) {
-        this.descripCaracteristica = descripCaracteristica;
-    }
-
     public Caracteristica(String descripCaracteristica, Producto producto, Categoria categoria) {
         this.descripCaracteristica = descripCaracteristica;
         this.producto = producto;
-        this.categoria = categoria;
-    }
-
-    public Caracteristica(String descripCaracteristica, Categoria categoria) {
-        this.descripCaracteristica = descripCaracteristica;
         this.categoria = categoria;
     }
 
