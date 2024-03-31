@@ -9,7 +9,30 @@ const CrearCategoria = () => {
     const [selectedImages, setSelectedImages] = useState([]);
     const [Imagenes, setImagenes] = useState([]);
     const [formSubmitted, setFormSubmitted] = useState(false);
+    const [caracteristicas, setCaracteristicas] = useState(['']);
     const user = useLogin();
+
+    const resetForm = () => {
+      setNombreCategoria('');
+      setSelectedImages([]);
+      // Reset other form fields as needed
+    };
+
+    const handleInputChange = (index, value) => {
+      const newInputValues = [...caracteristicas];
+      newInputValues[index] = value;
+      setCaracteristicas(newInputValues);
+    };
+
+    const handleAddInput = () => {
+      setCaracteristicas([...caracteristicas, '']);
+    };
+
+    const handleRemoveInput = (index) => {
+      const newInputValues = [...caracteristicas];
+      newInputValues.splice(index, 1);
+      setCaracteristicas(newInputValues);
+    };
 
     const handleImageChange = async (event) => {
         const files = Array.from(event.target.files);
@@ -87,7 +110,7 @@ const CrearCategoria = () => {
           
               const data = await response.json();
               console.log(JSON.stringify(data));
-              //resetForm();
+              resetForm();
               toastSuccess("Se cargó la categoria correctamente") 
               return data;
             } catch (error) {
@@ -119,17 +142,28 @@ const CrearCategoria = () => {
               console.error('Error al cargar');
             })
         } 
+
+        const fetchCargarCaracteristica = async (caracteristicas) => {
+
+
+
+        }
         
         
         try {
+          
           const nuevaCategoria = {
-            nombreCategoria: nombreCategoria
+            nombreCategoria: nombreCategoria,
           };
       
           const responseCategoria = await fetchCategoriaNueva(nuevaCategoria);
+          
           console.log(responseCategoria);
+          
           if (responseCategoria != null) {
+            
             const idCategoria = await responseCategoria;
+            
             const imagenCargar = {
               titulo: "ImgCat",
               urlimg: "",
@@ -138,9 +172,16 @@ const CrearCategoria = () => {
                 idCategoria: idCategoria.idCategoria
               }
             };
-            console.log(JSON.stringify(imagenCargar));
+
+            const caracteristicasCargar = {
+              descripcionCaracteristica: caracteristicas
+            };
+            
+            //console.log(JSON.stringify(imagenCargar));
     
             const responseImagen = await fetchCargarImagen(imagenCargar);
+
+            const responseCaracteristica = await fetchCargarCaracteristica(caracteristicasCargar);
           
           } else {
             console.error("Error al cargar la categoria");
@@ -181,6 +222,24 @@ const CrearCategoria = () => {
                 }}
             />
            </div> 
+           
+           <div>
+            <label> Agregue una caracteristica </label>
+            {caracteristicas.map((caracteristica, index) => (
+              <div key={index}>
+              <input
+                value={caracteristica}
+                onChange={(e) => handleInputChange(index, e.target.value)}
+                placeholder={`Caracteristica ${index + 1}`}
+              />
+              <button type="button" className="delete-button" onClick={() => handleRemoveInput(index)} >X</button>
+            </div>
+            ))}
+            
+            <button type="button" onClick={handleAddInput}>Agregar otra caracteristica</button>
+            
+          </div>
+
             <label className='label-drop'>
               Arrastre la imágen de la categoria
               <div className='drop'
@@ -200,7 +259,7 @@ const CrearCategoria = () => {
               </div>
               <input type="file" onChange={handleImageChange} accept="image/*" style={{ display: 'none' }} />
             </label>
-            <button>Agregar producto</button>
+            <button>Agregar Categoria</button>
           </form>
           </div>
         </div>

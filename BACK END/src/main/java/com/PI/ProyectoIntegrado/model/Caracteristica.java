@@ -15,7 +15,6 @@ public class Caracteristica {
     private Integer idCaracteristica;
 
     @Column
-    private String nombreCaracteristica;
     private String descripCaracteristica;
 
     @NotNull
@@ -33,16 +32,14 @@ public class Caracteristica {
     public Caracteristica() {
     }
 
-    public Caracteristica(String nombreCaracteristica, String descripCaracteristica, Producto producto, Categoria categoria) {
-        this.nombreCaracteristica = nombreCaracteristica;
+    public Caracteristica(String descripCaracteristica, Producto producto, Categoria categoria) {
         this.descripCaracteristica = descripCaracteristica;
         this.producto = producto;
         this.categoria = categoria;
     }
 
-    public Caracteristica(Integer idCaracteristica, String nombreCaracteristica, String descripCaracteristica, Producto producto, Categoria categoria) {
+    public Caracteristica(Integer idCaracteristica, String descripCaracteristica, Producto producto, Categoria categoria) {
         this.idCaracteristica = idCaracteristica;
-        this.nombreCaracteristica = nombreCaracteristica;
         this.descripCaracteristica = descripCaracteristica;
         this.producto = producto;
         this.categoria = categoria;
@@ -54,14 +51,6 @@ public class Caracteristica {
 
     public void setIdCaracteristica(Integer idCaracteristica) {
         this.idCaracteristica = idCaracteristica;
-    }
-
-    public String getNombreCaracteristica() {
-        return nombreCaracteristica;
-    }
-
-    public void setNombreCaracteristica(String nombreCaracteristica) {
-        this.nombreCaracteristica = nombreCaracteristica;
     }
 
     public String getDescripCaracteristica() {
