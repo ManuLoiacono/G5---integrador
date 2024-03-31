@@ -2,7 +2,8 @@ package com.PI.ProyectoIntegrado.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
+import org.hibernate.annotations.NotFound;
+import software.amazon.awssdk.annotations.NotNull;
 
 
 @Entity
@@ -24,6 +25,7 @@ public class Caracteristica {
     private Producto producto;
 
 
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
