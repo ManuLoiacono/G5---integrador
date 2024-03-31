@@ -51,7 +51,7 @@ function Detail() {
       const dataReserva = await response.json();
       
       console.log("dataReserva");
-      console.log(dataReserva);
+      console.log(dataReserva[0].fechaInicio);
 
       
     } catch (error) {
