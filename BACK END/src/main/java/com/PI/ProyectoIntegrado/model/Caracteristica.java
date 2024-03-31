@@ -42,6 +42,11 @@ public class Caracteristica {
         this.categoria = categoria;
     }
 
+    public Caracteristica(String descripCaracteristica, Categoria categoria) {
+        this.descripCaracteristica = descripCaracteristica;
+        this.categoria = categoria;
+    }
+
     public Caracteristica(Integer idCaracteristica, String descripCaracteristica, Producto producto, Categoria categoria) {
         this.idCaracteristica = idCaracteristica;
         this.descripCaracteristica = descripCaracteristica;

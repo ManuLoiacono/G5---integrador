@@ -197,7 +197,7 @@ const CrearCategoria = () => {
             };
 
             const caracteristicasCargar = {
-              descripcionCaracteristica: caracteristicas,
+              descripCaracteristica: caracteristicas,
               categoria: {
                 idCategoria: idCategoria.idCategoria
               }
