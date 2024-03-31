@@ -60,4 +60,11 @@ public class CategoriaService implements ICategoriaService{
         }
         return categoriasDTO;
     }
+
+    @Override
+    public void modificarCategoria(Categoria categoria) {
+        categoriaRepository.save(categoria);
+    }
+
+
 }

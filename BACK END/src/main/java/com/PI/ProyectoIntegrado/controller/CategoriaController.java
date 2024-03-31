@@ -4,6 +4,7 @@ package com.PI.ProyectoIntegrado.controller;
 import com.PI.ProyectoIntegrado.dto.CategoriaDTO;
 import com.PI.ProyectoIntegrado.dto.ProductoDTO;
 import com.PI.ProyectoIntegrado.model.Categoria;
+import com.PI.ProyectoIntegrado.model.Producto;
 import com.PI.ProyectoIntegrado.service.ICategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,6 +45,12 @@ public class CategoriaController {
     @DeleteMapping("/:{idCategoria}")
     public ResponseEntity<?> eliminarCategoria(@PathVariable Integer idCategoria){
         categoriaService.eliminarCategoria(idCategoria);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity<?> modificarCategoria(@RequestBody Categoria categoria){
+        categoriaService.modificarCategoria(categoria);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
