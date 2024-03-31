@@ -17,7 +17,7 @@ public class Caracteristica {
     @Column
     private String descripCaracteristica;
 
-    @NotNull
+
     @ManyToOne
     @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
     @JsonProperty("producto")
