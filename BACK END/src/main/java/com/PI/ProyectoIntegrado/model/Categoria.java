@@ -20,6 +20,9 @@ public class Categoria {
     @Column
     private String nombreCategoria;
 
+    @Column
+    private String descripcionCategoria;
+
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Set<ImagenCategoria> imagenCategoria = new HashSet<>();
@@ -29,24 +32,26 @@ public class Categoria {
     private Set<Producto> productos;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "categoria")
-    private Set<Caracteristica> caracteristicas;
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    private Set<Caracteristica> caracteristicas = new HashSet<>();
 
 
 
     public Categoria() {
     }
 
-    public Categoria(String nombreCategoria, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
+    public Categoria(String nombreCategoria, String descripcionCategoria, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
         this.nombreCategoria = nombreCategoria;
+        this.descripcionCategoria = descripcionCategoria;
         this.imagenCategoria = imagenCategoria;
         this.productos = productos;
         this.caracteristicas = caracteristicas;
     }
 
-    public Categoria(Integer idCategoria, String nombreCategoria, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
+    public Categoria(Integer idCategoria, String nombreCategoria, String descripcionCategoria, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
         this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
+        this.descripcionCategoria = descripcionCategoria;
         this.imagenCategoria = imagenCategoria;
         this.productos = productos;
         this.caracteristicas = caracteristicas;
@@ -90,5 +95,13 @@ public class Categoria {
 
     public void setCaracteristicas(Set<Caracteristica> caracteristicas) {
         this.caracteristicas = caracteristicas;
+    }
+
+    public String getDescripcionCategoria() {
+        return descripcionCategoria;
+    }
+
+    public void setDescripcionCategoria(String descripcionCategoria) {
+        this.descripcionCategoria = descripcionCategoria;
     }
 }

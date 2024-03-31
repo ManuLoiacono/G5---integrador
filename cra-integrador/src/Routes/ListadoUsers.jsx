@@ -1,4 +1,4 @@
-import React from 'react'
+  import React from 'react'
 import { Link ,  useNavigate , useParams  , Outlet} from "react-router-dom";
 import { useEffect, useState } from "react";
 import { faTrash } from '@fortawesome/free-solid-svg-icons';

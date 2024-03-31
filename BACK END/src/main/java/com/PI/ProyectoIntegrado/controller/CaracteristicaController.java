@@ -1,5 +1,6 @@
 package com.PI.ProyectoIntegrado.controller;
 
+import com.PI.ProyectoIntegrado.dto.CaracteristicaDTO;
 import com.PI.ProyectoIntegrado.model.Caracteristica;
 import com.PI.ProyectoIntegrado.service.ICaracteristicaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,9 @@ public class CaracteristicaController {
     ICaracteristicaService caracteristicasService;
 
     @PostMapping
-    public ResponseEntity<?> crearCaracteristica(@RequestBody Caracteristica caracteristica){
+    public ResponseEntity<?> crearCaracteristica(@RequestBody CaracteristicaDTO caracteristicaDTO){
 
-        caracteristicasService.agregarCaracteristica(caracteristica);
+        caracteristicasService.agregarCaracteristica(caracteristicaDTO);
         return ResponseEntity.ok(HttpStatus.OK);
 
     }
@@ -42,6 +43,8 @@ public class CaracteristicaController {
         caracteristicasService.eliminarCaracteristica(idCaracteristica);
         return ResponseEntity.ok(HttpStatus.OK);
     }
+
+
 
 
 

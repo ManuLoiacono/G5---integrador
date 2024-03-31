@@ -11,37 +11,33 @@ import java.util.Date;
 @Table(name="Reservas")
 public class Reserva {
 
-    @NotNull
+
     @Id
     @SequenceGenerator(name = "booking_sequence", sequenceName = "booking_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "booking_sequence")
     private Integer idReserva;
 
-    @NotNull
+
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
     private Producto producto;
 
-    @NotNull
+
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
-    @NotNull
+
     @Column
-    private Date FechaInicio;
+    private Date fechaInicio;
 
-    @NotNull
+
     @Column
-    private Date FechaFin;
+    private Date fechaFin;
 
-    @NotNull
+
     @Column
-    private Float PrecioTotal;
-
-
-
-
+    private Float precioTotal;
 
 
     public Reserva() {
@@ -51,10 +47,20 @@ public class Reserva {
         this.idReserva = idReserva;
         this.producto = producto;
         this.usuario = usuario;
-        FechaInicio = fechaInicio;
-        FechaFin = fechaFin;
-        PrecioTotal = precioTotal;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.precioTotal = precioTotal;
     }
+
+    public Reserva(Producto producto, Usuario usuario, Date fechaInicio, Date fechaFin, Float precioTotal) {
+        this.producto = producto;
+        this.usuario = usuario;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.precioTotal = precioTotal;
+    }
+
+
 
     public Integer getIdReserva() {
         return idReserva;
@@ -81,29 +87,26 @@ public class Reserva {
     }
 
     public Date getFechaInicio() {
-        return FechaInicio;
+        return fechaInicio;
     }
 
     public void setFechaInicio(Date fechaInicio) {
-        FechaInicio = fechaInicio;
+        this.fechaInicio = fechaInicio;
     }
 
     public Date getFechaFin() {
-        return FechaFin;
+        return fechaFin;
     }
 
     public void setFechaFin(Date fechaFin) {
-        FechaFin = fechaFin;
+        this.fechaFin = fechaFin;
     }
 
     public Float getPrecioTotal() {
-        return PrecioTotal;
+        return precioTotal;
     }
 
     public void setPrecioTotal(Float precioTotal) {
-        PrecioTotal = precioTotal;
+        this.precioTotal = precioTotal;
     }
-
-
-
 }

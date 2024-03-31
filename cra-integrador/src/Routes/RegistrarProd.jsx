@@ -19,9 +19,11 @@ const RegistrarProd = () => {
     const [selectedImages, setSelectedImages] = useState([]);
     const [precio, setPrecio] = useState('');
     const [categoria, setCategoria] = useState('');
+    const [categoriasDisponibles, setCategoriasDisponibles] = useState([])
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [Imagenes, setImagenes] = useState([]);
-    
+    const [error, setError] = useState(null);
+
     const user = useLogin()
 
     const resetForm = () => {
@@ -35,21 +37,23 @@ const RegistrarProd = () => {
     };
 
 
-    let categorias=[
-      { id : 1,
-     nombre:"Carpas"
-    },
-      { id : 2,
-     nombre:"Kits"
-    },
-    { id : 3,
-     nombre:"Vehículos",
-    },
-    { id : 4,
-     nombre:"Senderismo",
-    }]
-
-   
+   const fetchObtenerCategorias = async () => {
+          try {
+            const url = `https://api-terrarent.ddns.net:3001/Categoria`;
+            const settings = {
+              method: 'GET',
+              mode: 'cors'
+            };
+    
+            const response = await fetch(url, settings);
+            const data = await response.json();
+    
+            setCategoriasDisponibles(data);
+          } catch (error) {
+            console.error('Error al obtener las categorias disponibles:', error);
+            setError(error);
+          }
+        };
 
   const handleImageChange = async (event) => {
     const files = Array.from(event.target.files);
@@ -206,17 +210,18 @@ const RegistrarProd = () => {
           setFormSubmitted(true);
         }
     
-      }
     };
+  }
 
     useEffect(() => {
+      fetchObtenerCategorias();
       if (formSubmitted) {
         setFormSubmitted(false);
       }
     }, [formSubmitted, nombreProd, descripcion, precio, categoria]);
     if(user.user===null){return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>}
     if(user.user.userRol=="ADMIN"||user.user.userRol=="SUPERADMIN"){
-      
+    
     return (
       <>
         <div className='registrar'>
@@ -236,19 +241,20 @@ const RegistrarProd = () => {
             </div>
                 <div className='inputs'>
                 <label> Categoría: </label>
+                
                 <select
-                className='input-cat'
-                value={categoria}
-                onChange={(e) => {
-                  setCategoria(e.target.value);
-                  }}>
-                   <option value='0'>Selecciona una categoria</option>
-                    {categorias.map((cat, index) => (
-                    <option key={index} value={cat.id}>
-                      {cat.nombre}
+                  className='input-cat'
+                  value={categoria}
+                  onChange={(e) => {
+                    setCategoria(e.target.value);
+                    }}>
+                    <option value='0'>Selecciona una categoria</option>
+                      {categoriasDisponibles.map((cat, index) => (
+                    <option key={index} value={cat.idCategoria}>
+                      {cat.nombreCategoria}
                     </option>
-            ))}
-            </select>
+                  ))}
+                </select>
             </div>
             <div className='inputs'>
                 <label>Precio:</label>

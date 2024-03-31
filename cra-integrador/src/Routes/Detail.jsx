@@ -5,6 +5,9 @@ import noImage from '../img/no-image.jpg';
 import { FaPalette, FaUsers, FaTag, FaWeight, FaRuler, FaWindowMaximize, FaDoorOpen, FaShoppingBag } from 'react-icons/fa';
 import CalendarioReserva from "../components/CalendarioReserva";
 import Politicas from "../components/Politicas";
+//import NewCalendar from "../components/NewCalendar";
+import { useLogin } from "../components/utils/LoginContext";
+
 
 
 function Detail() {
@@ -13,6 +16,7 @@ function Detail() {
   const params = useParams();
   const [imgSinPrimera, setImgSinPrimera] = useState([]);
   const [dateRange, setDateRange] = useState([null, null]); // Nuevo estado para el rango de fechas
+  const user = useLogin()
 
   const handleDateChange = (range) => {
     setDateRange(range);
@@ -154,6 +158,8 @@ function Detail() {
 
           <button className="rent-button">Reservar</button>
           <Politicas/>
+          {<CalendarioReserva/>}
+          {user.user ? (<Link to={`/reserva/${params.id}`}><button className="rent-button">Alquilar</button></Link>) : (<Link to={'/inicio-sesion'}><button className="rent-button">Alquilar</button></Link>)}
         </div>
       </div>
     </section>

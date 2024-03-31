@@ -6,10 +6,36 @@ import { toastError, toastSuccess } from '../components/utils/Notificaciones'
 
 const CrearCategoria = () => {
     const [nombreCategoria, setNombreCategoria] = useState('');
+    const [descripcionCategoria, setDescripcionCategoria] = useState('');
     const [selectedImages, setSelectedImages] = useState([]);
     const [Imagenes, setImagenes] = useState([]);
     const [formSubmitted, setFormSubmitted] = useState(false);
+    const [caracteristicas, setCaracteristicas] = useState(['']);
     const user = useLogin();
+
+    const resetForm = () => {
+      setNombreCategoria('');
+      setDescripcionCategoria('');
+      setSelectedImages([]);
+      setCaracteristicas(['']);
+      // Reset other form fields as needed
+    };
+
+    const handleInputChange = (index, value) => {
+      const newInputValues = [...caracteristicas];
+      newInputValues[index] = value;
+      setCaracteristicas(newInputValues);
+    };
+
+    const handleAddInput = () => {
+      setCaracteristicas([...caracteristicas, '']);
+    };
+
+    const handleRemoveInput = (index) => {
+      const newInputValues = [...caracteristicas];
+      newInputValues.splice(index, 1);
+      setCaracteristicas(newInputValues);
+    };
 
     const handleImageChange = async (event) => {
         const files = Array.from(event.target.files);
@@ -87,8 +113,8 @@ const CrearCategoria = () => {
           
               const data = await response.json();
               console.log(JSON.stringify(data));
-              //resetForm();
-              toastSuccess("Se cargó la categoria correctamente")
+              resetForm();
+              toastSuccess("Se cargó la categoria correctamente") 
               return data;
             } catch (error) {
               console.error('Error al procesar la respuesta:', error);
@@ -119,17 +145,47 @@ const CrearCategoria = () => {
               console.error('Error al cargar');
             })
         } 
+
+        const fetchCargarCaracteristica = async (caracteristicas) => {
+
+          const url = `https://api-terrarent.ddns.net:3001/Caracteristica`;
+            const settings = {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(caracteristicas)
+            };
+        
+            try {
+              const response = await fetch(url, settings);
+          
+              const data = await response.json();
+              console.log(JSON.stringify(data));
+              return data;
+            } catch (error) {
+              console.error('Error al procesar la respuesta:', error);
+              toastError('Ocurrió un error inesperado al procesar la respuesta del servidor.');
+              return null;
+            }
+
+        }
         
         
         try {
+          
           const nuevaCategoria = {
             nombreCategoria: nombreCategoria
           };
       
           const responseCategoria = await fetchCategoriaNueva(nuevaCategoria);
+          
           console.log(responseCategoria);
+          
           if (responseCategoria != null) {
+            
             const idCategoria = await responseCategoria;
+            
             const imagenCargar = {
               titulo: "ImgCat",
               urlimg: "",
@@ -138,9 +194,24 @@ const CrearCategoria = () => {
                 idCategoria: idCategoria.idCategoria
               }
             };
-            console.log(JSON.stringify(imagenCargar));
-    
+            
             const responseImagen = await fetchCargarImagen(imagenCargar);
+            
+            for(var i = 0; i < caracteristicas.length; i++) {
+              const caracteristicasCargar = {
+                descripCaracteristica: caracteristicas[i],
+                categoria: {
+                  idCategoria: idCategoria.idCategoria
+                }
+              };
+              const responseCaracteristica = await fetchCargarCaracteristica(caracteristicasCargar);
+            }
+            
+            //console.log(JSON.stringify(caracteristicasCargar));
+    
+            
+
+            
           
           } else {
             console.error("Error al cargar la categoria");
@@ -181,6 +252,36 @@ const CrearCategoria = () => {
                 }}
             />
            </div> 
+
+           <div className='inputs'>
+                <label> Descripcion de la Categoria: </label>
+                <input className='input-descripcion'
+              type="text"
+              value={descripcionCategoria}
+              placeholder="Ingrese la descripcion de la Categoria"
+              onChange={(e) => {
+                setDescripcionCategoria(e.target.value);
+                }}
+            />
+           </div> 
+           
+           <div>
+            <label> Agregue una caracteristica </label>
+            {caracteristicas.map((caracteristica, index) => (
+              <div key={index}>
+              <input
+                value={caracteristica}
+                onChange={(e) => handleInputChange(index, e.target.value)}
+                placeholder={`Caracteristica ${index + 1}`}
+              />
+              <button type="button" className="delete-button" onClick={() => handleRemoveInput(index)} >X</button>
+            </div>
+            ))}
+            
+            <button type="button" onClick={handleAddInput}>Agregar otra caracteristica</button>
+            
+          </div>
+
             <label className='label-drop'>
               Arrastre la imágen de la categoria
               <div className='drop'
@@ -200,7 +301,7 @@ const CrearCategoria = () => {
               </div>
               <input type="file" onChange={handleImageChange} accept="image/*" style={{ display: 'none' }} />
             </label>
-            <button>Agregar producto</button>
+            <button>Agregar Categoria</button>
           </form>
           </div>
         </div>
