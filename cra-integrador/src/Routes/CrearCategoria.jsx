@@ -175,7 +175,7 @@ const CrearCategoria = () => {
         try {
           
           const nuevaCategoria = {
-            nombreCategoria: nombreCategoria,
+            nombreCategoria: nombreCategoria
           };
       
           const responseCategoria = await fetchCategoriaNueva(nuevaCategoria);
@@ -194,19 +194,24 @@ const CrearCategoria = () => {
                 idCategoria: idCategoria.idCategoria
               }
             };
-
-            const caracteristicasCargar = {
-              descripCaracteristica: caracteristicas,
-              categoria: {
-                idCategoria: idCategoria.idCategoria
-              }
-            };
             
-            //console.log(JSON.stringify(imagenCargar));
-    
             const responseImagen = await fetchCargarImagen(imagenCargar);
+            
+            for(var i = 0; i < caracteristicas.length; i++) {
+              const caracteristicasCargar = {
+                descripCaracteristica: caracteristicas[i],
+                categoria: {
+                  idCategoria: idCategoria.idCategoria
+                }
+              };
+              const responseCaracteristica = await fetchCargarCaracteristica(caracteristicasCargar);
+            }
+            
+            //console.log(JSON.stringify(caracteristicasCargar));
+    
+            
 
-            const responseCaracteristica = await fetchCargarCaracteristica(caracteristicasCargar);
+            
           
           } else {
             console.error("Error al cargar la categoria");

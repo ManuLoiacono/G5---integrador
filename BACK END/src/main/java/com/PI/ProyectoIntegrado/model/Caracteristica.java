@@ -23,7 +23,7 @@ public class Caracteristica {
     @JsonProperty("producto")
     private Producto producto;
 
-    
+
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
