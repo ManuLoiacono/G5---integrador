@@ -1,6 +1,8 @@
 package com.PI.ProyectoIntegrado.service;
 
+import com.PI.ProyectoIntegrado.dto.CaracteristicaDTO;
 import com.PI.ProyectoIntegrado.model.Caracteristica;
+import com.PI.ProyectoIntegrado.model.Producto;
 import com.PI.ProyectoIntegrado.repository.ICaracteristicaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,10 @@ public class CaracteristicaService implements ICaracteristicaService {
     ObjectMapper mapper;
 
     @Override
-    public void agregarCaracteristica(Caracteristica caracteristica) {
+    public void agregarCaracteristica(CaracteristicaDTO caracteristicaDTO) {
 
+        Caracteristica caracteristica = mapper.convertValue(caracteristicaDTO, Caracteristica.class);
         caracteristicasRepository.save(caracteristica);
-
     }
 
     @Override
