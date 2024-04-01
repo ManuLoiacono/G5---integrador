@@ -28,7 +28,7 @@ const CalendarioReserva = () => {
       placeholderText="Elija fechas para reserva"
       dateFormat="dd/MM/YY"
       locale="es"
-      monthsShown={2}
+      monthsShown={1}
       monthYearFormat="MMM yyyy"
     />
     </div>

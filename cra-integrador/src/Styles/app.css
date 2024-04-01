@@ -1273,7 +1273,7 @@ table {
         margin-left: 0;
         margin-right: 1rem;
     }
-    .buscador button{
+    .buscador button:nth-child(1){
         width: 70%;
         margin: 0;
     }
