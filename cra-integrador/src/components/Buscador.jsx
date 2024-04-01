@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import style from "../Styles/app.css";
 import lupa from "../img/lupa.png"
@@ -16,7 +16,9 @@ const Buscador = () => {
   const handleDateRangeChange = (newRange) => {
     setSelectedDateRange(newRange);
   };
-
+  useEffect(() => {
+    console.log("selectedDateRange:", selectedDateRange);
+  }, [selectedDateRange]);
   return (
     <div className='buscador'>
       <h2>
@@ -24,7 +26,7 @@ const Buscador = () => {
       </h2>
       <form onSubmit={handleSubmit} className="formulario">
           <input type="text" placeholder='Buscá!' value={parametro} onChange={(e)=>{setParametro(e.target.value)}}/>
-          <CalendarioBuscador/>
+          <CalendarioBuscador onDateRangeChange={handleDateRangeChange}/>
           <Link  to={`/busqueda/${parametro}`}><button>Lo encontraremos</button></Link>
         </form>
     </div>

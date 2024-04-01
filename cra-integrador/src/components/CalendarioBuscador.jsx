@@ -6,14 +6,15 @@ import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import es from 'date-fns/locale/es'; 
 
 
-const CalendarioReserva = () => {
+const CalendarioBuscador = () => {
   registerLocale('es', es);
   setDefaultLocale('es');
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
 
-  const handleDateChange = (update) => {
+  const handleDateRangeChange = (update) => {
     setDateRange(update);
+    console.log(update);
   };
 
 
@@ -23,7 +24,7 @@ const CalendarioReserva = () => {
       selectsRange={true}
       startDate={startDate}
       endDate={endDate}
-      onChange={handleDateChange}
+      onChange={handleDateRangeChange}
       isClearable={false}
       placeholderText="Elija fechas para reserva"
       dateFormat="dd/MM/YY"
@@ -35,4 +36,4 @@ const CalendarioReserva = () => {
   );
 };
 
-export default CalendarioReserva;
+export default CalendarioBuscador;
