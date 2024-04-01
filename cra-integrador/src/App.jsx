@@ -20,26 +20,13 @@ import { ProductProvider } from "./components/utils/ProductContext.jsx";
 import Reserva from "./Routes/Reserva.jsx";
 
 function App() {
-  const [estaLogueado,setEstaLogueado] = useState(false)
-  const [esAdmin,setEsAdmin] = useState(false)
-function x(){
-  setEstaLogueado(true)
-  setEsAdmin(true)
-} 
-useEffect(()=>{x()},[])
-function cerrarSesion(){
-
-  setEstaLogueado(false)
-  setEsAdmin(false)
-}
-
   return ( 
     <>
     <ProductProvider>
     <LoginProvider>
     <ToastContainer/>    
   <Router>
-  <Header estaLogueado={estaLogueado} esAdmin={esAdmin} cierreDeSesion = {cerrarSesion}/>
+  <Header/>
   <Routes>
     <Route path='/' element={<Home/>}/>
     <Route path='panel-de-control' element={<PanelDeControl/>}/>
