@@ -5,7 +5,6 @@ import noImage from '../img/no-image.jpg';
 import { FaPalette, FaUsers, FaTag, FaWeight, FaRuler, FaWindowMaximize, FaDoorOpen, FaShoppingBag } from 'react-icons/fa';
 import CalendarioReserva from "../components/CalendarioReserva";
 import Politicas from "../components/Politicas";
-//import NewCalendar from "../components/NewCalendar";
 import { useLogin } from "../components/utils/LoginContext";
 
 
@@ -40,6 +39,9 @@ function Detail() {
       console.error('Error al obtener detalles del producto:', error);
     }
   };
+
+ 
+
   const caracteristicas = [
     { titulo: 'Color:', icono: FaPalette },
     { titulo: 'Capacidad:', icono: FaUsers },
@@ -62,11 +64,10 @@ function Detail() {
     { titulo: 'Incluye:', detalle: "Bolsa de transporte"}
   ];
 
-  console.log("dateRange");
-  console.log(dateRange);
-  useEffect(() => {
+   useEffect(() => {
     fetchData();
-  }, [params.id]);
+    }, [params.id]);
+  
  
     
   const [mostrarContenido, setMostrarContenido] = useState(false);
@@ -87,62 +88,58 @@ function Detail() {
           <div id="imagenes">
             <div className="imgGrande">
               <img
-              
-              src={product.imagenes && product.imagenes.length > 0 ? product.imagenes[0].urlimg : noImage}
-              alt="Imagen principal"/>
-          </div>
-          <div id="cuadrilla-img">
-            {/* Renderizamos las imágenes procesadas */}
-            {imgSinPrimera.map((img, index) => (
-              <div className="imgChiqui">
-              <img
-                key={index}
-                
-                src={img.urlimg}
-                alt={`Imagen ${index}`}
-              />
-              </div>
-            ))}
-            {imgSinPrimera.length < 4 && (
-              Array.from({ length: 4 - imgSinPrimera.length }).map((_, index) => (
-                <div className="imgChiqui">
-                <img
-                  key={imgSinPrimera.length + index} 
-                  
-                  src={noImage}
-                  alt={`Imagen no encontrada`}
-                />
-                </div>
-              ))
-            )}
-          </div>
-          </div>
-            <div id="galery-link">
-              <Link to={`/productos/${params.id}/galeria`}><p>Ver más...</p></Link>
-              <Outlet />
+                src={product.imagenes && product.imagenes.length > 0 ? product.imagenes[0].urlimg : noImage}
+                alt="Imagen principal"/>
             </div>
-            <div id="caracteristicas">
-              <div>
-                <p className="titulo">CARACTERÍSTICAS</p>
-                <ul className="caracteristicas-producto">
-      {caracteristicas.map(({ titulo, icono: Icono }, index) => (
-          <li key={index}>
-          <strong><Icono /> {titulo}</strong>
-          {productoCaracterísticas.map((producto) => {
-            if (producto.titulo === titulo) {
-              return (
-                <span key={producto.titulo}>{producto.detalle}</span>
-              );
-            }
-          })}
-        </li>
-      
-      ))}
-    </ul>
-              </div>
-              
-    <Politicas/>
-    </div>
+            <div id="cuadrilla-img">
+              {/* Renderizamos las imágenes procesadas */}
+              {imgSinPrimera.map((img, index) => (
+                <div className="imgChiqui">
+                  <img
+                    key={index}
+                    src={img.urlimg}
+                    alt={`Imagen ${index}`}
+                  />
+                </div>
+              ))}
+              {imgSinPrimera.length < 4 && (
+                Array.from({ length: 4 - imgSinPrimera.length }).map((_, index) => (
+                  <div className="imgChiqui">
+                    <img
+                      key={imgSinPrimera.length + index} 
+                      src={noImage}
+                      alt={`Imagen no encontrada`}
+                    />
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+          <div id="galery-link">
+            <Link to={`/productos/${params.id}/galeria`}>
+              <p>Ver más...</p>
+            </Link>
+            <Outlet />
+          </div>
+          <div id="caracteristicas">
+            <div>
+              <p className="titulo">CARACTERÍSTICAS</p>
+              <ul className="caracteristicas-producto">
+              {caracteristicas.map(({ titulo, icono: Icono }, index) => (
+                <li key={index}>
+                <strong><Icono /> {titulo}</strong>
+                  {productoCaracterísticas.map((producto) => {
+                    if (producto.titulo === titulo) {
+                      return (
+                        <span key={producto.titulo}>{producto.detalle}</span>
+                      );
+                  }})}
+                </li>
+              ))}
+              </ul>
+            </div>
+          <Politicas/>
+          </div>  
         </div>
         <div id="under-img">
           <div className="descripcion-container">
@@ -155,11 +152,8 @@ function Detail() {
           </div>
           <p>Fecha Inicio - Fecha Fin</p>
           <CalendarioReserva onDateChange={handleDateChange} />
-
-          <button className="rent-button">Reservar</button>
-          <Politicas/>
-          {<CalendarioReserva/>}
           {user.user ? (<Link to={`/reserva/${params.id}`}><button className="rent-button">Alquilar</button></Link>) : (<Link to={'/inicio-sesion'}><button className="rent-button">Alquilar</button></Link>)}
+          <Politicas/>
         </div>
       </div>
     </section>

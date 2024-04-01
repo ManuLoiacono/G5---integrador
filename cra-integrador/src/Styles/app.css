@@ -1138,13 +1138,16 @@ table {
     }
   
 @media(max-width:768px){
+    .buscador input{
+        text-align: center;
+    }
     #button-container{
         display: none;
     }
     #button-container-navbar{
         flex-direction: column;
         margin: 0;
-        height:200vh;
+        
         padding: 0;
         align-items:center;
         overflow: hidden;
@@ -1188,10 +1191,12 @@ table {
         transform: translateX(-100%);
         transition: 0.3s ease all;
         z-index: 100000;
+        
     }
     .nav_items.open{
         transform: translateX(0) !important;
         z-index: 100000;
+        
 
     }
     .nav_toggle{
@@ -1261,6 +1266,7 @@ table {
         width: 70%;
         margin: 0;
         margin-bottom: 0.5rem;
+        text-align: center;
     }
     .calendario-input input[type="text"]:nth-child(1){
         width: 100%;
@@ -1271,9 +1277,10 @@ table {
         margin-left: 0;
         margin-right: 1rem;
     }
-    .buscador button{
+    .buscador button:nth-child(1){
         width: 70%;
         margin: 0;
+        
     }
     
    

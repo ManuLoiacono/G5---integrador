@@ -113,7 +113,7 @@ const CrearCategoria = () => {
               const data = await response.json();
 
               console.log(JSON.stringify(data));
-              
+
               resetForm();
               toastSuccess("Se cargó la categoria correctamente") 
               return data;
@@ -178,7 +178,10 @@ const CrearCategoria = () => {
           const nuevaCategoria = {
             nombreCategoria: nombreCategoria,
             descripcionCategoria: descripcionCategoria
+            //descripcionCategoria: descripcionCategoria
           };
+
+          console.log(JSON.stringify(nuevaCategoria));
       
           const responseCategoria = await fetchCategoriaNueva(nuevaCategoria);
           

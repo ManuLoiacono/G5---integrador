@@ -27,7 +27,7 @@ public class ReservaController {
         return reserva;
     }
 
-    @GetMapping("/{idReserva}")
+    @GetMapping("/:{idReserva}")
     public ReservaDTO getReserva(@PathVariable Integer idReserva){
 
         return  reservaService.listarUnaReserva(idReserva);
@@ -39,13 +39,13 @@ public class ReservaController {
         return reservaService.listarReservas();
     }
 
-    @DeleteMapping("/{idReserva}")
+    @DeleteMapping("/:{idReserva}")
     public ResponseEntity<?> eliminarReserva(@PathVariable Integer idReserva){
         reservaService.eliminarReserva(idReserva);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @GetMapping("/producto/{idProducto}")
+    @GetMapping("/producto/:{idProducto}")
     public List<Reserva> obtenerReservaPorProductoID(@PathVariable Integer idProducto) throws ResourceNotFoundException {
         return reservaService.buscarReservaPorProductoID(idProducto);
     }

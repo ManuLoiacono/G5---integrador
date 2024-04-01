@@ -12,14 +12,14 @@ public class ProductoDTO {
     private String nombreProd;
     private String descripcionProd;
     private Float precioProd;
-    private CategoriaDTO categoria;
+    private Categoria categoria;
     private Set<Imagen> imagenes = new HashSet<>();
 
 
     public ProductoDTO() {
     }
 
-    public ProductoDTO(String nombreProd, String descripcionProd, Float precioProd, CategoriaDTO categoria, Set<Imagen> imagenes) {
+    public ProductoDTO(String nombreProd, String descripcionProd, Float precioProd, Categoria categoria, Set<Imagen> imagenes) {
         this.nombreProd = nombreProd;
         this.descripcionProd = descripcionProd;
         this.precioProd = precioProd;
@@ -27,7 +27,7 @@ public class ProductoDTO {
         this.imagenes = imagenes;
     }
 
-    public ProductoDTO(Integer idProducto, String nombreProd, String descripcionProd, Float precioProd, CategoriaDTO categoria, Set<Imagen> imagenes) {
+    public ProductoDTO(Integer idProducto, String nombreProd, String descripcionProd, Float precioProd, Categoria categoria, Set<Imagen> imagenes) {
         this.idProducto = idProducto;
         this.nombreProd = nombreProd;
         this.descripcionProd = descripcionProd;
@@ -67,11 +67,11 @@ public class ProductoDTO {
         this.precioProd = precioProd;
     }
 
-    public CategoriaDTO getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(CategoriaDTO categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 

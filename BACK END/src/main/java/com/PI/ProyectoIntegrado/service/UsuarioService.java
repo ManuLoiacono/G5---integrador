@@ -20,8 +20,6 @@ public class UsuarioService implements IUsuarioService {
     @Autowired
     private IUsuarioRepository usuarioRepository;
 
-    @Autowired
-    private EmailService emailService;
 
     @Autowired
     ObjectMapper mapper;
@@ -35,12 +33,12 @@ public class UsuarioService implements IUsuarioService {
             throw new RuntimeException("El usuario ya existe");
         } else {
             usuarioRepository.save(usuario);
-            String to = usuarioDTO.getEmail();
+            /*String to = usuarioDTO.getEmail();
             String subject = "Bienvenido a TERRA-RENT";
             String text = "Haz clic en el siguiente enlace para acceder a la aplicación:  https://api-terrarent.ddns.net:3001";
             System.out.println("antes de email service");
             emailService.sendSimpleMessage(to, subject, text);
-            System.out.println("usuario service");
+            System.out.println("usuario service");*/
         }
     }
 
