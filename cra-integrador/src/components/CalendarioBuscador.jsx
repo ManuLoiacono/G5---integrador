@@ -6,7 +6,7 @@ import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import es from 'date-fns/locale/es'; 
 
 
-const CalendarioBuscador = () => {
+const CalendarioBuscador = ({ onDateRangeChange }) => {
   registerLocale('es', es);
   setDefaultLocale('es');
   const [dateRange, setDateRange] = useState([null, null]);
@@ -14,6 +14,7 @@ const CalendarioBuscador = () => {
 
   const handleDateRangeChange = (update) => {
     setDateRange(update);
+    onDateRangeChange(update)
     console.log(update);
   };
 
