@@ -12,7 +12,6 @@ public class CategoriaDTO {
     private String nombreCategoria;
     private String descripcionCategoria;
     private Set<ImagenCategoria> imagenCategoria = new HashSet<>();
-
     private Set<Caracteristica> caracteristicas = new HashSet<>();
 
     public CategoriaDTO() {

@@ -19,9 +19,9 @@ public class CaracteristicaController {
     ICaracteristicaService caracteristicasService;
 
     @PostMapping
-    public ResponseEntity<?> crearCaracteristica(@RequestBody CaracteristicaDTO caracteristicaDTO){
+    public ResponseEntity<?> crearCaracteristica(@RequestBody Caracteristica caracteristica){
 
-        caracteristicasService.agregarCaracteristica(caracteristicaDTO);
+        caracteristicasService.agregarCaracteristica(caracteristica);
         return ResponseEntity.ok(HttpStatus.OK);
 
     }

@@ -24,9 +24,7 @@ public class CaracteristicaService implements ICaracteristicaService {
     ObjectMapper mapper;
 
     @Override
-    public void agregarCaracteristica(CaracteristicaDTO caracteristicaDTO) {
-
-        Caracteristica caracteristica = mapper.convertValue(caracteristicaDTO, Caracteristica.class);
+    public void agregarCaracteristica(Caracteristica caracteristica) {
         caracteristicasRepository.save(caracteristica);
     }
 
