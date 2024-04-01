@@ -1138,6 +1138,9 @@ table {
     }
   
 @media(max-width:768px){
+    .buscador input{
+        text-align: center;
+    }
     #button-container{
         display: none;
     }
@@ -1263,6 +1266,7 @@ table {
         width: 70%;
         margin: 0;
         margin-bottom: 0.5rem;
+        text-align: center;
     }
     .calendario-input input[type="text"]:nth-child(1){
         width: 100%;
@@ -1276,6 +1280,7 @@ table {
     .buscador button:nth-child(1){
         width: 70%;
         margin: 0;
+        
     }
     
    
