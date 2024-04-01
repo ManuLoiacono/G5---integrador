@@ -1,8 +1,4 @@
 import React, { useEffect , useState} from 'react'
-import imgCarpa from '../img/carpa-playera.jpg'
-import imgBici from '../img/bicicleta.jpg'
-import imgBaton from '../img/baton_trakking.jpg'
-import imgCons from '../img/conservadora-02.jpg'
 
 
 
@@ -61,7 +57,6 @@ cantProductos:0}
   if (error) {
     return <div>Error al cargar los productos. Por favor, inténtalo de nuevo más tarde.</div>;
   }
-
 
 
   return (
