@@ -52,6 +52,23 @@ function Detail() {
       
       console.log("dataReserva");
       console.log(dataReserva[0].fechaInicio);
+      
+      const fechaIniRes = new Date(dataReserva[0].fechaInicio);
+      const fechaFinRes = new Date(dataReserva[0].fechaFin);
+      
+      // Obtener los componentes de la fecha (año, mes y día)
+      const añoIni = fechaIniRes.getFullYear();
+      const mesIni = fechaIniRes.getMonth() + 1; // Los meses son indexados desde 0, por lo que sumamos 1
+      const diaIni = fechaIniRes.getDate();
+      const añoFin = fechaFinRes.getFullYear();
+      const mesFin = fechaFinRes.getMonth() + 1; // Los meses son indexados desde 0, por lo que sumamos 1
+      const diaFin = fechaFinRes.getDate();
+      
+      // Formatear la fecha en el formato YYYY-MM-DD
+      const fechaInicioFormateada = `${añoIni}-${mesIni < 10 ? '0' : ''}${mesIni}-${diaIni < 10 ? '0' : ''}${diaIni}`;
+      const fechaFinFormateada = `${añoFin}-${mesFin < 10 ? '0' : ''}${mesFin}-${diaFin < 10 ? '0' : ''}${diaFin}`;
+      
+      console.log("Inicio Reserva: " + fechaInicioFormateada + " - Fin Reserva: " + fechaFinFormateada);
 
       
     } catch (error) {
