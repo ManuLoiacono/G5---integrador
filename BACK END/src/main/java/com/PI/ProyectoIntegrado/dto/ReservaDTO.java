@@ -10,9 +10,9 @@ public class ReservaDTO {
     private Integer idReserva;
     private Producto producto;
     private Usuario usuario;
-    private Date FechaInicio;
-    private Date FechaFin;
-    private Float PrecioTotal;
+    private Date fechaInicio;
+    private Date fechaFin;
+    private Float precioTotal;
 
     public ReservaDTO() {
     }
@@ -20,18 +20,18 @@ public class ReservaDTO {
     public ReservaDTO(Producto producto, Usuario usuario, Date fechaInicio, Date fechaFin, Float precioTotal) {
         this.producto = producto;
         this.usuario = usuario;
-        FechaInicio = fechaInicio;
-        FechaFin = fechaFin;
-        PrecioTotal = precioTotal;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.precioTotal = precioTotal;
     }
 
     public ReservaDTO(Integer idReserva, Producto producto, Usuario usuario, Date fechaInicio, Date fechaFin, Float precioTotal) {
         this.idReserva = idReserva;
         this.producto = producto;
         this.usuario = usuario;
-        FechaInicio = fechaInicio;
-        FechaFin = fechaFin;
-        PrecioTotal = precioTotal;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.precioTotal = precioTotal;
     }
 
     public Integer getIdReserva() {
@@ -59,26 +59,26 @@ public class ReservaDTO {
     }
 
     public Date getFechaInicio() {
-        return FechaInicio;
+        return fechaInicio;
     }
 
     public void setFechaInicio(Date fechaInicio) {
-        FechaInicio = fechaInicio;
+        this.fechaInicio = fechaInicio;
     }
 
     public Date getFechaFin() {
-        return FechaFin;
+        return fechaFin;
     }
 
     public void setFechaFin(Date fechaFin) {
-        FechaFin = fechaFin;
+        this.fechaFin = fechaFin;
     }
 
     public Float getPrecioTotal() {
-        return PrecioTotal;
+        return precioTotal;
     }
 
     public void setPrecioTotal(Float precioTotal) {
-        PrecioTotal = precioTotal;
+        this.precioTotal = precioTotal;
     }
 }

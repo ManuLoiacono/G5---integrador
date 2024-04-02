@@ -3,7 +3,6 @@ import style from "./Styles/app.css";
 import { BrowserRouter as Router, Route , Routes } from "react-router-dom";
 import Home from './Routes/Home';
 import Detail from './Routes/Detail';
-import React, { useEffect, useState } from "react";
 import RegistrarProd from "./Routes/RegistrarProd.jsx";
 import Galery from './Routes/Galery.jsx';
 import Footer from "./components/Footer.jsx";
@@ -42,7 +41,7 @@ function App() {
     <Route path='panel-de-control' element={<PanelDeControl/>}/>
     <Route path='busqueda/:parametro/:fechas' element={<ProductosBuscados/>}/>
     <Route path='crearCategoria' element={<CrearCategoria/>}/>
-    <Route path='reserva/:id' element={<Reserva/>}/>
+    <Route path='reserva/:id/:fechas' element={<Reserva/>}/>
   </Routes>
     <Footer/>
   </Router>

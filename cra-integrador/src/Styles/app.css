@@ -302,7 +302,7 @@ input.inputBox {
 border-bottom: 1px solid var(--color-verde2);
 text-align: center;
 }
-.galery, .galeria, .registrar , .detail, .registrar-usuario, .listado-productos, .panel-de-control, .listado-usuarios{
+.galery, .galeria, .registrar , .detail, .registrar-usuario, .listado-productos, .panel-de-control, .listado-usuarios, .reserva{
     width: 98%;
     margin:8px;
     background-color: var(--color-gris1);
