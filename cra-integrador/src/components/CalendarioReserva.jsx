@@ -10,9 +10,11 @@ import { toastError, toastSuccess } from '../components/utils/Notificaciones'
 const CalendarioReserva = ({ onDateChange }) => {
   const params = useParams();
   const fechasReservadas = [];
-  
+  useEffect(() => {
   const fetchDataReserva = async () => {
     try {
+      console.log("params");
+      console.log(params);
       const url = `https://api-terrarent.ddns.net:3001/Reserva/producto/${params.id}`;
       const settings = {
         method: 'GET',
@@ -20,9 +22,13 @@ const CalendarioReserva = ({ onDateChange }) => {
       };
       const response = await fetch(url, settings);
       const dataReserva = await response.json();
+      console.log("dataReserva");
+      console.log(JSON.stringify(dataReserva));
       dataReserva.forEach(reserva => {
         const fechaIniRes = new Date(reserva.fechaInicio);
         const fechaFinRes = new Date(reserva.fechaFin);
+        console.log(fechaIniRes);
+        console.log(fechaFinRes);
 
         const añoIni = fechaIniRes.getFullYear();
       const mesIni = fechaIniRes.getMonth(); 
@@ -33,7 +39,7 @@ const CalendarioReserva = ({ onDateChange }) => {
       
       const fechaInicioFormateada = new Date(añoIni, mesIni, diaIni);
       const fechaFinFormateada = new Date(añoFin, mesFin, diaFin);
-      fechasReservadas.push({ start: fechaInicioFormateada, end: fechaFinFormateada })
+      fechasReservadas.push({ start: fechaIniRes, end: fechaFinRes })
     })
     
   } catch (error) {
@@ -41,12 +47,10 @@ const CalendarioReserva = ({ onDateChange }) => {
   }
 };
 
-console.log("fechasReservadas");
-console.log(fechasReservadas);
-
-useEffect(() => {
-    fetchDataReserva();
-      }, [params.id]);
+  fetchDataReserva();
+  console.log("fechasReservadas");
+  console.log(fechasReservadas);
+  }, [params.id]);
       
   registerLocale('es', es);
   setDefaultLocale('es');
@@ -64,10 +68,11 @@ useEffect(() => {
       onDateChange(update);}
       
     };
-  const excludeIntervals = [
-    { start: subDays(new Date(), 5), end: addDays(new Date(), 5) },
-    { start: new Date(2024, 3, 1), end: new Date(2024, 3, 10) }, 
-  ];
+    const excludeIntervals = [
+      { start: subDays(new Date(), 5), end: addDays(new Date(), 5) },
+      { start: new Date(2024, 3, 1), end: new Date(2024, 3, 10) }, 
+    ];
+
 
   return (
     <div className='calendario-input'>
