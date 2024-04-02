@@ -152,7 +152,7 @@ function Detail() {
           </div>
           <p>Fecha Inicio - Fecha Fin</p>
           <CalendarioReserva onDateChange={handleDateChange} />
-          {user.user ? (<Link to={`/reserva/${params.id}`}><button className="rent-button">Alquilar</button></Link>) : (<Link to={'/inicio-sesion'}><button className="rent-button">Alquilar</button></Link>)}
+          {user.user ? (<Link to={`/reserva/${params.id}/${dateRange}`}><button className="rent-button">Alquilar</button></Link>) : (<Link to={'/inicio-sesion'}><button className="rent-button">Alquilar</button></Link>)}
           <Politicas/>
         </div>
       </div>

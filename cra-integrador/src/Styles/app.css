@@ -246,7 +246,7 @@ input.inputBox {
 }
 /*BUSCADOR*/
 /*GALERIA DE CATEGORIAS*/
-.galery, .galeria, .registrar , .detail, .registrar-usuario, .listado-productos, .panel-de-control, .listado-usuarios{
+.galery, .galeria, .registrar , .detail, .registrar-usuario, .listado-productos, .panel-de-control, .listado-usuarios, .reserva{
     width: 98%;
     margin:8px;
     background-color: var(--color-gris1);
