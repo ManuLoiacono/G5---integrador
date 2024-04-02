@@ -5,8 +5,9 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { toastError, toastSuccess } from '../components/utils/Notificaciones'
 import MensajeResolucion from '../components/MensajeResolucion.jsx'
+import Loader from '../components/Loader.jsx'
 import { useLogin } from "../components/utils/LoginContext"
-
+import image from "../img/TERRA_RENT4.png"
 const ListadoUsers = () => {
   
   const [users, setUsers] = useState([]);
@@ -110,9 +111,16 @@ const ListadoUsers = () => {
 
     toastSuccess("Se modificó el usuario correctamente")
   }
-  if(user.user===null){return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>}
+  
+  if(error){
+    return  <div className="error-listado">
+      <img src={image} alt="" />
+      <p>Error al cargar el istado de usuarios. Por favor, inténtalo de nuevo más tarde.</p>
+  </div>;
+  }
+  if(user.user===null){
+    return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>}
   if(user.user.userRol=="ADMIN"||user.user.userRol=="SUPERADMIN"){
-
   return (
     <>
     <div className='listado-usuarios'>

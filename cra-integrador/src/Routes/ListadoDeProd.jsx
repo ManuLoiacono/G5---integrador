@@ -11,7 +11,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useLogin } from "../components/utils/LoginContext"
 import Swal from 'sweetalert2';
-
+import image from "../img/TERRA_RENT4.png"
 
 
 const ListadoDeProd = () => {
@@ -87,7 +87,12 @@ const ListadoDeProd = () => {
 
     //toastSuccess("Se eliminó el producto correctamente")
   }
- 
+  if(error){
+    return  <div className="error-listado">
+      <img src={image} alt="" />
+      <p>Error al cargar el istado de productos. Por favor, inténtalo de nuevo más tarde.</p>
+  </div>;
+  }
   if(user.user===null){return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>}
   if(user.user.userRol=="ADMIN"||user.user.userRol=="SUPERADMIN"){
       

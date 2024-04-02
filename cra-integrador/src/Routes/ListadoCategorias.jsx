@@ -11,8 +11,8 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useLogin } from "../components/utils/LoginContext"
 import Swal from 'sweetalert2';
-
-
+import image from "../img/TERRA_RENT4.png"
+import Loader from '../components/Loader.jsx'
 
 const ListadoCategorias = () => {
   
@@ -90,13 +90,19 @@ const ListadoCategorias = () => {
   }
   console.log("categoria");
   console.log(categoria);
+  if(error){
+    return  <div className="error-listado">
+      <img src={image} alt="" />
+      <p>Error al cargar el istado de categorías. Por favor, inténtalo de nuevo más tarde.</p>
+  </div>;
+  }
   if(user.user===null){return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>}
   if(user.user.userRol=="ADMIN"||user.user.userRol=="SUPERADMIN"){
   return (
     <div className='listado-productos'>
       <h3>Listado de Categorias</h3>
        <table>
-        <thead>
+       <thead>
           <tr>
             <th>ID</th>
             <th>Nombre</th>

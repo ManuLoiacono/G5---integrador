@@ -1,6 +1,6 @@
 import React, { useEffect , useState} from 'react'
 import image from "../img/TERRA_RENT4.png"
-
+import Loader from '../components/Loader.jsx'
 
 
 const Categorias = () => {    
@@ -64,6 +64,7 @@ cantProductos:0}
 
   return (
     <div className='galeria'>
+        
         <h2 id='h2-cat'>Categorías</h2>
         <section id="galeria-cat">
           {categoriaMostrar.map((categoria) => (

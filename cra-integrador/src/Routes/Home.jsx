@@ -5,6 +5,8 @@ import Header from "../components/Header";
 import Recomendados from "../components/Recomendados";
 import style from "../Styles/app.css";
 //import 'react-calendar/dist/Calendar.css';
+import Loader from '../components/Loader.jsx'
+
 
 function Home() {
     
@@ -13,6 +15,7 @@ function Home() {
         <>
             <div className="home">
                 <Buscador/>
+                <Loader/>
                 <Categorias/>
                 <Recomendados/>
             </div>

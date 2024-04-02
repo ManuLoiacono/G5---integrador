@@ -1,6 +1,7 @@
 import Card from "./Card";
 import { useState, useEffect } from "react";
-import image from "../img/TERRA_RENT4.png"
+import image from "../img/TERRA_RENT4.png";
+
 
 function Galeria() {
   const [productosMostrar, setProductosMostrar] = useState([]);
