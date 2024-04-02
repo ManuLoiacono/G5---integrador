@@ -13,6 +13,7 @@ import PanelDeControl from './Routes/PanelDeControl.jsx'
 import { ToastContainer, toast } from 'react-toastify';
 import ListadoDeProd from './Routes/ListadoDeProd.jsx';
 import ListadoUsers from './Routes/ListadoUsers.jsx';
+import ListadoCategorias from './Routes/ListadoCategorias.jsx';
 import {LoginProvider} from './components/utils/LoginContext.jsx'
 import ProductosBuscados from "./Routes/ProductosBuscados.jsx";
 import CrearCategoria from "./Routes/CrearCategoria.jsx";
@@ -37,6 +38,7 @@ function App() {
     <Route path='inicio-sesion' element={<InicioSesion/>}/>
     <Route path='listado-productos' element={<ListadoDeProd/>}/>
     <Route path='listado-usuarios' element={<ListadoUsers/>}/>
+    <Route path='listado-categorias' element={<ListadoCategorias/>}/>
     <Route path='panel-de-control' element={<PanelDeControl/>}/>
     <Route path='busqueda/:parametro/:fechas' element={<ProductosBuscados/>}/>
     <Route path='crearCategoria' element={<CrearCategoria/>}/>

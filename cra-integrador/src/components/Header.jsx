@@ -30,9 +30,8 @@ function Header(){
                 <ul id="button-container">
                 {(estadoUser==="ADMIN"||estadoUser==="SUPERADMIN") && <Link to="/panel-de-control"><img className="imageAdmin" src={imageAdmin} alt="Terrarent logo" /></Link>}
                  {user.user!==null ? (
-                                    <div id="login-data">
+                    <div id="login-data">
                     <div className="user-saludo">
-
                     <span>BIENVENIDO</span>
                     <p className="bienvenida header-item">{user.user.nombreUsuario.charAt(0).toUpperCase() + user.user.nombreUsuario.slice(1)}</p>
                     </div>

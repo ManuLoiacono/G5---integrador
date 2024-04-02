@@ -16,6 +16,7 @@ if(user.user.userRol=="ADMIN"||user.user.userRol=="SUPERADMIN"){
             <Link to={'/registrar'}><button className="boton-panel">Agregar productos</button></Link>
             <Link to={'/listado-usuarios'}><button className="boton-panel">Lista de Usuarios</button></Link>
             <Link to={'/crearCategoria'}><button className="boton-panel">Agregar categorias</button></Link>
+            <Link to={'/listado-categorias'}><button className="boton-panel">Lista de categorias</button></Link>
         </section>
         <MensajeResolucion/>
         </div>

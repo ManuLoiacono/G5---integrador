@@ -14,16 +14,16 @@ import Swal from 'sweetalert2';
 
 
 
-const ListadoDeProd = () => {
+const ListadoCategorias = () => {
   
-  const [productos, setProductos] = useState([]);
+  const [categoria, setCategoria] = useState([]);
   const [error, setError] = useState(null);
   const user = useLogin()
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `https://api-terrarent.ddns.net:3001/Producto`;
+        const url = `https://api-terrarent.ddns.net:3001/Categoria`;
         const settings = {
           method: 'GET',
           mode: 'cors'
@@ -35,7 +35,7 @@ const ListadoDeProd = () => {
         console.log(data);
 
         const longProductos = data.length;
-        setProductos(data);
+        setCategoria(data);
       } catch (error) {
         console.error('Error al obtener detalles del producto:', error);
         setError(error);
@@ -44,9 +44,10 @@ const ListadoDeProd = () => {
 
     fetchData();
   }, []);
-
-  const fetchEliminarProducto = async (del) => {
-    const url = `https://api-terrarent.ddns.net:3001/Producto/:${del.idProducto}`;
+  console.log(categoria);
+ 
+  const fetchEliminarCategoria = async (del) => {
+    const url = `https://api-terrarent.ddns.net:3001/Categoria/:${del.idCategoria}`;
 
     console.log(url);
     const settings = {
@@ -61,10 +62,9 @@ const ListadoDeProd = () => {
     const data = await response.json();
   }
 
-
-  const handleEliminarProducto = (del) => { 
+  const handleEliminarCategoria = (del) => { 
     
-    Swal.fire({
+   Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       icon: "warning",
@@ -74,9 +74,11 @@ const ListadoDeProd = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        fetchEliminarProducto(del);
-        const refresh = productos.filter(producto => producto.idProducto !== del.idProducto);
-        setProductos(refresh);
+        fetchEliminarCategoria(del);
+        const refresh = categoria.filter(categoria => categoria.idCategoria !== del.idCategoria);
+        console.log("refresh");
+        console.log(refresh);
+        setCategoria(refresh);
         Swal.fire({  
           title: "Deleted!",
           text: "Your file has been deleted.",
@@ -87,48 +89,37 @@ const ListadoDeProd = () => {
 
     //toastSuccess("Se eliminó el producto correctamente")
   }
- 
+  console.log("categoria");
+  console.log(categoria);
   if(user.user===null){return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>}
   if(user.user.userRol=="ADMIN"||user.user.userRol=="SUPERADMIN"){
-      
+ 
+   
   return (
     <div className='listado-productos'>
-      <h3>Listado de Productos</h3>
+      <h3>Listado de Categorias</h3>
        <table>
         <thead>
           <tr>
             <th>ID</th>
             <th>Nombre</th>
-            <th>Categoría</th>
-            <th>Precio</th>
-            <th>Descripcion</th>
-            <th>Imágenes</th>
             <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
-        {productos.map(producto => (
-                <tr key={producto.idProducto}>
-                  <td>{producto.idProducto}</td>
-                  <td><Link className="link-detail" to={`/productos/:${producto.idProducto}`}>{producto.nombreProd}</Link></td>
-                  <td>{producto.categoria.nombreCategoria}</td>
-                  <td>{producto.precioProd}</td>
-                  <td>{producto.descripcionProd}</td>
-                  <td>{producto.imagenes.length}</td>
-                  <td>
-                  <button onClick={() => handleEliminarProducto(producto)}>
-                  <FontAwesomeIcon className='eliminar-producto' icon={faTrash} />
-                    </button>
-                  </td>
+        {categoria.map(categoria => (
+                <tr key={categoria.idCategoria}>
+                  <td>{categoria.idCategoria}</td>
+                  <td><Link className="link-detail" to={`/categoria/:${categoria.idCategoria}`}>{categoria.nombreCategoria}</Link></td>
+                  <td><button onClick={() => handleEliminarCategoria(categoria)}>
+                  <FontAwesomeIcon className='eliminar-producto' icon={faTrash} /></button></td>
                   
                 </tr>
-              ))}
+        ))}
         </tbody>
       </table>
     </div>
-  )
-        }else return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>
-    
-}
+  )}else return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>
+        }
 
-export default ListadoDeProd
+export default ListadoCategorias;
