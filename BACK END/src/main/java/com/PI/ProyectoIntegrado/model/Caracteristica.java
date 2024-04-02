@@ -22,9 +22,7 @@ public class Caracteristica {
     private String descripCaracteristica;
 
 
-    @ManyToOne
-    @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
-    @JsonProperty("producto")
+    @ManyToMany(mappedBy = "caracteristicas")
     private Set<Producto> productos = new HashSet<>();
 
 
