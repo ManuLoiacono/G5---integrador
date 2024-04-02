@@ -20,12 +20,12 @@ public class UsuarioService implements IUsuarioService {
     @Autowired
     private IUsuarioRepository usuarioRepository;
 
-    @Autowired
-    private EmailService emailService;
 
     @Autowired
     ObjectMapper mapper;
 
+    @Autowired
+    EmailService emailService;
 
     @Override
     public void agregarUsuario(UsuarioDTO usuarioDTO) {
