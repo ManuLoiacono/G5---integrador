@@ -296,6 +296,10 @@ input.inputBox {
 }
 /*BUSCADOR*/
 /*GALERIA DE CATEGORIAS*/
+.galeria h2{
+border-bottom: 1px solid var(--color-verde2);
+text-align: center;
+}
 .galery, .galeria, .registrar , .detail, .registrar-usuario, .listado-productos, .panel-de-control, .listado-usuarios{
     width: 98%;
     margin:8px;
@@ -303,8 +307,40 @@ input.inputBox {
     border-radius: 5px;
     padding: 10px;
     box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.4);
-   
 }
+.galeria #galeria-cat .categoria-card {
+    overflow:hidden;
+    padding: 0;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+#galeria-cat{
+    height: 35vh;
+}
+.galeria #galeria-cat .categoria-card figcaption h4{
+     opacity: 1;
+     font-size: 2rem;
+    
+}
+.galeria #galeria-cat .categoria-card figcaption{
+    background-color: var(--color-verde2);
+    color: white;
+    opacity: 0.7;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 200rem;
+}
+.galeria #galeria-cat .categoria-card figcaption:hover{
+    opacity: 0;
+ }
+.galeria #galeria-cat .categoria-card figure img{
+    width: 200%;
+    height: auto;
+    }
 .calendarWrapReserva {
     display: flex;
     width: 100%;

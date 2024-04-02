@@ -85,7 +85,7 @@ function ProductosBuscados(props){
     return(
       <div>
         <div className="contenedor-buscador-busqueda">
-          <Buscador/>
+        <Buscador />
         </div>
         <div className="contenedor-buscador-cat-rec">
           <Categorias/>

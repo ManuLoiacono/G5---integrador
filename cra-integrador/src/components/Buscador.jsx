@@ -8,7 +8,7 @@ import CalendarioBuscador from "../components/CalendarioBuscador";
  
 
 
-const Buscador = () => {
+const Buscador = ({ parametroProp, onDateRangeChange, selectedDateRangeProp }) => {
   const [parametro, setParametro] = useState("");
   const [selectedDateRange, setSelectedDateRange] = useState([null, null]);
 

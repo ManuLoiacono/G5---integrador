@@ -14,8 +14,8 @@ function Home() {
     return(
         <>
             <div className="home">
-                <Buscador/>
                 <Loader/>
+                <Buscador/>
                 <Categorias/>
                 <Recomendados/>
             </div>

@@ -65,8 +65,8 @@ const ListadoCategorias = () => {
   const handleEliminarCategoria = (del) => { 
     
    Swal.fire({
-      title: `¿Estás seguro de querer eliminar la categoría ${categoria.nombre}?`,
-      text: "este procedimiento es irreversible",
+      title: `¿Estás seguro de querer eliminar la categoría ${del.nombreCategoria}?`,
+      text: "Este procedimiento es irreversible",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -80,7 +80,7 @@ const ListadoCategorias = () => {
         setCategoria(refresh);
         Swal.fire({  
           title: "Eliminada",
-          text: "La categoria fue eliminada del sistema",
+          text: `La categoria ${del.nombreCategoria} fue eliminada del sistema`,
           icon: "success"
         });
       }
