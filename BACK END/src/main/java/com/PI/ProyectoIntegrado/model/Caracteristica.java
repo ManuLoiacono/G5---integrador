@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.NotFound;
 import software.amazon.awssdk.annotations.NotNull;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity
 @Table(name="Caracteristicas")
@@ -19,10 +22,8 @@ public class Caracteristica {
     private String descripCaracteristica;
 
 
-    @ManyToOne
-    @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
-    @JsonProperty("producto")
-    private Producto producto;
+    @ManyToMany(mappedBy = "caracteristicas")
+    private Set<Producto> productos = new HashSet<>();
 
 
     @NotNull
@@ -34,16 +35,16 @@ public class Caracteristica {
     public Caracteristica() {
     }
 
-    public Caracteristica(String descripCaracteristica, Producto producto, Categoria categoria) {
+    public Caracteristica(String descripCaracteristica, Set<Producto> productos, Categoria categoria) {
         this.descripCaracteristica = descripCaracteristica;
-        this.producto = producto;
+        this.productos = productos;
         this.categoria = categoria;
     }
 
-    public Caracteristica(Integer idCaracteristica, String descripCaracteristica, Producto producto, Categoria categoria) {
+    public Caracteristica(Integer idCaracteristica, String descripCaracteristica, Set<Producto> productos, Categoria categoria) {
         this.idCaracteristica = idCaracteristica;
         this.descripCaracteristica = descripCaracteristica;
-        this.producto = producto;
+        this.productos = productos;
         this.categoria = categoria;
     }
 
@@ -63,12 +64,12 @@ public class Caracteristica {
         this.descripCaracteristica = descripCaracteristica;
     }
 
-    public Producto getProducto() {
-        return producto;
+    public Set<Producto> getProductos() {
+        return productos;
     }
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
+    public void setProductos(Set<Producto> productos) {
+        this.productos = productos;
     }
 
     public Categoria getCategoria() {

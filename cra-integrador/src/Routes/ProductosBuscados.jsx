@@ -3,6 +3,9 @@ import { useParams, useNavigate } from "react-router-dom"
 import Card from "../components/Card";
 import imgFlecha from '../img/flecha_blanca.png';
 import { useProduct } from "../components/utils/ProductContext";
+import Buscador from "../components/Buscador";
+import Categorias from "../components/Categorias";
+import Recomendados from "../components/Recomendados";
 
 
 function ProductosBuscados(props){
@@ -80,19 +83,28 @@ function ProductosBuscados(props){
     
 
     return(
+      <div>
+        <div className="contenedor-buscador-busqueda">
+        <Buscador />
+        </div>
+        <div className="contenedor-buscador-cat-rec">
+          <Categorias/>
+          <Recomendados/>
+        </div>
         <div className="listado-productos">
            <div id="detail-header">
-        <h2 id="detail-header-name" className="detail-header-item">
-        Resultados para "{params.parametro}":
-        </h2>
-        <img src={imgFlecha} className="back" onClick={() => navigate(-1)} alt="Back" />
-      </div>
+            <h2 id="detail-header-name" className="detail-header-item">
+            Resultados para "{params.parametro}":
+            </h2>
+            <img src={imgFlecha} className="back" onClick={() => navigate(-1)} alt="Back" />
+          </div>
             <section className="listado-productos-buscados">
             {productosFiltrados.map((producto)=>(
                 <Card key={producto.idProducto} detalle={producto} />
                 
             ))}
             </section>
+        </div>
         </div>
     )
 }

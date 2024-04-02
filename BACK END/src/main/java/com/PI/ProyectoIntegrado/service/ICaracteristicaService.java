@@ -7,7 +7,7 @@ import java.util.Set;
 
 public interface ICaracteristicaService {
 
-    public void agregarCaracteristica(CaracteristicaDTO caracteristicaDTO);
+    public void agregarCaracteristica(Caracteristica caracteristica);
     public void eliminarCaracteristica(Integer idCaracteristica);
     public Caracteristica listarUnaCaracteristica(Integer idCaracteristicas);
     public Set<Caracteristica> listarCaracteristicas();

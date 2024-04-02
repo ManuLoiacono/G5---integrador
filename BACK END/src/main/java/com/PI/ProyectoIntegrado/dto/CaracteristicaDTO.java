@@ -5,6 +5,8 @@ public class CaracteristicaDTO {
     private Integer idCaracteristica;
     private String descripCaracteristica;
 
+
+
     public CaracteristicaDTO() {
     }
 

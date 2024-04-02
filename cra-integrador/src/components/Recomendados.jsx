@@ -1,5 +1,7 @@
 import Card from "./Card";
 import { useState, useEffect } from "react";
+import image from "../img/TERRA_RENT4.png";
+
 
 function Galeria() {
   const [productosMostrar, setProductosMostrar] = useState([]);
@@ -49,7 +51,10 @@ function Galeria() {
   }, []); // La dependencia está vacía para que se ejecute solo en el montaje inicial
 
   if (error) {
-    return <div>Error al cargar los productos. Por favor, inténtalo de nuevo más tarde.</div>;
+    return <div className="error">
+            <img src={image} alt="" />
+            <p>Error al cargar la sección Recomendados. Por favor, inténtalo de nuevo más tarde.</p>
+          </div>;
   }
 
   return (

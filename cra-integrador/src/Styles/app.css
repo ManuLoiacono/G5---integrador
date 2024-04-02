@@ -11,8 +11,56 @@ html{
 body{
     margin: 0px;
     padding: 0px;
- 
- 
+}
+/*LOADER*/
+.loader{
+    height: calc(100vh - 10vh - 14rem);
+    width: 100vw;
+    background-color: var(--color-verde2);
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 3px solid white;
+    position: absolute;
+    top: calc(10vh + 14rem);
+    z-index: 2453454 ;
+
+}
+
+.loader img{
+    height: 10%;
+   }
+
+/*ERROR*/
+.error{
+    height: calc((10vh + 14rem + 6rem)/2);
+    width: 100vw;
+    background-color: var(--color-verde2);
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 3px solid white;
+}
+.error-listado{
+    height: calc(100vh - 10vh - 3rem);
+    width: 100vw;
+    background-color: var(--color-verde1);
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 3px solid white;
+}
+.error img{
+ height: 20%;
+}
+.error-listado img{
+ height: 20%;
 }
 /*HEADER*/
 .logo{
@@ -216,11 +264,15 @@ input.inputBox {
     background-color: var(--color-verde2);
     color: var(--color-blanco);
     height: 1.5rem;
+    cursor: pointer;
+}
+.buscador button:hover{
+    background-color: var(--color-verde1);
 }
 
 
 .buscador input{
-    
+    text-align: center;
     border-radius: 0.5rem;
     background-color: var(--color-gris2);
     color: var(--color-verde1);
@@ -246,6 +298,10 @@ input.inputBox {
 }
 /*BUSCADOR*/
 /*GALERIA DE CATEGORIAS*/
+.galeria h2{
+border-bottom: 1px solid var(--color-verde2);
+text-align: center;
+}
 .galery, .galeria, .registrar , .detail, .registrar-usuario, .listado-productos, .panel-de-control, .listado-usuarios, .reserva{
     width: 98%;
     margin:8px;
@@ -253,8 +309,40 @@ input.inputBox {
     border-radius: 5px;
     padding: 10px;
     box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.4);
-   
 }
+.galeria #galeria-cat .categoria-card {
+    overflow:hidden;
+    padding: 0;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+#galeria-cat{
+    height: 35vh;
+}
+.galeria #galeria-cat .categoria-card figcaption h4{
+     opacity: 1;
+     font-size: 2rem;
+    
+}
+.galeria #galeria-cat .categoria-card figcaption{
+    background-color: var(--color-verde2);
+    color: white;
+    opacity: 0.7;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 200rem;
+}
+.galeria #galeria-cat .categoria-card figcaption:hover{
+    opacity: 0;
+ }
+.galeria #galeria-cat .categoria-card figure img{
+    width: 200%;
+    height: auto;
+    }
 .calendarWrapReserva {
     display: flex;
     width: 100%;
@@ -397,6 +485,8 @@ figure{
     font-size: 1rem;
 }
 /*RECOMENDADOS*/
+
+
 /*DETAIL*/
 
 .detail{
@@ -527,7 +617,7 @@ text-align: center;
 #galery-link, .link-detail{
     margin: 0;
     height: 1.4rem;
-    text-align: right;
+    text-align: center;
    }
    #galery-link p{
     margin: 0;
@@ -997,13 +1087,84 @@ table {
 
 /*PANEL DE CONTROL*/
 /*PRODUCTOS BUSCADOS*/
+.contenedor-buscador-busqueda .buscador{
+    height:  12vh;
+}
+.contenedor-buscador-cat-rec{
+    display: flex;
+    height:  20vh;
+}
+.contenedor-buscador-cat-rec h2{
+    font-size: .8rem;
+}
+.contenedor-buscador-cat-rec .galeria{
+    font-size: 1rem;
+    padding: 0.2rem;
+}
+.contenedor-buscador-cat-rec .galeria #galeria-cat{
+    padding: 0;
+    height: 80%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    
+}
+.contenedor-buscador-cat-rec .galeria #galeria-cat .categoria-card {
+    overflow:hidden;
+    padding: 0;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+.contenedor-buscador-cat-rec .galeria #galeria-cat .categoria-card figcaption h4{
+     opacity: 1;
+}
+.contenedor-buscador-cat-rec .galeria #galeria-cat .categoria-card figcaption{
+    background-color: var(--color-verde2);
+    color: white;
+    opacity: 0.7;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 200rem;
+}
+.contenedor-buscador-cat-rec .galeria #galeria-cat .categoria-card figcaption:hover{
+    opacity: 0;
+ }
+.contenedor-buscador-cat-rec .galeria #galeria-cat .categoria-card figure img{
+    width: 200%;
+    height: auto;
+    }
+.contenedor-buscador-cat-rec #recomendados h3, .contenedor-buscador-cat-rec #recomendados p{
+    display: none;
+    }
+.contenedor-buscador-cat-rec #recomendados .card{
+    display: flex;
+    
+}
+.contenedor-buscador-cat-rec .recomendados{
+    display: flex;
+    padding: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    height: 80%;
+  }
+  .contenedor-buscador-cat-rec #recomendados .card .contenedor-imagen img{
+    min-height: 0;
+  }
+  .contenedor-buscador-cat-rec .recomendados a{
+    width: 100%;
+  }
+.contenedor-buscador-cat-rec .recomendados a:nth-child(5),.contenedor-buscador-cat-rec .recomendados a:nth-child(6){
+    display: none;
+  }
 .listado-productos-buscados{
     width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     align-self: center;
-
 }
 .listado-productos-buscados .card{
 }
@@ -1036,7 +1197,7 @@ table {
 
 .formulario .calendario-input{
     justify-self: center;
-    width: 20%;
+   
     display: flex;
     justify-content: center;
     margin-left: 1rem;
@@ -1054,8 +1215,11 @@ table {
     }
     .formulario .react-datepicker__input-container input{
         margin: 0;
-        text-align: left;
+        text-align: center;
         
+    }
+    .buscador input[type="text"]:nth-child(1){
+        width:15rem ;
     }
     .calendario-input button{
         margin: 0;
@@ -1138,6 +1302,18 @@ table {
     }
   
 @media(max-width:768px){
+    .loader{
+        z-index: 2453454 ;
+        height: calc(100vh - 10vh - 10rem);
+        top: calc(10vh + 10rem);
+    }
+    
+    .loader img{
+        height: 10%;
+       }
+    .contenedor-buscador-busqueda .buscador{
+        height: 25vh;
+    }
     .buscador input{
         text-align: center;
     }
@@ -1258,7 +1434,7 @@ table {
         margin-bottom: 0.5rem;
     }
     .buscador{
-        height: fit-content;
+        height: 10rem;
         padding: 1rem;
         z-index: 1;
     }
@@ -1323,11 +1499,24 @@ table {
         margin:0;
         padding: 0;
     }
-    
+    #detail-header-name{
+        font-size: 1rem;
+    }
+    #detail-header{
+        font-size: 1rem;
+        height: 20px;
+    }
     
 
 }
 @media(max-width:480px){
+    .contenedor-buscador-cat-rec .galeria:nth-last-child(2){
+        display: none;
+    }
+    .loader img{
+        height: 5%;
+       }
+
     .contenido-politicas {
         display: flex;
         height: fit-content;

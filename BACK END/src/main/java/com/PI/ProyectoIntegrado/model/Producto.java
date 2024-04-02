@@ -45,8 +45,12 @@ public class Producto {
     private Categoria categoria;
 
 
-    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "producto_caracteristica",
+            joinColumns = @JoinColumn(name = "idProducto"),
+            inverseJoinColumns = @JoinColumn(name = "idCaracteristica")
+    )
     private Set<Caracteristica> caracteristicas = new HashSet<>();
 
 

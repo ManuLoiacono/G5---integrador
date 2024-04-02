@@ -29,30 +29,25 @@ public class Categoria {
 
     @JsonIgnore
     @OneToMany(mappedBy = "categoria")
-    private Set<Producto> productos;
-    
-    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-    private Set<Caracteristica> caracteristicas = new HashSet<>();
+    private Set<Producto> productos = new HashSet<>();
 
 
     public Categoria() {
     }
 
-    public Categoria(String nombreCategoria, String descripcionCategoria, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
+    public Categoria(String nombreCategoria, String descripcionCategoria, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos) {
         this.nombreCategoria = nombreCategoria;
         this.descripcionCategoria = descripcionCategoria;
         this.imagenCategoria = imagenCategoria;
         this.productos = productos;
-        this.caracteristicas = caracteristicas;
     }
 
-    public Categoria(Integer idCategoria, String nombreCategoria, String descripcionCategoria, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos, Set<Caracteristica> caracteristicas) {
+    public Categoria(Integer idCategoria, String nombreCategoria, String descripcionCategoria, Set<ImagenCategoria> imagenCategoria, Set<Producto> productos) {
         this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
         this.descripcionCategoria = descripcionCategoria;
         this.imagenCategoria = imagenCategoria;
         this.productos = productos;
-        this.caracteristicas = caracteristicas;
     }
 
     public Integer getIdCategoria() {
@@ -95,11 +90,4 @@ public class Categoria {
         this.productos = productos;
     }
 
-    public Set<Caracteristica> getCaracteristicas() {
-        return caracteristicas;
-    }
-
-    public void setCaracteristicas(Set<Caracteristica> caracteristicas) {
-        this.caracteristicas = caracteristicas;
-    }
 }

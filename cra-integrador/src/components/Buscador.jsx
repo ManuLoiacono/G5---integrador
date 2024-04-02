@@ -5,7 +5,10 @@ import lupa from "../img/lupa.png"
 import CalendarioBuscador from "../components/CalendarioBuscador";
 
 
-const Buscador = () => {
+ 
+
+
+const Buscador = ({ parametroProp, onDateRangeChange, selectedDateRangeProp }) => {
   const [parametro, setParametro] = useState("");
   const [selectedDateRange, setSelectedDateRange] = useState([null, null]);
 
@@ -30,6 +33,7 @@ const Buscador = () => {
           <CalendarioBuscador onDateRangeChange={handleDateRangeChange}/>
           <Link  to={`/busqueda/${parametro}/${selectedDateRange}`}><button>Lo encontraremos</button></Link>
         </form>
+        
     </div>
   )
 }
