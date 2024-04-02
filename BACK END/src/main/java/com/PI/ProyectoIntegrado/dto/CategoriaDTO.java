@@ -12,24 +12,21 @@ public class CategoriaDTO {
     private String nombreCategoria;
     private String descripcionCategoria;
     private Set<ImagenCategoria> imagenCategoria = new HashSet<>();
-    private Set<Caracteristica> caracteristicas = new HashSet<>();
 
     public CategoriaDTO() {
     }
 
-    public CategoriaDTO(String nombreCategoria, String descripcionCategoria, Set<ImagenCategoria> imagenCategoria, Set<Caracteristica> caracteristicas) {
+    public CategoriaDTO(String nombreCategoria, String descripcionCategoria, Set<ImagenCategoria> imagenCategoria) {
         this.nombreCategoria = nombreCategoria;
         this.descripcionCategoria = descripcionCategoria;
         this.imagenCategoria = imagenCategoria;
-        this.caracteristicas = caracteristicas;
     }
 
-    public CategoriaDTO(Integer idCategoria, String nombreCategoria, String descripcionCategoria, Set<ImagenCategoria> imagenCategoria, Set<Caracteristica> caracteristicas) {
+    public CategoriaDTO(Integer idCategoria, String nombreCategoria, String descripcionCategoria, Set<ImagenCategoria> imagenCategoria) {
         this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
         this.descripcionCategoria = descripcionCategoria;
         this.imagenCategoria = imagenCategoria;
-        this.caracteristicas = caracteristicas;
     }
 
     public Integer getIdCategoria() {
@@ -64,11 +61,4 @@ public class CategoriaDTO {
         this.imagenCategoria = imagenCategoria;
     }
 
-    public Set<Caracteristica> getCaracteristicas() {
-        return caracteristicas;
-    }
-
-    public void setCaracteristicas(Set<Caracteristica> caracteristicas) {
-        this.caracteristicas = caracteristicas;
-    }
 }

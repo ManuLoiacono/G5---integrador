@@ -11,7 +11,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 @Service
 public class EmailService {
 
-   /* @Autowired
+    @Autowired
     private JavaMailSender emailSender;
 
     public EmailService(JavaMailSender emailSender) {
@@ -33,5 +33,5 @@ public class EmailService {
             ex.printStackTrace();
 
         }
-    }*/
+    }
 }
