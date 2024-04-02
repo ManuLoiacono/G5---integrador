@@ -37,7 +37,7 @@ const ListadoCategorias = () => {
         const longProductos = data.length;
         setCategoria(data);
       } catch (error) {
-        console.error('Error al obtener detalles del producto:', error);
+        console.error('Error al obtener detalles de categorias:', error);
         setError(error);
       }
     };
@@ -65,23 +65,22 @@ const ListadoCategorias = () => {
   const handleEliminarCategoria = (del) => { 
     
    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: `¿Estás seguro de querer eliminar la categoría ${categoria.nombre}?`,
+      text: "este procedimiento es irreversible",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar"
     }).then((result) => {
       if (result.isConfirmed) {
         fetchEliminarCategoria(del);
         const refresh = categoria.filter(categoria => categoria.idCategoria !== del.idCategoria);
-        console.log("refresh");
-        console.log(refresh);
         setCategoria(refresh);
         Swal.fire({  
-          title: "Deleted!",
-          text: "Your file has been deleted.",
+          title: "Eliminada",
+          text: "La categoria fue eliminada del sistema",
           icon: "success"
         });
       }
@@ -93,8 +92,6 @@ const ListadoCategorias = () => {
   console.log(categoria);
   if(user.user===null){return <h2>Buen intento... Pero no posees las credenciales necesarias para ver esta página</h2>}
   if(user.user.userRol=="ADMIN"||user.user.userRol=="SUPERADMIN"){
- 
-   
   return (
     <div className='listado-productos'>
       <h3>Listado de Categorias</h3>
