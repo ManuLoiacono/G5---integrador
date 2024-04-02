@@ -90,6 +90,7 @@ const RegistrarProd = () => {
 
       const files = e.dataTransfer.files;
       handleImageChange(files);
+      console.log(e)
     };
 
     const handleDragOver = (e) => {

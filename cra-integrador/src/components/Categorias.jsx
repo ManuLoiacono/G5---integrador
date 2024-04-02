@@ -67,7 +67,7 @@ cantProductos:0}
         
         <h2 id='h2-cat'>Categorías</h2>
         <section id="galeria-cat">
-          {categoriaMostrar.map((categoria) => (
+          {categoriaMostrar.slice(0,4).map((categoria) => (
             <article className='categoria-card' key={categoria.idCategoria}>
               <figure>
                 <img src={categoria.idCategoria !== 1 ? categoria.imagenCategoria[0].urlimg : null} alt="imagen de categoría" />

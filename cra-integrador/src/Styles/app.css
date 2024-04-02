@@ -25,6 +25,8 @@ body{
     border-bottom: 3px solid white;
     position: absolute;
     top: calc(10vh + 14rem);
+    z-index: 2453454 ;
+
 }
 
 .loader img{
@@ -1301,6 +1303,7 @@ table {
   
 @media(max-width:768px){
     .loader{
+        z-index: 2453454 ;
         height: calc(100vh - 10vh - 10rem);
         top: calc(10vh + 10rem);
     }
