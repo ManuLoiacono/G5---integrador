@@ -24,9 +24,10 @@ public class LoginService {
 
     private static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-    public String generateToken(String email, String nombreUsuario, String apellidoUsuario, Integer numTelefono, String username, String userRol) {
+    public String generateToken(String email, Integer idUsuario, String nombreUsuario, String apellidoUsuario, Integer numTelefono, String username, String userRol) {
         return Jwts.builder()
                 .setSubject(email)
+                .claim("idUsuario", idUsuario)
                 .claim("username", username)
                 .claim("nombreUsuario", nombreUsuario)
                 .claim("apellidoUsuario", apellidoUsuario)

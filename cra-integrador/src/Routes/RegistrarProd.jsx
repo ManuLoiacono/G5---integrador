@@ -248,7 +248,12 @@ const RegistrarProd = () => {
             precioProd: precio,
             categoria: {
               idCategoria: categoria
-            }
+            },
+            caracteristicas: [
+              {
+                descripCaracteristica: "2 plazas",
+              }
+            ]
           };
           
           // Caraga Producto nuevo
