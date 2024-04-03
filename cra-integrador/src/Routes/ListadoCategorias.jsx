@@ -113,7 +113,7 @@ const ListadoCategorias = () => {
         {categoria.map(categoria => (
                 <tr key={categoria.idCategoria}>
                   <td>{categoria.idCategoria}</td>
-                  <td><Link className="link-detail" to={`/categoria/:${categoria.idCategoria}`}>{categoria.nombreCategoria}</Link></td>
+                  <td><Link className="link-detail" to={`/productos-categoria/:${categoria.idCategoria}`}>{categoria.nombreCategoria}</Link></td>
                   <td><button onClick={() => handleEliminarCategoria(categoria)}>
                   <FontAwesomeIcon className='eliminar-producto' icon={faTrash} /></button></td>
                   

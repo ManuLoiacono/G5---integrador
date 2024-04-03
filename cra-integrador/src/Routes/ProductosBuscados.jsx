@@ -17,6 +17,7 @@ function ProductosBuscados(props){
     const products = useProduct()
     let parametro = ""
     let parametroFecha = ""
+    
     useEffect(()=>{parametro=params;},[])
       useEffect(() => {
         const fetchData = async () => {
