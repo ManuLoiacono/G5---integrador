@@ -1682,3 +1682,19 @@ table {
 
 
 }
+
+.caracteristicas-container {
+    display: flex;
+    flex-wrap: wrap; /* Para que las características se ajusten a la línea si no caben en el ancho disponible */
+  }
+  
+.caracteristica-label {
+    display: inline-flex; /* Mostrar el texto y el checkbox en línea */
+    align-items: center; /* Alinear verticalmente el texto y el checkbox */
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.checkbox-input {
+    margin-right: 5px; /* Espacio entre el texto y el checkbox */
+}
