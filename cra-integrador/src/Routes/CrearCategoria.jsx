@@ -201,6 +201,7 @@ const CrearCategoria = () => {
             };
             
             const responseImagen = await fetchCargarImagen(imagenCargar);
+            
             console.log(JSON.stringify(caracteristicas));
             for(var i = 0; i < caracteristicas.length; i++) {
               const caracteristicasCargar = {
@@ -212,12 +213,7 @@ const CrearCategoria = () => {
               console.log(JSON.stringify(caracteristicasCargar));
               const responseCaracteristica = await fetchCargarCaracteristica(caracteristicasCargar);
             }
-            
-            //console.log(JSON.stringify(caracteristicasCargar));
-    
-            
 
-            
           
           } else {
             console.error("Error al cargar la categoria");
@@ -271,7 +267,7 @@ const CrearCategoria = () => {
             />
            </div> 
            
-           <div>
+           {/*<div>
             <label> Agregue una caracteristica </label>
             {caracteristicas.map((caracteristica, index) => (
               <div key={index}>
@@ -286,7 +282,7 @@ const CrearCategoria = () => {
             
             <button type="button" onClick={handleAddInput}>Agregar otra caracteristica</button>
             
-          </div>
+            </div>*/}
 
             <label className='label-drop'>
               Arrastre la imágen de la categoria

@@ -1302,7 +1302,26 @@ table {
 .navbar{
     display: none;
 }
-
+/*RESERVA*/
+.main-reserva{
+    display: flex;
+    flex-direction: row;
+}
+.producto-reserva{
+    border: solid 1px gray;
+    border-radius: 15px;
+    order: 2;
+    width: 40%;
+}
+.producto-reserva img{
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+}
+.detalle-reserva{
+    order:1;
+    width: 60%;
+}
 
 @media(max-width:900px){
     .card h4{
@@ -1760,4 +1779,20 @@ table {
 
 
 
+}
+
+.caracteristicas-container {
+    display: flex;
+    flex-wrap: wrap; /* Para que las características se ajusten a la línea si no caben en el ancho disponible */
+  }
+  
+.caracteristica-label {
+    display: inline-flex; /* Mostrar el texto y el checkbox en línea */
+    align-items: center; /* Alinear verticalmente el texto y el checkbox */
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.checkbox-input {
+    margin-right: 5px; /* Espacio entre el texto y el checkbox */
 }

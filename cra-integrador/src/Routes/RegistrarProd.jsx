@@ -23,6 +23,10 @@ const RegistrarProd = () => {
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [Imagenes, setImagenes] = useState([]);
     const [error, setError] = useState(null);
+    const [caracteristicasNuevas, setCaracteristicasNuevas] = useState(['']);
+    const [caracteristicasDisponibles, setCaracteristicasDisponibles] = useState([]);
+    const [caracteristicasElegidas, setCaracteristicasElegidas] = useState([]);
+
 
     const user = useLogin()
 
@@ -32,30 +36,70 @@ const RegistrarProd = () => {
       setSelectedImages([]);
       setPrecio('');
       setCategoria('');
+      setCaracteristicasNuevas(['']);
       setImagenes([]);
       // Reset other form fields as needed
     };
+    const fetchObtenerCategorias = async () => {
+        try {
+          const url = `https://api-terrarent.ddns.net:3001/Categoria`;
+          const settings = {
+            method: 'GET',
+            mode: 'cors'
+          };
+  
+          const response = await fetch(url, settings);
+          const data = await response.json();
+  
+          setCategoriasDisponibles(data);
+        } catch (error) {
+          console.error('Error al obtener las categorias disponibles:', error);
+          setError(error);
+        }
+    };
+    const fetchObtenerCaracteristicas = async () => {
+        try {
+          const url = `https://api-terrarent.ddns.net:3001/Caracteristica`;
+          const settings = {
+            method: 'GET',
+            mode: 'cors'
+          };
 
+          const response = await fetch(url, settings);
+          const data = await response.json();
 
-   const fetchObtenerCategorias = async () => {
-          try {
-            const url = `https://api-terrarent.ddns.net:3001/Categoria`;
-            const settings = {
-              method: 'GET',
-              mode: 'cors'
-            };
-    
-            const response = await fetch(url, settings);
-            const data = await response.json();
-    
-            setCategoriasDisponibles(data);
-          } catch (error) {
-            console.error('Error al obtener las categorias disponibles:', error);
-            setError(error);
-          }
-        };
+          setCaracteristicasDisponibles(data);
+        } catch (error) {
+          console.error('Error al obtener las categorias disponibles:', error);
+          setError(error);
+        }
+    }
 
-  const handleImageChange = async (event) => {
+    const handleInputChange = (index, value) => {
+      const newInputValues = [...caracteristicasNuevas];
+      newInputValues[index] = value;
+      setCaracteristicasNuevas(newInputValues);
+    };
+    const handleAddInput = () => {
+      setCaracteristicasNuevas([...caracteristicasNuevas, '']);
+    };
+    const handleRemoveInput = (index) => {
+      const newInputValues = [...caracteristicasNuevas];
+      newInputValues.splice(index, 1);
+      setCaracteristicasNuevas(newInputValues);
+    };
+
+    const handleCaracteristicaChange = (caracteristica, isChecked) => {
+      if (isChecked) {
+        // Agregar la característica elegida al estado
+        setCaracteristicasElegidas([...caracteristicasElegidas, caracteristica]);
+      } else {
+        // Remover la característica elegida del estado
+        setCaracteristicasElegidas(caracteristicasElegidas.filter(item => item !== caracteristica));
+      }
+    };
+
+    const handleImageChange = async (event) => {
     const files = Array.from(event.target.files);
     const imagenes = [];
 
@@ -83,7 +127,7 @@ const RegistrarProd = () => {
       setSelectedImages([...selectedImages, ...files]);
 
     });
-};
+    };
 
     const handleDrop = (e) => {
       e.preventDefault();
@@ -149,10 +193,30 @@ const RegistrarProd = () => {
             return null;
           }
         };
+        const fetchCargarCaracteristica = async (caracteristicasNuevas) => {
 
+          const url = `https://api-terrarent.ddns.net:3001/Caracteristica`;
+            const settings = {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(caracteristicasNuevas)
+            };
+        
+            try {
+              const response = await fetch(url, settings);
+          
+              const data = await response.json();
+              console.log(JSON.stringify(data));
+              return data;
+            } catch (error) {
+              console.error('Error al procesar la respuesta:', error);
+              toastError('Ocurrió un error inesperado al procesar la respuesta del servidor.');
+              return null;
+            }
 
-        console.log(Imagenes);
-
+        }
         const fetchCargarImagen = async (imagen) => {
           console.log(JSON.stringify(imagen.producto));
           const url = `https://api-terrarent.ddns.net:3001/imagen/uploadImageToS3`;
@@ -176,6 +240,8 @@ const RegistrarProd = () => {
         
         
         try {
+          
+          // Estructura Producto nuevo
           const nuevoProducto = {
             nombreProd: nombreProd,
             descripcionProd: descripcion,
@@ -184,11 +250,16 @@ const RegistrarProd = () => {
               idCategoria: categoria
             }
           };
-      
+          
+          // Caraga Producto nuevo
           const responseProducto = await fetchProductoNuevo(nuevoProducto);
-          console.log(responseProducto);
+                    
+          
           if (responseProducto != null) {
+            
             const idProducto = await responseProducto;
+            
+            // Estructura Imagenes nuevas
             const imagenCargar = {
               titulo: "Img",
               urlimg: "",
@@ -197,8 +268,27 @@ const RegistrarProd = () => {
                 idProducto: idProducto.idProducto
               }
             };
-    
+            
+            // Caraga Imagenes nuevas
             const responseImagen = await fetchCargarImagen(imagenCargar);
+
+            console.log(JSON.stringify(caracteristicasNuevas));
+
+            for(var i = 0; i < caracteristicasNuevas.length; i++) {
+            
+              // Estructura Caracteristicas nuevas
+              const caracteristicasCargar = {
+                descripCaracteristica: caracteristicasNuevas[i],
+                productos: [{
+                  idProducto: responseProducto.idProducto
+                }]
+              };
+              
+              console.log(JSON.stringify(caracteristicasCargar));
+              
+              // Carga Caracteristicas nuevas 
+              const responseCaracteristica = await fetchCargarCaracteristica(caracteristicasCargar);
+            }
           
           } else {
             console.error("Error al cargar el producto");
@@ -216,6 +306,7 @@ const RegistrarProd = () => {
 
     useEffect(() => {
       fetchObtenerCategorias();
+      fetchObtenerCaracteristicas();
       if (formSubmitted) {
         setFormSubmitted(false);
       }
@@ -279,6 +370,43 @@ const RegistrarProd = () => {
                 }}
             />
             </div>
+
+            <div className='inputs'>
+              <label> Caracteristicas: </label>
+                
+              {/*HOLA CHAT GPT, AGREGA AQUI EL CODIGO*/}
+              {caracteristicasDisponibles.length > 0 ? (
+                <div className="caracteristicas-container">
+                {caracteristicasDisponibles.map((caracteristica, index) => (
+                  <label key={index} htmlFor={`caracteristica-${index}`} className="caracteristica-label">
+                    <span>{caracteristica.descripCaracteristica}</span>
+                    <input type="checkbox" className="checkbox-input" />
+                  </label>
+                ))}
+              </div>
+              ) : (
+                <p>Aún no hay características disponibles.</p>
+              )}
+
+            </div>
+
+            <div>
+            <label> Agregue una caracteristica nueva </label>
+            {caracteristicasNuevas.map((caracteristica, index) => (
+              <div key={index}>
+              <input
+                value={caracteristica}
+                onChange={(e) => handleInputChange(index, e.target.value)}
+                placeholder={`Caracteristica ${index + 1}`}
+              />
+              <button type="button" className="delete-button" onClick={() => handleRemoveInput(index)} >X</button>
+            </div>
+            ))}
+            
+            <button type="button" onClick={handleAddInput}>Agregar otra caracteristica</button>
+            
+            </div>
+
             <label className='label-drop'>
               Arrastre hasta 10 imágenes para el producto
               <div className='drop'
