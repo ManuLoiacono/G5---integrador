@@ -1166,8 +1166,6 @@ table {
     gap: 20px;
     align-self: center;
 }
-.listado-productos-buscados .card{
-}
 .listado-productos-buscados .card .contenedor-imagen img{
     width: 350px;
     height: 350px;
@@ -1247,7 +1245,26 @@ table {
 .navbar{
     display: none;
 }
-
+/*RESERVA*/
+.main-reserva{
+    display: flex;
+    flex-direction: row;
+}
+.producto-reserva{
+    border: solid 1px gray;
+    border-radius: 15px;
+    order: 2;
+    width: 40%;
+}
+.producto-reserva img{
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+}
+.detalle-reserva{
+    order:1;
+    width: 60%;
+}
 
 @media(max-width:900px){
    
