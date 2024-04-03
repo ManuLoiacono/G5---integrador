@@ -33,6 +33,10 @@ public class Caracteristica {
     public Caracteristica() {
     }
 
+    public Caracteristica(String descripCaracteristica) {
+        this.descripCaracteristica = descripCaracteristica;
+    }
+
     public Caracteristica(String descripCaracteristica, Set<Producto> productos) {
         this.descripCaracteristica = descripCaracteristica;
         this.productos = productos;

@@ -1,8 +1,9 @@
 package com.PI.ProyectoIntegrado.controller;
 
-import com.PI.ProyectoIntegrado.dto.CaracteristicaDTO;
 import com.PI.ProyectoIntegrado.model.Caracteristica;
 import com.PI.ProyectoIntegrado.model.Producto;
+import com.PI.ProyectoIntegrado.repository.ICaracteristicaRepository;
+import com.PI.ProyectoIntegrado.repository.IProductoRepository;
 import com.PI.ProyectoIntegrado.service.ICaracteristicaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 @RestController
@@ -18,15 +20,12 @@ import java.util.Set;
 public class CaracteristicaController {
 
     @Autowired
-    ICaracteristicaService caracteristicasService;
+    IProductoRepository productoRepository;
+    @Autowired
+    ICaracteristicaRepository caracteristicaRepository;
 
-//    @PostMapping
-//    public ResponseEntity<?> crearCaracteristica(@RequestBody Caracteristica caracteristica){
-//
-//        caracteristicasService.agregarCaracteristica(caracteristica);
-//        return ResponseEntity.ok(HttpStatus.OK);
-//
-//    }
+    @Autowired
+    ICaracteristicaService caracteristicasService;
 
     @PostMapping
     public ResponseEntity<?> crearCaracteristica(@RequestBody Caracteristica caracteristica){
@@ -39,6 +38,60 @@ public class CaracteristicaController {
         caracteristicasService.agregarCaracteristica(caracteristica);
         return ResponseEntity.ok(HttpStatus.OK);
     }
+
+
+    // Creo una caracteristica para un producto existente
+    @PostMapping("/crearCaracteristicaParaProducto/:{idProducto}")
+    public String createProjectForEmployee(@PathVariable Integer idProducto, @RequestBody Caracteristica caracteristica) {
+
+        // Obtengo el Producto
+        Producto producto = this.productoRepository.getById(idProducto);
+
+        // nueva caracteristica
+        Caracteristica caract = new Caracteristica(caracteristica.getDescripCaracteristica());
+
+        // creo productos set
+        Set<Producto> productos = new HashSet<>();
+        productos.add(producto);
+
+        // Asigno productos a caract
+        caract.setProductos(productos);
+
+        // guardo la caracteristica
+        caracteristicasService.agregarCaracteristica(caract);
+
+        return "Caracteristica saved!!!";
+    }
+
+
+
+    // Assidno una Caracteristica existente a un Producto existente
+    @PostMapping("/asignoCaracteristicaToProducto/{idCarcateristica}/{idProducto}")
+    public String assignProjectToEmployees(@PathVariable(name = "idCaracteristica") Integer idCaracteristica,
+                                           @PathVariable(name = "idProducto") Integer idProducto) {
+
+
+        // get producto
+        Producto producto = this.productoRepository.getById(idProducto);
+
+        // new carcateristica
+        Caracteristica caract = this.caracteristicaRepository.getById(idCaracteristica);
+
+        // create producto set
+        Set<Producto> productos= new HashSet<>();
+        productos.add(producto);
+
+        // asigno producto set to caract
+        caract.setProductos(productos);
+
+        // save caract
+        caracteristicasService.agregarCaracteristica(caract);
+
+        return "Carcateristica saved!!!";
+    }
+
+
+
 
     @GetMapping("/:{idCaracteristica}")
     public Caracteristica getCaracteristica(@PathVariable Integer idCaracteristica){
