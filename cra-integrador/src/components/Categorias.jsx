@@ -1,6 +1,7 @@
 import React, { useEffect , useState} from 'react'
 import image from "../img/TERRA_RENT4.png"
 import Loader from '../components/Loader.jsx'
+import { Link } from "react-router-dom";
 
 
 const Categorias = () => {    
@@ -69,6 +70,7 @@ cantProductos:0}
         <section id="galeria-cat">
           {categoriaMostrar.slice(0,4).map((categoria) => (
             <article className='categoria-card' key={categoria.idCategoria}>
+              <Link to={`/productos-categoria/:${categoria.idCategoria}`}>
               <figure>
                 <img src={categoria.idCategoria !== 1 ? categoria.imagenCategoria[0].urlimg : null} alt="imagen de categoría" />
               </figure>
@@ -76,6 +78,7 @@ cantProductos:0}
               <h4 className='categoria-text'>{categoria.idCategoria !== 1 ? categoria.nombreCategoria : null}</h4>
               {/*<p className='categoria-text'>{categoria.cantProductos} productos</p>*/}
               </figcaption>
+              </Link>
             </article>
           ))}
         </section>
