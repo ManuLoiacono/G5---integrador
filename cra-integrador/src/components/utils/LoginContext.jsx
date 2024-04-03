@@ -52,7 +52,6 @@ useEffect(()=>{
     localStorage.removeItem("token");
     window.location.replace(`${window.location.origin}`)
   };
-  useEffect(()=>{console.log(user);},[user])
 
   return (
     <LoginContext.Provider value={{ token, user, login, logout }}>
