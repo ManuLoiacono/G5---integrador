@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useProduct } from "../components/utils/ProductContext";
 import { useParams } from 'react-router-dom';
 import Card from "../components/Card";
+import image from "../img/TERRA_RENT_resol.png"
 
 const ProductosCategoria = () => {
   
@@ -56,15 +57,26 @@ const ProductosCategoria = () => {
     <div>
       <div className='portada-categoria'>
       {categoriaActual.length > 0 && (
+        <>
+        <span>{categoriaActual[0].nombreCategoria}</span>
         <img src={categoriaActual[0].imagenCategoria[0].urlimg} alt="" />
-      )}
+        </>)}
       </div>
-   <section className="listado-productos-buscados">
-            {productosPorCategoria.map((producto)=>(
-                <Card key={producto.idProducto} detalle={producto} />
-              ))}
-            </section>
-    </div>
+      <section className="listado-productos-categoria">
+        {productosPorCategoria.length === 0 ? (
+          <>
+            <div className='contenedor-listado-vacio'>
+              <img src={image} alt="" />
+              <p>Categoría sin productos</p>
+            </div>
+          </>
+        ) : (
+          productosPorCategoria.map((producto) => (
+            <Card key={producto.idProducto} detalle={producto} />
+          ))
+        )}
+      </section>
+          </div>
   )
 }
 
