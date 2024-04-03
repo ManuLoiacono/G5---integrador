@@ -41,54 +41,73 @@ public class CaracteristicaController {
 
 
     // Creo una caracteristica para un producto existente
-    @PostMapping("/crearCaracteristicaParaProducto/:{idProducto}")
+    @PostMapping("/crearCaracteristicaParaProducto/{idProducto}")
     public String createProjectForEmployee(@PathVariable Integer idProducto, @RequestBody Caracteristica caracteristica) {
-
-        // Obtengo el Producto
+        // Obtener el Producto
         Producto producto = this.productoRepository.getById(idProducto);
-
-        // nueva caracteristica
-        Caracteristica caract = new Caracteristica(caracteristica.getDescripCaracteristica());
-
-        // creo productos set
-        Set<Producto> productos = new HashSet<>();
-        productos.add(producto);
-
-        // Asigno productos a caract
-        caract.setProductos(productos);
-
-        // guardo la caracteristica
-        caracteristicasService.agregarCaracteristica(caract);
-
-        return "Caracteristica saved!!!";
+        // Asignar la Característica al Producto
+        producto.getCaracteristicas().add(caracteristica);
+        // Guardar los cambios en el Producto
+        productoRepository.save(producto);
+        return "Característica asignada al producto correctamente.";
     }
+//    @PostMapping("/crearCaracteristicaParaProducto/{idProducto}")
+//    public String createProjectForEmployee(@PathVariable Integer idProducto, @RequestBody Caracteristica caracteristica) {
+//
+//        // Obtengo el Producto
+//        Producto producto = this.productoRepository.getById(idProducto);
+//
+//        // creo productos set
+//        Set<Producto> productos = new HashSet<>();
+//        productos.add(producto);
+//
+//        // Asigno productos a caract
+//        caracteristica.setProductos(productos);
+//
+//        // guardo la caracteristica
+//        caracteristicasService.agregarCaracteristica(caracteristica);
+//
+//        return "Caracteristica saved!!!";
+//    }
 
 
 
     // Assidno una Caracteristica existente a un Producto existente
-    @PostMapping("/asignoCaracteristicaToProducto/{idCarcateristica}/{idProducto}")
+    @PostMapping("/asignoCaracteristicaToProducto/{idCaracteristica}/{idProducto}")
     public String assignProjectToEmployees(@PathVariable(name = "idCaracteristica") Integer idCaracteristica,
                                            @PathVariable(name = "idProducto") Integer idProducto) {
-
-
-        // get producto
+        // Obtener el Producto y la Característica
         Producto producto = this.productoRepository.getById(idProducto);
-
-        // new carcateristica
-        Caracteristica caract = this.caracteristicaRepository.getById(idCaracteristica);
-
-        // create producto set
-        Set<Producto> productos= new HashSet<>();
-        productos.add(producto);
-
-        // asigno producto set to caract
-        caract.setProductos(productos);
-
-        // save caract
-        caracteristicasService.agregarCaracteristica(caract);
-
-        return "Carcateristica saved!!!";
+        Caracteristica caracteristica = this.caracteristicaRepository.getById(idCaracteristica);
+        // Agregar el Producto a la lista de Productos de la Característica
+        caracteristica.getProductos().add(producto);
+        // Guardar los cambios en la Característica
+        caracteristicasService.agregarCaracteristica(caracteristica);
+        return "Característica asignada al producto correctamente.";
     }
+//    @PostMapping("/asignoCaracteristicaToProducto/{idCarcateristica}/{idProducto}")
+//    public String assignProjectToEmployees(@PathVariable(name = "idCaracteristica") Integer idCaracteristica,
+//                                           @PathVariable(name = "idProducto") Integer idProducto) {
+//
+//
+//        // get producto
+//        Producto producto = this.productoRepository.getById(idProducto);
+//
+//        // new carcateristica
+//        Caracteristica caract = this.caracteristicaRepository.getById(idCaracteristica);
+//
+//        // create producto set
+//        Set<Producto> productos= new HashSet<>();
+//        productos.add(producto);
+//
+//        // asigno producto set to caract
+//        caract.setProductos(productos);
+//
+//        // save caract
+//        caracteristicasService.agregarCaracteristica(caract);
+//
+//        return "Carcateristica saved!!!";
+//    }
 
 
 
@@ -110,10 +129,5 @@ public class CaracteristicaController {
         caracteristicasService.eliminarCaracteristica(idCaracteristica);
         return ResponseEntity.ok(HttpStatus.OK);
     }
-
-
-
-
-
 
 }
