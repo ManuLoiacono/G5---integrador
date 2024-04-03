@@ -2,6 +2,7 @@ package com.PI.ProyectoIntegrado.controller;
 
 import com.PI.ProyectoIntegrado.dto.CaracteristicaDTO;
 import com.PI.ProyectoIntegrado.model.Caracteristica;
+import com.PI.ProyectoIntegrado.model.Producto;
 import com.PI.ProyectoIntegrado.service.ICaracteristicaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/Caracteristica")
@@ -18,12 +20,24 @@ public class CaracteristicaController {
     @Autowired
     ICaracteristicaService caracteristicasService;
 
+//    @PostMapping
+//    public ResponseEntity<?> crearCaracteristica(@RequestBody Caracteristica caracteristica){
+//
+//        caracteristicasService.agregarCaracteristica(caracteristica);
+//        return ResponseEntity.ok(HttpStatus.OK);
+//
+//    }
+
     @PostMapping
     public ResponseEntity<?> crearCaracteristica(@RequestBody Caracteristica caracteristica){
-
+        Set<Producto> productos = caracteristica.getProductos();
+        if (productos != null) {
+            for (Producto producto : productos) {
+                producto.getCaracteristicas().add(caracteristica);
+            }
+        }
         caracteristicasService.agregarCaracteristica(caracteristica);
         return ResponseEntity.ok(HttpStatus.OK);
-
     }
 
     @GetMapping("/:{idCaracteristica}")
