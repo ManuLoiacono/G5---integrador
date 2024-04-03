@@ -22,8 +22,12 @@ public class Caracteristica {
     private String descripCaracteristica;
 
 
-    @ManyToMany(mappedBy = "caracteristicas")
-    private Set<Producto> productos = new HashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
+    @JoinTable(
+            name = "producto_caracteristica",
+            joinColumns = @JoinColumn(name = "idCaracteristca"),
+            inverseJoinColumns = @JoinColumn(name = "idProducto"))
+    private Set<Producto> productos;
 
 
     public Caracteristica() {

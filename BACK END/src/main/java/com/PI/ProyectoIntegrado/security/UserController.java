@@ -31,7 +31,7 @@ public class UserController {
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         Usuario usuario = loginService.authenticate(loginRequest.getEmail(), loginRequest.getPassword());
         if (usuario != null) {
-            String token = loginService.generateToken(loginRequest.getEmail(), usuario.getNombreUsuario(), usuario.getApellidoUsuario(), usuario.getNumTelefono(), usuario.getUsername(), usuario.getUserRol().name());
+            String token = loginService.generateToken(loginRequest.getEmail(), usuario.getIdUsuario(), usuario.getNombreUsuario(), usuario.getApellidoUsuario(), usuario.getNumTelefono(), usuario.getUsername(), usuario.getUserRol().name());
             return ResponseEntity.ok(Map.of("authenticated", true, "token", token)); // Autenticación exitosa con token
         } else {
             return ResponseEntity.ok(Map.of("authenticated", false, "token", null)); // Autenticación fallida
