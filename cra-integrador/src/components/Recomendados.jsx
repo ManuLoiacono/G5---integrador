@@ -25,7 +25,7 @@ function Galeria() {
         const productosAleatorios = [];
 
         function randomizar() {
-          while (productosAleatorios.length < 6) {
+          while (productosAleatorios.length < 8) {
             const numRandom = Math.floor(Math.random() * longProductos);
             const productoSeleccionado = data[numRandom];
 
@@ -59,7 +59,7 @@ function Galeria() {
 
   return (
     <section className="galeria" id="recomendados">
-      <h2>Productos recomendados:</h2>
+      <h2>Productos recomendados</h2>
       <div className="recomendados">
         {productosMostrar.map((producto) => (
           <Card key={producto.idProducto} detalle={producto} />

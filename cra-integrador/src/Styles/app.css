@@ -427,10 +427,10 @@ figure{
 /*RECOMENDADOS*/
 
 .recomendados{
-    gap: 1vw;
+    gap: 2vw;
     padding: 15px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     
 }
 #recomendados h2{
@@ -443,36 +443,87 @@ figure{
     box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.4);
     background-color: var(--color-blanco);
     padding: 5px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    height: 100%;
-}
-.contenedor-imagen{
-    grid-row:1/3;
-    height: 100%;
     display: flex;
-}
-.contenedor-imagen img{
+    flex-direction: column;
+    height: 100%;
     width: 100%;
-    border-radius: 4px;
-}
-#recomendados .card .contenedor-imagen img{
-    max-width: 400px;
-    min-height: 400px;
-    object-fit: cover;
 }
 .card h3{
-    font-size: 1.7rem;
+    text-overflow:ellipsis;
+    overflow: hidden;
+
+}
+.detalle-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    height: 50%;
+}
+.detalle-card-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    height: 80%;
+}
+.detalle-card h4{
+height: 20%;
+border-bottom: 1px solid rgb(192, 192, 192);
+width: 100%;
+color: rgb(192, 192, 192);
+text-align: center;
+display: flex;
+justify-content:center;
+align-items: end;
+position: relative;
+}
+.detalle-card h3{
+height: 50%;
+color: var(--color-verde2);
+
+}
+.detalle-card p{
+height: 30%;
+}
+.contenedor-imagen {
+    height: 50%; /* Altura del contenedor */
+    width: 100%; /* Ancho del contenedor */
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    overflow: hidden;
+}
+
+.contenedor-imagen img {
+    width: 100%;
+    height: 100%; /* Ajusta la altura de la imagen al 100% del contenedor */
+    object-fit: contain; /* Ajusta la imagen para cubrir el contenedor manteniendo su relación de aspecto */
+    object-position:top ; /* Centra la imagen dentro del contenedor */
+    border-radius: 4px;
+    transition: scale 0.3s ease;
+}
+.contenedor-imagen img:hover{
+    scale: 1.05;
+}
+
+.card h4{
+    margin: 0;
+}
+.card h3{
+    font-size: 25px;
     margin: 0;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
+    padding: 0;
     color: var(--color-verde2)
 }
 .card p{
-    padding: 1rem;
+    padding: 0;
     font-size: 1.7rem;
     margin: 0;
     text-align: center;
@@ -525,7 +576,6 @@ figure{
 .imgChiqui{
 width: 100%;
 overflow: hidden;
-border: solid black 1px;
 border-radius: 3px;
 overflow: hidden;
 padding-top: 100%;
@@ -546,7 +596,6 @@ transform: translate(-50%, -50%);;
     width: 48%;
     height: 0;
     margin:1%;
-    border: solid black 1px;
     border-radius: 3px;
     overflow: hidden;
     padding-top: 48%;
@@ -635,7 +684,7 @@ text-align: center;
  }
 
 #galery-link:hover, .link-detail:hover{
-    font-weight: bolder;
+    font-weight: bold;
 }
 
 .back{
@@ -1096,10 +1145,12 @@ table {
 }
 .contenedor-buscador-cat-rec h2{
     font-size: .8rem;
+    border-bottom: none;
 }
 .contenedor-buscador-cat-rec .galeria{
     font-size: 1rem;
     padding: 0.2rem;
+    
 }
 .contenedor-buscador-cat-rec .galeria #galeria-cat{
     padding: 0;
@@ -1118,6 +1169,7 @@ table {
 }
 .contenedor-buscador-cat-rec .galeria #galeria-cat .categoria-card figcaption h4{
      opacity: 1;
+     font-size: 1rem;
 }
 .contenedor-buscador-cat-rec .galeria #galeria-cat .categoria-card figcaption{
     background-color: var(--color-verde2);
@@ -1136,7 +1188,7 @@ table {
     width: 200%;
     height: auto;
     }
-.contenedor-buscador-cat-rec #recomendados h3, .contenedor-buscador-cat-rec #recomendados p{
+.contenedor-buscador-cat-rec #recomendados h3, .contenedor-buscador-cat-rec #recomendados p, .contenedor-buscador-cat-rec #recomendados h4, .contenedor-buscador-cat-rec #recomendados .detalle-card{
     display: none;
     }
 .contenedor-buscador-cat-rec #recomendados .card{
@@ -1149,30 +1201,33 @@ table {
     margin-left: 1rem;
     margin-right: 1rem;
     height: 80%;
+    
   }
   .contenedor-buscador-cat-rec #recomendados .card .contenedor-imagen img{
     min-height: 0;
+    object-position: center;
+  }
+  .contenedor-buscador-cat-rec #recomendados .card .contenedor-imagen{
+    height: 100%;
+    align-items: center;
   }
   .contenedor-buscador-cat-rec .recomendados a{
     width: 100%;
   }
+.contenedor-buscador-cat-rec .recomendados a:nth-child(8),.contenedor-buscador-cat-rec .recomendados a:nth-child(7),
 .contenedor-buscador-cat-rec .recomendados a:nth-child(5),.contenedor-buscador-cat-rec .recomendados a:nth-child(6){
     display: none;
   }
 .listado-productos-buscados{
-    width: 80%;
+    gap: 2vw;
+    padding: 15px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    align-self: center;
+    grid-template-columns: repeat(4, 1fr);
+   
 }
 .listado-productos-buscados .card{
 }
-.listado-productos-buscados .card .contenedor-imagen img{
-    width: 350px;
-    height: 350px;
-    object-fit: cover;
-}
+
 
 /*CALENDARIOS*/
 .react-datepicker-wrapper{
@@ -1250,7 +1305,9 @@ table {
 
 
 @media(max-width:900px){
-   
+    .card h4{
+        font-size:.8rem ;
+    }
 
     .card h3{
         font-size:1.2rem ;
@@ -1302,6 +1359,25 @@ table {
     }
   
 @media(max-width:768px){
+    .contenedor-buscador-cat-rec .galeria #galeria-cat .categoria-card figcaption h4{
+        font-size: .6rem;
+    }
+    .contenedor-buscador-cat-rec .galeria h2{
+        font-size: .8rem;
+    }
+    .card h4{
+        font-size:.7rem ;
+    }
+    .card h3, .card p{
+        font-size:1rem ;
+    }
+    
+    .galeria h2{
+        font-size:1.2rem ;
+    }
+    .galeria #galeria-cat .categoria-card figcaption h4{
+        font-size:1.2rem ;
+    }
     .loader{
         z-index: 2453454 ;
         height: calc(100vh - 10vh - 10rem);
@@ -1510,6 +1586,12 @@ table {
 
 }
 @media(max-width:480px){
+    .card h4{
+        font-size:.5rem ;
+    }
+    .card h3, .card p{
+        font-size:.7rem ;
+    }
     .buscador{
         height: 18rem;
     }
@@ -1617,10 +1699,7 @@ table {
     .card img{
         border-radius: 4px;
     }
-    .card{
-        grid-template-columns: 100%;
-        grid-template-rows: 60% 15% 15%;
-    }
+  
     .card h3{
         padding: 0.1rem;
     }
