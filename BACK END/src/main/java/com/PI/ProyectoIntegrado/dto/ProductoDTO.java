@@ -1,5 +1,6 @@
 package com.PI.ProyectoIntegrado.dto;
 
+import com.PI.ProyectoIntegrado.model.Caracteristica;
 import com.PI.ProyectoIntegrado.model.Categoria;
 import com.PI.ProyectoIntegrado.model.Imagen;
 
@@ -14,26 +15,29 @@ public class ProductoDTO {
     private Float precioProd;
     private Categoria categoria;
     private Set<Imagen> imagenes = new HashSet<>();
+    private Set<Caracteristica> caracteristicas = new HashSet<>();
 
 
     public ProductoDTO() {
     }
 
-    public ProductoDTO(String nombreProd, String descripcionProd, Float precioProd, Categoria categoria, Set<Imagen> imagenes) {
+    public ProductoDTO(String nombreProd, String descripcionProd, Float precioProd, Categoria categoria, Set<Imagen> imagenes, Set<Caracteristica> caracteristicas) {
         this.nombreProd = nombreProd;
         this.descripcionProd = descripcionProd;
         this.precioProd = precioProd;
         this.categoria = categoria;
         this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
     }
 
-    public ProductoDTO(Integer idProducto, String nombreProd, String descripcionProd, Float precioProd, Categoria categoria, Set<Imagen> imagenes) {
+    public ProductoDTO(Integer idProducto, String nombreProd, String descripcionProd, Float precioProd, Categoria categoria, Set<Imagen> imagenes, Set<Caracteristica> caracteristicas) {
         this.idProducto = idProducto;
         this.nombreProd = nombreProd;
         this.descripcionProd = descripcionProd;
         this.precioProd = precioProd;
         this.categoria = categoria;
         this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
     }
 
     public Integer getIdProducto() {
@@ -81,5 +85,13 @@ public class ProductoDTO {
 
     public void setImagenes(Set<Imagen> imagenes) {
         this.imagenes = imagenes;
+    }
+
+    public Set<Caracteristica> getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(Set<Caracteristica> caracteristicas) {
+        this.caracteristicas = caracteristicas;
     }
 }

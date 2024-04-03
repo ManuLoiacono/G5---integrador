@@ -18,6 +18,7 @@ import ProductosBuscados from "./Routes/ProductosBuscados.jsx";
 import CrearCategoria from "./Routes/CrearCategoria.jsx";
 import { ProductProvider } from "./components/utils/ProductContext.jsx";
 import Reserva from "./Routes/Reserva.jsx";
+import ProductosCategoria from "./Routes/ProductosCategoria.jsx";
 
 function App() {
   return ( 
@@ -42,6 +43,7 @@ function App() {
     <Route path='busqueda/:parametro/:fechas' element={<ProductosBuscados/>}/>
     <Route path='crearCategoria' element={<CrearCategoria/>}/>
     <Route path='reserva/:id/:fechas' element={<Reserva/>}/>
+    <Route path='productos-categoria/:id' element={<ProductosCategoria/>}/>
   </Routes>
     <Footer/>
   </Router>

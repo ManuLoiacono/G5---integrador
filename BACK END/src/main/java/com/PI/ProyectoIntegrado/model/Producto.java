@@ -45,13 +45,13 @@ public class Producto {
     private Categoria categoria;
 
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
     @JoinTable(
             name = "producto_caracteristica",
             joinColumns = @JoinColumn(name = "idProducto"),
             inverseJoinColumns = @JoinColumn(name = "idCaracteristica")
     )
-    private Set<Caracteristica> caracteristicas = new HashSet<>();
+    private Set<Caracteristica> caracteristicas;
 
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)

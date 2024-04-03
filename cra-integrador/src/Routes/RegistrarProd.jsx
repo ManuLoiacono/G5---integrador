@@ -248,7 +248,12 @@ const RegistrarProd = () => {
             precioProd: precio,
             categoria: {
               idCategoria: categoria
-            }
+            },
+            caracteristicas: [
+              {
+                descripCaracteristica: "2 plazas",
+              }
+            ]
           };
           
           // Caraga Producto nuevo
@@ -289,6 +294,8 @@ const RegistrarProd = () => {
               // Carga Caracteristicas nuevas 
               const responseCaracteristica = await fetchCargarCaracteristica(caracteristicasCargar);
             }
+
+            
           
           } else {
             console.error("Error al cargar el producto");
@@ -373,14 +380,13 @@ const RegistrarProd = () => {
 
             <div className='inputs'>
               <label> Caracteristicas: </label>
-                
-              {/*HOLA CHAT GPT, AGREGA AQUI EL CODIGO*/}
               {caracteristicasDisponibles.length > 0 ? (
                 <div className="caracteristicas-container">
                 {caracteristicasDisponibles.map((caracteristica, index) => (
                   <label key={index} htmlFor={`caracteristica-${index}`} className="caracteristica-label">
                     <span>{caracteristica.descripCaracteristica}</span>
-                    <input type="checkbox" className="checkbox-input" />
+                    <input type="checkbox" className="checkbox-input"
+                    onChange={(e) => handleCaracteristicaChange(caracteristica, e.target.checked)}/>
                   </label>
                 ))}
               </div>

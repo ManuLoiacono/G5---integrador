@@ -14,6 +14,9 @@ const Buscador = ({ parametroProp, onDateRangeChange, selectedDateRangeProp }) =
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Guardar parámetros en el localStorage
+    localStorage.setItem('parametro', parametro);
+    localStorage.setItem('selectedDateRange', selectedDateRange);
   };
 
   const handleDateRangeChange = (newRange) => {

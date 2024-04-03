@@ -55,18 +55,28 @@ const CalendarioReserva = ({ onDateChange }) => {
   const [startDate, endDate] = dateRange;
 
   const handleDateChange = (update) => {
-    if(update[0] < fechasReservadas[0].start && update[1]> fechasReservadas[0].end){
-      toastError("El rango seleccionado tiene fechas reservadas, por favor seleccione otro");
-      update = [null,null]
+    if (fechasReservadas.length === 0) {
       setDateRange(update);
       onDateChange(update);
-    }else{
-      setDateRange(update);
-      onDateChange(update);}
-      
-    };
-
-
+    } else {
+      let superposicion = false;
+       fechasReservadas.forEach((reserva) => {
+        if (update[0] < reserva.end && update[1] > reserva.start) {
+        superposicion = true;
+        }
+      });
+  
+      if (superposicion) {
+        update = [null,null]
+        setDateRange(update);
+        onDateChange(update)
+        toastError("El rango seleccionado tiene fechas reservadas, por favor seleccione otro");
+      } else {
+        setDateRange(update);
+        onDateChange(update);
+      }
+    }
+  };
   return (
     <div className='calendario-input'>
     <DatePicker
