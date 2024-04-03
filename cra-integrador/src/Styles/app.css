@@ -1290,8 +1290,10 @@ table {
     .react-datepicker__current-month{
         text-transform: uppercase;
     }
-
-
+/*PRODUCTOS CATEGORIA*/
+.portada-categoria{
+    height: 14rem;
+}
       
 /*PRODUCTOS BUSCADOS*/
 
