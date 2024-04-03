@@ -49,9 +49,6 @@ const CalendarioReserva = ({ onDateChange }) => {
     fetchDataReserva();
   }, [params.id]);
   
-console.log("fechasReservadas");
-console.log(fechasReservadas);
-
   registerLocale('es', es);
   setDefaultLocale('es');
   const [dateRange, setDateRange] = useState([null, null]);
