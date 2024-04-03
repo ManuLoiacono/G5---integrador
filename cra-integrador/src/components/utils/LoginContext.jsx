@@ -10,6 +10,7 @@ export const LoginProvider = ({ children }) => {
     const payload = token.split('.')[1];
     const decodedPayload = JSON.parse(atob(payload));
     return {
+        idUsuario: decodedPayload.idUsuario,
         username: decodedPayload.username,
         nombreUsuario: decodedPayload.nombreUsuario,
         apellidoUsuario: decodedPayload.apellidoUsuario,
