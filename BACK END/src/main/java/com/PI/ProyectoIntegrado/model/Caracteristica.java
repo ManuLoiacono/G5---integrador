@@ -26,26 +26,18 @@ public class Caracteristica {
     private Set<Producto> productos = new HashSet<>();
 
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
-
-
     public Caracteristica() {
     }
 
-    public Caracteristica(String descripCaracteristica, Set<Producto> productos, Categoria categoria) {
+    public Caracteristica(String descripCaracteristica, Set<Producto> productos) {
         this.descripCaracteristica = descripCaracteristica;
         this.productos = productos;
-        this.categoria = categoria;
     }
 
-    public Caracteristica(Integer idCaracteristica, String descripCaracteristica, Set<Producto> productos, Categoria categoria) {
+    public Caracteristica(Integer idCaracteristica, String descripCaracteristica, Set<Producto> productos) {
         this.idCaracteristica = idCaracteristica;
         this.descripCaracteristica = descripCaracteristica;
         this.productos = productos;
-        this.categoria = categoria;
     }
 
     public Integer getIdCaracteristica() {
@@ -72,11 +64,5 @@ public class Caracteristica {
         this.productos = productos;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
 }

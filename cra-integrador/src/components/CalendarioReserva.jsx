@@ -9,52 +9,56 @@ import { toastError, toastSuccess } from '../components/utils/Notificaciones'
 
 const CalendarioReserva = ({ onDateChange }) => {
   const params = useParams();
-  const fechasReservadas = [];
+  const [fechasReservadas, setFechasReservadas] = useState([{}])
+  useEffect(() => {
+    const fetchDataReserva = async () => {
+      try {
+        const url = `https://api-terrarent.ddns.net:3001/Reserva/producto/${params.id}`;
+        const settings = {
+          method: 'GET',
+          mode: 'cors'
+        };
+        const response = await fetch(url, settings);
+        const dataReserva = await response.json();
+        
+        // Crear un nuevo array de fechas reservadas
+        const nuevasFechasReservadas = dataReserva.map(reserva => {
+          const fechaIniRes = new Date(reserva.fechaInicio);
+          const fechaFinRes = new Date(reserva.fechaFin);
+        
   
-  const fetchDataReserva = async () => {
-    try {
-      const url = `https://api-terrarent.ddns.net:3001/Reserva/producto/${params.id}`;
-      const settings = {
-        method: 'GET',
-        mode: 'cors'
-      };
-      const response = await fetch(url, settings);
-      const dataReserva = await response.json();
-      dataReserva.forEach(reserva => {
-        const fechaIniRes = new Date(reserva.fechaInicio);
-        const fechaFinRes = new Date(reserva.fechaFin);
-
         const añoIni = fechaIniRes.getFullYear();
-      const mesIni = fechaIniRes.getMonth(); 
-      const diaIni = fechaIniRes.getDate();
-      const añoFin = fechaFinRes.getFullYear();
-      const mesFin = fechaFinRes.getMonth(); 
-      const diaFin = fechaFinRes.getDate();
-      
-      const fechaInicioFormateada = new Date(añoIni, mesIni, diaIni);
-      const fechaFinFormateada = new Date(añoFin, mesFin, diaFin);
-      fechasReservadas.push({ start: fechaInicioFormateada, end: fechaFinFormateada })
-    })
-    
-  } catch (error) {
-    console.error('Error al obtener reserva del producto:', error);
-  }
-};
-
+        const mesIni = fechaIniRes.getMonth(); 
+        const diaIni = fechaIniRes.getDate();
+        const añoFin = fechaFinRes.getFullYear();
+        const mesFin = fechaFinRes.getMonth(); 
+        const diaFin = fechaFinRes.getDate();
+        
+        const fechaInicioFormateada = new Date(añoIni, mesIni, diaIni);
+        const fechaFinFormateada = new Date(añoFin, mesFin, diaFin);
+          return { start: fechaInicioFormateada, end: fechaFinFormateada };
+        });
+  
+        // Actualizar el estado de fechasReservadas una sola vez
+        setFechasReservadas(nuevasFechasReservadas);
+      } catch (error) {
+        console.error('Error al obtener reserva del producto:', error);
+      }
+    };
+  
+    fetchDataReserva();
+  }, [params.id]);
+  
 console.log("fechasReservadas");
 console.log(fechasReservadas);
 
-useEffect(() => {
-    fetchDataReserva();
-      }, [params.id]);
-      
   registerLocale('es', es);
   setDefaultLocale('es');
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
 
   const handleDateChange = (update) => {
-    if(update[0] < excludeIntervals[0].start && update[1]> excludeIntervals[0].end){
+    if(update[0] < fechasReservadas[0].start && update[1]> fechasReservadas[0].end){
       toastError("El rango seleccionado tiene fechas reservadas, por favor seleccione otro");
       update = [null,null]
       setDateRange(update);
@@ -64,10 +68,7 @@ useEffect(() => {
       onDateChange(update);}
       
     };
-  const excludeIntervals = [
-    { start: subDays(new Date(), 5), end: addDays(new Date(), 5) },
-    { start: new Date(2024, 3, 1), end: new Date(2024, 3, 10) }, 
-  ];
+
 
   return (
     <div className='calendario-input'>
