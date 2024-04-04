@@ -3,9 +3,12 @@
     font-family: "Afacad", sans-serif;
     box-sizing: border-box;
     text-decoration: none;
+    
 }    
 html{
     font-size: 16px;
+    height: auto;
+    width: auto;
 }
 
 body{
@@ -93,8 +96,13 @@ header{
     height: 10vh;
     width: auto;
     z-index: 1000;
+    top: 0px;
 }
-
+.contenedor-header{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
 header ul{
     display: flex;
     justify-content: space-between;
@@ -303,7 +311,7 @@ input.inputBox {
 border-bottom: 1px solid var(--color-verde2);
 text-align: center;
 }
-.galery, .galeria, .registrar , .detail, .registrar-usuario, .listado-productos, .panel-de-control, .listado-usuarios, .reserva{
+.listado-productos-categoria,.galery, .galeria, .registrar , .detail, .registrar-usuario, .listado-productos, .panel-de-control, .listado-usuarios, .reserva{
     width: 99%;
     margin:8px;
     background-color: var(--color-gris1);
@@ -1219,7 +1227,7 @@ table {
 .contenedor-buscador-cat-rec .recomendados a:nth-child(5),.contenedor-buscador-cat-rec .recomendados a:nth-child(6){
     display: none;
   }
-.listado-productos-buscados{
+.listado-productos-buscados, .listado-productos-categoria{
     gap: 2vw;
     padding: 15px;
     display: grid;
@@ -1291,9 +1299,58 @@ table {
     .react-datepicker__current-month{
         text-transform: uppercase;
     }
+/*PRODUCTOS CATEGORIA*/
+.portada-categoria{
+    height: 10rem;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    display: flex;
+}
+.portada-categoria img{
+    width: 100%;
+}
+.portada-categoria span{
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-verde2);
+    opacity: .7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 4rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 7px white;
+}
+    .listado-productos-categoria{
+        min-height: calc(100vh - 10vh - 10rem - 4rem);
+    }  
+    .contenedor-listado-vacio img{
+     height: 20%;
+    }
+    .listado-productos-categoria {
+     position: relative;
+    }
+    .contenedor-listado-vacio{
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 
-      
+    }  
 /*PRODUCTOS BUSCADOS*/
 
 .react-calendar {
@@ -1364,6 +1421,9 @@ table {
     flex-direction: column;
 }
 @media(max-width:900px){
+    .portada-categoria span{
+        font-size: 3rem;
+    }
     .card h4{
         font-size:.8rem ;
     }
@@ -1662,6 +1722,15 @@ table {
 
 }
 @media(max-width:480px){
+    .portada-categoria {
+        height: 5rem;
+    }
+    .listado-productos-categoria{
+        min-height: calc(100vh - 10vh - 6rem - 4rem);
+    }
+    .portada-categoria span{
+        font-size: 2rem;
+    }
     .card h4{
         font-size:.5rem ;
     }

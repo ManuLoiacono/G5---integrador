@@ -25,7 +25,7 @@ public class Caracteristica {
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
     @JoinTable(
             name = "producto_caracteristica",
-            joinColumns = @JoinColumn(name = "idCaracteristca"),
+            joinColumns = @JoinColumn(name = "idCaracteristica"),
             inverseJoinColumns = @JoinColumn(name = "idProducto"))
     private Set<Producto> productos;
 
