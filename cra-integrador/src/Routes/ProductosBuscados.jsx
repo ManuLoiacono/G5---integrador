@@ -17,20 +17,45 @@ function ProductosBuscados() {
     const [fechaFin,setFechaFin] = useState(null);
     const [fechaIniFormat,setFechaIniFormat] = useState(null);
     const [fechaFinFormat,setFechaFinFormat] = useState(null);
+    const [hayFechas, setHayFechas] = useState(false)
+    const [reservasFiltradas, setReservasFiltradas]=useState([])
+    const [productosFiltradosPorFecha,setProductosFiltradosPorFecha]=useState([])
     const navigate = useNavigate();
     const params = useParams();
     const products = useProduct();
     let fechas;
 
-    function formatearFecha(fecha) {
+    const obtenerProductosSinReservas = () => {
+        let productosSinReservas=[];
+        let productosLength = productosFiltrados.length
+        let reservasLength = reservasFiltradas.length
+        console.log(productosLength);
+        console.log(reservasLength);
+        console.log(reservasFiltradas);
+        for(let i = 0;i<productosLength;i++){
+            let noEncontrado = true
+            for(let j = 0;j<reservasLength;j++){
+                if(reservasFiltradas[j].producto!==null){
+                if(productosFiltrados[i].idProducto===reservasFiltradas[j].producto.idProducto){
+                    noEncontrado=false;
+                    break
+                }}
+            }
+        if(noEncontrado){productosSinReservas.push(productosFiltrados[i])}
+        }
+        console.log(productosSinReservas);
+        return productosSinReservas;}
+    
+    function formatearFecha(fecha) {if (fechaIni&&fechaFin){
         const dia = String(fecha.getDate()).padStart(2, '0');
         const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Sumamos 1 porque los meses empiezan desde 0
         const año = fecha.getFullYear();
       
-        return `${dia}/${mes}/${año}`;
+        return `${dia}/${mes}/${año}`;} else{ return "no hay fechas"}
       }
 
     useEffect(() => {
+        if (params.fechas!==","){setHayFechas(true);}
         const fetchData = async () => {
             try {
                 const url = `https://api-terrarent.ddns.net:3001/Reserva`;
@@ -38,7 +63,6 @@ function ProductosBuscados() {
                     method: 'GET',
                     mode: 'cors'
                 };
-
                 const response = await fetch(url, settings);
                 const data = await response.json();
 
@@ -52,13 +76,29 @@ function ProductosBuscados() {
         fetchData();
     }, []);
     useEffect(()=>{
-        if (params.fechas){
+        if(reservas&&hayFechas){
+            console.log(reservas);
+            const reservasCoincidentes = [];
+            reservas.forEach(reserva => {
+              if (
+                (reserva.fechaInicio >= fechaIni && reserva.fechaInicio <= fechaFin) ||
+                (reserva.fechaFin >= fechaIni && reserva.fechaFin <= fechaFin) ||
+                (reserva.fechaInicio <= fechaIni && reserva.fechaFin >= fechaFin)
+              ) {
+                reservasCoincidentes.push(reserva);
+              }
+            });
+            setReservasFiltradas(reservasCoincidentes)
+        }
+    },[reservas])
+    useEffect(()=>{
+        if (hayFechas){
             fechas =params.fechas.split(",")
             console.log(fechas);
             setFechaIni(new Date(fechas[0]))
-            setFechaFin(new Date(fechas[1]))}},[])
+            setFechaFin(new Date(fechas[1]))}},[hayFechas])
     useEffect(()=>{
-        if (fechaIni && fechaFin){
+        if (hayFechas){
             setFechaIniFormat(formatearFecha(fechaIni))
             setFechaFinFormat(formatearFecha(fechaFin))}
     },[fechaFin])
@@ -105,6 +145,14 @@ function ProductosBuscados() {
             params.parametro = storedParam;
         }
     }, []);
+    useEffect(()=>{ 
+        if (reservasFiltradas&&productosFiltrados) {
+            
+        }
+        setProductosFiltradosPorFecha(obtenerProductosSinReservas())
+
+        },[reservasFiltradas])
+        useEffect(()=>{console.log(productosFiltradosPorFecha);},[productosFiltradosPorFecha])
 
     if (error) {
         return <div>Error al cargar los productos. Por favor, intente reiniciar la página.</div>;
@@ -112,9 +160,6 @@ function ProductosBuscados() {
 
     return (
         <div>
-            <div className="contenedor-buscador-busqueda">
-                <Buscador />
-            </div>
             <div className="contenedor-buscador-cat-rec">
                 <Categorias />
                 <Recomendados />
@@ -122,14 +167,14 @@ function ProductosBuscados() {
             <div className="listado-productos">
                 <div id="detail-header">
                     <h2 id="detail-header-name" className="detail-header-item">
-                        Resultados para "{params.parametro}":
+                        Resultados para "{params.parametro}" {hayFechas?" desde el "+ fechaIniFormat+ " al "+ fechaFinFormat : ""}:
                     </h2>
                     <img src={imgFlecha} className="back" onClick={() => navigate(-1)} alt="Back" />
                 </div>
                 <section className="listado-productos-buscados">
-                    {productosFiltrados.map((producto) => (
+                    {hayFechas?productosFiltradosPorFecha.map((producto) => (
                         <Card key={producto.idProducto} detalle={producto} />
-                    ))}
+                    )):productosFiltrados.map((producto)=>(<Card key={producto.idProducto} detalle={producto}/>))}
                 </section>
             </div>
         </div>
