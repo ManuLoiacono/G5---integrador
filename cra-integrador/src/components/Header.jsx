@@ -23,7 +23,6 @@ function Header(){
     }},[user.user]) 
 
     return(
-        <>
         <header>
             <Link to={'/'}><img className="logo" src={image} alt="Terrarent logo" /></Link>
                 <Navbar/>
@@ -48,7 +47,7 @@ function Header(){
                  )}
                 </ul>
         </header>
-        </>
+        
     )
 }
 
