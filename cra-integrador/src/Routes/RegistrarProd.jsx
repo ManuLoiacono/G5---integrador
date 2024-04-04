@@ -38,6 +38,7 @@ const RegistrarProd = () => {
       setCategoria('');
       setCaracteristicasNuevas(['']);
       setImagenes([]);
+      setCaracteristicasElegidas([])
       // Reset other form fields as needed
     };
     const fetchObtenerCategorias = async () => {
@@ -75,6 +76,7 @@ const RegistrarProd = () => {
         }
     }
 
+    // Caracteristicas inputs
     const handleInputChange = (index, value) => {
       const newInputValues = [...caracteristicasNuevas];
       newInputValues[index] = value;
@@ -89,6 +91,7 @@ const RegistrarProd = () => {
       setCaracteristicasNuevas(newInputValues);
     };
 
+    // CheckList
     const handleCaracteristicaChange = (caracteristica, isChecked) => {
       if (isChecked) {
         // Agregar la característica elegida al estado
@@ -196,7 +199,6 @@ const RegistrarProd = () => {
         const fetchCargarCaracteristica = async (caracteristicasNuevas, prod) => {
 
           const url = `https://api-terrarent.ddns.net:3001/Caracteristica/crearCaracteristicaParaProducto/${prod.idProducto}`;
-          console.log(url);
             const settings = {
               method: 'POST',
               headers: {
@@ -217,6 +219,28 @@ const RegistrarProd = () => {
               return null;
             }
 
+        }
+        const fetchCargarCaracteristicasSeleccionadas = async (caract, prod) => {
+          const url = `https://api-terrarent.ddns.net:3001/Caracteristica/asignoCaracteristicaToProducto/${caract.idCaracteristica}/${prod.idProducto}`;
+          console.log(url);
+          const settings = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          };
+      
+          try {
+            const response = await fetch(url, settings);
+        
+            const data = await response.json();
+            console.log(data);
+            return data;
+          } catch (error) {
+            console.error('Error al procesar la respuesta:', error);
+            toastError('Ocurrió un error inesperado al procesar la respuesta del servidor.');
+            return null;
+          }
         }
         const fetchCargarImagen = async (imagen) => {
           console.log(JSON.stringify(imagen.producto));
@@ -275,20 +299,29 @@ const RegistrarProd = () => {
 
             console.log(JSON.stringify(caracteristicasNuevas));
 
-            for(var i = 0; i < caracteristicasNuevas.length; i++) {
+            if(caracteristicasNuevas.length !== 0){
+              for(var i = 0; i < caracteristicasNuevas.length; i++) {
             
-              // Estructura Caracteristicas nuevas
-              const caracteristicasCargar = {
-                descripCaracteristica: caracteristicasNuevas[i],
-              };
-              
-              console.log(JSON.stringify(caracteristicasCargar));
-              
-              // Carga Caracteristicas nuevas 
-              const responseCaracteristica = await fetchCargarCaracteristica(caracteristicasCargar, responseProducto);
+                // Estructura Caracteristicas nuevas
+                const caracteristicasCargar = {
+                  descripCaracteristica: caracteristicasNuevas[i],
+                };
+                
+                console.log(JSON.stringify(caracteristicasCargar));
+                
+                // Carga Caracteristicas nuevas 
+                const responseCaracteristica = await fetchCargarCaracteristica(caracteristicasCargar, responseProducto);
+              }
             }
-
             
+            console.log(JSON.stringify(caracteristicasElegidas));
+            if(caracteristicasElegidas.length !== 0){
+              for(i = 0; i < caracteristicasElegidas.length; i++) {
+              
+                const responseCaracteristica = await fetchCargarCaracteristicasSeleccionadas(caracteristicasElegidas[i], responseProducto);
+              
+              }
+            }
           
           } else {
             console.error("Error al cargar el producto");
@@ -376,7 +409,7 @@ const RegistrarProd = () => {
               {caracteristicasDisponibles.length > 0 ? (
                 <div className="caracteristicas-container">
                 {caracteristicasDisponibles.map((caracteristica, index) => (
-                  <label key={index} htmlFor={`caracteristica-${index}`} className="caracteristica-label">
+                  <label key={index} type="reset" htmlFor={`caracteristica-${index}`} className="caracteristica-label">
                     <span>{caracteristica.descripCaracteristica}</span>
                     <input type="checkbox" className="checkbox-input"
                     onChange={(e) => handleCaracteristicaChange(caracteristica, e.target.checked)}/>
