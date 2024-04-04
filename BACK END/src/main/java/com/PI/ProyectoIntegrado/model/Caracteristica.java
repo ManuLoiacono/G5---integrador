@@ -24,13 +24,12 @@ public class Caracteristica {
     private String descripCaracteristica;
 
 
-    // @JsonIgnoreProperties("caracteristicas") // Evita la serialización circular
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
     @JoinTable(
             name = "producto_caracteristica",
             joinColumns = @JoinColumn(name = "idCaracteristica"),
             inverseJoinColumns = @JoinColumn(name = "idProducto"))
-    @JsonBackReference
+    @JsonIgnoreProperties("caracteristicas") // Evita la serialización circular
     private Set<Producto> productos;
 
 

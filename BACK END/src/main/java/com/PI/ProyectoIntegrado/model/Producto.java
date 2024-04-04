@@ -49,7 +49,6 @@ public class Producto {
             joinColumns = @JoinColumn(name = "idProducto"),
             inverseJoinColumns = @JoinColumn(name = "idCaracteristica")
     )
-    @JsonManagedReference
     private Set<Caracteristica> caracteristicas;
 
 
