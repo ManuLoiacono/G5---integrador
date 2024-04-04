@@ -38,9 +38,7 @@ const Buscador = ({ parametroProp, onDateRangeChange, selectedDateRangeProp }) =
             <button>Lo encontraremos</button>
           </Link>
         </form>
-        <Link to={'paginado-productos'}>
-          <p>Explorar todos los productos</p>
-        </Link>
+      
         
     </div>
   )
