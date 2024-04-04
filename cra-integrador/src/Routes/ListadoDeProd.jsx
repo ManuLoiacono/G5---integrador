@@ -65,21 +65,22 @@ const ListadoDeProd = () => {
   const handleEliminarProducto = (del) => { 
     
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: `¿Estás seguro de querer eliminar producto ${del.nombreProd}?`,
+      text: "Este procedimiento es irreversible",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar"
     }).then((result) => {
       if (result.isConfirmed) {
         fetchEliminarProducto(del);
         const refresh = productos.filter(producto => producto.idProducto !== del.idProducto);
         setProductos(refresh);
         Swal.fire({  
-          title: "Deleted!",
-          text: "Your file has been deleted.",
+          title: "Eliminado",
+          text: `El producto ${del.nombreProd} fue eliminado del sistema`,
           icon: "success"
         });
       }

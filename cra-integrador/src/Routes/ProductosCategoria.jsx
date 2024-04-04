@@ -21,7 +21,6 @@ const ProductosCategoria = () => {
     }
   });
 
-  console.log(productosPorCategoria);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -38,8 +37,6 @@ const ProductosCategoria = () => {
 
         setCategoria(data);
         const categoriaFiltrada = data.filter(cat => cat.idCategoria == idParams);
-        console.log("categoriaFiltrada");
-        console.log(categoriaFiltrada);
         setCategoriaActual(categoriaFiltrada);
       } catch (error) {
         console.error('Error al obtener detalles de categorias:', error);
@@ -49,9 +46,6 @@ const ProductosCategoria = () => {
 
     fetchData();
   }, [idParams]);
-  
-  console.log("categoria actuial");
-  console.log(categoriaActual);
   
   return (
     <div>

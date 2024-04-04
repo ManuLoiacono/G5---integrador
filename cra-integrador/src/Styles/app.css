@@ -254,7 +254,11 @@ input.inputBox {
     flex-direction:column ;
     height: 14rem;
 }
-
+.buscador p{
+    color: white;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
 .buscador form{
     width: 100%;
     display: inline-flex;
@@ -1231,7 +1235,7 @@ table {
     gap: 2vw;
     padding: 15px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
    
 }
 .listado-productos-buscados .card{
