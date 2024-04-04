@@ -56,9 +56,9 @@ public class ProductoService implements IProductoService{
     public Set<com.PI.ProyectoIntegrado.dto.ProductoDTO> listarProductos() {
 
         List<Producto> productos = productoRepository.findAll();
-        Set<com.PI.ProyectoIntegrado.dto.ProductoDTO> productosDTO = new HashSet<>();
+        Set<ProductoDTO> productosDTO = new HashSet<>();
         for(Producto producto: productos){
-            productosDTO.add(mapper.convertValue(producto, com.PI.ProyectoIntegrado.dto.ProductoDTO.class));
+            productosDTO.add(mapper.convertValue(producto, ProductoDTO.class));
         }
 
         return productosDTO;

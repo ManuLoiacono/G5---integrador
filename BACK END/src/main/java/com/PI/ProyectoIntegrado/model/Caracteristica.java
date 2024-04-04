@@ -1,6 +1,7 @@
 package com.PI.ProyectoIntegrado.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.hibernate.annotations.NotFound;
@@ -28,6 +29,7 @@ public class Caracteristica {
             name = "producto_caracteristica",
             joinColumns = @JoinColumn(name = "idCaracteristica"),
             inverseJoinColumns = @JoinColumn(name = "idProducto"))
+    @JsonIgnoreProperties("caracteristicas") // Evita la serialización circular
     private Set<Producto> productos;
 
 
