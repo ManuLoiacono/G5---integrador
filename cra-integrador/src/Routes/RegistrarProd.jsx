@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toastError, toastSuccess } from '../components/utils/Notificaciones'
 import MensajeResolucion from '../components/MensajeResolucion.jsx'
 import { useLogin } from "../components/utils/LoginContext"
+import { useProduct } from "../components/utils/ProductContext.jsx"
 
 
 import { json } from 'react-router-dom';
@@ -29,7 +30,9 @@ const RegistrarProd = () => {
 
 
     const user = useLogin()
-
+    const products = useProduct()
+    const productos = products.productsData
+   
     const resetForm = () => {
       setNombreProd('');
       setDescripcion('');
@@ -150,7 +153,15 @@ const RegistrarProd = () => {
       setSelectedImages(updatedImages);
       
     };
-
+    
+    function buscarProductoPorNombre(productos, nombre) {
+      for (let i = 0; i < productos.length; i++) {
+          if (productos[i].nombreProd.toLowerCase() === nombre.toLowerCase()) {
+              return true;
+          }
+      }
+      return false;
+  }
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -166,7 +177,8 @@ const RegistrarProd = () => {
         toastError('La descripción debe tener al menos 10 caracteres');
       } else if (selectedImages.length === 0) {
         toastError('Ingrese al menos una imágen');
-      } 
+      } else if (buscarProductoPorNombre(productos, nombreProd)) {
+        toastError('El nombre ya existe')}
       else {
         const fetchProductoNuevo = async (p) => {
           
