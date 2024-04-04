@@ -1457,6 +1457,9 @@ table {
     #galery-link{
         bottom: -10%;
     }
+    .listado-productos a h3 {
+        font-size: 1.2rem;
+    }
  
     .precio-container{
         width: 100%;
@@ -1512,6 +1515,11 @@ table {
     }
   
 @media(max-width:768px){
+    .listado-productos-buscados{
+
+        grid-template-columns: repeat(2, 1fr);
+       
+    }
     .contenedor-buscador-cat-rec .galeria #galeria-cat .categoria-card figcaption h4{
         font-size: .6rem;
     }
@@ -1739,6 +1747,10 @@ table {
 
 }
 @media(max-width:480px){
+    #detail-header-name{
+        font-size: .6rem;
+    }
+    
     .portada-categoria {
         height: 5rem;
     }
@@ -1753,6 +1765,9 @@ table {
     }
     .card h3, .card p{
         font-size:.7rem ;
+    }
+    .listado-productos a h3 {
+        font-size: .7rem;
     }
     .buscador{
         height: 18rem;
@@ -1817,6 +1832,11 @@ table {
     }
 }
 @media(max-width:425px){
+    .listado-productos-buscados{
+
+        grid-template-columns: repeat(2, 1fr);
+       
+    }
    
     #button-container{
    display: none;
@@ -1836,10 +1856,7 @@ table {
         font-size: 1.5rem;
     }
 
-    #detail-header-name{
-        font-size: 1.2rem;
-    }
-    
+
     #galeria-cat{
         display: grid;
         gap: 1vw;

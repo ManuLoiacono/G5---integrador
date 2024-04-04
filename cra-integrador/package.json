@@ -22,6 +22,7 @@
     "crypto-browserify": "^3.12.0",
     "date-fns": "^3.6.0",
     "dayjs": "^1.11.10",
+    "emoji-mart": "^5.5.2",
     "jsonwebtoken": "^9.0.2",
     "ldrs": "^1.0.1",
     "react": "^18.2.0",
