@@ -196,6 +196,7 @@ const RegistrarProd = () => {
         const fetchCargarCaracteristica = async (caracteristicasNuevas, prod) => {
 
           const url = `https://api-terrarent.ddns.net:3001/Caracteristica/crearCaracteristicaParaProducto/${prod.idProducto}`;
+          console.log(url);
             const settings = {
               method: 'POST',
               headers: {
@@ -279,9 +280,6 @@ const RegistrarProd = () => {
               // Estructura Caracteristicas nuevas
               const caracteristicasCargar = {
                 descripCaracteristica: caracteristicasNuevas[i],
-                productos: [{
-                  idProducto: responseProducto.idProducto
-                }]
               };
               
               console.log(JSON.stringify(caracteristicasCargar));

@@ -72,7 +72,7 @@ public class CaracteristicaController {
 
 
 
-    // Assidno una Caracteristica existente a un Producto existente
+    // Asigno una Caracteristica existente a un Producto existente
     @PostMapping("/asignoCaracteristicaToProducto/{idCaracteristica}/{idProducto}")
     public String assignProjectToEmployees(@PathVariable(name = "idCaracteristica") Integer idCaracteristica,
                                            @PathVariable(name = "idProducto") Integer idProducto) {
