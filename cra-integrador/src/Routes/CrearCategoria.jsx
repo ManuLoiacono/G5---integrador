@@ -266,23 +266,6 @@ const CrearCategoria = () => {
                 }}
             />
            </div> 
-           
-           {/*<div>
-            <label> Agregue una caracteristica </label>
-            {caracteristicas.map((caracteristica, index) => (
-              <div key={index}>
-              <input
-                value={caracteristica}
-                onChange={(e) => handleInputChange(index, e.target.value)}
-                placeholder={`Caracteristica ${index + 1}`}
-              />
-              <button type="button" className="delete-button" onClick={() => handleRemoveInput(index)} >X</button>
-            </div>
-            ))}
-            
-            <button type="button" onClick={handleAddInput}>Agregar otra caracteristica</button>
-            
-            </div>*/}
 
             <label className='label-drop'>
               Arrastre la imágen de la categoria

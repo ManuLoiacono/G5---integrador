@@ -42,14 +42,14 @@ public class CaracteristicaController {
 
     // Creo una caracteristica para un producto existente
     @PostMapping("/crearCaracteristicaParaProducto/{idProducto}")
-    public String createProjectForEmployee(@PathVariable Integer idProducto, @RequestBody Caracteristica caracteristica) {
+    public Producto createProjectForEmployee(@PathVariable Integer idProducto, @RequestBody Caracteristica caracteristica) {
         // Obtener el Producto
         Producto producto = this.productoRepository.getById(idProducto);
         // Asignar la Característica al Producto
         producto.getCaracteristicas().add(caracteristica);
         // Guardar los cambios en el Producto
         productoRepository.save(producto);
-        return "Característica asignada al producto correctamente.";
+        return producto;
     }
 //    @PostMapping("/crearCaracteristicaParaProducto/{idProducto}")
 //    public String createProjectForEmployee(@PathVariable Integer idProducto, @RequestBody Caracteristica caracteristica) {
