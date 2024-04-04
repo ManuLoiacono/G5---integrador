@@ -6,9 +6,12 @@ import { FaPalette, FaUsers, FaTag, FaWeight, FaRuler, FaWindowMaximize, FaDoorO
 import CalendarioReserva from "../components/CalendarioReserva";
 import Politicas from "../components/Politicas";
 import { useLogin } from "../components/utils/LoginContext";
+import { toastError } from "../components/utils/Notificaciones";
 
 
-
+function sinFecha(){
+  toastError("Ingrese un rango de fechas por favor.")
+}
 
 function Detail() {
   const navigate = useNavigate();
@@ -150,7 +153,7 @@ function Detail() {
           </div>
           <p>Fecha Inicio - Fecha Fin</p>
           <CalendarioReserva onDateChange={handleDateChange} />
-          {user.user ? (<Link to={`/reserva/${params.id}/${dateRange}`}><button className="rent-button">Alquilar</button></Link>) : (<Link to={'/inicio-sesion'}><button className="rent-button">Alquilar</button></Link>)}
+          {user.user ? (dateRange[1] ? (<Link to={`/reserva/${params.id}/${dateRange}`}><button className="rent-button">Alquilar</button></Link>):<button className="rent-button" onClick={sinFecha}>Alquilar</button>) : (<Link to={'/inicio-sesion'}><button className="rent-button">Alquilar</button></Link>)}
           <Politicas/>
         </div>
       </div>
