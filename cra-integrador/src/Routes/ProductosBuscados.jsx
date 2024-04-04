@@ -13,9 +13,22 @@ function ProductosBuscados() {
     const [productosFiltrados, setProductosFiltrados] = useState([]);
     const [error, setError] = useState(null);
     const [reservas, setReservas] = useState([]);
+    const [fechaIni,setFechaIni] = useState(null);
+    const [fechaFin,setFechaFin] = useState(null);
+    const [fechaIniFormat,setFechaIniFormat] = useState(null);
+    const [fechaFinFormat,setFechaFinFormat] = useState(null);
     const navigate = useNavigate();
     const params = useParams();
     const products = useProduct();
+    let fechas;
+
+    function formatearFecha(fecha) {
+        const dia = String(fecha.getDate()).padStart(2, '0');
+        const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Sumamos 1 porque los meses empiezan desde 0
+        const año = fecha.getFullYear();
+      
+        return `${dia}/${mes}/${año}`;
+      }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,7 +51,17 @@ function ProductosBuscados() {
 
         fetchData();
     }, []);
-
+    useEffect(()=>{
+        if (params.fechas){
+            fechas =params.fechas.split(",")
+            console.log(fechas);
+            setFechaIni(new Date(fechas[0]))
+            setFechaFin(new Date(fechas[1]))}},[])
+    useEffect(()=>{
+        if (fechaIni && fechaFin){
+            setFechaIniFormat(formatearFecha(fechaIni))
+            setFechaFinFormat(formatearFecha(fechaFin))}
+    },[fechaFin])
     useEffect(() => {
         const filterData = async () => {
             const lengthProductos = products.productsData.length;

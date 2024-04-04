@@ -99,7 +99,10 @@ const ListadoDeProd = () => {
       
   return (
     <div className='listado-productos'>
-      <h3>Listado de Productos</h3>
+      <div className='contenedor-titulo-tabla'>
+        <h3>Listado de Productos</h3>
+        <Link to={`/registrar`}><h3>+</h3></Link>
+      </div>
        <table>
         <thead>
           <tr>

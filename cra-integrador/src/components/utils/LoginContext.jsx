@@ -48,10 +48,10 @@ useEffect(()=>{
   };
 
   const logout = () => {
+    window.location.replace(`${window.location.origin}`)
     setUser(null);
     setToken(null);
     localStorage.removeItem("token");
-    window.location.replace(`${window.location.origin}`)
   };
 
   return (
