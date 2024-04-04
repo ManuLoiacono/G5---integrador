@@ -1,9 +1,6 @@
 package com.PI.ProyectoIntegrado.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -45,13 +42,14 @@ public class Producto {
     private Categoria categoria;
 
 
-    @JsonIgnore
+//    @JsonIgnoreProperties("productos") // Evita la serialización circular
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
     @JoinTable(
             name = "producto_caracteristica",
             joinColumns = @JoinColumn(name = "idProducto"),
             inverseJoinColumns = @JoinColumn(name = "idCaracteristica")
     )
+    @JsonManagedReference
     private Set<Caracteristica> caracteristicas;
 
 
