@@ -250,7 +250,7 @@ const RegistrarProd = () => {
             return data;
           } catch (error) {
             console.error('Error al procesar la respuesta:', error);
-            toastError('Ocurrió un error inesperado al procesar la respuesta del servidor.');
+            // toastError('Ocurrió un error inesperado al procesar la respuesta del servidor.');
             return null;
           }
         }
@@ -311,7 +311,7 @@ const RegistrarProd = () => {
 
             console.log(JSON.stringify(caracteristicasNuevas));
 
-            if(caracteristicasNuevas.length !== 0){
+            if(caracteristicasNuevas[0] !== ''){
               for(var i = 0; i < caracteristicasNuevas.length; i++) {
             
                 // Estructura Caracteristicas nuevas

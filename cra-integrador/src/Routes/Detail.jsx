@@ -9,6 +9,7 @@ import { useLogin } from "../components/utils/LoginContext";
 
 
 
+
 function Detail() {
   const navigate = useNavigate();
   const [product, setProduct] = useState([]);
@@ -30,6 +31,8 @@ function Detail() {
       const response = await fetch(url, settings);
       const data = await response.json();
       setProduct(data);
+
+      console.log(JSON.stringify(data));
 
       // Procesamos las imágene
       const imagenes = data.imagenes || [];
@@ -125,15 +128,10 @@ function Detail() {
             <div>
               <p className="titulo">CARACTERÍSTICAS</p>
               <ul className="caracteristicas-producto">
-              {caracteristicas.map(({ titulo, icono: Icono }, index) => (
+              {/* {caracteristicas.map(({ titulo, icono: Icono }, index) => ( */}
+              {product.caracteristicas && product.caracteristicas.map((caracteristica, index) => (
                 <li key={index}>
-                <strong><Icono /> {titulo}</strong>
-                  {productoCaracterísticas.map((producto) => {
-                    if (producto.titulo === titulo) {
-                      return (
-                        <span key={producto.titulo}>{producto.detalle}</span>
-                      );
-                  }})}
+                  <span>{caracteristica.descripCaracteristica}</span>
                 </li>
               ))}
               </ul>
