@@ -205,9 +205,10 @@ const RegistrarProd = () => {
             return null;
           }
         };
-        const fetchCargarCaracteristica = async (caracteristicasNuevas) => {
+        const fetchCargarCaracteristica = async (caracteristicasNuevas, prod) => {
 
-          const url = `https://api-terrarent.ddns.net:3001/Caracteristica`;
+          const url = `https://api-terrarent.ddns.net:3001/Caracteristica/crearCaracteristicaParaProducto/${prod.idProducto}`;
+          console.log(url);
             const settings = {
               method: 'POST',
               headers: {
@@ -220,7 +221,7 @@ const RegistrarProd = () => {
               const response = await fetch(url, settings);
           
               const data = await response.json();
-              console.log(JSON.stringify(data));
+              console.log(data);
               return data;
             } catch (error) {
               console.error('Error al procesar la respuesta:', error);
@@ -291,15 +292,12 @@ const RegistrarProd = () => {
               // Estructura Caracteristicas nuevas
               const caracteristicasCargar = {
                 descripCaracteristica: caracteristicasNuevas[i],
-                productos: [{
-                  idProducto: responseProducto.idProducto
-                }]
               };
               
               console.log(JSON.stringify(caracteristicasCargar));
               
               // Carga Caracteristicas nuevas 
-              const responseCaracteristica = await fetchCargarCaracteristica(caracteristicasCargar);
+              const responseCaracteristica = await fetchCargarCaracteristica(caracteristicasCargar, responseProducto);
             }
 
             
