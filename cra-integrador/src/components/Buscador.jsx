@@ -34,8 +34,13 @@ const Buscador = ({ parametroProp, onDateRangeChange, selectedDateRangeProp }) =
       <form onSubmit={handleSubmit} className="formulario">
           <input type="text" placeholder='Buscá!' value={parametro} onChange={(e)=>{setParametro(e.target.value)}}/>
           <CalendarioBuscador onDateRangeChange={handleDateRangeChange}/>
-          <Link  to={`/busqueda/${parametro}/${selectedDateRange}`}><button>Lo encontraremos</button></Link>
+          <Link  to={`/busqueda/${parametro}/${selectedDateRange}`}>
+            <button>Lo encontraremos</button>
+          </Link>
         </form>
+        <Link to={'paginado-productos'}>
+          <p>Explorar todos los productos</p>
+        </Link>
         
     </div>
   )

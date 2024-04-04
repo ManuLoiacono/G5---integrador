@@ -3,9 +3,12 @@
     font-family: "Afacad", sans-serif;
     box-sizing: border-box;
     text-decoration: none;
+    
 }    
 html{
     font-size: 16px;
+    height: auto;
+    width: auto;
 }
 
 body{
@@ -93,8 +96,13 @@ header{
     height: 10vh;
     width: auto;
     z-index: 1000;
+    top: 0px;
 }
-
+.contenedor-header{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
 header ul{
     display: flex;
     justify-content: space-between;
@@ -173,6 +181,7 @@ header ul span{
     justify-content: space-between;
     align-items: center;
     color: white;
+    z-index: 99999;
 }
 .footer h3{
     margin-left: 2rem;
@@ -245,7 +254,11 @@ input.inputBox {
     flex-direction:column ;
     height: 14rem;
 }
-
+.buscador p{
+    color: white;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
 .buscador form{
     width: 100%;
     display: inline-flex;
@@ -302,7 +315,7 @@ input.inputBox {
 border-bottom: 1px solid var(--color-verde2);
 text-align: center;
 }
-.galery, .galeria, .registrar , .detail, .registrar-usuario, .listado-productos, .panel-de-control, .listado-usuarios, .reserva{
+.listado-productos-categoria,.galery, .galeria, .registrar , .detail, .registrar-usuario, .listado-productos, .panel-de-control, .listado-usuarios, .reserva{
     width: 99%;
     margin:8px;
     background-color: var(--color-gris1);
@@ -1218,11 +1231,11 @@ table {
 .contenedor-buscador-cat-rec .recomendados a:nth-child(5),.contenedor-buscador-cat-rec .recomendados a:nth-child(6){
     display: none;
   }
-.listado-productos-buscados{
+.listado-productos-buscados, .listado-productos-categoria{
     gap: 2vw;
     padding: 15px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
    
 }
 .listado-productos-buscados .card{
@@ -1290,9 +1303,58 @@ table {
     .react-datepicker__current-month{
         text-transform: uppercase;
     }
+/*PRODUCTOS CATEGORIA*/
+.portada-categoria{
+    height: 10rem;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    display: flex;
+}
+.portada-categoria img{
+    width: 100%;
+}
+.portada-categoria span{
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-verde2);
+    opacity: .7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 4rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 7px white;
+}
+    .listado-productos-categoria{
+        min-height: calc(100vh - 10vh - 10rem - 4rem);
+    }  
+    .contenedor-listado-vacio img{
+     height: 20%;
+    }
+    .listado-productos-categoria {
+     position: relative;
+    }
+    .contenedor-listado-vacio{
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 
-      
+    }  
 /*PRODUCTOS BUSCADOS*/
 
 .react-calendar {
@@ -1312,33 +1374,60 @@ table {
     margin:80px;
     border-radius: 15px;
     order: 2;
-    width: 30%;
+    width: 400px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-size: 30px;
+    font-size: 25px;
     align-items: center;
+    position: sticky;
+    top: 180px;
     
 }
+.producto-reserva p, .producto-reserva h4{
+    margin:15px 0px;
+}
 .producto-reserva img{
-    width: 150px;
-    height: 150px;
+    width: 175px;
+    height: 175px;
     border-radius: 15px;
 }
 .detalle-reserva{
     order:1;
-    width: 60%;
+    width: 55%;
     font-size: 30px;
-    margin: 80px;
+    margin: 50px;
 }
 /*EMERGENTE*/
 .emergente-oculto{
     display: none;
 }
 .emergente-mostrar{
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 105%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
     
 }
+.contenido-reserva{
+    padding: 25px;
+    background-color: var(--color-gris1);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 @media(max-width:900px){
+    .portada-categoria span{
+        font-size: 3rem;
+    }
     .card h4{
         font-size:.8rem ;
     }
@@ -1369,6 +1458,23 @@ table {
     .detail-data{
         width: auto;
         font-size: 1.2rem;
+    }
+    .main-reserva{
+        flex-direction: column;
+    }
+    .producto-reserva{
+        order: 0;
+        position: static;
+        flex-direction: row;
+        height: auto;
+        margin: 10px;
+    }
+    .detalle-reserva{
+        margin: 10px;
+        width: 90%;
+    }
+    .producto-reserva hr{
+        display: none;
     }
 
 }
@@ -1620,6 +1726,15 @@ table {
 
 }
 @media(max-width:480px){
+    .portada-categoria {
+        height: 5rem;
+    }
+    .listado-productos-categoria{
+        min-height: calc(100vh - 10vh - 6rem - 4rem);
+    }
+    .portada-categoria span{
+        font-size: 2rem;
+    }
     .card h4{
         font-size:.5rem ;
     }

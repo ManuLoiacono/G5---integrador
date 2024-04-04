@@ -37,7 +37,7 @@ public class UsuarioService implements IUsuarioService {
             usuarioRepository.save(usuario);
             String to = usuarioDTO.getEmail();
             String subject = "Bienvenido a TERRA-RENT";
-            String text = "Haz clic en el siguiente enlace para acceder a la aplicación:  https://api-terrarent.ddns.net:3001";
+            String text = "Haz clic en el siguiente enlace para acceder a la aplicación:  https://terrarent.ddns.net";
             System.out.println("antes de email service");
             emailService.sendSimpleMessage(to, subject, text);
             System.out.println("usuario service");

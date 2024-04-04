@@ -70,7 +70,7 @@ function Reserva () {
           .then((response) => {
             if (response.ok) {
                 toastSuccess("Reserva confirmada con éxito.")
-                setEmergenteClass(emergenteClass === 'emergente-oculto' ? 'emergente-oculto' : 'emergente-mostrar')
+                setEmergenteClass("emergente-mostrar")
             } 
               else {
             toastError('Hubo un error al confirmar la reserva. Intentelo más tarde');
@@ -131,9 +131,9 @@ function Reserva () {
             <section className="producto-reserva">
                 <div>
                {product ? <img src={product.imagenes[0].urlimg} alt="" /> : <p>img no encontrada</p>}
-               {product ? <h4>{product.nombreProd}</h4> : "?"}
                </div>
                <div className="producto-reserva-texto">
+               {product ? <h4>{product.nombreProd}</h4> : "?"}
                 <hr />
                 <h4>Detalles del precio</h4>
                 <p>${product ? product.precioProd : "?"} por {cantDias} {cantDias===1 ? "día" : "días"} </p> 
@@ -160,7 +160,7 @@ function Reserva () {
             <p>Fecha: Del {fechaIniFormat} al {fechaFinFormat}</p>
             <p>En breves recibirás un email a la dirección "{user.user.email}" con los detales de tu reserva.</p>
             <p>¡Muchas gracias!</p>
-            <button onClick={()=>{window.location.replace(`${window.location.origin}`)}}>Volver</button>
+            <button className="rent-button" onClick={()=>{window.location.replace(`${window.location.origin}`)}}>Volver</button>
         </section>
     </div>
         </div>

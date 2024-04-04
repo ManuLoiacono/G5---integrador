@@ -8,6 +8,8 @@ import MensajeResolucion from '../components/MensajeResolucion.jsx'
 import Loader from '../components/Loader.jsx'
 import { useLogin } from "../components/utils/LoginContext"
 import image from "../img/TERRA_RENT4.png"
+import Swal from 'sweetalert2';
+
 const ListadoUsers = () => {
   
   const [users, setUsers] = useState([]);
@@ -94,22 +96,35 @@ const ListadoUsers = () => {
         userRol: e.userRol
     }
 
-
     fetchModificarUsuario(modified);
-
     setUsers(users.map(user => (user.idUsuario === modified.idUsuario ? modified : user)));
-
     toastSuccess("Se modificó el usuario correctamente")
   };
 
   const handleEliminarUsuario = (del) => { 
     fetchEliminarUsuario(del);
-
-    const refresh = users.filter(user => user.idUsuario !== del.idUsuario)
-
-    setUsers(refresh);
-
-    toastSuccess("Se modificó el usuario correctamente")
+    
+    Swal.fire({
+      title: `¿Estás seguro de querer eliminar el usuario ${del.username}?`,
+      text: "Este procedimiento es irreversible",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetchEliminarUsuario(del);
+        const refresh = users.filter(user => user.idUsuario !== del.idUsuario)
+        setUsers(refresh);
+        Swal.fire({  
+          title: "Eliminado",
+          text: `El usuario ${del.username} fue eliminado del sistema`,
+          icon: "success"
+        });
+      }
+    })
   }
   
   if(error){

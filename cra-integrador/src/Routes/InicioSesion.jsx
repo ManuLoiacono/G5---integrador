@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { Link } from "react-router-dom";
+import { useState , useEffect} from "react"
+import { Link , useNavigate} from "react-router-dom";
 import imageInicio from '../img/TERRA_RENT_resol.png'
 import { useLogin } from "../components/utils/LoginContext";
 import { toastError, toastSuccess } from '../components/utils/Notificaciones'
@@ -7,7 +7,8 @@ import { toastError, toastSuccess } from '../components/utils/Notificaciones'
 function InicioSesion(){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-
+    const history = useNavigate();
+    useEffect(()=>{console.log(history);},[])
     const handleSubmit = async (e) => {
         e.preventDefault();
       

@@ -19,6 +19,7 @@ import CrearCategoria from "./Routes/CrearCategoria.jsx";
 import { ProductProvider } from "./components/utils/ProductContext.jsx";
 import Reserva from "./Routes/Reserva.jsx";
 import ProductosCategoria from "./Routes/ProductosCategoria.jsx";
+import PaginadoProductos from "./Routes/PaginadoProductos.jsx";
 
 function App() {
   return ( 
@@ -44,6 +45,7 @@ function App() {
     <Route path='crearCategoria' element={<CrearCategoria/>}/>
     <Route path='reserva/:id/:fechas' element={<Reserva/>}/>
     <Route path='productos-categoria/:id' element={<ProductosCategoria/>}/>
+    <Route path='paginado-productos' element={<PaginadoProductos/>}/>
   </Routes>
     <Footer/>
   </Router>

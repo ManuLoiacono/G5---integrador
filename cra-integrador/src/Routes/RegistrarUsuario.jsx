@@ -36,6 +36,7 @@ function RegistrarUsuario(){
   
   const handleSubmit = (e) => {
     e.preventDefault();
+    const patron = /^[a-zA-ZñÑ\s]*$/
     if(newUser.username.length === 0 || newUser.nombreUsuario.length === 0 || newUser.apellidoUsuario.length === 0 || newUser.numTelefono.length === 0 || newUser.email.length === 0 || newUser.password.length === 0 ){
       toastError('Complete los campos vacíos ');
       return;
@@ -47,7 +48,13 @@ function RegistrarUsuario(){
     else if(newUser.username.length <=3){
       toastError('El username debe tener al menos 4 caracteres');
       return;
-    } 
+    } else if(!patron.test(newUser.nombreUsuario)){
+      toastError('Hay caracteres inválidos en Nombre, ingrese sólo letras');
+      return;
+    }  else if(!patron.test(newUser.apellidoUsuario)){
+      toastError('Hay caracteres inválidos en Apellido, ingrese sólo letras');
+      return;
+    }
 
 
     const url = `https://api-terrarent.ddns.net:3001/Usuario`;
@@ -62,7 +69,7 @@ function RegistrarUsuario(){
     fetch(url, settings)
       .then((response) => {
         if (response.ok) {
-          toastSuccess('Se creó el usuario ' + newUser.nombreUsuario + ' correctamente');
+          
           console.log('Usuario creado:', newUser);
           resetForm();
         } //else if (response.status === 409) {
@@ -79,7 +86,7 @@ function RegistrarUsuario(){
       .catch((error) => {
         /*console.error('Error al cargar el usuario' + newUser.nombreUsuario, error);
         toastError('El usuario con email ' + newUser.email + ' ya está registrado');*/
-        toastSuccess('Se cargó el usuario ' + newUser.nombreUsuario + ' correctamente');
+        
         resetForm();
         navigate('/inicio-sesion');
       })
@@ -107,6 +114,7 @@ function RegistrarUsuario(){
                 <input
                     className='input-username-usuario'
                     type="text"
+                    required
                     placeholder="Ingrese username"
                     value={newUser.username.trim()}
                     onChange={(e) => {
@@ -119,6 +127,7 @@ function RegistrarUsuario(){
                 <input
                     className='input-nombre-usuario'
                     type="text"
+                    required
                     placeholder="Ingrese nombre"
                     value={newUser.nombreUsuario}
                     onChange={(e) => {
@@ -131,6 +140,7 @@ function RegistrarUsuario(){
                 <input
                     className='input-apellido-usuario'
                     type="text"
+                    required
                     placeholder="Ingrese telefono"
                     value={newUser.apellidoUsuario}
                     onChange={(e) => {
@@ -143,6 +153,7 @@ function RegistrarUsuario(){
                 <input
                     className='input-telefono-usuario'
                     type="number"
+                    required
                     placeholder="Ingrese apellido"
                     value={newUser.numTelefono}
                     onChange={(e) => {
@@ -154,7 +165,8 @@ function RegistrarUsuario(){
                 <label> E-Mail: </label>
                 <input
                     className='input-mail-usuario'
-                    type="mail"
+                    type="email"
+                    required
                     placeholder="Ingrese e-mail"
                     value={newUser.email}
                     onChange={(e) => {
@@ -168,6 +180,7 @@ function RegistrarUsuario(){
                   type={showPassword ? 'text' : 'password'}
                   id="password"
                   name="password"
+                  required
                   value={newUser.password}
                   onChange={(e) => {
                     handleInputChange('password', e.target.value)
