@@ -70,7 +70,8 @@ function Reserva () {
           .then((response) => {
             if (response.ok) {
                 toastSuccess("Reserva confirmada con éxito.")
-                setEmergenteClass("emergente-mostrar")
+                setEmergenteClass("emergente-mostrar");
+                window.scrollTo(0, 0);
             } 
               else {
             toastError('Hubo un error al confirmar la reserva. Intentelo más tarde');
