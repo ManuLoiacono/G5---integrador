@@ -1747,6 +1747,10 @@ table {
 
 }
 @media(max-width:480px){
+    .recomendados{
+        grid-template-columns: repeat(2, 1fr);
+       
+    }
     #detail-header-name{
         font-size: .6rem;
     }
@@ -1761,10 +1765,11 @@ table {
         font-size: 2rem;
     }
     .card h4{
-        font-size:.5rem ;
+        font-size:.7rem ;
+        text-overflow: ellipsis;
     }
     .card h3, .card p{
-        font-size:.7rem ;
+        font-size:1rem ;
     }
     .listado-productos a h3 {
         font-size: .7rem;
@@ -1830,10 +1835,12 @@ table {
         -webkit-columns: 1;
         -moz-columns: 1;
     }
+    
 }
 @media(max-width:425px){
+    
+    
     .listado-productos-buscados{
-
         grid-template-columns: repeat(2, 1fr);
        
     }
