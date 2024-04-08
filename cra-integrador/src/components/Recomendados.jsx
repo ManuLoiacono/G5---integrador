@@ -6,6 +6,15 @@ import image from "../img/TERRA_RENT4.png";
 function Galeria() {
   const [productosMostrar, setProductosMostrar] = useState([]);
   const [error, setError] = useState(null);
+  const [mostrar, setMostrar] = useState("noMostrar")
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMostrar("");
+    }, 1500);
+
+    return () => clearTimeout(timer); // Aquí se agrega la función de limpieza para limpiar el temporizador cuando el componente se desmonte.
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,9 +65,9 @@ function Galeria() {
             <p>Error al cargar la sección Recomendados. Por favor, inténtalo de nuevo más tarde.</p>
           </div>;
   }
-
+  
   return (
-    <section className="galeria" id="recomendados">
+    <section className={`galeria ${mostrar}`} id="recomendados">
       <h2>Productos recomendados</h2>
       <div className="recomendados">
         {productosMostrar.map((producto) => (

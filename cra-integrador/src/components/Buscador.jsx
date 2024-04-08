@@ -26,13 +26,14 @@ const Buscador = ({ parametroProp, onDateRangeChange, selectedDateRangeProp }) =
   useEffect(() => {
     console.log("selectedDateRange:", selectedDateRange);
   }, [selectedDateRange]);
+
   return (
-    <div className='buscador'>
+    <div className= "buscador">
       <h2>
         Buscá lo necesario para tu aventura
       </h2>
       <form onSubmit={handleSubmit} className="formulario">
-          <input type="text" placeholder='Buscá!' value={parametro} onChange={(e)=>{setParametro(e.target.value)}}/>
+          <input type="text" placeholder='Buscá!' value={parametro} onChange={(e)=>{setParametro(e.target.value)}} />
           <CalendarioBuscador onDateRangeChange={handleDateRangeChange}/>
           <Link  to={`/busqueda/${parametro}/${selectedDateRange}`}>
             <button>Lo encontraremos</button>

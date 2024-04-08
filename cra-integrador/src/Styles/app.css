@@ -1743,9 +1743,14 @@ table {
         font-size: 1rem;
         height: 20px;
     }
-    
+    #galeria-cat{
+        display: grid;
+        gap: 1vw;
+        padding: 15px;
+        grid-template-columns: 50% 50% ;}
 
 }
+
 @media(max-width:480px){
     .recomendados{
         grid-template-columns: repeat(2, 1fr);
@@ -1780,9 +1785,15 @@ table {
     .contenedor-buscador-cat-rec .galeria:nth-last-child(2){
         display: none;
     }
+    .loader{
+        height: calc(100vh - 10vh - 9rem);
+    }
     .loader img{
         height: 5%;
        }
+    .noMostrar{
+        display: none;
+    }
 
     .contenido-politicas {
         display: flex;

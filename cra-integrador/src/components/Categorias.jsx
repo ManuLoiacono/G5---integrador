@@ -8,7 +8,15 @@ const Categorias = () => {
 
   const [categoriaMostrar, setCategoriasMostrar] = useState([]);
   const [error, setError] = useState(null);
+  const [mostrar, setMostrar] = useState("noMostrar")
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMostrar("");
+    }, 1500);
+
+    return () => clearTimeout(timer); // Aquí se agrega la función de limpieza para limpiar el temporizador cuando el componente se desmonte.
+  }, []);
   /*let categorias=[
    { id : 1,
   nombre:"Carpas",
@@ -64,7 +72,7 @@ cantProductos:0}
 
 
   return (
-    <div className='galeria'>
+    <div className={`galeria ${mostrar}`}>
         
         <h2 id='h2-cat'>Categorías</h2>
         <section id="galeria-cat">
